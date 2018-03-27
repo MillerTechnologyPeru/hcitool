@@ -8,16 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		6E560BA7206ADD3300EAE3E7 /* hcitool in Copy Executable */ = {isa = PBXBuildFile; fileRef = 6E560B92206ADC1600EAE3E7 /* hcitool */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		6E560BB5206ADE9200EAE3E7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BAF206ADE9200EAE3E7 /* StringExtensions.swift */; };
 		6E560BB6206ADE9200EAE3E7 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB0206ADE9200EAE3E7 /* Command.swift */; };
 		6E560BB7206ADE9200EAE3E7 /* LEScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB1206ADE9200EAE3E7 /* LEScan.swift */; };
 		6E560BB8206ADE9200EAE3E7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB2206ADE9200EAE3E7 /* main.swift */; };
 		6E560BBA206AEBD400EAE3E7 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB9206AEBD400EAE3E7 /* Option.swift */; };
 		6E560BBE206AF31F00EAE3E7 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BBD206AF31F00EAE3E7 /* Error.swift */; };
+		6E560BF7206AFFE900EAE3E7 /* HCIToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BF6206AFFD900EAE3E7 /* HCIToolTests.swift */; };
+		6E560BFC206B00B600EAE3E7 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB0206ADE9200EAE3E7 /* Command.swift */; };
+		6E560BFD206B00B600EAE3E7 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BBD206AF31F00EAE3E7 /* Error.swift */; };
+		6E560BFE206B00B600EAE3E7 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB9206AEBD400EAE3E7 /* Option.swift */; };
+		6E560BFF206B00B600EAE3E7 /* LEScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB1206ADE9200EAE3E7 /* LEScan.swift */; };
+		6E560C00206B00B600EAE3E7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB2206ADE9200EAE3E7 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		6E560BA8206ADD6B00EAE3E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E560B8A206ADC1600EAE3E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E560B91206ADC1600EAE3E7;
+			remoteInfo = hcitool;
+		};
+		6E560BFA206B004400EAE3E7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6E560B8A206ADC1600EAE3E7 /* Project object */;
 			proxyType = 1;
@@ -53,7 +65,6 @@
 		6E560B92206ADC1600EAE3E7 /* hcitool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hcitool; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E560BA0206ADCCC00EAE3E7 /* hcitool.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hcitool.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E560BA2206ADCCC00EAE3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E560BAF206ADE9200EAE3E7 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		6E560BB0206ADE9200EAE3E7 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		6E560BB1206ADE9200EAE3E7 /* LEScan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEScan.swift; sourceTree = "<group>"; };
 		6E560BB2206ADE9200EAE3E7 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -61,6 +72,10 @@
 		6E560BBB206AEE0100EAE3E7 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 		6E560BBC206AEE0100EAE3E7 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
 		6E560BBD206AF31F00EAE3E7 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		6E560BEB206AFFC200EAE3E7 /* HCIToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HCIToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E560BEF206AFFC200EAE3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E560BF4206AFFD900EAE3E7 /* LinuxMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinuxMain.swift; sourceTree = "<group>"; };
+		6E560BF6206AFFD900EAE3E7 /* HCIToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCIToolTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +93,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6E560BE8206AFFC200EAE3E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -87,7 +109,9 @@
 				6E560BBC206AEE0100EAE3E7 /* Package.swift */,
 				6E560BBB206AEE0100EAE3E7 /* Cartfile */,
 				6E560BAB206ADE9200EAE3E7 /* Sources */,
+				6E560BF3206AFFD900EAE3E7 /* Tests */,
 				6E560BA1206ADCCC00EAE3E7 /* hcitoolBundle */,
+				6E560BEC206AFFC200EAE3E7 /* HCIToolTests */,
 				6E560B93206ADC1600EAE3E7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,6 +121,7 @@
 			children = (
 				6E560B92206ADC1600EAE3E7 /* hcitool */,
 				6E560BA0206ADCCC00EAE3E7 /* hcitool.bundle */,
+				6E560BEB206AFFC200EAE3E7 /* HCIToolTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,7 +146,6 @@
 		6E560BAC206ADE9200EAE3E7 /* hcitool */ = {
 			isa = PBXGroup;
 			children = (
-				6E560BAF206ADE9200EAE3E7 /* StringExtensions.swift */,
 				6E560BB0206ADE9200EAE3E7 /* Command.swift */,
 				6E560BBD206AF31F00EAE3E7 /* Error.swift */,
 				6E560BB9206AEBD400EAE3E7 /* Option.swift */,
@@ -129,6 +153,32 @@
 				6E560BB2206ADE9200EAE3E7 /* main.swift */,
 			);
 			path = hcitool;
+			sourceTree = "<group>";
+		};
+		6E560BEC206AFFC200EAE3E7 /* HCIToolTests */ = {
+			isa = PBXGroup;
+			children = (
+				6E560BEF206AFFC200EAE3E7 /* Info.plist */,
+			);
+			path = HCIToolTests;
+			sourceTree = "<group>";
+		};
+		6E560BF3206AFFD900EAE3E7 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				6E560BF4206AFFD900EAE3E7 /* LinuxMain.swift */,
+				6E560BF5206AFFD900EAE3E7 /* HCIToolTests */,
+			);
+			name = Tests;
+			path = ../Tests;
+			sourceTree = "<group>";
+		};
+		6E560BF5206AFFD900EAE3E7 /* HCIToolTests */ = {
+			isa = PBXGroup;
+			children = (
+				6E560BF6206AFFD900EAE3E7 /* HCIToolTests.swift */,
+			);
+			path = HCIToolTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +221,24 @@
 			productReference = 6E560BA0206ADCCC00EAE3E7 /* hcitool.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
+		6E560BEA206AFFC200EAE3E7 /* HCIToolTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E560BF0206AFFC200EAE3E7 /* Build configuration list for PBXNativeTarget "HCIToolTests" */;
+			buildPhases = (
+				6E560BE7206AFFC200EAE3E7 /* Sources */,
+				6E560BE8206AFFC200EAE3E7 /* Frameworks */,
+				6E560BE9206AFFC200EAE3E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E560BFB206B004400EAE3E7 /* PBXTargetDependency */,
+			);
+			name = HCIToolTests;
+			productName = HCIToolTests;
+			productReference = 6E560BEB206AFFC200EAE3E7 /* HCIToolTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -186,6 +254,10 @@
 						ProvisioningStyle = Automatic;
 					};
 					6E560B9F206ADCCC00EAE3E7 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					6E560BEA206AFFC200EAE3E7 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
@@ -205,12 +277,20 @@
 			targets = (
 				6E560B9F206ADCCC00EAE3E7 /* hcitoolBundle */,
 				6E560B91206ADC1600EAE3E7 /* hcitool */,
+				6E560BEA206AFFC200EAE3E7 /* HCIToolTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6E560B9E206ADCCC00EAE3E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E560BE9206AFFC200EAE3E7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -244,7 +324,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E560BB5206ADE9200EAE3E7 /* StringExtensions.swift in Sources */,
 				6E560BB8206ADE9200EAE3E7 /* main.swift in Sources */,
 				6E560BBA206AEBD400EAE3E7 /* Option.swift in Sources */,
 				6E560BB6206ADE9200EAE3E7 /* Command.swift in Sources */,
@@ -260,6 +339,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6E560BE7206AFFC200EAE3E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E560BFE206B00B600EAE3E7 /* Option.swift in Sources */,
+				6E560BF7206AFFE900EAE3E7 /* HCIToolTests.swift in Sources */,
+				6E560C00206B00B600EAE3E7 /* main.swift in Sources */,
+				6E560BFD206B00B600EAE3E7 /* Error.swift in Sources */,
+				6E560BFC206B00B600EAE3E7 /* Command.swift in Sources */,
+				6E560BFF206B00B600EAE3E7 /* LEScan.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -267,6 +359,11 @@
 			isa = PBXTargetDependency;
 			target = 6E560B91206ADC1600EAE3E7 /* hcitool */;
 			targetProxy = 6E560BA8206ADD6B00EAE3E7 /* PBXContainerItemProxy */;
+		};
+		6E560BFB206B004400EAE3E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E560B91206ADC1600EAE3E7 /* hcitool */;
+			targetProxy = 6E560BFA206B004400EAE3E7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -435,6 +532,34 @@
 			};
 			name = Release;
 		};
+		6E560BF1206AFFC200EAE3E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = $SRCROOT/../Carthage/Build/Mac;
+				INFOPLIST_FILE = HCIToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $FRAMEWORK_SEARCH_PATHS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pureswift.HCIToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		6E560BF2206AFFC200EAE3E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = $SRCROOT/../Carthage/Build/Mac;
+				INFOPLIST_FILE = HCIToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $FRAMEWORK_SEARCH_PATHS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pureswift.HCIToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -461,6 +586,15 @@
 			buildConfigurations = (
 				6E560BA4206ADCCC00EAE3E7 /* Debug */,
 				6E560BA5206ADCCC00EAE3E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E560BF0206AFFC200EAE3E7 /* Build configuration list for PBXNativeTarget "HCIToolTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E560BF1206AFFC200EAE3E7 /* Debug */,
+				6E560BF2206AFFC200EAE3E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

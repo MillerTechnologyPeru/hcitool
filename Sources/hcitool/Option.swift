@@ -3,7 +3,7 @@
 //  hcitool
 //
 //  Created by Alsey Coleman Miller on 3/27/18.
-//  Copyright © 2018 Pure Swift. All rights reserved.
+//  Copyright © 2018 PureSwift. All rights reserved.
 //
 
 import Foundation

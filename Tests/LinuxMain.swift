@@ -1,6 +1,6 @@
 import XCTest
-@testable import hcitool
+@testable import HCIToolTests
 
 XCTMain([
-     testCase(HCIToolTests.allTests),
+    testCase(HCIToolTests.allTests),
 ])

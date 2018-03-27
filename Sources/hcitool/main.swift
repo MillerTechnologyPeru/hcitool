@@ -22,8 +22,6 @@ func run(arguments: [String] = CommandLine.arguments) throws {
     
     print("Bluetooth Controller: \(controller.address)")
     
-    
-    
     let command = try Command(arguments: arguments)
     
     try command.execute(controller: controller)

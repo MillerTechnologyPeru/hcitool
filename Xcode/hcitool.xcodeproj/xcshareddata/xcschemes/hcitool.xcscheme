@@ -29,6 +29,16 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6E560BEA206AFFC200EAE3E7"
+               BuildableName = "HCIToolTests.xctest"
+               BlueprintName = "HCIToolTests"
+               ReferencedContainer = "container:hcitool.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
