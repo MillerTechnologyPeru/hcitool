@@ -25,15 +25,26 @@ public struct LEScanCommand: CommandProtocol {
     
     // MARK: - Initialization
     
-    public init(options: [Option: String]) throws {
-        
-        guard let durationString = options[.duration]
-            else { throw CommandError.missingOption(Option.duration.rawValue)  }
-        
-        guard let duration = TimeInterval(durationString)
-            else { throw CommandError.invalidOptionValue(option: Option.duration.rawValue, value: durationString) }
+    public static let `default` = LEScanCommand(duration: 10.0)
+    
+    public init(duration: TimeInterval) {
         
         self.duration = duration
+    }
+    
+    public init(options: [Option: String]) throws {
+        
+        if let durationString = options[.duration] {
+            
+            guard let duration = TimeInterval(durationString)
+                else { throw CommandError.invalidOptionValue(option: Option.duration.rawValue, value: durationString) }
+            
+            self.duration = duration
+            
+        } else {
+            
+            self.duration = type(of: self).default.duration
+        }
     }
     
     // MARK: - Methods

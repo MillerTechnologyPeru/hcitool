@@ -1,13 +1,13 @@
 import XCTest
-@testable import Rainbow
+@testable import hcitool
 
 final class RainbowTests: XCTestCase {
     
     static var allTests = [
-        ("testLEScan", testLEScan)
+        ("testArgumentParsing", testArgumentParsing)
     ]
     
-    func testLEScan() {
+    func testArgumentParsing() {
         
         
     }
