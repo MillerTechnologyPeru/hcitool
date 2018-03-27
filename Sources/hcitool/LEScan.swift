@@ -68,6 +68,6 @@ public extension LEScanCommand {
         
         case duration
         
-        public static let all: Set<LEScanCommand.Option> = [.duration]
+        public static let all: Set<Option> = [.duration]
     }
 }
