@@ -11,6 +11,7 @@ let package = Package(
     ],
     dependencies: [
         .Package(url: "https://github.com/PureSwift/BluetoothLinux.git", majorVersion: 3),
-        .Package(url: "https://github.com/colemancda/Rainbow.git", majorVersion: 3)
+        //.Package(url: "https://github.com/PureSwift/BluetoothDarwin.git", majorVersion: 1),
+        .Package(url: "https://github.com/MillerTechnologyPeru/Rainbow.git", majorVersion: 3)
     ]
 )
