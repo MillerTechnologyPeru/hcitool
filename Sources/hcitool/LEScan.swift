@@ -5,7 +5,13 @@
 //  Created by Marco Estrella on 3/26/18.
 //
 
+#if os(Linux)
 import BluetoothLinux
+#elseif os(macOS)
+import BluetoothDarwin
+import IOBluetooth
+#endif
+
 import Bluetooth
 import Foundation
 

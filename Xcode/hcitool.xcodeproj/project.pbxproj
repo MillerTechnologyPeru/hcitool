@@ -1,0 +1,467 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6E560BA7206ADD3300EAE3E7 /* hcitool in Copy Executable */ = {isa = PBXBuildFile; fileRef = 6E560B92206ADC1600EAE3E7 /* hcitool */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		6E560BB3206ADE9200EAE3E7 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BAD206ADE9200EAE3E7 /* CommandLine.swift */; };
+		6E560BB4206ADE9200EAE3E7 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BAE206ADE9200EAE3E7 /* Option.swift */; };
+		6E560BB5206ADE9200EAE3E7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BAF206ADE9200EAE3E7 /* StringExtensions.swift */; };
+		6E560BB6206ADE9200EAE3E7 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB0206ADE9200EAE3E7 /* Command.swift */; };
+		6E560BB7206ADE9200EAE3E7 /* LEScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB1206ADE9200EAE3E7 /* LEScan.swift */; };
+		6E560BB8206ADE9200EAE3E7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB2206ADE9200EAE3E7 /* main.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6E560BA8206ADD6B00EAE3E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E560B8A206ADC1600EAE3E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E560B91206ADC1600EAE3E7;
+			remoteInfo = hcitool;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6E560B90206ADC1600EAE3E7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		6E560BA6206ADD2200EAE3E7 /* Copy Executable */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				6E560BA7206ADD3300EAE3E7 /* hcitool in Copy Executable */,
+			);
+			name = "Copy Executable";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6E560B92206ADC1600EAE3E7 /* hcitool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hcitool; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E560BA0206ADCCC00EAE3E7 /* hcitool.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hcitool.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E560BA2206ADCCC00EAE3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E560BAD206ADE9200EAE3E7 /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
+		6E560BAE206ADE9200EAE3E7 /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		6E560BAF206ADE9200EAE3E7 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		6E560BB0206ADE9200EAE3E7 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		6E560BB1206ADE9200EAE3E7 /* LEScan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEScan.swift; sourceTree = "<group>"; };
+		6E560BB2206ADE9200EAE3E7 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6E560B8F206ADC1600EAE3E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E560B9D206ADCCC00EAE3E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6E560B89206ADC1600EAE3E7 = {
+			isa = PBXGroup;
+			children = (
+				6E560BAB206ADE9200EAE3E7 /* Sources */,
+				6E560BA1206ADCCC00EAE3E7 /* hcitoolBundle */,
+				6E560B93206ADC1600EAE3E7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6E560B93206ADC1600EAE3E7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6E560B92206ADC1600EAE3E7 /* hcitool */,
+				6E560BA0206ADCCC00EAE3E7 /* hcitool.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6E560BA1206ADCCC00EAE3E7 /* hcitoolBundle */ = {
+			isa = PBXGroup;
+			children = (
+				6E560BA2206ADCCC00EAE3E7 /* Info.plist */,
+			);
+			path = hcitoolBundle;
+			sourceTree = "<group>";
+		};
+		6E560BAB206ADE9200EAE3E7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				6E560BAC206ADE9200EAE3E7 /* hcitool */,
+			);
+			name = Sources;
+			path = ../Sources;
+			sourceTree = "<group>";
+		};
+		6E560BAC206ADE9200EAE3E7 /* hcitool */ = {
+			isa = PBXGroup;
+			children = (
+				6E560BAD206ADE9200EAE3E7 /* CommandLine.swift */,
+				6E560BAE206ADE9200EAE3E7 /* Option.swift */,
+				6E560BAF206ADE9200EAE3E7 /* StringExtensions.swift */,
+				6E560BB0206ADE9200EAE3E7 /* Command.swift */,
+				6E560BB1206ADE9200EAE3E7 /* LEScan.swift */,
+				6E560BB2206ADE9200EAE3E7 /* main.swift */,
+			);
+			path = hcitool;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6E560B91206ADC1600EAE3E7 /* hcitool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E560B99206ADC1600EAE3E7 /* Build configuration list for PBXNativeTarget "hcitool" */;
+			buildPhases = (
+				6E560B8E206ADC1600EAE3E7 /* Sources */,
+				6E560B8F206ADC1600EAE3E7 /* Frameworks */,
+				6E560B90206ADC1600EAE3E7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = hcitool;
+			productName = hcitool;
+			productReference = 6E560B92206ADC1600EAE3E7 /* hcitool */;
+			productType = "com.apple.product-type.tool";
+		};
+		6E560B9F206ADCCC00EAE3E7 /* hcitoolBundle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E560BA3206ADCCC00EAE3E7 /* Build configuration list for PBXNativeTarget "hcitoolBundle" */;
+			buildPhases = (
+				6E560B9C206ADCCC00EAE3E7 /* Sources */,
+				6E560B9D206ADCCC00EAE3E7 /* Frameworks */,
+				6E560B9E206ADCCC00EAE3E7 /* Resources */,
+				6E560BA6206ADD2200EAE3E7 /* Copy Executable */,
+				6E560BAA206ADD9600EAE3E7 /* Carthage */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E560BA9206ADD6B00EAE3E7 /* PBXTargetDependency */,
+			);
+			name = hcitoolBundle;
+			productName = hcitoolBundle;
+			productReference = 6E560BA0206ADCCC00EAE3E7 /* hcitool.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6E560B8A206ADC1600EAE3E7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Pure Swift";
+				TargetAttributes = {
+					6E560B91206ADC1600EAE3E7 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					6E560B9F206ADCCC00EAE3E7 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 6E560B8D206ADC1600EAE3E7 /* Build configuration list for PBXProject "hcitool" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6E560B89206ADC1600EAE3E7;
+			productRefGroup = 6E560B93206ADC1600EAE3E7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6E560B9F206ADCCC00EAE3E7 /* hcitoolBundle */,
+				6E560B91206ADC1600EAE3E7 /* hcitool */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6E560B9E206ADCCC00EAE3E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6E560BAA206ADD9600EAE3E7 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../Carthage/Build/Mac/Bluetooth.framework",
+				"$(SRCROOT)/../Carthage/Build/Mac/BluetoothDarwin.framework",
+				"$(SRCROOT)/../Carthage/Build/Mac/Rainbow.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6E560B8E206ADC1600EAE3E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E560BB5206ADE9200EAE3E7 /* StringExtensions.swift in Sources */,
+				6E560BB8206ADE9200EAE3E7 /* main.swift in Sources */,
+				6E560BB4206ADE9200EAE3E7 /* Option.swift in Sources */,
+				6E560BB6206ADE9200EAE3E7 /* Command.swift in Sources */,
+				6E560BB3206ADE9200EAE3E7 /* CommandLine.swift in Sources */,
+				6E560BB7206ADE9200EAE3E7 /* LEScan.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E560B9C206ADCCC00EAE3E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6E560BA9206ADD6B00EAE3E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E560B91206ADC1600EAE3E7 /* hcitool */;
+			targetProxy = 6E560BA8206ADD6B00EAE3E7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		6E560B97206ADC1600EAE3E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode -Xcc -fmodule-map-file=$(SRCROOT)/../Carthage/Checkouts/BluetoothDarwin/Sources/CBluetoothDarwin/include/module.modulemap";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		6E560B98206ADC1600EAE3E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode -Xcc -fmodule-map-file=$(SRCROOT)/../Carthage/Checkouts/BluetoothDarwin/Sources/CBluetoothDarwin/include/module.modulemap";
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		6E560B9A206ADC1600EAE3E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = $SRCROOT/../Carthage/Build/Mac;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/$(PRODUCT_NAME).bundle/Contents/Frameworks`";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+			};
+			name = Debug;
+		};
+		6E560B9B206ADC1600EAE3E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = $SRCROOT/../Carthage/Build/Mac;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/$(PRODUCT_NAME).bundle/Contents/Frameworks`";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+			};
+			name = Release;
+		};
+		6E560BA4206ADCCC00EAE3E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = hcitoolBundle/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pureswift.hcitoolBundle;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		6E560BA5206ADCCC00EAE3E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = hcitoolBundle/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pureswift.hcitoolBundle;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6E560B8D206ADC1600EAE3E7 /* Build configuration list for PBXProject "hcitool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E560B97206ADC1600EAE3E7 /* Debug */,
+				6E560B98206ADC1600EAE3E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E560B99206ADC1600EAE3E7 /* Build configuration list for PBXNativeTarget "hcitool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E560B9A206ADC1600EAE3E7 /* Debug */,
+				6E560B9B206ADC1600EAE3E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E560BA3206ADCCC00EAE3E7 /* Build configuration list for PBXNativeTarget "hcitoolBundle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E560BA4206ADCCC00EAE3E7 /* Debug */,
+				6E560BA5206ADCCC00EAE3E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6E560B8A206ADC1600EAE3E7 /* Project object */;
+}

@@ -1,8 +1,14 @@
 
 import Foundation
 import Rainbow
-import BluetoothLinux
 import Bluetooth
+
+#if os(Linux)
+import BluetoothLinux
+#elseif os(macOS)
+import BluetoothDarwin
+import IOBluetooth
+#endif
 
 let cli = CommandLine()
 
@@ -46,7 +52,7 @@ guard let controller = HostController.default
          exit(1)
 }
 
-print("Found Bluetooth adapter with device ID: \(controller.identifier)")
+print("Found Bluetooth adapter \(controller.address)")
 
 print("Address: \(controller.address)")
 
