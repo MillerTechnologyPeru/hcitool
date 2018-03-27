@@ -15,7 +15,7 @@ import IOBluetooth
 import Bluetooth
 import Foundation
 
-public struct LEScanCommand: CommandProtocol {
+public struct LEScanCommand: ArgumentableCommand {
     
     // MARK: - Properties
     

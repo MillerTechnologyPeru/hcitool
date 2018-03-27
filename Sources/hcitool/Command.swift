@@ -26,13 +26,11 @@ public enum Command {
     // Low Energy Scan
     case leScan(LEScanCommand)
     
-    /*
     // Reads the Bluetooth controller's local name.
     case readLocalName
     
     // Write the Bluetooth controller's local name.
-    case writeLocalName(name: String)
-    */
+    case writeLocalName(WriteLocalNameCommand)
 }
 
 public extension Command {
@@ -41,6 +39,8 @@ public extension Command {
         
         switch self {
         case let .leScan(command): try command.execute(controller: controller)
+        case .readLocalName: try ReadLocalNameCommand().execute(controller: controller)
+        case let .writeLocalName(command): try command.execute(controller: controller)
         }
     }
 }
@@ -71,13 +71,16 @@ extension Command: RawRepresentable {
 
 public protocol CommandProtocol {
     
-    associatedtype Option: OptionProtocol
-    
     static var commandType: CommandType { get }
     
-    init(options: [Option: String]) throws
-    
     func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws
+}
+
+public protocol ArgumentableCommand: CommandProtocol {
+    
+    associatedtype Option: OptionProtocol
+
+    init(options: [Option: String]) throws
 }
 
 public extension Command {
@@ -94,13 +97,15 @@ public extension Command {
         
         switch commandType {
         case .leScan:
-            let option = try LEScanCommand.Option.parse(arguments: commandArguments)
-            let commandValue = try LEScanCommand(options: option)
+            let options = try LEScanCommand.Option.parse(arguments: commandArguments)
+            let commandValue = try LEScanCommand(options: options)
             self = .leScan(commandValue)
         case .readLocalName:
-            fatalError()
+            self = .readLocalName
         case .writeLocalName:
-            fatalError()
+            let options = try WriteLocalNameCommand.Option.parse(arguments: commandArguments)
+            let commandValue = try WriteLocalNameCommand(options: options)
+            self = .writeLocalName(commandValue)
         }
     }
 }
