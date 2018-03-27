@@ -1,0 +1,1473 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		OBJ_128 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_134 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Package.swift */; };
+		OBJ_140 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_58 /* Package.swift */; };
+		OBJ_146 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* Package.swift */; };
+		OBJ_152 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Command.swift */; };
+		OBJ_153 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* CommandLine.swift */; };
+		OBJ_154 /* LEScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* LEScan.swift */; };
+		OBJ_155 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Option.swift */; };
+		OBJ_156 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* StringExtensions.swift */; };
+		OBJ_157 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* main.swift */; };
+		OBJ_159 /* Rainbow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Rainbow::Rainbow::Product" /* Rainbow.framework */; };
+		OBJ_160 /* CSwiftBluetoothLinuxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "BluetoothLinux::CSwiftBluetoothLinuxTest::Product" /* CSwiftBluetoothLinuxTest.framework */; };
+		OBJ_161 /* BluetoothLinux.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "BluetoothLinux::BluetoothLinux::Product" /* BluetoothLinux.framework */; };
+		OBJ_162 /* CSwiftBluetoothLinux.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "BluetoothLinux::CSwiftBluetoothLinux::Product" /* CSwiftBluetoothLinux.framework */; };
+		OBJ_163 /* Bluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Bluetooth::Bluetooth::Product" /* Bluetooth.framework */; };
+		OBJ_178 /* BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* BackgroundColor.swift */; };
+		OBJ_179 /* CodesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* CodesParser.swift */; };
+		OBJ_180 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* Color.swift */; };
+		OBJ_181 /* ControlCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* ControlCode.swift */; };
+		OBJ_182 /* ModesExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* ModesExtractor.swift */; };
+		OBJ_183 /* OutputTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* OutputTarget.swift */; };
+		OBJ_184 /* Rainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* Rainbow.swift */; };
+		OBJ_185 /* String+Rainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* String+Rainbow.swift */; };
+		OBJ_186 /* StringGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* StringGenerator.swift */; };
+		OBJ_187 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* Style.swift */; };
+		OBJ_188 /* XcodeColorsSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* XcodeColorsSupport.swift */; };
+		OBJ_194 /* dummy.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* dummy.c */; };
+		OBJ_196 /* Bluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Bluetooth::Bluetooth::Product" /* Bluetooth.framework */; };
+		OBJ_202 /* AddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* AddressType.swift */; };
+		OBJ_203 /* BluetoothProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* BluetoothProtocol.swift */; };
+		OBJ_204 /* Darwin.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* Darwin.swift */; };
+		OBJ_205 /* DeviceCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* DeviceCommand.swift */; };
+		OBJ_206 /* DeviceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* DeviceRequest.swift */; };
+		OBJ_207 /* HCI.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* HCI.swift */; };
+		OBJ_208 /* HostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* HostController.swift */; };
+		OBJ_209 /* IOCTL.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* IOCTL.swift */; };
+		OBJ_210 /* L2CAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* L2CAP.swift */; };
+		OBJ_211 /* LinkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* LinkMode.swift */; };
+		OBJ_212 /* LowEnergyScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* LowEnergyScan.swift */; };
+		OBJ_213 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* Scan.swift */; };
+		OBJ_215 /* CSwiftBluetoothLinux.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "BluetoothLinux::CSwiftBluetoothLinux::Product" /* CSwiftBluetoothLinux.framework */; };
+		OBJ_216 /* Bluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Bluetooth::Bluetooth::Product" /* Bluetooth.framework */; };
+		OBJ_223 /* dummy.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* dummy.c */; };
+		OBJ_225 /* Bluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Bluetooth::Bluetooth::Product" /* Bluetooth.framework */; };
+		OBJ_231 /* ATT.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* ATT.swift */; };
+		OBJ_232 /* ATTConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* ATTConnection.swift */; };
+		OBJ_233 /* ATTProtocolDataUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_63 /* ATTProtocolDataUnit.swift */; };
+		OBJ_234 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* Address.swift */; };
+		OBJ_235 /* AdvertisingChannelHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_65 /* AdvertisingChannelHeader.swift */; };
+		OBJ_236 /* BitMaskOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* BitMaskOption.swift */; };
+		OBJ_237 /* BluetoothHostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_67 /* BluetoothHostController.swift */; };
+		OBJ_238 /* BluetoothUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* BluetoothUUID.swift */; };
+		OBJ_239 /* ByteValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* ByteValue.swift */; };
+		OBJ_240 /* CompanyIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_70 /* CompanyIdentifier.swift */; };
+		OBJ_241 /* DefinedUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* DefinedUUID.swift */; };
+		OBJ_242 /* GATT.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_72 /* GATT.swift */; };
+		OBJ_243 /* GATTAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_73 /* GATTAttributes.swift */; };
+		OBJ_244 /* GATTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_74 /* GATTClient.swift */; };
+		OBJ_245 /* GATTDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_75 /* GATTDatabase.swift */; };
+		OBJ_246 /* GATTServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_76 /* GATTServer.swift */; };
+		OBJ_247 /* HCI.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_77 /* HCI.swift */; };
+		OBJ_248 /* HCICommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* HCICommand.swift */; };
+		OBJ_249 /* HCIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_79 /* HCIError.swift */; };
+		OBJ_250 /* HCIEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_80 /* HCIEvent.swift */; };
+		OBJ_251 /* HCIGeneralEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_81 /* HCIGeneralEvent.swift */; };
+		OBJ_252 /* HCIGeneralEventParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_82 /* HCIGeneralEventParameter.swift */; };
+		OBJ_253 /* HCIPacketHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_83 /* HCIPacketHeader.swift */; };
+		OBJ_254 /* HCIVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_84 /* HCIVersion.swift */; };
+		OBJ_255 /* Hexadecimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_85 /* Hexadecimal.swift */; };
+		OBJ_256 /* HostControllerBasebandCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_86 /* HostControllerBasebandCommand.swift */; };
+		OBJ_257 /* HostControllerBasebandCommandParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_87 /* HostControllerBasebandCommandParameter.swift */; };
+		OBJ_258 /* HostControllerLocalName.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_88 /* HostControllerLocalName.swift */; };
+		OBJ_259 /* InformationalParametersCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_89 /* InformationalParametersCommand.swift */; };
+		OBJ_260 /* Integer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_90 /* Integer.swift */; };
+		OBJ_261 /* L2CAPSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_91 /* L2CAPSocket.swift */; };
+		OBJ_262 /* LinkControlCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_92 /* LinkControlCommand.swift */; };
+		OBJ_263 /* LinkControlCommandParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_93 /* LinkControlCommandParameter.swift */; };
+		OBJ_264 /* LinkPolicyCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_94 /* LinkPolicyCommand.swift */; };
+		OBJ_265 /* LinkPolicyCommandParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_95 /* LinkPolicyCommandParameter.swift */; };
+		OBJ_266 /* LowEnergyAddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_96 /* LowEnergyAddressType.swift */; };
+		OBJ_267 /* LowEnergyAdvertising.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_97 /* LowEnergyAdvertising.swift */; };
+		OBJ_268 /* LowEnergyCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_98 /* LowEnergyCommand.swift */; };
+		OBJ_269 /* LowEnergyCommandParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* LowEnergyCommandParameter.swift */; };
+		OBJ_270 /* LowEnergyConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_100 /* LowEnergyConnection.swift */; };
+		OBJ_271 /* LowEnergyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* LowEnergyEvent.swift */; };
+		OBJ_272 /* LowEnergyEventParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_102 /* LowEnergyEventParameter.swift */; };
+		OBJ_273 /* LowEnergyScanResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_103 /* LowEnergyScanResponse.swift */; };
+		OBJ_274 /* LowEnergyWhiteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_104 /* LowEnergyWhiteList.swift */; };
+		OBJ_275 /* POSIXError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_105 /* POSIXError.swift */; };
+		OBJ_276 /* ProtocolServiceMultiplexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_106 /* ProtocolServiceMultiplexer.swift */; };
+		OBJ_277 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_107 /* Range.swift */; };
+		OBJ_278 /* SecurityLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_108 /* SecurityLevel.swift */; };
+		OBJ_279 /* StatusParametersCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_109 /* StatusParametersCommand.swift */; };
+		OBJ_280 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_110 /* String.swift */; };
+		OBJ_281 /* TestingCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_111 /* TestingCommand.swift */; };
+		OBJ_282 /* UInt128.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_112 /* UInt128.swift */; };
+		OBJ_283 /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_113 /* UUID.swift */; };
+		OBJ_284 /* VendorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_114 /* VendorCommand.swift */; };
+		OBJ_285 /* iBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_115 /* iBeacon.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		513EAAC52069C6E20045F687 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Rainbow::Rainbow";
+			remoteInfo = Rainbow;
+		};
+		513EAAC62069C6E20045F687 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "BluetoothLinux::CSwiftBluetoothLinuxTest";
+			remoteInfo = CSwiftBluetoothLinuxTest;
+		};
+		513EAAC72069C6E20045F687 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Bluetooth::Bluetooth";
+			remoteInfo = Bluetooth;
+		};
+		513EAAC82069C6E20045F687 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "BluetoothLinux::BluetoothLinux";
+			remoteInfo = BluetoothLinux;
+		};
+		513EAAC92069C6E20045F687 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "BluetoothLinux::CSwiftBluetoothLinux";
+			remoteInfo = CSwiftBluetoothLinux;
+		};
+		513EAACA2069C6E20045F687 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Bluetooth::Bluetooth";
+			remoteInfo = Bluetooth;
+		};
+		513EAACB2069C6E20045F687 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Bluetooth::Bluetooth";
+			remoteInfo = Bluetooth;
+		};
+		513EAACC2069C6E20045F687 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "BluetoothLinux::CSwiftBluetoothLinux";
+			remoteInfo = CSwiftBluetoothLinux;
+		};
+		513EAACD2069C6E20045F687 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "Bluetooth::Bluetooth";
+			remoteInfo = Bluetooth;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		"Bluetooth::Bluetooth::Product" /* Bluetooth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bluetooth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"BluetoothLinux::BluetoothLinux::Product" /* BluetoothLinux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BluetoothLinux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"BluetoothLinux::CSwiftBluetoothLinux::Product" /* CSwiftBluetoothLinux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CSwiftBluetoothLinux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"BluetoothLinux::CSwiftBluetoothLinuxTest::Product" /* CSwiftBluetoothLinuxTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CSwiftBluetoothLinuxTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_10 /* CommandLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
+		OBJ_100 /* LowEnergyConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowEnergyConnection.swift; sourceTree = "<group>"; };
+		OBJ_101 /* LowEnergyEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowEnergyEvent.swift; sourceTree = "<group>"; };
+		OBJ_102 /* LowEnergyEventParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowEnergyEventParameter.swift; sourceTree = "<group>"; };
+		OBJ_103 /* LowEnergyScanResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowEnergyScanResponse.swift; sourceTree = "<group>"; };
+		OBJ_104 /* LowEnergyWhiteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowEnergyWhiteList.swift; sourceTree = "<group>"; };
+		OBJ_105 /* POSIXError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POSIXError.swift; sourceTree = "<group>"; };
+		OBJ_106 /* ProtocolServiceMultiplexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolServiceMultiplexer.swift; sourceTree = "<group>"; };
+		OBJ_107 /* Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
+		OBJ_108 /* SecurityLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityLevel.swift; sourceTree = "<group>"; };
+		OBJ_109 /* StatusParametersCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusParametersCommand.swift; sourceTree = "<group>"; };
+		OBJ_11 /* LEScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEScan.swift; sourceTree = "<group>"; };
+		OBJ_110 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		OBJ_111 /* TestingCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingCommand.swift; sourceTree = "<group>"; };
+		OBJ_112 /* UInt128.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt128.swift; sourceTree = "<group>"; };
+		OBJ_113 /* UUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUID.swift; sourceTree = "<group>"; };
+		OBJ_114 /* VendorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorCommand.swift; sourceTree = "<group>"; };
+		OBJ_115 /* iBeacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeacon.swift; sourceTree = "<group>"; };
+		OBJ_12 /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		OBJ_13 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		OBJ_14 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		OBJ_18 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/jmarkstar/MillerTech/linux/ubuntu16/hcitool/.build/checkouts/Rainbow.git--5199881591032506196/Package.swift"; sourceTree = "<group>"; };
+		OBJ_19 /* BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColor.swift; sourceTree = "<group>"; };
+		OBJ_20 /* CodesParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodesParser.swift; sourceTree = "<group>"; };
+		OBJ_21 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		OBJ_22 /* ControlCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlCode.swift; sourceTree = "<group>"; };
+		OBJ_23 /* ModesExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModesExtractor.swift; sourceTree = "<group>"; };
+		OBJ_24 /* OutputTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputTarget.swift; sourceTree = "<group>"; };
+		OBJ_25 /* Rainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rainbow.swift; sourceTree = "<group>"; };
+		OBJ_26 /* String+Rainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Rainbow.swift"; sourceTree = "<group>"; };
+		OBJ_27 /* StringGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringGenerator.swift; sourceTree = "<group>"; };
+		OBJ_28 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		OBJ_29 /* XcodeColorsSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeColorsSupport.swift; sourceTree = "<group>"; };
+		OBJ_32 /* dummy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = dummy.c; sourceTree = "<group>"; };
+		OBJ_34 /* bluetooth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bluetooth.h; sourceTree = "<group>"; };
+		OBJ_35 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = "/Users/jmarkstar/MillerTech/linux/ubuntu16/hcitool/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinux/include/module.modulemap"; sourceTree = "<group>"; };
+		OBJ_37 /* AddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressType.swift; sourceTree = "<group>"; };
+		OBJ_38 /* BluetoothProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothProtocol.swift; sourceTree = "<group>"; };
+		OBJ_39 /* Darwin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Darwin.swift; sourceTree = "<group>"; };
+		OBJ_40 /* DeviceCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCommand.swift; sourceTree = "<group>"; };
+		OBJ_41 /* DeviceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRequest.swift; sourceTree = "<group>"; };
+		OBJ_42 /* HCI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCI.swift; sourceTree = "<group>"; };
+		OBJ_43 /* HostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostController.swift; sourceTree = "<group>"; };
+		OBJ_44 /* IOCTL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOCTL.swift; sourceTree = "<group>"; };
+		OBJ_45 /* L2CAP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L2CAP.swift; sourceTree = "<group>"; };
+		OBJ_46 /* LinkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkMode.swift; sourceTree = "<group>"; };
+		OBJ_47 /* LowEnergyScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowEnergyScan.swift; sourceTree = "<group>"; };
+		OBJ_48 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
+		OBJ_50 /* dummy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = dummy.c; sourceTree = "<group>"; };
+		OBJ_52 /* ioctl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ioctl.h; sourceTree = "<group>"; };
+		OBJ_53 /* MathTestsHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MathTestsHelper.h; sourceTree = "<group>"; };
+		OBJ_54 /* IOCTLTestsHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOCTLTestsHelper.h; sourceTree = "<group>"; };
+		OBJ_55 /* iBeaconTestsHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iBeaconTestsHelper.h; sourceTree = "<group>"; };
+		OBJ_56 /* shim.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shim.h; sourceTree = "<group>"; };
+		OBJ_57 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = "/Users/jmarkstar/MillerTech/linux/ubuntu16/hcitool/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinuxTest/include/module.modulemap"; sourceTree = "<group>"; };
+		OBJ_58 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/jmarkstar/MillerTech/linux/ubuntu16/hcitool/.build/checkouts/BluetoothLinux.git-1330445038168486408/Package.swift"; sourceTree = "<group>"; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		OBJ_60 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/jmarkstar/MillerTech/linux/ubuntu16/hcitool/.build/checkouts/Bluetooth.git--1679829496101537995/Package.swift"; sourceTree = "<group>"; };
+		OBJ_61 /* ATT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATT.swift; sourceTree = "<group>"; };
+		OBJ_62 /* ATTConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTConnection.swift; sourceTree = "<group>"; };
+		OBJ_63 /* ATTProtocolDataUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTProtocolDataUnit.swift; sourceTree = "<group>"; };
+		OBJ_64 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		OBJ_65 /* AdvertisingChannelHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisingChannelHeader.swift; sourceTree = "<group>"; };
+		OBJ_66 /* BitMaskOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitMaskOption.swift; sourceTree = "<group>"; };
+		OBJ_67 /* BluetoothHostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothHostController.swift; sourceTree = "<group>"; };
+		OBJ_68 /* BluetoothUUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothUUID.swift; sourceTree = "<group>"; };
+		OBJ_69 /* ByteValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByteValue.swift; sourceTree = "<group>"; };
+		OBJ_70 /* CompanyIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyIdentifier.swift; sourceTree = "<group>"; };
+		OBJ_71 /* DefinedUUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinedUUID.swift; sourceTree = "<group>"; };
+		OBJ_72 /* GATT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GATT.swift; sourceTree = "<group>"; };
+		OBJ_73 /* GATTAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GATTAttributes.swift; sourceTree = "<group>"; };
+		OBJ_74 /* GATTClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GATTClient.swift; sourceTree = "<group>"; };
+		OBJ_75 /* GATTDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GATTDatabase.swift; sourceTree = "<group>"; };
+		OBJ_76 /* GATTServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GATTServer.swift; sourceTree = "<group>"; };
+		OBJ_77 /* HCI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCI.swift; sourceTree = "<group>"; };
+		OBJ_78 /* HCICommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCICommand.swift; sourceTree = "<group>"; };
+		OBJ_79 /* HCIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCIError.swift; sourceTree = "<group>"; };
+		OBJ_80 /* HCIEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCIEvent.swift; sourceTree = "<group>"; };
+		OBJ_81 /* HCIGeneralEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCIGeneralEvent.swift; sourceTree = "<group>"; };
+		OBJ_82 /* HCIGeneralEventParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCIGeneralEventParameter.swift; sourceTree = "<group>"; };
+		OBJ_83 /* HCIPacketHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCIPacketHeader.swift; sourceTree = "<group>"; };
+		OBJ_84 /* HCIVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCIVersion.swift; sourceTree = "<group>"; };
+		OBJ_85 /* Hexadecimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hexadecimal.swift; sourceTree = "<group>"; };
+		OBJ_86 /* HostControllerBasebandCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostControllerBasebandCommand.swift; sourceTree = "<group>"; };
+		OBJ_87 /* HostControllerBasebandCommandParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostControllerBasebandCommandParameter.swift; sourceTree = "<group>"; };
+		OBJ_88 /* HostControllerLocalName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostControllerLocalName.swift; sourceTree = "<group>"; };
+		OBJ_89 /* InformationalParametersCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationalParametersCommand.swift; sourceTree = "<group>"; };
+		OBJ_9 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		OBJ_90 /* Integer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Integer.swift; sourceTree = "<group>"; };
+		OBJ_91 /* L2CAPSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L2CAPSocket.swift; sourceTree = "<group>"; };
+		OBJ_92 /* LinkControlCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkControlCommand.swift; sourceTree = "<group>"; };
+		OBJ_93 /* LinkControlCommandParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkControlCommandParameter.swift; sourceTree = "<group>"; };
+		OBJ_94 /* LinkPolicyCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPolicyCommand.swift; sourceTree = "<group>"; };
+		OBJ_95 /* LinkPolicyCommandParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPolicyCommandParameter.swift; sourceTree = "<group>"; };
+		OBJ_96 /* LowEnergyAddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowEnergyAddressType.swift; sourceTree = "<group>"; };
+		OBJ_97 /* LowEnergyAdvertising.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowEnergyAdvertising.swift; sourceTree = "<group>"; };
+		OBJ_98 /* LowEnergyCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowEnergyCommand.swift; sourceTree = "<group>"; };
+		OBJ_99 /* LowEnergyCommandParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowEnergyCommandParameter.swift; sourceTree = "<group>"; };
+		"Rainbow::Rainbow::Product" /* Rainbow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Rainbow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"hcitool::hcitool::Product" /* hcitool */ = {isa = PBXFileReference; lastKnownFileType = text; path = hcitool; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_158 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_159 /* Rainbow.framework in Frameworks */,
+				OBJ_160 /* CSwiftBluetoothLinuxTest.framework in Frameworks */,
+				OBJ_161 /* BluetoothLinux.framework in Frameworks */,
+				OBJ_162 /* CSwiftBluetoothLinux.framework in Frameworks */,
+				OBJ_163 /* Bluetooth.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_189 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_195 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_196 /* Bluetooth.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_214 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_215 /* CSwiftBluetoothLinux.framework in Frameworks */,
+				OBJ_216 /* Bluetooth.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_224 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_225 /* Bluetooth.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_286 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		OBJ_116 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				"hcitool::hcitool::Product" /* hcitool */,
+				"Rainbow::Rainbow::Product" /* Rainbow.framework */,
+				"BluetoothLinux::CSwiftBluetoothLinuxTest::Product" /* CSwiftBluetoothLinuxTest.framework */,
+				"BluetoothLinux::BluetoothLinux::Product" /* BluetoothLinux.framework */,
+				"BluetoothLinux::CSwiftBluetoothLinux::Product" /* CSwiftBluetoothLinux.framework */,
+				"Bluetooth::Bluetooth::Product" /* Bluetooth.framework */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_15 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_16 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_17 /* Rainbow 3.2.0 */,
+				OBJ_30 /* BluetoothLinux 3.0.0 */,
+				OBJ_59 /* Bluetooth 1.6.1 */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		OBJ_17 /* Rainbow 3.2.0 */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_18 /* Package.swift */,
+				OBJ_19 /* BackgroundColor.swift */,
+				OBJ_20 /* CodesParser.swift */,
+				OBJ_21 /* Color.swift */,
+				OBJ_22 /* ControlCode.swift */,
+				OBJ_23 /* ModesExtractor.swift */,
+				OBJ_24 /* OutputTarget.swift */,
+				OBJ_25 /* Rainbow.swift */,
+				OBJ_26 /* String+Rainbow.swift */,
+				OBJ_27 /* StringGenerator.swift */,
+				OBJ_28 /* Style.swift */,
+				OBJ_29 /* XcodeColorsSupport.swift */,
+			);
+			name = "Rainbow 3.2.0";
+			path = ".build/checkouts/Rainbow.git--5199881591032506196/Sources";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_30 /* BluetoothLinux 3.0.0 */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_31 /* CSwiftBluetoothLinux */,
+				OBJ_36 /* BluetoothLinux */,
+				OBJ_49 /* CSwiftBluetoothLinuxTest */,
+				OBJ_58 /* Package.swift */,
+			);
+			name = "BluetoothLinux 3.0.0";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_31 /* CSwiftBluetoothLinux */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_32 /* dummy.c */,
+				OBJ_33 /* include */,
+			);
+			name = CSwiftBluetoothLinux;
+			path = ".build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinux";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_33 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_34 /* bluetooth.h */,
+				OBJ_35 /* module.modulemap */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		OBJ_36 /* BluetoothLinux */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_37 /* AddressType.swift */,
+				OBJ_38 /* BluetoothProtocol.swift */,
+				OBJ_39 /* Darwin.swift */,
+				OBJ_40 /* DeviceCommand.swift */,
+				OBJ_41 /* DeviceRequest.swift */,
+				OBJ_42 /* HCI.swift */,
+				OBJ_43 /* HostController.swift */,
+				OBJ_44 /* IOCTL.swift */,
+				OBJ_45 /* L2CAP.swift */,
+				OBJ_46 /* LinkMode.swift */,
+				OBJ_47 /* LowEnergyScan.swift */,
+				OBJ_48 /* Scan.swift */,
+			);
+			name = BluetoothLinux;
+			path = ".build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/BluetoothLinux";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_49 /* CSwiftBluetoothLinuxTest */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_50 /* dummy.c */,
+				OBJ_51 /* include */,
+			);
+			name = CSwiftBluetoothLinuxTest;
+			path = ".build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinuxTest";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_5 /*  */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_6 /* Package.swift */,
+				OBJ_7 /* Sources */,
+				OBJ_15 /* Tests */,
+				OBJ_16 /* Dependencies */,
+				OBJ_116 /* Products */,
+			);
+			name = "";
+			sourceTree = "<group>";
+		};
+		OBJ_51 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_52 /* ioctl.h */,
+				OBJ_53 /* MathTestsHelper.h */,
+				OBJ_54 /* IOCTLTestsHelper.h */,
+				OBJ_55 /* iBeaconTestsHelper.h */,
+				OBJ_56 /* shim.h */,
+				OBJ_57 /* module.modulemap */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		OBJ_59 /* Bluetooth 1.6.1 */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_60 /* Package.swift */,
+				OBJ_61 /* ATT.swift */,
+				OBJ_62 /* ATTConnection.swift */,
+				OBJ_63 /* ATTProtocolDataUnit.swift */,
+				OBJ_64 /* Address.swift */,
+				OBJ_65 /* AdvertisingChannelHeader.swift */,
+				OBJ_66 /* BitMaskOption.swift */,
+				OBJ_67 /* BluetoothHostController.swift */,
+				OBJ_68 /* BluetoothUUID.swift */,
+				OBJ_69 /* ByteValue.swift */,
+				OBJ_70 /* CompanyIdentifier.swift */,
+				OBJ_71 /* DefinedUUID.swift */,
+				OBJ_72 /* GATT.swift */,
+				OBJ_73 /* GATTAttributes.swift */,
+				OBJ_74 /* GATTClient.swift */,
+				OBJ_75 /* GATTDatabase.swift */,
+				OBJ_76 /* GATTServer.swift */,
+				OBJ_77 /* HCI.swift */,
+				OBJ_78 /* HCICommand.swift */,
+				OBJ_79 /* HCIError.swift */,
+				OBJ_80 /* HCIEvent.swift */,
+				OBJ_81 /* HCIGeneralEvent.swift */,
+				OBJ_82 /* HCIGeneralEventParameter.swift */,
+				OBJ_83 /* HCIPacketHeader.swift */,
+				OBJ_84 /* HCIVersion.swift */,
+				OBJ_85 /* Hexadecimal.swift */,
+				OBJ_86 /* HostControllerBasebandCommand.swift */,
+				OBJ_87 /* HostControllerBasebandCommandParameter.swift */,
+				OBJ_88 /* HostControllerLocalName.swift */,
+				OBJ_89 /* InformationalParametersCommand.swift */,
+				OBJ_90 /* Integer.swift */,
+				OBJ_91 /* L2CAPSocket.swift */,
+				OBJ_92 /* LinkControlCommand.swift */,
+				OBJ_93 /* LinkControlCommandParameter.swift */,
+				OBJ_94 /* LinkPolicyCommand.swift */,
+				OBJ_95 /* LinkPolicyCommandParameter.swift */,
+				OBJ_96 /* LowEnergyAddressType.swift */,
+				OBJ_97 /* LowEnergyAdvertising.swift */,
+				OBJ_98 /* LowEnergyCommand.swift */,
+				OBJ_99 /* LowEnergyCommandParameter.swift */,
+				OBJ_100 /* LowEnergyConnection.swift */,
+				OBJ_101 /* LowEnergyEvent.swift */,
+				OBJ_102 /* LowEnergyEventParameter.swift */,
+				OBJ_103 /* LowEnergyScanResponse.swift */,
+				OBJ_104 /* LowEnergyWhiteList.swift */,
+				OBJ_105 /* POSIXError.swift */,
+				OBJ_106 /* ProtocolServiceMultiplexer.swift */,
+				OBJ_107 /* Range.swift */,
+				OBJ_108 /* SecurityLevel.swift */,
+				OBJ_109 /* StatusParametersCommand.swift */,
+				OBJ_110 /* String.swift */,
+				OBJ_111 /* TestingCommand.swift */,
+				OBJ_112 /* UInt128.swift */,
+				OBJ_113 /* UUID.swift */,
+				OBJ_114 /* VendorCommand.swift */,
+				OBJ_115 /* iBeacon.swift */,
+			);
+			name = "Bluetooth 1.6.1";
+			path = ".build/checkouts/Bluetooth.git--1679829496101537995/Sources";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* hcitool */,
+			);
+			name = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_8 /* hcitool */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_9 /* Command.swift */,
+				OBJ_10 /* CommandLine.swift */,
+				OBJ_11 /* LEScan.swift */,
+				OBJ_12 /* Option.swift */,
+				OBJ_13 /* StringExtensions.swift */,
+				OBJ_14 /* main.swift */,
+			);
+			name = hcitool;
+			path = Sources/hcitool;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		"Bluetooth::Bluetooth" /* Bluetooth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_227 /* Build configuration list for PBXNativeTarget "Bluetooth" */;
+			buildPhases = (
+				OBJ_230 /* Sources */,
+				OBJ_286 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Bluetooth;
+			productName = Bluetooth;
+			productReference = "Bluetooth::Bluetooth::Product" /* Bluetooth.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"Bluetooth::SwiftPMPackageDescription" /* BluetoothPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_142 /* Build configuration list for PBXNativeTarget "BluetoothPackageDescription" */;
+			buildPhases = (
+				OBJ_145 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BluetoothPackageDescription;
+			productName = BluetoothPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+		"BluetoothLinux::BluetoothLinux" /* BluetoothLinux */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_198 /* Build configuration list for PBXNativeTarget "BluetoothLinux" */;
+			buildPhases = (
+				OBJ_201 /* Sources */,
+				OBJ_214 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_217 /* PBXTargetDependency */,
+				OBJ_218 /* PBXTargetDependency */,
+			);
+			name = BluetoothLinux;
+			productName = BluetoothLinux;
+			productReference = "BluetoothLinux::BluetoothLinux::Product" /* BluetoothLinux.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"BluetoothLinux::CSwiftBluetoothLinux" /* CSwiftBluetoothLinux */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_219 /* Build configuration list for PBXNativeTarget "CSwiftBluetoothLinux" */;
+			buildPhases = (
+				OBJ_222 /* Sources */,
+				OBJ_224 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_226 /* PBXTargetDependency */,
+			);
+			name = CSwiftBluetoothLinux;
+			productName = CSwiftBluetoothLinux;
+			productReference = "BluetoothLinux::CSwiftBluetoothLinux::Product" /* CSwiftBluetoothLinux.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"BluetoothLinux::CSwiftBluetoothLinuxTest" /* CSwiftBluetoothLinuxTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_190 /* Build configuration list for PBXNativeTarget "CSwiftBluetoothLinuxTest" */;
+			buildPhases = (
+				OBJ_193 /* Sources */,
+				OBJ_195 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_197 /* PBXTargetDependency */,
+			);
+			name = CSwiftBluetoothLinuxTest;
+			productName = CSwiftBluetoothLinuxTest;
+			productReference = "BluetoothLinux::CSwiftBluetoothLinuxTest::Product" /* CSwiftBluetoothLinuxTest.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"BluetoothLinux::SwiftPMPackageDescription" /* BluetoothLinuxPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_136 /* Build configuration list for PBXNativeTarget "BluetoothLinuxPackageDescription" */;
+			buildPhases = (
+				OBJ_139 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BluetoothLinuxPackageDescription;
+			productName = BluetoothLinuxPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+		"Rainbow::Rainbow" /* Rainbow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_174 /* Build configuration list for PBXNativeTarget "Rainbow" */;
+			buildPhases = (
+				OBJ_177 /* Sources */,
+				OBJ_189 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Rainbow;
+			productName = Rainbow;
+			productReference = "Rainbow::Rainbow::Product" /* Rainbow.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"Rainbow::SwiftPMPackageDescription" /* RainbowPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_130 /* Build configuration list for PBXNativeTarget "RainbowPackageDescription" */;
+			buildPhases = (
+				OBJ_133 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RainbowPackageDescription;
+			productName = RainbowPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+		"hcitool::SwiftPMPackageDescription" /* hcitoolPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_124 /* Build configuration list for PBXNativeTarget "hcitoolPackageDescription" */;
+			buildPhases = (
+				OBJ_127 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = hcitoolPackageDescription;
+			productName = hcitoolPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+		"hcitool::hcitool" /* hcitool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_148 /* Build configuration list for PBXNativeTarget "hcitool" */;
+			buildPhases = (
+				OBJ_151 /* Sources */,
+				OBJ_158 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_164 /* PBXTargetDependency */,
+				OBJ_166 /* PBXTargetDependency */,
+				OBJ_168 /* PBXTargetDependency */,
+				OBJ_170 /* PBXTargetDependency */,
+				OBJ_172 /* PBXTargetDependency */,
+			);
+			name = hcitool;
+			productName = hcitool;
+			productReference = "hcitool::hcitool::Product" /* hcitool */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "hcitool" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = OBJ_5 /*  */;
+			productRefGroup = OBJ_116 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"hcitool::SwiftPMPackageDescription" /* hcitoolPackageDescription */,
+				"Rainbow::SwiftPMPackageDescription" /* RainbowPackageDescription */,
+				"BluetoothLinux::SwiftPMPackageDescription" /* BluetoothLinuxPackageDescription */,
+				"Bluetooth::SwiftPMPackageDescription" /* BluetoothPackageDescription */,
+				"hcitool::hcitool" /* hcitool */,
+				"Rainbow::Rainbow" /* Rainbow */,
+				"BluetoothLinux::CSwiftBluetoothLinuxTest" /* CSwiftBluetoothLinuxTest */,
+				"BluetoothLinux::BluetoothLinux" /* BluetoothLinux */,
+				"BluetoothLinux::CSwiftBluetoothLinux" /* CSwiftBluetoothLinux */,
+				"Bluetooth::Bluetooth" /* Bluetooth */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_127 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_128 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_133 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_134 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_139 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_140 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_145 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_146 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_151 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_152 /* Command.swift in Sources */,
+				OBJ_153 /* CommandLine.swift in Sources */,
+				OBJ_154 /* LEScan.swift in Sources */,
+				OBJ_155 /* Option.swift in Sources */,
+				OBJ_156 /* StringExtensions.swift in Sources */,
+				OBJ_157 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_177 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_178 /* BackgroundColor.swift in Sources */,
+				OBJ_179 /* CodesParser.swift in Sources */,
+				OBJ_180 /* Color.swift in Sources */,
+				OBJ_181 /* ControlCode.swift in Sources */,
+				OBJ_182 /* ModesExtractor.swift in Sources */,
+				OBJ_183 /* OutputTarget.swift in Sources */,
+				OBJ_184 /* Rainbow.swift in Sources */,
+				OBJ_185 /* String+Rainbow.swift in Sources */,
+				OBJ_186 /* StringGenerator.swift in Sources */,
+				OBJ_187 /* Style.swift in Sources */,
+				OBJ_188 /* XcodeColorsSupport.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_193 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_194 /* dummy.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_201 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_202 /* AddressType.swift in Sources */,
+				OBJ_203 /* BluetoothProtocol.swift in Sources */,
+				OBJ_204 /* Darwin.swift in Sources */,
+				OBJ_205 /* DeviceCommand.swift in Sources */,
+				OBJ_206 /* DeviceRequest.swift in Sources */,
+				OBJ_207 /* HCI.swift in Sources */,
+				OBJ_208 /* HostController.swift in Sources */,
+				OBJ_209 /* IOCTL.swift in Sources */,
+				OBJ_210 /* L2CAP.swift in Sources */,
+				OBJ_211 /* LinkMode.swift in Sources */,
+				OBJ_212 /* LowEnergyScan.swift in Sources */,
+				OBJ_213 /* Scan.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_222 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_223 /* dummy.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_230 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_231 /* ATT.swift in Sources */,
+				OBJ_232 /* ATTConnection.swift in Sources */,
+				OBJ_233 /* ATTProtocolDataUnit.swift in Sources */,
+				OBJ_234 /* Address.swift in Sources */,
+				OBJ_235 /* AdvertisingChannelHeader.swift in Sources */,
+				OBJ_236 /* BitMaskOption.swift in Sources */,
+				OBJ_237 /* BluetoothHostController.swift in Sources */,
+				OBJ_238 /* BluetoothUUID.swift in Sources */,
+				OBJ_239 /* ByteValue.swift in Sources */,
+				OBJ_240 /* CompanyIdentifier.swift in Sources */,
+				OBJ_241 /* DefinedUUID.swift in Sources */,
+				OBJ_242 /* GATT.swift in Sources */,
+				OBJ_243 /* GATTAttributes.swift in Sources */,
+				OBJ_244 /* GATTClient.swift in Sources */,
+				OBJ_245 /* GATTDatabase.swift in Sources */,
+				OBJ_246 /* GATTServer.swift in Sources */,
+				OBJ_247 /* HCI.swift in Sources */,
+				OBJ_248 /* HCICommand.swift in Sources */,
+				OBJ_249 /* HCIError.swift in Sources */,
+				OBJ_250 /* HCIEvent.swift in Sources */,
+				OBJ_251 /* HCIGeneralEvent.swift in Sources */,
+				OBJ_252 /* HCIGeneralEventParameter.swift in Sources */,
+				OBJ_253 /* HCIPacketHeader.swift in Sources */,
+				OBJ_254 /* HCIVersion.swift in Sources */,
+				OBJ_255 /* Hexadecimal.swift in Sources */,
+				OBJ_256 /* HostControllerBasebandCommand.swift in Sources */,
+				OBJ_257 /* HostControllerBasebandCommandParameter.swift in Sources */,
+				OBJ_258 /* HostControllerLocalName.swift in Sources */,
+				OBJ_259 /* InformationalParametersCommand.swift in Sources */,
+				OBJ_260 /* Integer.swift in Sources */,
+				OBJ_261 /* L2CAPSocket.swift in Sources */,
+				OBJ_262 /* LinkControlCommand.swift in Sources */,
+				OBJ_263 /* LinkControlCommandParameter.swift in Sources */,
+				OBJ_264 /* LinkPolicyCommand.swift in Sources */,
+				OBJ_265 /* LinkPolicyCommandParameter.swift in Sources */,
+				OBJ_266 /* LowEnergyAddressType.swift in Sources */,
+				OBJ_267 /* LowEnergyAdvertising.swift in Sources */,
+				OBJ_268 /* LowEnergyCommand.swift in Sources */,
+				OBJ_269 /* LowEnergyCommandParameter.swift in Sources */,
+				OBJ_270 /* LowEnergyConnection.swift in Sources */,
+				OBJ_271 /* LowEnergyEvent.swift in Sources */,
+				OBJ_272 /* LowEnergyEventParameter.swift in Sources */,
+				OBJ_273 /* LowEnergyScanResponse.swift in Sources */,
+				OBJ_274 /* LowEnergyWhiteList.swift in Sources */,
+				OBJ_275 /* POSIXError.swift in Sources */,
+				OBJ_276 /* ProtocolServiceMultiplexer.swift in Sources */,
+				OBJ_277 /* Range.swift in Sources */,
+				OBJ_278 /* SecurityLevel.swift in Sources */,
+				OBJ_279 /* StatusParametersCommand.swift in Sources */,
+				OBJ_280 /* String.swift in Sources */,
+				OBJ_281 /* TestingCommand.swift in Sources */,
+				OBJ_282 /* UInt128.swift in Sources */,
+				OBJ_283 /* UUID.swift in Sources */,
+				OBJ_284 /* VendorCommand.swift in Sources */,
+				OBJ_285 /* iBeacon.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		OBJ_164 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Rainbow::Rainbow" /* Rainbow */;
+			targetProxy = 513EAAC52069C6E20045F687 /* PBXContainerItemProxy */;
+		};
+		OBJ_166 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "BluetoothLinux::CSwiftBluetoothLinuxTest" /* CSwiftBluetoothLinuxTest */;
+			targetProxy = 513EAAC62069C6E20045F687 /* PBXContainerItemProxy */;
+		};
+		OBJ_168 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "BluetoothLinux::BluetoothLinux" /* BluetoothLinux */;
+			targetProxy = 513EAAC82069C6E20045F687 /* PBXContainerItemProxy */;
+		};
+		OBJ_170 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "BluetoothLinux::CSwiftBluetoothLinux" /* CSwiftBluetoothLinux */;
+			targetProxy = 513EAACC2069C6E20045F687 /* PBXContainerItemProxy */;
+		};
+		OBJ_172 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Bluetooth::Bluetooth" /* Bluetooth */;
+			targetProxy = 513EAACD2069C6E20045F687 /* PBXContainerItemProxy */;
+		};
+		OBJ_197 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Bluetooth::Bluetooth" /* Bluetooth */;
+			targetProxy = 513EAAC72069C6E20045F687 /* PBXContainerItemProxy */;
+		};
+		OBJ_217 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "BluetoothLinux::CSwiftBluetoothLinux" /* CSwiftBluetoothLinux */;
+			targetProxy = 513EAAC92069C6E20045F687 /* PBXContainerItemProxy */;
+		};
+		OBJ_218 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Bluetooth::Bluetooth" /* Bluetooth */;
+			targetProxy = 513EAACB2069C6E20045F687 /* PBXContainerItemProxy */;
+		};
+		OBJ_226 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "Bluetooth::Bluetooth" /* Bluetooth */;
+			targetProxy = 513EAACA2069C6E20045F687 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_125 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 3 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/3 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		OBJ_126 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 3 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/3 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		OBJ_131 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 3 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/3 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		OBJ_132 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 3 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/3 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		OBJ_137 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 3 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/3 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		OBJ_138 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 3 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/3 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		OBJ_143 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 3 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/3 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		OBJ_144 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 3 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/3 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		OBJ_149 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinuxTest/include",
+					"$(SRCROOT)/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinux/include",
+				);
+				INFOPLIST_FILE = hcitool.xcodeproj/hcitool_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinuxTest/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinux/include/module.modulemap";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+				SWIFT_VERSION = 3.0;
+				TARGET_NAME = hcitool;
+			};
+			name = Debug;
+		};
+		OBJ_150 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinuxTest/include",
+					"$(SRCROOT)/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinux/include",
+				);
+				INFOPLIST_FILE = hcitool.xcodeproj/hcitool_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinuxTest/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinux/include/module.modulemap";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+				SWIFT_VERSION = 3.0;
+				TARGET_NAME = hcitool;
+			};
+			name = Release;
+		};
+		OBJ_175 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = hcitool.xcodeproj/Rainbow_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Rainbow;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGET_NAME = Rainbow;
+			};
+			name = Debug;
+		};
+		OBJ_176 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = hcitool.xcodeproj/Rainbow_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Rainbow;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGET_NAME = Rainbow;
+			};
+			name = Release;
+		};
+		OBJ_191 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = NO;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinuxTest/include",
+				);
+				INFOPLIST_FILE = hcitool.xcodeproj/CSwiftBluetoothLinuxTest_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = CSwiftBluetoothLinuxTest;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGET_NAME = CSwiftBluetoothLinuxTest;
+			};
+			name = Debug;
+		};
+		OBJ_192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = NO;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinuxTest/include",
+				);
+				INFOPLIST_FILE = hcitool.xcodeproj/CSwiftBluetoothLinuxTest_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = CSwiftBluetoothLinuxTest;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGET_NAME = CSwiftBluetoothLinuxTest;
+			};
+			name = Release;
+		};
+		OBJ_199 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinux/include",
+				);
+				INFOPLIST_FILE = hcitool.xcodeproj/BluetoothLinux_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinux/include/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = BluetoothLinux;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGET_NAME = BluetoothLinux;
+			};
+			name = Debug;
+		};
+		OBJ_200 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinux/include",
+				);
+				INFOPLIST_FILE = hcitool.xcodeproj/BluetoothLinux_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinux/include/module.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = BluetoothLinux;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGET_NAME = BluetoothLinux;
+			};
+			name = Release;
+		};
+		OBJ_220 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = NO;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinux/include",
+				);
+				INFOPLIST_FILE = hcitool.xcodeproj/CSwiftBluetoothLinux_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = CSwiftBluetoothLinux;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGET_NAME = CSwiftBluetoothLinux;
+			};
+			name = Debug;
+		};
+		OBJ_221 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = NO;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/.build/checkouts/BluetoothLinux.git-1330445038168486408/Sources/CSwiftBluetoothLinux/include",
+				);
+				INFOPLIST_FILE = hcitool.xcodeproj/CSwiftBluetoothLinux_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = CSwiftBluetoothLinux;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGET_NAME = CSwiftBluetoothLinux;
+			};
+			name = Release;
+		};
+		OBJ_228 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = hcitool.xcodeproj/Bluetooth_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Bluetooth;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGET_NAME = Bluetooth;
+			};
+			name = Debug;
+		};
+		OBJ_229 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = hcitool.xcodeproj/Bluetooth_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = Bluetooth;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGET_NAME = Bluetooth;
+			};
+			name = Release;
+		};
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_124 /* Build configuration list for PBXNativeTarget "hcitoolPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_125 /* Debug */,
+				OBJ_126 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_130 /* Build configuration list for PBXNativeTarget "RainbowPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_131 /* Debug */,
+				OBJ_132 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_136 /* Build configuration list for PBXNativeTarget "BluetoothLinuxPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_137 /* Debug */,
+				OBJ_138 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_142 /* Build configuration list for PBXNativeTarget "BluetoothPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_143 /* Debug */,
+				OBJ_144 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_148 /* Build configuration list for PBXNativeTarget "hcitool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_149 /* Debug */,
+				OBJ_150 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_174 /* Build configuration list for PBXNativeTarget "Rainbow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_175 /* Debug */,
+				OBJ_176 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_190 /* Build configuration list for PBXNativeTarget "CSwiftBluetoothLinuxTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_191 /* Debug */,
+				OBJ_192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_198 /* Build configuration list for PBXNativeTarget "BluetoothLinux" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_199 /* Debug */,
+				OBJ_200 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_2 /* Build configuration list for PBXProject "hcitool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_219 /* Build configuration list for PBXNativeTarget "CSwiftBluetoothLinux" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_220 /* Debug */,
+				OBJ_221 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_227 /* Build configuration list for PBXNativeTarget "Bluetooth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_228 /* Debug */,
+				OBJ_229 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = OBJ_1 /* Project object */;
+}
