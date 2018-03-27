@@ -8,12 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		6E560BA7206ADD3300EAE3E7 /* hcitool in Copy Executable */ = {isa = PBXBuildFile; fileRef = 6E560B92206ADC1600EAE3E7 /* hcitool */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		6E560BB3206ADE9200EAE3E7 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BAD206ADE9200EAE3E7 /* CommandLine.swift */; };
-		6E560BB4206ADE9200EAE3E7 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BAE206ADE9200EAE3E7 /* Option.swift */; };
 		6E560BB5206ADE9200EAE3E7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BAF206ADE9200EAE3E7 /* StringExtensions.swift */; };
 		6E560BB6206ADE9200EAE3E7 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB0206ADE9200EAE3E7 /* Command.swift */; };
 		6E560BB7206ADE9200EAE3E7 /* LEScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB1206ADE9200EAE3E7 /* LEScan.swift */; };
 		6E560BB8206ADE9200EAE3E7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB2206ADE9200EAE3E7 /* main.swift */; };
+		6E560BBA206AEBD400EAE3E7 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB9206AEBD400EAE3E7 /* Option.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,12 +52,13 @@
 		6E560B92206ADC1600EAE3E7 /* hcitool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hcitool; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E560BA0206ADCCC00EAE3E7 /* hcitool.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hcitool.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E560BA2206ADCCC00EAE3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E560BAD206ADE9200EAE3E7 /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
-		6E560BAE206ADE9200EAE3E7 /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		6E560BAF206ADE9200EAE3E7 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		6E560BB0206ADE9200EAE3E7 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		6E560BB1206ADE9200EAE3E7 /* LEScan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEScan.swift; sourceTree = "<group>"; };
 		6E560BB2206ADE9200EAE3E7 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		6E560BB9206AEBD400EAE3E7 /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		6E560BBB206AEE0100EAE3E7 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
+		6E560BBC206AEE0100EAE3E7 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +82,8 @@
 		6E560B89206ADC1600EAE3E7 = {
 			isa = PBXGroup;
 			children = (
+				6E560BBC206AEE0100EAE3E7 /* Package.swift */,
+				6E560BBB206AEE0100EAE3E7 /* Cartfile */,
 				6E560BAB206ADE9200EAE3E7 /* Sources */,
 				6E560BA1206ADCCC00EAE3E7 /* hcitoolBundle */,
 				6E560B93206ADC1600EAE3E7 /* Products */,
@@ -117,10 +119,9 @@
 		6E560BAC206ADE9200EAE3E7 /* hcitool */ = {
 			isa = PBXGroup;
 			children = (
-				6E560BAD206ADE9200EAE3E7 /* CommandLine.swift */,
-				6E560BAE206ADE9200EAE3E7 /* Option.swift */,
 				6E560BAF206ADE9200EAE3E7 /* StringExtensions.swift */,
 				6E560BB0206ADE9200EAE3E7 /* Command.swift */,
+				6E560BB9206AEBD400EAE3E7 /* Option.swift */,
 				6E560BB1206ADE9200EAE3E7 /* LEScan.swift */,
 				6E560BB2206ADE9200EAE3E7 /* main.swift */,
 			);
@@ -242,9 +243,8 @@
 			files = (
 				6E560BB5206ADE9200EAE3E7 /* StringExtensions.swift in Sources */,
 				6E560BB8206ADE9200EAE3E7 /* main.swift in Sources */,
-				6E560BB4206ADE9200EAE3E7 /* Option.swift in Sources */,
+				6E560BBA206AEBD400EAE3E7 /* Option.swift in Sources */,
 				6E560BB6206ADE9200EAE3E7 /* Command.swift in Sources */,
-				6E560BB3206ADE9200EAE3E7 /* CommandLine.swift in Sources */,
 				6E560BB7206ADE9200EAE3E7 /* LEScan.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

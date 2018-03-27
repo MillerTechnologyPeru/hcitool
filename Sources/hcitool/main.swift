@@ -10,13 +10,20 @@ import BluetoothDarwin
 import IOBluetooth
 #endif
 
+
+let CommandLine.arguments
+
+/*
 let cli = CommandLine()
 
-let command = StringOption(shortFlag: "c", longFlag: "command", required: true,
-                            helpMessage: "Command.")
+let command = StringOption(shortFlag: "l",
+                           longFlag: "command",
+                           required: true,
+                           helpMessage: "Command.")
 
-let timeInterval = DoubleOption(shortFlag: "t", longFlag: "time_interval",
-                          helpMessage: "Time Interval.")
+let timeInterval = DoubleOption(shortFlag: "t",
+                                longFlag: "time_interval",
+                                helpMessage: "Time Interval.")
 
 cli.addOptions(command, timeInterval)
 
@@ -65,6 +72,6 @@ case .scan:
     break
 default:
     break
-}
+}*/
 
 
