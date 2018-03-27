@@ -10,8 +10,14 @@ let package = Package(
             dependencies: [])
     ],
     dependencies: [
-        .Package(url: "https://github.com/PureSwift/BluetoothLinux.git", majorVersion: 3),
-        //.Package(url: "https://github.com/PureSwift/BluetoothDarwin.git", majorVersion: 1),
         .Package(url: "https://github.com/MillerTechnologyPeru/Rainbow.git", majorVersion: 3)
     ]
 )
+
+#if os(macOS)
+let dependency: Package.Dependency = .Package(url: "https://github.com/PureSwift/BluetoothDarwin.git", majorVersion: 1)
+package.dependencies.append(dependency)
+#elseif os(Linux)
+let dependency: Package.Dependency = .Package(url: "https://github.com/PureSwift/BluetoothLinux.git", majorVersion: 3)
+package.dependencies.append(dependency)
+#endif

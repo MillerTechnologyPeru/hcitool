@@ -17,7 +17,7 @@ func LEScanTest(controller: HostController, duration: TimeInterval) {
     let startDate = Date()
     let endDate = startDate + duration
     
-    do { try controller.lowEnergyScan(shouldContinueScanning: { Date() < endDate },
+    do { try controller.lowEnergyScan(shouldContinue: { Date() < endDate },
                                    foundDevice: { print($0.address) }) }
         
     catch { print("Could not scan: \(error)") }

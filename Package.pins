@@ -1,0 +1,24 @@
+{
+  "autoPin": true,
+  "pins": [
+    {
+      "package": "Bluetooth",
+      "reason": null,
+      "repositoryURL": "https://github.com/PureSwift/Bluetooth.git",
+      "version": "1.6.2"
+    },
+    {
+      "package": "BluetoothLinux",
+      "reason": null,
+      "repositoryURL": "https://github.com/PureSwift/BluetoothLinux.git",
+      "version": "3.0.1"
+    },
+    {
+      "package": "Rainbow",
+      "reason": null,
+      "repositoryURL": "https://github.com/MillerTechnologyPeru/Rainbow.git",
+      "version": "3.2.0"
+    }
+  ],
+  "version": 1
+}
