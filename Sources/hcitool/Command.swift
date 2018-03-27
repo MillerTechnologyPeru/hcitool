@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Bluetooth
 
 public enum CommandType: String {
     
@@ -34,13 +35,49 @@ public enum Command {
     */
 }
 
+public extension Command {
+    
+    public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
+        
+        switch self {
+        case let .leScan(command): try command.execute(controller: controller)
+        }
+    }
+}
+
+/*
+extension Command: RawRepresentable {
+    
+    public init?(rawValue: CommandProtocol) {
+        
+        if let value = rawValue as? LEScanCommand {
+            
+            self = .leScan(value)
+        } else {
+            
+            return nil
+        }
+    }
+    
+    public var rawValue: CommandProtocol {
+        
+        switch self {
+        case let .leScan(value): return value
+        case let .readLocalName(value): return value
+        case let .writeLocalName(value): return value
+        }
+    }
+}*/
+
 public protocol CommandProtocol {
+    
+    associatedtype Option: OptionProtocol
     
     static var commandType: CommandType { get }
     
-    init(options: [String]) throws
+    init(options: [Option: String]) throws
     
-    func execute()
+    func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws
 }
 
 public extension Command {
@@ -57,7 +94,8 @@ public extension Command {
         
         switch commandType {
         case .leScan:
-            let commandValue = try LEScanCommand(arguments: commandArguments)
+            let option = try LEScanCommand.Option.parse(arguments: commandArguments)
+            let commandValue = try LEScanCommand(options: option)
             self = .leScan(commandValue)
         case .readLocalName:
             fatalError()
@@ -65,18 +103,4 @@ public extension Command {
             fatalError()
         }
     }
-}
-
-private func parseOption <T: Option> ()
-
-public enum CommandError: Error {
-    
-    /// No command specified.
-    case noCommand
-    
-    /// Invalid command.
-    case invalidCommandType(String)
-    
-    /// Invalid number of arguments.
-    case invalidArgumentsCount(expected: Int, actual: Int)
 }

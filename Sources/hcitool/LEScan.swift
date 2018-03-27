@@ -27,50 +27,36 @@ public struct LEScanCommand: CommandProtocol {
     
     public init(options: [Option: String]) throws {
         
-        guard options.count == 1
-            else { throw CommandError.invalidArgumentsCount(expected: 1, actual: arguments.count) }
-        
-        let durationString = options[]
+        guard let durationString = options[.duration]
+            else { throw CommandError.missingOption(Option.duration.rawValue)  }
         
         guard let duration = TimeInterval(durationString)
-            else { throw Error.invalidDuration() }
+            else { throw CommandError.invalidOptionValue(option: Option.duration.rawValue, value: durationString) }
+        
+        self.duration = duration
     }
     
     // MARK: - Methods
     
-    public func execute() {
+    /// Tests the Scanning functionality.
+    public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
+        print("Scanning for \(duration) seconds...")
         
+        let startDate = Date()
+        let endDate = startDate + duration
+        
+        try controller.lowEnergyScan(shouldContinue: { Date() < endDate },
+                                     foundDevice: { print($0.address) })
     }
 }
 
 public extension LEScanCommand {
     
-    public enum Option: String {
+    public enum Option: String, OptionProtocol {
         
         case duration
+        
+        public static let all: Set<LEScanCommand.Option> = [.duration]
     }
 }
-
-public extension LEScanCommand {
-    
-    public enum Error: Swift.Error {
-        
-        case invalidDuration(String)
-    }
-}
-
-/// Tests the Scanning functionality.
-func LEScanTest(controller: HostController, duration: TimeInterval) {
-    
-    print("Scanning for \(duration) seconds...")
-    
-    let startDate = Date()
-    let endDate = startDate + duration
-    
-    do { try controller.lowEnergyScan(shouldContinue: { Date() < endDate },
-                                   foundDevice: { print($0.address) }) }
-        
-    catch { print("Could not scan: \(error)") }
-}
-
