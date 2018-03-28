@@ -23,6 +23,8 @@
 		6E560BFE206B00B600EAE3E7 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB9206AEBD400EAE3E7 /* Option.swift */; };
 		6E560BFF206B00B600EAE3E7 /* LEScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB1206ADE9200EAE3E7 /* LEScan.swift */; };
 		6E560C00206B00B600EAE3E7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB2206ADE9200EAE3E7 /* main.swift */; };
+		6E560C1E206B183000EAE3E7 /* iBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560C1D206B183000EAE3E7 /* iBeacon.swift */; };
+		6E560C1F206B21CF00EAE3E7 /* iBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560C1D206B183000EAE3E7 /* iBeacon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,7 @@
 		6E560BEF206AFFC200EAE3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E560BF4206AFFD900EAE3E7 /* LinuxMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinuxMain.swift; sourceTree = "<group>"; };
 		6E560BF6206AFFD900EAE3E7 /* HCIToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCIToolTests.swift; sourceTree = "<group>"; };
+		6E560C1D206B183000EAE3E7 /* iBeacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeacon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +162,7 @@
 				6E560BB2206ADE9200EAE3E7 /* main.swift */,
 				51F087D3206B014F00B7609C /* ReadLocalName.swift */,
 				51F087D5206B016000B7609C /* WriteLocalName.swift */,
+				6E560C1D206B183000EAE3E7 /* iBeacon.swift */,
 			);
 			path = hcitool;
 			sourceTree = "<group>";
@@ -333,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E560BB8206ADE9200EAE3E7 /* main.swift in Sources */,
+				6E560C1E206B183000EAE3E7 /* iBeacon.swift in Sources */,
 				6E560BBA206AEBD400EAE3E7 /* Option.swift in Sources */,
 				51F087D4206B014F00B7609C /* ReadLocalName.swift in Sources */,
 				6E560BB6206ADE9200EAE3E7 /* Command.swift in Sources */,
@@ -359,6 +364,7 @@
 				51F087D7206B09EB00B7609C /* WriteLocalName.swift in Sources */,
 				6E560BFD206B00B600EAE3E7 /* Error.swift in Sources */,
 				6E560BFC206B00B600EAE3E7 /* Command.swift in Sources */,
+				6E560C1F206B21CF00EAE3E7 /* iBeacon.swift in Sources */,
 				51F087D8206B09ED00B7609C /* ReadLocalName.swift in Sources */,
 				6E560BFF206B00B600EAE3E7 /* LEScan.swift in Sources */,
 			);

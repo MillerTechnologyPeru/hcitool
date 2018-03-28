@@ -14,6 +14,9 @@ public enum CommandType: String {
     // Low Energy Scan
     case leScan = "lescan"
     
+    // iBeacon
+    case iBeacon = "ibeacon"
+    
     // Reads the Bluetooth controller's local name.
     case readLocalName = "readname"
     
@@ -25,6 +28,8 @@ public enum Command {
     
     // Low Energy Scan
     case leScan(LEScanCommand)
+    
+    case iBeacon(iBeaconCommand)
     
     // Reads the Bluetooth controller's local name.
     case readLocalName
@@ -41,6 +46,7 @@ public extension Command {
         case let .leScan(command): try command.execute(controller: controller)
         case .readLocalName: try ReadLocalNameCommand().execute(controller: controller)
         case let .writeLocalName(command): try command.execute(controller: controller)
+        case let .iBeacon(command): try command.execute(controller: controller)
         }
     }
 }
@@ -106,6 +112,10 @@ public extension Command {
             let options = try WriteLocalNameCommand.Option.parse(arguments: commandArguments)
             let commandValue = try WriteLocalNameCommand(options: options)
             self = .writeLocalName(commandValue)
+        case .iBeacon:
+            let options = try iBeaconCommand.Option.parse(arguments: commandArguments)
+            let commandValue = try iBeaconCommand(options: options)
+            self = .iBeacon(commandValue)
         }
     }
 }
