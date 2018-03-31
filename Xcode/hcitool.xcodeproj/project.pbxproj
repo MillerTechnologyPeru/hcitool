@@ -11,6 +11,7 @@
 		51F087D6206B016000B7609C /* WriteLocalName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F087D5206B016000B7609C /* WriteLocalName.swift */; };
 		51F087D7206B09EB00B7609C /* WriteLocalName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F087D5206B016000B7609C /* WriteLocalName.swift */; };
 		51F087D8206B09ED00B7609C /* ReadLocalName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F087D3206B014F00B7609C /* ReadLocalName.swift */; };
+		6E188712206BDAAC00AAB994 /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E188711206BDAAC00AAB994 /* Bool.swift */; };
 		6E560BA7206ADD3300EAE3E7 /* hcitool in Copy Executable */ = {isa = PBXBuildFile; fileRef = 6E560B92206ADC1600EAE3E7 /* hcitool */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		6E560BB6206ADE9200EAE3E7 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB0206ADE9200EAE3E7 /* Command.swift */; };
 		6E560BB7206ADE9200EAE3E7 /* LEScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB1206ADE9200EAE3E7 /* LEScan.swift */; };
@@ -70,6 +71,7 @@
 /* Begin PBXFileReference section */
 		51F087D3206B014F00B7609C /* ReadLocalName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadLocalName.swift; sourceTree = "<group>"; };
 		51F087D5206B016000B7609C /* WriteLocalName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteLocalName.swift; sourceTree = "<group>"; };
+		6E188711206BDAAC00AAB994 /* Bool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
 		6E560B92206ADC1600EAE3E7 /* hcitool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hcitool; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E560BA0206ADCCC00EAE3E7 /* hcitool.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hcitool.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E560BA2206ADCCC00EAE3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				51F087D3206B014F00B7609C /* ReadLocalName.swift */,
 				51F087D5206B016000B7609C /* WriteLocalName.swift */,
 				6E560C1D206B183000EAE3E7 /* iBeacon.swift */,
+				6E188711206BDAAC00AAB994 /* Bool.swift */,
 			);
 			path = hcitool;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				6E560BBA206AEBD400EAE3E7 /* Option.swift in Sources */,
 				51F087D4206B014F00B7609C /* ReadLocalName.swift in Sources */,
 				6E560BB6206ADE9200EAE3E7 /* Command.swift in Sources */,
+				6E188712206BDAAC00AAB994 /* Bool.swift in Sources */,
 				6E560BBE206AF31F00EAE3E7 /* Error.swift in Sources */,
 				51F087D6206B016000B7609C /* WriteLocalName.swift in Sources */,
 				6E560BB7206ADE9200EAE3E7 /* LEScan.swift in Sources */,
