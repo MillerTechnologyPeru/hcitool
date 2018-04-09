@@ -137,11 +137,12 @@ public struct iBeaconCommand: ArgumentableCommand {
         
         print("Enabling iBeacon \(uuid) for \(duration) seconds")
         
-        try controller.iBeacon(uuid: uuid,
-                               major: major,
-                               minor: minor,
-                               rssi: rssi,
-                               interval: interval)
+        let beacon = iBeacon(uuid: uuid, major: major, minor: minor, rssi: rssi, interval: interval)
+        
+        do { try controller.enableLowEnergyAdvertising(false) }
+        catch HCIError.commandDisallowed { }
+        
+        try controller.iBeacon(beacon)
         
         // sleep
         sleep(UInt32(duration))

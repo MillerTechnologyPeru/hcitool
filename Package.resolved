@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Bluetooth",
+        "repositoryURL": "https://github.com/PureSwift/Bluetooth.git",
+        "state": {
+          "branch": null,
+          "revision": "24e222a93b4d1d66050519b577dd38a4abc4129c",
+          "version": "1.7.2"
+        }
+      },
+      {
+        "package": "BluetoothDarwin",
+        "repositoryURL": "https://github.com/PureSwift/BluetoothDarwin.git",
+        "state": {
+          "branch": null,
+          "revision": "362cbd8cecf80fe217d6ec5fd06d37711378a328",
+          "version": "1.0.1"
+        }
+      },
+      {
+        "package": "Rainbow",
+        "repositoryURL": "https://github.com/MillerTechnologyPeru/Rainbow.git",
+        "state": {
+          "branch": null,
+          "revision": "73d4ee05e013089cad7f21892c456df52329fc02",
+          "version": "3.2.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
