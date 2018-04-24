@@ -22,6 +22,15 @@ public enum CommandType: String {
     
     // Write the Bluetooth controller's local name.
     case writeLocalName = "writename"
+    
+    // Set the Bluetooth controller's random address
+    case setRandomAddress = "setrandomaddress"
+    
+    // Clear the White List stored in the Controller.
+    case clearWhiteList = "cleatwhitelist"
+    
+    //  Cancel the LE_Create_Connection or LE_Extended_Create_Connection commands.
+    case createConnectionCancel = "createconnectioncancel"
 }
 
 public enum Command {
@@ -36,6 +45,15 @@ public enum Command {
     
     // Write the Bluetooth controller's local name.
     case writeLocalName(WriteLocalNameCommand)
+    
+    // Set the Bluetooth controller's random address
+    case setRandomAddress(SetRandomAddressCommand)
+    
+    // Clear the White List stored in the Controller.
+    case clearWhiteList
+    
+    //  Cancel the LE_Create_Connection or LE_Extended_Create_Connection commands.
+    case createConnectionCancel
 }
 
 public extension Command {
@@ -47,6 +65,9 @@ public extension Command {
         case .readLocalName: try ReadLocalNameCommand().execute(controller: controller)
         case let .writeLocalName(command): try command.execute(controller: controller)
         case let .iBeacon(command): try command.execute(controller: controller)
+        case let .setRandomAddress(command): try command.execute(controller: controller)
+        case .clearWhiteList: try ClearWhiteListCommand().execute(controller: controller)
+        case .createConnectionCancel: try CreateConnectionCancelCommand().execute(controller: controller)
         }
     }
 }
@@ -116,6 +137,14 @@ public extension Command {
             let options = try iBeaconCommand.Option.parse(arguments: commandArguments)
             let commandValue = try iBeaconCommand(options: options)
             self = .iBeacon(commandValue)
+        case .setRandomAddress:
+            let options = try SetRandomAddressCommand.Option.parse(arguments: commandArguments)
+            let commandValue = try SetRandomAddressCommand(options: options)
+            self = .setRandomAddress(commandValue)
+        case .clearWhiteList:
+            self = .clearWhiteList
+        case .createConnectionCancel:
+            self = .createConnectionCancel
         }
     }
 }
