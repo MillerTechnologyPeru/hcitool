@@ -37,7 +37,7 @@ public struct SetRandomAddressCommand: ArgumentableCommand {
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
         guard let address = Address(rawValue: randomAddress)
-            else { throw CommandError.invalidOptionValue(option: "address", value: randomAddress)}
+            else { throw CommandError.invalidOptionValue(option: "randomaddress", value: randomAddress)}
         
         try controller.lowEnergySetRandomAddress(address)
         
@@ -49,7 +49,7 @@ public extension SetRandomAddressCommand {
     
     public enum Option: String, OptionProtocol {
         
-        case randomAddress
+        case randomAddress = "randomaddress"
         
         public static let all: Set<Option> = [.randomAddress]
     }

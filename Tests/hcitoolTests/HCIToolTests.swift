@@ -33,6 +33,19 @@ final class HCIToolTests: XCTestCase {
             guard case .readLocalSupportedFeatures = command
                 else { XCTFail("Invalid type"); return }
             
+            /* Command Complete [2003] - LE Read Local Supported Features
+             Parameter Length: 12 (0x0C)
+             Status: 0x00 - Success
+             Num HCI Command Packets: 0x01
+             Opcode: 0x2003 (OGF: 0x08    OCF: 0x03) - [Low Energy] LE Read Local Supported Features
+             LE Features: 0X000000000000003F
+             LE Encryption
+             Connection Parameters Request Procedure
+             Extended Reject Indication
+             Slave-initiated Features Exchange
+             LE Ping
+             LE Data Packet Length Extension
+             */
        } catch { XCTFail("\(error)") }
     }
     
@@ -76,7 +89,7 @@ final class HCIToolTests: XCTestCase {
              Parameter Length: 6 (0x06)
              Random Address: 54:39:A3:47:D8:F0
              */
-            let arguments = [/* ".build/debug/hcitool", */ "setrandomaddress", "--randomAddress", "54:39:A3:47:D8:F0"]
+            let arguments = [/* ".build/debug/hcitool", */ "setrandomaddress", "--randomaddress", "54:39:A3:47:D8:F0"]
             
             let command = try Command(arguments: arguments)
             
@@ -88,7 +101,7 @@ final class HCIToolTests: XCTestCase {
         } catch { XCTFail("\(error)") }
         
         // invalid commands
-        XCTAssertThrowsError(try Command(arguments: ["setrandomaddress", "--randomAddress"]))
+        XCTAssertThrowsError(try Command(arguments: ["setrandomaddress", "--randomaddress"]))
     }
     
     func testLEScan() {

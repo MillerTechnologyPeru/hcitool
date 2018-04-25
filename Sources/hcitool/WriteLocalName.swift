@@ -51,4 +51,3 @@ public extension WriteLocalNameCommand {
         public static let all: Set<Option> = [.name]
     }
 }
-
