@@ -16,8 +16,34 @@ final class HCIToolTests: XCTestCase {
         ("testSetRandomAddress", testSetRandomAddress),
         ("testClearWhiteList", testClearWhiteList),
         ("testCreateConnectionCancel", testCreateConnectionCancel),
-        ("testReadLocalSupportedFeatures", testReadLocalSupportedFeatures)
+        ("testReadLocalSupportedFeatures", testReadLocalSupportedFeatures),
+        ("testReadBufferSize", testReadBufferSize)
     ]
+    
+    func testReadBufferSize(){
+        do {
+            /*
+             [2002] Opcode: 0x2002 (OGF: 0x08    OCF: 0x02)
+             Parameter Length: 0 (0x00)
+             */
+            
+            let arguments = [/* ".build/debug/hcitool", */ "setreadbuffersize"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .setReadBufferSize = command
+                else { XCTFail("Invalid type"); return }
+            
+            /*
+             Parameter Length: 7 (0x07)
+             Status: 0x00 - Success
+             Num HCI Command Packets: 0x01
+             Opcode: 0x2002 (OGF: 0x08    OCF: 0x02) - [Low Energy] LE Read Buffer Size
+             HC LE Data Packet Length: 0x00FB
+             HC Total Num LE Data Packets: 0x000F
+             */
+        } catch { XCTFail("\(error)") }
+    }
     
     func testReadLocalSupportedFeatures(){
         do {
