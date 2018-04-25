@@ -38,6 +38,11 @@
                BlueprintName = "HCIToolTests"
                ReferencedContainer = "container:hcitool.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "HCIToolTests/testSetRnadomAddress()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

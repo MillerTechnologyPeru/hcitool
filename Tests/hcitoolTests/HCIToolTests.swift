@@ -12,8 +12,29 @@ import XCTest
 final class HCIToolTests: XCTestCase {
     
     static var allTests = [
-        ("testLEScan", testLEScan)
+        ("testLEScan", testLEScan),
+        ("testSetRandomAddress", testSetRandomAddress)
     ]
+    
+    func testSetRandomAddress() {
+        
+        do {
+            /*
+             [2005] Opcode: 0x2005 (OGF: 0x08    OCF: 0x05)
+             Parameter Length: 6 (0x06)
+             Random Address: 54:39:A3:47:D8:F0
+             */
+            let arguments = [/* ".build/debug/hcitool", */ "setrandomaddress", "--randomAddress", "54:39:A3:47:D8:F0"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case let .setRandomAddress(commandValue) = command
+                else { XCTFail("Invalid type"); return }
+            
+            XCTAssert(commandValue.randomAddress == "54:39:A3:47:D8:F0")
+            
+        } catch { XCTFail("\(error)") }
+    }
     
     func testLEScan() {
         
