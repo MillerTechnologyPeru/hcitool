@@ -14,8 +14,25 @@ final class HCIToolTests: XCTestCase {
     static var allTests = [
         ("testLEScan", testLEScan),
         ("testSetRandomAddress", testSetRandomAddress),
-        ("testClearWhiteList", testClearWhiteList)
+        ("testClearWhiteList", testClearWhiteList),
+        ("testCreateConnectionCancel", testCreateConnectionCancel)
     ]
+    
+    func testCreateConnectionCancel() {
+        do {
+            /*
+             [200E] Opcode: 0x200E (OGF: 0x08    OCF: 0x0E)
+             Parameter Length: 0 (0x00)
+             */
+            let arguments = [/* ".build/debug/hcitool", */ "createconnectioncancel"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .createConnectionCancel = command
+                else { XCTFail("Invalid type"); return }
+            
+        } catch { XCTFail("\(error)") }
+    }
     
     func testClearWhiteList() {
         do {
