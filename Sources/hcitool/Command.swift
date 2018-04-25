@@ -27,7 +27,7 @@ public enum CommandType: String {
     case setRandomAddress = "setrandomaddress"
     
     // Clear the White List stored in the Controller.
-    case clearWhiteList = "cleatwhitelist"
+    case clearWhiteList = "clearwhitelist"
     
     //  Cancel the LE_Create_Connection or LE_Extended_Create_Connection commands.
     case createConnectionCancel = "createconnectioncancel"
