@@ -15,8 +15,26 @@ final class HCIToolTests: XCTestCase {
         ("testLEScan", testLEScan),
         ("testSetRandomAddress", testSetRandomAddress),
         ("testClearWhiteList", testClearWhiteList),
-        ("testCreateConnectionCancel", testCreateConnectionCancel)
+        ("testCreateConnectionCancel", testCreateConnectionCancel),
+        ("testReadLocalSupportedFeatures", testReadLocalSupportedFeatures)
     ]
+    
+    func testReadLocalSupportedFeatures(){
+        do {
+            /*
+             [2003] Opcode: 0x2003 (OGF: 0x08    OCF: 0x03)
+             Parameter Length: 0 (0x00)
+             */
+            
+            let arguments = [/* ".build/debug/hcitool", */ "readlocalsupportedfeatures"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .readLocalSupportedFeatures = command
+                else { XCTFail("Invalid type"); return }
+            
+       } catch { XCTFail("\(error)") }
+    }
     
     func testCreateConnectionCancel() {
         do {
@@ -68,6 +86,9 @@ final class HCIToolTests: XCTestCase {
             XCTAssert(commandValue.randomAddress == "54:39:A3:47:D8:F0")
             
         } catch { XCTFail("\(error)") }
+        
+        // invalid commands
+        XCTAssertThrowsError(try Command(arguments: ["setrandomaddress", "--randomAddress"]))
     }
     
     func testLEScan() {

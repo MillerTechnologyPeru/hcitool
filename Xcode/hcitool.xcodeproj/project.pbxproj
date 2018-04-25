@@ -13,6 +13,8 @@
 		512F4B58208F40AE00576F34 /* ClearWhiteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512F4B56208F40AE00576F34 /* ClearWhiteList.swift */; };
 		512F4B5A208F662B00576F34 /* CreateConnectionCancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512F4B59208F662B00576F34 /* CreateConnectionCancel.swift */; };
 		512F4B5B208F662B00576F34 /* CreateConnectionCancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512F4B59208F662B00576F34 /* CreateConnectionCancel.swift */; };
+		5161200B20904D6B00CFB50B /* ReadLocalSupportedFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5161200A20904D6B00CFB50B /* ReadLocalSupportedFeatures.swift */; };
+		5161200C20904D6B00CFB50B /* ReadLocalSupportedFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5161200A20904D6B00CFB50B /* ReadLocalSupportedFeatures.swift */; };
 		51F087D4206B014F00B7609C /* ReadLocalName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F087D3206B014F00B7609C /* ReadLocalName.swift */; };
 		51F087D6206B016000B7609C /* WriteLocalName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F087D5206B016000B7609C /* WriteLocalName.swift */; };
 		51F087D7206B09EB00B7609C /* WriteLocalName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F087D5206B016000B7609C /* WriteLocalName.swift */; };
@@ -79,6 +81,7 @@
 		512F4B53208F301200576F34 /* SetRandomAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRandomAddress.swift; sourceTree = "<group>"; };
 		512F4B56208F40AE00576F34 /* ClearWhiteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearWhiteList.swift; sourceTree = "<group>"; };
 		512F4B59208F662B00576F34 /* CreateConnectionCancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateConnectionCancel.swift; sourceTree = "<group>"; };
+		5161200A20904D6B00CFB50B /* ReadLocalSupportedFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadLocalSupportedFeatures.swift; sourceTree = "<group>"; };
 		51F087D3206B014F00B7609C /* ReadLocalName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadLocalName.swift; sourceTree = "<group>"; };
 		51F087D5206B016000B7609C /* WriteLocalName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteLocalName.swift; sourceTree = "<group>"; };
 		6E188711206BDAAC00AAB994 /* Bool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
@@ -177,6 +180,7 @@
 				512F4B53208F301200576F34 /* SetRandomAddress.swift */,
 				512F4B56208F40AE00576F34 /* ClearWhiteList.swift */,
 				512F4B59208F662B00576F34 /* CreateConnectionCancel.swift */,
+				5161200A20904D6B00CFB50B /* ReadLocalSupportedFeatures.swift */,
 				6E560C1D206B183000EAE3E7 /* iBeacon.swift */,
 				6E188711206BDAAC00AAB994 /* Bool.swift */,
 			);
@@ -356,6 +360,7 @@
 				512F4B5A208F662B00576F34 /* CreateConnectionCancel.swift in Sources */,
 				6E560C1E206B183000EAE3E7 /* iBeacon.swift in Sources */,
 				6E560BBA206AEBD400EAE3E7 /* Option.swift in Sources */,
+				5161200B20904D6B00CFB50B /* ReadLocalSupportedFeatures.swift in Sources */,
 				51F087D4206B014F00B7609C /* ReadLocalName.swift in Sources */,
 				6E560BB6206ADE9200EAE3E7 /* Command.swift in Sources */,
 				6E188712206BDAAC00AAB994 /* Bool.swift in Sources */,
@@ -386,6 +391,7 @@
 				51F087D7206B09EB00B7609C /* WriteLocalName.swift in Sources */,
 				6E560BFD206B00B600EAE3E7 /* Error.swift in Sources */,
 				6E560BFC206B00B600EAE3E7 /* Command.swift in Sources */,
+				5161200C20904D6B00CFB50B /* ReadLocalSupportedFeatures.swift in Sources */,
 				6E560C1F206B21CF00EAE3E7 /* iBeacon.swift in Sources */,
 				512F4B5B208F662B00576F34 /* CreateConnectionCancel.swift in Sources */,
 				51F087D8206B09ED00B7609C /* ReadLocalName.swift in Sources */,

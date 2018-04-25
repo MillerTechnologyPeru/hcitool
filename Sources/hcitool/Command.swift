@@ -31,6 +31,8 @@ public enum CommandType: String {
     
     //  Cancel the LE_Create_Connection or LE_Extended_Create_Connection commands.
     case createConnectionCancel = "createconnectioncancel"
+    
+    case readLocalSupportedFeatures = "readlocalsupportedfeatures"
 }
 
 public enum Command {
@@ -54,6 +56,9 @@ public enum Command {
     
     //  Cancel the LE_Create_Connection or LE_Extended_Create_Connection commands.
     case createConnectionCancel
+    
+    // Requests the list of the supported LE features for the Controller.
+    case readLocalSupportedFeatures
 }
 
 public extension Command {
@@ -68,6 +73,7 @@ public extension Command {
         case let .setRandomAddress(command): try command.execute(controller: controller)
         case .clearWhiteList: try ClearWhiteListCommand().execute(controller: controller)
         case .createConnectionCancel: try CreateConnectionCancelCommand().execute(controller: controller)
+        case .readLocalSupportedFeatures: try ReadLocalSupportedFeaturesCommand().execute(controller: controller)
         }
     }
 }
@@ -145,6 +151,8 @@ public extension Command {
             self = .clearWhiteList
         case .createConnectionCancel:
             self = .createConnectionCancel
+        case .readLocalSupportedFeatures:
+            self = .readLocalSupportedFeatures
         }
     }
 }

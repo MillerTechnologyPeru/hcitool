@@ -21,7 +21,7 @@ public struct ClearWhiteListCommand: CommandProtocol {
     
     // MARK: - Methods
     
-    /// Tests the Reading Local Name.
+    /// Tests the cleaning the white list.
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
         try controller.lowEnergyClearWhiteList()

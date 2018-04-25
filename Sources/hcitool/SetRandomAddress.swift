@@ -33,7 +33,7 @@ public struct SetRandomAddressCommand: ArgumentableCommand {
     
     // MARK: - Methods
     
-    /// Tests the Reading Local Name.
+    /// Tests the Setting of Random Address.
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
         guard let address = Address(rawValue: randomAddress)
