@@ -17,14 +17,22 @@ public protocol OptionProtocol: RawRepresentable, Hashable {
     static var all: Set<Self> { get }
 }
 
-public extension OptionProtocol {
+public struct Parameter <Option: OptionProtocol> {
     
-    static func parse(arguments: [String]) throws -> [Self: String] {
+    public var option: Option
+    
+    public var value: String
+}
+
+public extension Parameter {
+    
+    static func parse(arguments: [String])  throws -> [Parameter] {
         
         guard arguments.isEmpty == false
-            else { return [:] }
+            else { return [] }
         
-        var options = [Self: String](minimumCapacity: all.count)
+        var argumentValues = [Parameter]()
+        argumentValues.reserveCapacity(arguments.count / 2)
         
         var index = 0
         
@@ -34,9 +42,9 @@ public extension OptionProtocol {
             
             index += 1
             
-            let optionRawValue = String(optionString.characters.drop(while: { $0 == "-" }))
+            let optionRawValue = String(optionString._characters.drop(while: { $0 == "-" }))
             
-            guard let option = Self.init(rawValue: optionRawValue)
+            guard let option = Option.init(rawValue: optionRawValue)
                 else { throw CommandError.invalidOption(optionRawValue) }
             
             guard index < arguments.count
@@ -46,9 +54,9 @@ public extension OptionProtocol {
             
             index += 1
             
-            options[option] = argumentValue
+            argumentValues.append(Parameter(option: option, value: argumentValue))
         }
         
-        return options
+        return argumentValues
     }
 }

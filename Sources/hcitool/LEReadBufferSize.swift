@@ -9,11 +9,11 @@
 import Bluetooth
 import Foundation
 
-public struct ReadBufferSizeCommand: CommandProtocol {
+public struct LEReadBufferSizeCommand: CommandProtocol {
     
     // MARK: - Properties
     
-    public static let commandType: CommandType = .setReadBufferSize
+    public static let commandType: CommandType = .lowEnergySetReadBufferSize
     
     // MARK: - Initialization
     

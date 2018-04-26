@@ -31,7 +31,7 @@ final class HCIToolTests: XCTestCase {
             
             let command = try Command(arguments: arguments)
             
-            guard case .setReadBufferSize = command
+            guard case .lowEnergySetReadBufferSize = command
                 else { XCTFail("Invalid type"); return }
             
             /*
@@ -56,7 +56,7 @@ final class HCIToolTests: XCTestCase {
             
             let command = try Command(arguments: arguments)
             
-            guard case .readLocalSupportedFeatures = command
+            guard case .lowEnergyReadLocalSupportedFeatures = command
                 else { XCTFail("Invalid type"); return }
             
             /* Command Complete [2003] - LE Read Local Supported Features
@@ -85,7 +85,7 @@ final class HCIToolTests: XCTestCase {
             
             let command = try Command(arguments: arguments)
             
-            guard case .createConnectionCancel = command
+            guard case .lowEnergyCreateConnectionCancel = command
                 else { XCTFail("Invalid type"); return }
             
         } catch { XCTFail("\(error)") }
@@ -101,7 +101,7 @@ final class HCIToolTests: XCTestCase {
             
             let command = try Command(arguments: arguments)
             
-            guard case .clearWhiteList = command
+            guard case .lowEnergyClearWhiteList = command
                 else { XCTFail("Invalid type"); return }
             
         } catch { XCTFail("\(error)") }
@@ -115,14 +115,14 @@ final class HCIToolTests: XCTestCase {
              Parameter Length: 6 (0x06)
              Random Address: 54:39:A3:47:D8:F0
              */
-            let arguments = [/* ".build/debug/hcitool", */ "setrandomaddress", "--randomaddress", "54:39:A3:47:D8:F0"]
+            let arguments = [/* ".build/debug/hcitool", */ "setrandomaddress", "--address", "54:39:A3:47:D8:F0"]
             
             let command = try Command(arguments: arguments)
             
-            guard case let .setRandomAddress(commandValue) = command
+            guard case let .lowEnergySetRandomAddress(commandValue) = command
                 else { XCTFail("Invalid type"); return }
             
-            XCTAssert(commandValue.randomAddress == "54:39:A3:47:D8:F0")
+            XCTAssert(commandValue.address.rawValue == "54:39:A3:47:D8:F0")
             
         } catch { XCTFail("\(error)") }
         
@@ -139,7 +139,7 @@ final class HCIToolTests: XCTestCase {
             
             let command = try Command(arguments: arguments)
             
-            guard case let .leScan(commandValue) = command
+            guard case let .lowEnergyScan(commandValue) = command
                 else { XCTFail("Invalid type"); return }
             
             XCTAssert(commandValue.duration == 1000)
@@ -153,7 +153,7 @@ final class HCIToolTests: XCTestCase {
             
             let command = try Command(arguments: arguments)
             
-            guard case let .leScan(commandValue) = command
+            guard case let .lowEnergyScan(commandValue) = command
                 else { XCTFail("Invalid type"); return }
             
             XCTAssert(commandValue.duration == LEScanCommand.default.duration)
@@ -163,5 +163,21 @@ final class HCIToolTests: XCTestCase {
         // invalid commands
         XCTAssertThrowsError(try Command(arguments: ["lescan", "--duration"]))
         XCTAssertThrowsError(try Command(arguments: ["lescan", "--duration", "abc"]))
+    }
+    
+    func testLESetEventMask() {
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "seteventmask", "--event", "connectioncomplete", "--event", "advertisingreport"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case let .lowEnergySetEventMask(commandValue) = command
+                else { XCTFail("Invalid type"); return }
+            
+            XCTAssert(commandValue.events == [.connectionComplete, .advertisingReport])
+            
+        } catch { XCTFail("\(error)") }
     }
 }

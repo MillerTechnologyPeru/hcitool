@@ -1,5 +1,5 @@
 //
-//  ClearWhiteList.swift
+//  CreateConnectionCancel.swift
 //  hcitool
 //
 //  Created by Marco Estrella on 4/24/18.
@@ -9,11 +9,11 @@
 import Bluetooth
 import Foundation
 
-public struct ClearWhiteListCommand: CommandProtocol {
+public struct LECreateConnectionCancelCommand: CommandProtocol {
     
     // MARK: - Properties
     
-    public static let commandType: CommandType = .clearWhiteList
+    public static let commandType: CommandType = .lowEnergyCreateConnectionCancel
     
     // MARK: - Initialization
     
@@ -21,9 +21,9 @@ public struct ClearWhiteListCommand: CommandProtocol {
     
     // MARK: - Methods
     
-    /// Tests the cleaning the white list.
+    /// Tests the creation of connection cancel
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        try controller.lowEnergyClearWhiteList()
+        try controller.lowEnergyCreateConnectionCancel()
     }
 }

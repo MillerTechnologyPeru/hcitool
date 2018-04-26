@@ -19,7 +19,7 @@ public struct LEScanCommand: ArgumentableCommand {
     
     // MARK: - Properties
     
-    public static let commandType: CommandType = .leScan
+    public static let commandType: CommandType = .lowEnergyScan
     
     public var duration: TimeInterval
     
@@ -56,9 +56,9 @@ public struct LEScanCommand: ArgumentableCommand {
         self.filterPolicy = filterPolicy
     }
     
-    public init(options: [Option: String]) throws {
+    public init(parameters: [Parameter<Option>]) throws {
         
-        if let durationString = options[.duration] {
+        if let durationString = parameters.first(where: { $0.option == .duration })?.value {
             
             guard let duration = TimeInterval(durationString)
                 else { throw CommandError.invalidOptionValue(option: Option.duration.rawValue, value: durationString) }
@@ -70,7 +70,7 @@ public struct LEScanCommand: ArgumentableCommand {
             self.duration = type(of: self).default.duration
         }
         
-        if let stringValue = options[.filterDuplicates] {
+        if let stringValue = parameters.first(where: { $0.option == .filterDuplicates })?.value {
             
             guard let value = CommandLineBool(rawValue: stringValue)
                 else { throw CommandError.invalidOptionValue(option: Option.filterDuplicates.rawValue, value: stringValue) }
@@ -82,7 +82,7 @@ public struct LEScanCommand: ArgumentableCommand {
             self.filterDuplicates = type(of: self).default.filterDuplicates
         }
         
-        if let stringValue = options[.scanType] {
+        if let stringValue = parameters.first(where: { $0.option == .scanType })?.value {
             
             guard let value = ScanType(rawValue: stringValue)
                 else { throw CommandError.invalidOptionValue(option: Option.scanType.rawValue, value: stringValue) }
@@ -94,7 +94,7 @@ public struct LEScanCommand: ArgumentableCommand {
             self.scanType = type(of: self).default.scanType
         }
         
-        if let stringValue = options[.interval] {
+        if let stringValue = parameters.first(where: { $0.option == .interval })?.value {
             
             guard let rawValue = UInt16(stringValue),
                 let value = LowEnergyScanTimeInterval(rawValue: rawValue)
@@ -107,7 +107,7 @@ public struct LEScanCommand: ArgumentableCommand {
             self.interval = type(of: self).default.interval
         }
         
-        if let stringValue = options[.window] {
+        if let stringValue = parameters.first(where: { $0.option == .window })?.value {
             
             guard let rawValue = UInt16(stringValue),
                 let value = LowEnergyScanTimeInterval(rawValue: rawValue)
@@ -120,7 +120,7 @@ public struct LEScanCommand: ArgumentableCommand {
             self.window = type(of: self).default.window
         }
         
-        if let stringValue = options[.addressType] {
+        if let stringValue = parameters.first(where: { $0.option == .addressType })?.value {
             
             guard let value = AddressType(rawValue: stringValue)
                 else { throw CommandError.invalidOptionValue(option: Option.addressType.rawValue, value: stringValue) }
@@ -132,7 +132,7 @@ public struct LEScanCommand: ArgumentableCommand {
             self.addressType = type(of: self).default.addressType
         }
         
-        if let stringValue = options[.filterPolicy] {
+        if let stringValue = parameters.first(where: { $0.option == .filterPolicy })?.value {
             
             guard let value = FilterPolicy(rawValue: stringValue)
                 else { throw CommandError.invalidOptionValue(option: Option.filterPolicy.rawValue, value: stringValue) }

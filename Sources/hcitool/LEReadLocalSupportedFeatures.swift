@@ -9,11 +9,11 @@
 import Bluetooth
 import Foundation
 
-public struct ReadLocalSupportedFeaturesCommand: CommandProtocol {
+public struct LEReadLocalSupportedFeaturesCommand: CommandProtocol {
     
     // MARK: - Properties
     
-    public static let commandType: CommandType = .readLocalSupportedFeatures
+    public static let commandType: CommandType = .lowEnergyReadLocalSupportedFeatures
     
     // MARK: - Initialization
     

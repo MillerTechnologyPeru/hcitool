@@ -55,9 +55,9 @@ public struct iBeaconCommand: ArgumentableCommand {
         self.duration = duration
     }
     
-    public init(options: [Option: String]) throws {
+    public init(parameters: [Parameter<Option>]) throws {
         
-        if let stringValue = options[.uuid] {
+        if let stringValue = parameters.first(where: { $0.option == .uuid })?.value {
             
             guard let value = UUID(uuidString: stringValue)
                 else { throw CommandError.invalidOptionValue(option: Option.uuid.rawValue, value: stringValue) }
@@ -69,7 +69,7 @@ public struct iBeaconCommand: ArgumentableCommand {
             self.uuid = type(of: self).default.uuid
         }
         
-        if let stringValue = options[.major] {
+        if let stringValue = parameters.first(where: { $0.option == .major })?.value {
             
             guard let value =  UInt16(stringValue)
                 else { throw CommandError.invalidOptionValue(option: Option.major.rawValue, value: stringValue) }
@@ -81,7 +81,7 @@ public struct iBeaconCommand: ArgumentableCommand {
             self.major = type(of: self).default.major
         }
         
-        if let stringValue = options[.minor] {
+        if let stringValue = parameters.first(where: { $0.option == .minor })?.value {
             
             guard let value =  UInt16(stringValue)
                 else { throw CommandError.invalidOptionValue(option: Option.minor.rawValue, value: stringValue) }
@@ -93,7 +93,7 @@ public struct iBeaconCommand: ArgumentableCommand {
             self.minor = type(of: self).default.minor
         }
         
-        if let stringValue = options[.rssi] {
+        if let stringValue = parameters.first(where: { $0.option == .rssi })?.value {
             
             guard let value =  Int8(stringValue)
                 else { throw CommandError.invalidOptionValue(option: Option.rssi.rawValue, value: stringValue) }
@@ -105,7 +105,7 @@ public struct iBeaconCommand: ArgumentableCommand {
             self.rssi = type(of: self).default.rssi
         }
         
-        if let stringValue = options[.interval] {
+        if let stringValue = parameters.first(where: { $0.option == .interval })?.value {
             
             guard let value =  UInt16(stringValue)
                 else { throw CommandError.invalidOptionValue(option: Option.interval.rawValue, value: stringValue) }
@@ -117,7 +117,7 @@ public struct iBeaconCommand: ArgumentableCommand {
             self.interval = type(of: self).default.interval
         }
         
-        if let durationString = options[.duration] {
+        if let durationString = parameters.first(where: { $0.option == .duration })?.value {
             
             guard let duration = TimeInterval(durationString)
                 else { throw CommandError.invalidOptionValue(option: Option.duration.rawValue, value: durationString) }

@@ -23,9 +23,9 @@ public struct WriteLocalNameCommand: ArgumentableCommand {
         self.name = name
     }
     
-    public init(options: [Option: String]) throws {
+    public init(parameters: [Parameter<Option>]) throws {
         
-        guard let nameString = options[.name]
+        guard let nameString = parameters.first(where: { $0.option == .name })?.value
             else { throw CommandError.optionMissingValue(Option.name.rawValue) }
         
         self.name = nameString
