@@ -48,7 +48,7 @@ public enum CommandType: String {
     case lowEnergyAddDeviceToWhiteList = "adddevicetowhitelist"
     
     //  Removes a single device from the White List stored in the Controller.
-    case lowEnergyRemoveDeviceToWhiteList = "removedevicetowhitelist"
+    case lowEnergyRemoveDeviceFromWhiteList = "removedevicefromwhitelist"
 }
 
 public enum Command {
@@ -89,7 +89,7 @@ public enum Command {
     case lowEnergyAddDeviceToWhiteList(LEAddDeviceToWhiteListCommand)
     
     //  Removes a single device from the White List stored in the Controller.
-    case lowEnergyRemoveDeviceToWhiteList(LERemoveDeviceToWhiteListCommand)
+    case lowEnergyRemoveDeviceToWhiteList(LERemoveDeviceFromWhiteListCommand)
 }
 
 public extension Command {
@@ -182,8 +182,8 @@ public extension Command {
         case .lowEnergyAddDeviceToWhiteList:
             let command = try LEAddDeviceToWhiteListCommand(arguments: commandArguments)
             self = .lowEnergyAddDeviceToWhiteList(command)
-        case .lowEnergyRemoveDeviceToWhiteList:
-            let command = try LERemoveDeviceToWhiteListCommand(arguments: commandArguments)
+        case .lowEnergyRemoveDeviceFromWhiteList:
+            let command = try LERemoveDeviceFromWhiteListCommand(arguments: commandArguments)
             self = .lowEnergyRemoveDeviceToWhiteList(command)
         }
     }
