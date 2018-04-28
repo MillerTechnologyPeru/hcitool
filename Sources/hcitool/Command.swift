@@ -43,6 +43,12 @@ public enum CommandType: String {
     
     // Returns the current Channel_Map for the specified Connection_Handle.
     case lowEnergyReadChannelMap = "readchannelmap"
+    
+    //  Adds a single device to the White List stored in the Controller.
+    case lowEnergyAddDeviceToWhiteList = "adddevicetowhitelist"
+    
+    //  Removes a single device from the White List stored in the Controller.
+    case lowEnergyRemoveDeviceToWhiteList = "removedevicetowhitelist"
 }
 
 public enum Command {
@@ -78,6 +84,12 @@ public enum Command {
     
     // Returns the current Channel_Map for the specified Connection_Handle.
     case lowEnergyReadChannelMap(LEReadChannelMapCommand)
+    
+    //  Adds a single device to the White List stored in the Controller.
+    case lowEnergyAddDeviceToWhiteList(LEAddDeviceToWhiteListCommand)
+    
+    //  Removes a single device from the White List stored in the Controller.
+    case lowEnergyRemoveDeviceToWhiteList(LERemoveDeviceToWhiteListCommand)
 }
 
 public extension Command {
@@ -96,6 +108,8 @@ public extension Command {
         case let .lowEnergySetEventMask(command): try command.execute(controller: controller)
         case .lowEnergySetReadBufferSize: try LEReadBufferSizeCommand().execute(controller: controller)
         case let .lowEnergyReadChannelMap(command): try command.execute(controller: controller)
+        case let .lowEnergyAddDeviceToWhiteList(command): try command.execute(controller: controller)
+        case let .lowEnergyRemoveDeviceToWhiteList(command): try command.execute(controller: controller)
         }
     }
 }
@@ -165,6 +179,12 @@ public extension Command {
         case .lowEnergyReadChannelMap:
             let command = try LEReadChannelMapCommand(arguments: commandArguments)
             self = .lowEnergyReadChannelMap(command)
+        case .lowEnergyAddDeviceToWhiteList:
+            let command = try LEAddDeviceToWhiteListCommand(arguments: commandArguments)
+            self = .lowEnergyAddDeviceToWhiteList(command)
+        case .lowEnergyRemoveDeviceToWhiteList:
+            let command = try LERemoveDeviceToWhiteListCommand(arguments: commandArguments)
+            self = .lowEnergyRemoveDeviceToWhiteList(command)
         }
     }
 }
