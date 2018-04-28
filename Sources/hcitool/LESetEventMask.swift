@@ -79,12 +79,48 @@ public extension LESetEventMaskCommand {
         
         case connectionComplete = "connectioncomplete"
         case advertisingReport = "advertisingreport"
+        case connectionUpdateComplete = "connectionupdatecomplete"
+        case readRemoteFeaturesComplete = "readremotefeaturescomplete"
+        case longTermKeyRequest = "longtermKeyrequest"
+        case remoteConnectionParameterRequest = "remoteconnectionparameterrequest"
+        case dataLengthChange = "datalengthchange"
+        case readLocalP256PublicKeyComplete = "readlocalp256publickeycomplete"
+        case generateDhkeyComplete = "generatedhkeycomplete"
+        case enhancedConnectionComplete = "enhancedconnectioncomplete"
+        case directedAdvertisingReport = "directedadvertisingreport"
+        case phyUpdateComplete = "phyupdatecomplete"
+        case extendedAdvertisingReport = "extendedadvertisingreport"
+        case periodicAdvertisingSyncEstablished = "periodicadvertisingsyncestablished"
+        case periodicAdvertisingReport = "periodicadvertisingreport"
+        case periodicAdvertisingSyncLost = "periodicadvertisingsynclost"
+        case extendedScanTimeout = "extendedscantimeout"
+        case extendedAdvertisingSetTerminated = "extendedadvertisingsetterminated"
+        case scanRequestReceived = "scanrequestreceived"
+        case channelSelectionAlgorithm = "channelselectionalgorithm"
         
         public var hciValue: HCIValue {
             
             switch self {
             case .connectionComplete: return .connectionComplete
             case .advertisingReport: return .advertisingReport
+            case .connectionUpdateComplete: return .connectionUpdateComplete
+            case .readRemoteFeaturesComplete: return .readRemoteFeaturesComplete
+            case .longTermKeyRequest: return .longTermKeyRequest
+            case .remoteConnectionParameterRequest: return .remoteConnectionParameterRequest
+            case .dataLengthChange: return .dataLengthChange
+            case .readLocalP256PublicKeyComplete: return .readLocalP256PublicKeyComplete
+            case .generateDhkeyComplete: return .generateDHKeyComplete
+            case .enhancedConnectionComplete: return .enhancedConnectionComplete
+            case .directedAdvertisingReport: return .directedAdvertisingReport
+            case .phyUpdateComplete: return .phyUpdateComplete
+            case .extendedAdvertisingReport: return .extendedAdvertisingReport
+            case .periodicAdvertisingSyncEstablished: return .periodicAdvertisingSyncEstablished
+            case .periodicAdvertisingReport: return .periodicAdvertisingReport
+            case .periodicAdvertisingSyncLost: return .periodicAdvertisingSyncLost
+            case .extendedScanTimeout: return .extendedScanTimeout
+            case .extendedAdvertisingSetTerminated: return .extendedAdvertisingSetTerminated
+            case .scanRequestReceived: return .scanRequestReceived
+            case .channelSelectionAlgorithm: return .channelSelectionAlgorithm
             }
         }
     }
