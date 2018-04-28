@@ -40,6 +40,9 @@ public enum CommandType: String {
     
     // Reads the maximum size of the data portion of HCI LE ACL Data Packets sent from the Host to the Controller.
     case lowEnergySetReadBufferSize = "setreadbuffersize"
+    
+    // Returns the current Channel_Map for the specified Connection_Handle.
+    case lowEnergyReadChannelMap = "readchannelmap"
 }
 
 public enum Command {
@@ -72,6 +75,9 @@ public enum Command {
     
     // Reads the maximum size of the data portion of HCI LE ACL Data Packets sent from the Host to the Controller.
     case lowEnergySetReadBufferSize
+    
+    // Returns the current Channel_Map for the specified Connection_Handle.
+    case lowEnergyReadChannelMap(LEReadChannelMapCommand)
 }
 
 public extension Command {
@@ -89,6 +95,7 @@ public extension Command {
         case .lowEnergyReadLocalSupportedFeatures: try LEReadLocalSupportedFeaturesCommand().execute(controller: controller)
         case let .lowEnergySetEventMask(command): try command.execute(controller: controller)
         case .lowEnergySetReadBufferSize: try LEReadBufferSizeCommand().execute(controller: controller)
+        case let .lowEnergyReadChannelMap(command): try command.execute(controller: controller)
         }
     }
 }
@@ -155,6 +162,9 @@ public extension Command {
             self = .lowEnergySetEventMask(command)
         case .lowEnergySetReadBufferSize:
             self = .lowEnergySetReadBufferSize
+        case .lowEnergyReadChannelMap:
+            let command = try LEReadChannelMapCommand(arguments: commandArguments)
+            self = .lowEnergyReadChannelMap(command)
         }
     }
 }
