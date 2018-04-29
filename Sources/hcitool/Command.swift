@@ -51,7 +51,10 @@ public enum CommandType: String {
     case lowEnergyRemoveDeviceFromWhiteList = "removedevicefromwhitelist"
     
     // Reads the total number of White List entries that can be stored in the Controller.
-    case readWhiteListSize = "readwhitelistsize"
+    case lowEnergyReadWhiteListSize = "readwhitelistsize"
+    
+    //  Used by the Host to read the transmit power level used for LE advertising channel packets.
+    case lowEnergyReadAdvertisingChannelTxPower = "readadvertisingchanneltxpower"
 }
 
 public enum Command {
@@ -95,7 +98,10 @@ public enum Command {
     case lowEnergyRemoveDeviceToWhiteList(LERemoveDeviceFromWhiteListCommand)
     
     // Reads the total number of White List entries that can be stored in the Controller.
-    case readWhiteListSize
+    case lowEnergyReadWhiteListSize
+    
+    //  Used by the Host to read the transmit power level used for LE advertising channel packets.
+    case lowEnergyReadAdvertisingChannelTxPower
 }
 
 public extension Command {
@@ -116,7 +122,8 @@ public extension Command {
         case let .lowEnergyReadChannelMap(command): try command.execute(controller: controller)
         case let .lowEnergyAddDeviceToWhiteList(command): try command.execute(controller: controller)
         case let .lowEnergyRemoveDeviceToWhiteList(command): try command.execute(controller: controller)
-        case .readWhiteListSize: try LEReadWhiteListSizeCommand().execute(controller: controller)
+        case .lowEnergyReadWhiteListSize: try LEReadWhiteListSizeCommand().execute(controller: controller)
+        case .lowEnergyReadAdvertisingChannelTxPower: try LEReadAdvertisingChannelTxPowerCommand().execute(controller: controller)
         }
     }
 }
@@ -192,8 +199,10 @@ public extension Command {
         case .lowEnergyRemoveDeviceFromWhiteList:
             let command = try LERemoveDeviceFromWhiteListCommand(arguments: commandArguments)
             self = .lowEnergyRemoveDeviceToWhiteList(command)
-        case .readWhiteListSize:
-            self = .readWhiteListSize
+        case .lowEnergyReadWhiteListSize:
+            self = .lowEnergyReadWhiteListSize
+        case .lowEnergyReadAdvertisingChannelTxPower:
+            self = .lowEnergyReadAdvertisingChannelTxPower
         }
     }
 }
