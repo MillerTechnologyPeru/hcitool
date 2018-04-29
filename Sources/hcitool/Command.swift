@@ -49,6 +49,9 @@ public enum CommandType: String {
     
     //  Removes a single device from the White List stored in the Controller.
     case lowEnergyRemoveDeviceFromWhiteList = "removedevicefromwhitelist"
+    
+    // Reads the total number of White List entries that can be stored in the Controller.
+    case readWhiteListSize = "readwhitelistsize"
 }
 
 public enum Command {
@@ -90,6 +93,9 @@ public enum Command {
     
     //  Removes a single device from the White List stored in the Controller.
     case lowEnergyRemoveDeviceToWhiteList(LERemoveDeviceFromWhiteListCommand)
+    
+    // Reads the total number of White List entries that can be stored in the Controller.
+    case readWhiteListSize
 }
 
 public extension Command {
@@ -110,6 +116,7 @@ public extension Command {
         case let .lowEnergyReadChannelMap(command): try command.execute(controller: controller)
         case let .lowEnergyAddDeviceToWhiteList(command): try command.execute(controller: controller)
         case let .lowEnergyRemoveDeviceToWhiteList(command): try command.execute(controller: controller)
+        case .readWhiteListSize: try LEReadWhiteListSizeCommand().execute(controller: controller)
         }
     }
 }
@@ -185,6 +192,8 @@ public extension Command {
         case .lowEnergyRemoveDeviceFromWhiteList:
             let command = try LERemoveDeviceFromWhiteListCommand(arguments: commandArguments)
             self = .lowEnergyRemoveDeviceToWhiteList(command)
+        case .readWhiteListSize:
+            self = .readWhiteListSize
         }
     }
 }
