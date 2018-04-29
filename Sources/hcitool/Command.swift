@@ -55,6 +55,9 @@ public enum CommandType: String {
     
     //  Used by the Host to read the transmit power level used for LE advertising channel packets.
     case lowEnergyReadAdvertisingChannelTxPower = "readadvertisingchanneltxpower"
+    
+    // Requests the Controller to generate 8 octets of random data to be sent to the Host.
+    case lowEnergyRand = "rand"
 }
 
 public enum Command {
@@ -102,6 +105,9 @@ public enum Command {
     
     //  Used by the Host to read the transmit power level used for LE advertising channel packets.
     case lowEnergyReadAdvertisingChannelTxPower
+    
+    // Requests the Controller to generate 8 octets of random data to be sent to the Host.
+    case lowEnergyRand
 }
 
 public extension Command {
@@ -124,6 +130,7 @@ public extension Command {
         case let .lowEnergyRemoveDeviceToWhiteList(command): try command.execute(controller: controller)
         case .lowEnergyReadWhiteListSize: try LEReadWhiteListSizeCommand().execute(controller: controller)
         case .lowEnergyReadAdvertisingChannelTxPower: try LEReadAdvertisingChannelTxPowerCommand().execute(controller: controller)
+        case .lowEnergyRand: try LERandCommand().execute(controller: controller)
         }
     }
 }
@@ -203,6 +210,8 @@ public extension Command {
             self = .lowEnergyReadWhiteListSize
         case .lowEnergyReadAdvertisingChannelTxPower:
             self = .lowEnergyReadAdvertisingChannelTxPower
+        case .lowEnergyRand:
+            self = .lowEnergyRand
         }
     }
 }

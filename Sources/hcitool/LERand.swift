@@ -1,5 +1,5 @@
 //
-//  LEReadWhiteListSize.swift
+//  LERand.swift
 //  hcitool
 //
 //  Created by Marco Estrella on 4/29/18.
@@ -9,11 +9,11 @@
 import Bluetooth
 import Foundation
 
-public struct LEReadWhiteListSizeCommand: CommandProtocol {
+public struct LERandCommand: CommandProtocol {
     
     // MARK: - Properties
     
-    public static let commandType: CommandType = .lowEnergyReadWhiteListSize
+    public static let commandType: CommandType = .lowEnergyRand
     
     // MARK: - Initialization
     
@@ -21,11 +21,11 @@ public struct LEReadWhiteListSizeCommand: CommandProtocol {
     
     // MARK: - Methods
     
-    /// Tests the Reading of the total number of White List entries that can be stored in the Controller.
+    /// Tests the request the Controller to generate 8 octets of random data to be sent to the Host.
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        let whiteListSize = try controller.lowEnergyReadWhiteListSize()
+        let randomNumber = try controller.lowEnergyRandom()
         
-        print("White List Size = \(whiteListSize)")
+        print("Random Number = \(randomNumber)")
     }
 }
