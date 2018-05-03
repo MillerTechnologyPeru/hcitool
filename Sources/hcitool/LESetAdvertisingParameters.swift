@@ -49,9 +49,9 @@ public struct LESetAdvertisingParametersCommand: ArgumentableCommand {
             let advertisingIntervalMin = UInt16(intervalMinString)
             else { throw CommandError.optionMissingValue(Option.advertisingIntervalMin.rawValue) }
         
-        guard let intervalMaxString = parameters.first(where: { $0.option == .advertisingInternalMax })?.value,
+        guard let intervalMaxString = parameters.first(where: { $0.option == .advertisingIntervalMax })?.value,
             let advertisingIntervalMax = UInt16(intervalMaxString)
-            else { throw CommandError.optionMissingValue(Option.advertisingInternalMax.rawValue) }
+            else { throw CommandError.optionMissingValue(Option.advertisingIntervalMax.rawValue) }
         
         guard let advertisingTypeString = parameters.first(where: { $0.option == .advertisingType })?.value
             else { throw CommandError.optionMissingValue(Option.advertisingType.rawValue) }
@@ -99,9 +99,8 @@ public struct LESetAdvertisingParametersCommand: ArgumentableCommand {
     
     /// Tests Setting of Event Mask.
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
-        
         typealias SetAdvertisingParametersParameter = LowEnergyCommand.SetAdvertisingParametersParameter
-
+        
         let setAdvertisingParametersParameter = SetAdvertisingParametersParameter(interval: advertisingInterval, advertisingType: advertisingType, addressType: addressType, directAddress: peerAddress, channelMap: channelMap, filterPolicy: filterPolicy)
         
         try controller.setLowEnergyAdvertisingParameters(setAdvertisingParametersParameter)
@@ -112,16 +111,16 @@ public extension LESetAdvertisingParametersCommand {
     
     public enum Option: String, OptionProtocol {
         
-        case advertisingIntervalMin
-        case advertisingInternalMax
-        case advertisingType
-        case ownAddressType
-        case peerAddressType
-        case peerAddress
-        case advertisingChannelMap
-        case advertisingFilterPolicy
+        case advertisingIntervalMin     = "intervalmin"
+        case advertisingIntervalMax     = "intervalmax"
+        case advertisingType            = "type"
+        case ownAddressType             = "ownaddresstype"
+        case peerAddressType            = "peeraddresstype"
+        case peerAddress                = "peeraddress"
+        case advertisingChannelMap      = "channelmap"
+        case advertisingFilterPolicy    = "filterpolicy"
         
-        public static let all: Set<Option> = [.advertisingIntervalMin, .advertisingInternalMax,
+        public static let all: Set<Option> = [.advertisingIntervalMin, .advertisingIntervalMax,
                                               .advertisingType, .ownAddressType,
                                               .peerAddressType, .peerAddress,
                                               .advertisingChannelMap, .advertisingFilterPolicy]

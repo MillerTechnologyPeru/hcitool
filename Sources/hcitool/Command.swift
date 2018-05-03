@@ -137,7 +137,7 @@ public extension Command {
         case .lowEnergyReadWhiteListSize: try LEReadWhiteListSizeCommand().execute(controller: controller)
         case .lowEnergyReadAdvertisingChannelTxPower: try LEReadAdvertisingChannelTxPowerCommand().execute(controller: controller)
         case .lowEnergyRand: try LERandCommand().execute(controller: controller)
-        case .lowEnergySetAdvertisingParameters: try LESetAdvertisingParametersCommand().execute(controller: controller)
+        case let .lowEnergySetAdvertisingParameters(command): try command.execute(controller: controller)
         }
     }
 }
