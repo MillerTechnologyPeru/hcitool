@@ -18,7 +18,10 @@ final class HCIToolTests: XCTestCase {
         ("testCreateConnectionCancel", testCreateConnectionCancel),
         ("testReadLocalSupportedFeatures", testReadLocalSupportedFeatures),
         ("testReadBufferSize", testReadBufferSize),
-        ("testSetAdvertiseEnableParameter", testSetAdvertiseEnableParameter)
+        ("testSetAdvertiseEnableParameter", testSetAdvertiseEnableParameter),
+        ("testReadChannelMap", testReadChannelMap),
+        ("testAddDeviceToWhiteList", testAddDeviceToWhiteList),
+        ("testRemoveDeviceFromWhiteList", testRemoveDeviceFromWhiteList)
     ]
     
     func testReadBufferSize(){
@@ -106,6 +109,120 @@ final class HCIToolTests: XCTestCase {
                 else { XCTFail("Invalid type"); return }
             
         } catch { XCTFail("\(error)") }
+    }
+    
+    func testReadChannelMap() {
+        
+        /*
+         [2015] Opcode: 0x2015 (OGF: 0x08    OCF: 0x15) - 15 20 02 01 00
+         Parameter Length: 2 (0x02)
+         Connection Handle: 0001
+         */
+        
+        //Handle hexadecimal without prefix
+        do {
+            let arguments = [/* ".build/debug/hcitool", */ "readchannelmap", "--handle", "01"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyReadChannelMap = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        //Handle hexadecimal with prefix
+        do {
+            let arguments = [/* ".build/debug/hcitool", */ "readchannelmap", "--handle", "0x01"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyReadChannelMap = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        // invalid commands
+        XCTAssertThrowsError(try Command(arguments: ["readchannelmap", "--handle"]))
+        XCTAssertThrowsError(try Command(arguments: ["readchannelmap", "--handle", "x01"]))
+    }
+    
+    func testAddDeviceToWhiteList() {
+        
+        //Execute command with address
+        do {
+            /**
+             [2011] Opcode: 0x2011 (OGF: 0x08    OCF: 0x11) -  1120 0701 f8d8 47a3 3954
+             Parameter Length: 7 (0x07)
+             Address Type: Random
+             Address: 54:39:A3:47:D8:F8
+             */
+            let arguments = [/* ".build/debug/hcitool", */ "adddevicetowhitelist", "--addresstype", "random", "--address", "54:39:A3:47:D8:F8"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyAddDeviceToWhiteList = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        //Execute command with address
+        do {
+            /**
+             [2011] Opcode: 0x2011 (OGF: 0x08    OCF: 0x11) -  1120 0701 f8d8 47a3 3954
+             Parameter Length: 7 (0x07)
+             Address Type: Anonymous
+             */
+            let arguments = [/* ".build/debug/hcitool", */ "adddevicetowhitelist", "--addresstype", "anonymous"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyAddDeviceToWhiteList = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        // invalid commands
+        XCTAssertThrowsError(try Command(arguments: ["adddevicetowhitelist", "--addresstype"]))
+        XCTAssertThrowsError(try Command(arguments: ["adddevicetowhitelist", "--addresstype", "--address"]))
+        XCTAssertThrowsError(try Command(arguments: ["adddevicetowhitelist", "--addresstype", "public"]))
+        XCTAssertThrowsError(try Command(arguments: ["adddevicetowhitelist", "--addresstype", "public", "--address"]))
+    }
+    
+    func testRemoveDeviceFromWhiteList() {
+        
+        //Execute command with address
+        do {
+            /**
+             [2012] Opcode: 0x2012 (OGF: 0x08    OCF: 0x12) - 0E 0A 01 09 10 00 6C 9A BA 32 BC AC
+             Parameter Length: 7 (0x07)
+             Address Type: Random
+             Address: 54:39:A3:47:D8:D1
+             */
+            let arguments = [/* ".build/debug/hcitool", */ "removedevicefromwhitelist", "--addresstype", "random", "--address", "54:39:A3:47:D8:D1"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyRemoveDeviceFromWhiteList = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        //Execute command with address
+        do {
+            /**
+             [2012] Opcode: 0x2012 (OGF: 0x08    OCF: 0x12) - 12 20 07 ff 00 00 00 00 00 00
+             Parameter Length: 7 (0x07)
+             Address Type: Reserved for future use: FF
+             Address: 00:00:00:00:00:00
+             */
+            let arguments = [/* ".build/debug/hcitool", */ "removedevicefromwhitelist", "--addresstype", "anonymous"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyRemoveDeviceFromWhiteList = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        // invalid commands
+        XCTAssertThrowsError(try Command(arguments: ["removedevicefromwhitelist", "--addresstype"]))
+        XCTAssertThrowsError(try Command(arguments: ["removedevicefromwhitelist", "--addresstype", "--address"]))
+        XCTAssertThrowsError(try Command(arguments: ["removedevicefromwhitelist", "--addresstype", "public"]))
+        XCTAssertThrowsError(try Command(arguments: ["removedevicefromwhitelist", "--addresstype", "public", "--address"]))
     }
     
     func testSetAdvertiseEnableParameter() {

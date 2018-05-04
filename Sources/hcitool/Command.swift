@@ -101,7 +101,7 @@ public enum Command {
     case lowEnergyAddDeviceToWhiteList(LEAddDeviceToWhiteListCommand)
     
     //  Removes a single device from the White List stored in the Controller.
-    case lowEnergyRemoveDeviceToWhiteList(LERemoveDeviceFromWhiteListCommand)
+    case lowEnergyRemoveDeviceFromWhiteList(LERemoveDeviceFromWhiteListCommand)
     
     // Reads the total number of White List entries that can be stored in the Controller.
     case lowEnergyReadWhiteListSize
@@ -133,7 +133,7 @@ public extension Command {
         case .lowEnergySetReadBufferSize: try LEReadBufferSizeCommand().execute(controller: controller)
         case let .lowEnergyReadChannelMap(command): try command.execute(controller: controller)
         case let .lowEnergyAddDeviceToWhiteList(command): try command.execute(controller: controller)
-        case let .lowEnergyRemoveDeviceToWhiteList(command): try command.execute(controller: controller)
+        case let .lowEnergyRemoveDeviceFromWhiteList(command): try command.execute(controller: controller)
         case .lowEnergyReadWhiteListSize: try LEReadWhiteListSizeCommand().execute(controller: controller)
         case .lowEnergyReadAdvertisingChannelTxPower: try LEReadAdvertisingChannelTxPowerCommand().execute(controller: controller)
         case .lowEnergyRand: try LERandCommand().execute(controller: controller)
@@ -212,7 +212,7 @@ public extension Command {
             self = .lowEnergyAddDeviceToWhiteList(command)
         case .lowEnergyRemoveDeviceFromWhiteList:
             let command = try LERemoveDeviceFromWhiteListCommand(arguments: commandArguments)
-            self = .lowEnergyRemoveDeviceToWhiteList(command)
+            self = .lowEnergyRemoveDeviceFromWhiteList(command)
         case .lowEnergyReadWhiteListSize:
             self = .lowEnergyReadWhiteListSize
         case .lowEnergyReadAdvertisingChannelTxPower:

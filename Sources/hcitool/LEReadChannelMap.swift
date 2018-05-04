@@ -26,10 +26,10 @@ public struct LEReadChannelMapCommand: ArgumentableCommand {
     
     public init(parameters: [Parameter<Option>]) throws {
         
-        guard let handleString = parameters.first(where: { $0.option == .handle })?.value
+        guard let handleString = parameters.first(where: { $0.option == .handle })?.value.removeHexadecimalPrefix()
             else { throw CommandError.optionMissingValue(Option.handle.rawValue) }
-        
-        guard let handle = UInt16(handleString)
+
+        guard let handle = UInt16(handleString, radix: 16)
             else { throw CommandError.invalidOptionValue(option: Option.handle.rawValue, value: handleString) }
         
         self.handle = handle
@@ -42,7 +42,7 @@ public struct LEReadChannelMapCommand: ArgumentableCommand {
         
         let returnValues = try controller.lowEnergyReadChannelMap(handle: handle)
         
-        print("Set LE ChannelMa: \(returnValues)")
+        print("Set LE ChannelMap: \(returnValues)")
     }
 }
 
