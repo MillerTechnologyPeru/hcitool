@@ -21,6 +21,8 @@
 		5161201220907A0600CFB50B /* LEReadBufferSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5161201020907A0600CFB50B /* LEReadBufferSize.swift */; };
 		51725021209CDDB8000E6C9D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51725020209CDDB8000E6C9D /* String.swift */; };
 		51725022209CDDB8000E6C9D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51725020209CDDB8000E6C9D /* String.swift */; };
+		51725024209D21B8000E6C9D /* LEConnectionUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51725023209D21B8000E6C9D /* LEConnectionUpdate.swift */; };
+		51725025209D21B8000E6C9D /* LEConnectionUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51725023209D21B8000E6C9D /* LEConnectionUpdate.swift */; };
 		51EFD8352094658E00867571 /* LEReadChannelMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFD8342094658E00867571 /* LEReadChannelMap.swift */; };
 		51EFD8362094658E00867571 /* LEReadChannelMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFD8342094658E00867571 /* LEReadChannelMap.swift */; };
 		51EFD83820946B2B00867571 /* LEAddDeviceToWhiteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFD83720946B2B00867571 /* LEAddDeviceToWhiteList.swift */; };
@@ -109,6 +111,7 @@
 		5161200D20905CFB00CFB50B /* LESetEventMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LESetEventMask.swift; sourceTree = "<group>"; };
 		5161201020907A0600CFB50B /* LEReadBufferSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEReadBufferSize.swift; sourceTree = "<group>"; };
 		51725020209CDDB8000E6C9D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		51725023209D21B8000E6C9D /* LEConnectionUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEConnectionUpdate.swift; sourceTree = "<group>"; };
 		51EFD8342094658E00867571 /* LEReadChannelMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEReadChannelMap.swift; sourceTree = "<group>"; };
 		51EFD83720946B2B00867571 /* LEAddDeviceToWhiteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEAddDeviceToWhiteList.swift; sourceTree = "<group>"; };
 		51EFD83A20946B4400867571 /* LERemoveDeviceFromWhiteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LERemoveDeviceFromWhiteList.swift; sourceTree = "<group>"; };
@@ -235,6 +238,7 @@
 				512F4B56208F40AE00576F34 /* LEClearWhiteList.swift */,
 				51EFD83720946B2B00867571 /* LEAddDeviceToWhiteList.swift */,
 				51EFD83A20946B4400867571 /* LERemoveDeviceFromWhiteList.swift */,
+				51725023209D21B8000E6C9D /* LEConnectionUpdate.swift */,
 				6EC07B872094E9DE0031A7C6 /* LEWhiteListDevice.swift */,
 				51EFD8432095BD5000867571 /* LERand.swift */,
 				6E560C1D206B183000EAE3E7 /* iBeacon.swift */,
@@ -423,6 +427,7 @@
 				6E560C1E206B183000EAE3E7 /* iBeacon.swift in Sources */,
 				6E560BBA206AEBD400EAE3E7 /* Option.swift in Sources */,
 				51EFD83B20946B4400867571 /* LERemoveDeviceFromWhiteList.swift in Sources */,
+				51725024209D21B8000E6C9D /* LEConnectionUpdate.swift in Sources */,
 				51EFD8412095B9CD00867571 /* LEReadAdvertisingChannelTxPower.swift in Sources */,
 				51EFD8352094658E00867571 /* LEReadChannelMap.swift in Sources */,
 				5161200B20904D6B00CFB50B /* LEReadLocalSupportedFeatures.swift in Sources */,
@@ -479,6 +484,7 @@
 				51EFD8362094658E00867571 /* LEReadChannelMap.swift in Sources */,
 				512F4B58208F40AE00576F34 /* LEClearWhiteList.swift in Sources */,
 				51EFD8452095BD5000867571 /* LERand.swift in Sources */,
+				51725025209D21B8000E6C9D /* LEConnectionUpdate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
