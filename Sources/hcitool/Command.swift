@@ -58,6 +58,9 @@ public enum CommandType: String {
     
     // Requests the Controller to generate 8 octets of random data to be sent to the Host.
     case lowEnergyRand = "rand"
+    
+    // It's used by the Host to set the advertising parameters.
+    case lowEnergySetAdvertisingParameters = "setadvertisingparameters"
 }
 
 public enum Command {
@@ -108,6 +111,9 @@ public enum Command {
     
     // Requests the Controller to generate 8 octets of random data to be sent to the Host.
     case lowEnergyRand
+    
+    // It's used by the Host to set the advertising parameters.
+    case lowEnergySetAdvertisingParameters(LESetAdvertisingParametersCommand)
 }
 
 public extension Command {
@@ -131,6 +137,7 @@ public extension Command {
         case .lowEnergyReadWhiteListSize: try LEReadWhiteListSizeCommand().execute(controller: controller)
         case .lowEnergyReadAdvertisingChannelTxPower: try LEReadAdvertisingChannelTxPowerCommand().execute(controller: controller)
         case .lowEnergyRand: try LERandCommand().execute(controller: controller)
+        case let .lowEnergySetAdvertisingParameters(command): try command.execute(controller: controller)
         }
     }
 }
@@ -212,6 +219,9 @@ public extension Command {
             self = .lowEnergyReadAdvertisingChannelTxPower
         case .lowEnergyRand:
             self = .lowEnergyRand
+        case .lowEnergySetAdvertisingParameters:
+            let command = try LESetAdvertisingParametersCommand(arguments: commandArguments)
+            self = .lowEnergySetAdvertisingParameters(command)
         }
     }
 }

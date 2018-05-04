@@ -17,7 +17,8 @@ final class HCIToolTests: XCTestCase {
         ("testClearWhiteList", testClearWhiteList),
         ("testCreateConnectionCancel", testCreateConnectionCancel),
         ("testReadLocalSupportedFeatures", testReadLocalSupportedFeatures),
-        ("testReadBufferSize", testReadBufferSize)
+        ("testReadBufferSize", testReadBufferSize),
+        ("testSetAdvertiseEnableParameter", testSetAdvertiseEnableParameter)
     ]
     
     func testReadBufferSize(){
@@ -102,6 +103,33 @@ final class HCIToolTests: XCTestCase {
             let command = try Command(arguments: arguments)
             
             guard case .lowEnergyClearWhiteList = command
+                else { XCTFail("Invalid type"); return }
+            
+        } catch { XCTFail("\(error)") }
+    }
+    
+    func testSetAdvertiseEnableParameter() {
+        
+        do {
+            /*
+             [2006] Opcode: 0x2006 (OGF: 0x08    OCF: 0x06)
+             Parameter Length: 15 (0x0F)
+             Advertising Interval Min: 0x0014 (12.5ms)
+             Advertising Interval Max: 0x001E (18.75ms)
+             Advertising Type: 0x01 - Connectable directed advertising (ADV_DIRECT_IND)
+             Own Address Type: Random
+             Direct Address Type: Public
+             Direct Address: (null)
+             Advertising Channel Map: 0x01
+             Advertising Filter Policy: 0x00 - Allow Scan Request from Any, Allow Connect Request from Any
+             */
+            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingparameters", "--intervalmin", "20", "--intervalmax", "30", "--type",
+                                                           "directed", "--ownaddresstype", "random", "--peeraddresstype", "public", "--peeraddress",
+                                                           "54:39:A3:47:D8:77", "--channelmap", "channel37", "--filterpolicy", "any"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergySetAdvertisingParameters = command
                 else { XCTFail("Invalid type"); return }
             
         } catch { XCTFail("\(error)") }
