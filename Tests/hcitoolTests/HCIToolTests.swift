@@ -21,8 +21,141 @@ final class HCIToolTests: XCTestCase {
         ("testSetAdvertiseEnableParameter", testSetAdvertiseEnableParameter),
         ("testReadChannelMap", testReadChannelMap),
         ("testAddDeviceToWhiteList", testAddDeviceToWhiteList),
-        ("testRemoveDeviceFromWhiteList", testRemoveDeviceFromWhiteList)
+        ("testRemoveDeviceFromWhiteList", testRemoveDeviceFromWhiteList),
+        ("testUpdateConnection", testUpdateConnection)
     ]
+    
+    func testUpdateConnection() {
+        
+        /*
+         [2013] Opcode: 0x2013 (OGF: 0x08    OCF: 0x13) - 13 20 0e 01 00 06 00 c8 00 c8 00 c9 00 14 00 28 00
+         Parameter Length: 14 (0x0E)
+         Connection Handle:   0x0001
+         Conn Interval Min: 0X0006 (7.5 ms)
+         Conn Interval Max: 0X00C8 (250 ms)
+         Conn Slave Latency: 0x00C8 (200)
+         Supervision Timeout: 0x00C9 (2010 ms)
+         Minimum CE Length:   0x0014
+         Maximum CE Length:   0x0028
+         */
+        
+        //Handle hexadecimal with prefix
+        do {
+            let arguments = [/* ".build/debug/hcitool", */ "connectionupdate", "--handle", "01",
+                                                                                "--intervalmin", "6",
+                                                                                "--intervalmax", "200",
+                                                                                "--latency", "200",
+                                                                                "--supervisiontimeout", "201",
+                                                                                "--lengthmin", "20",
+                                                                                "--lengthmax", "40"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyConnectionUpdate = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        //Handle hexadecimal with prefix
+        do {
+            let arguments = [/* ".build/debug/hcitool", */ "connectionupdate", "--handle", "01",
+                                                                               "--intervalmin", "6",
+                                                                               "--intervalmax", "200",
+                                                                               "--latency", "200",
+                                                                               "--supervisiontimeout", "201",
+                                                                               "--lengthmin", "20",
+                                                                               "--lengthmax", "40"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyConnectionUpdate = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        // invalid commands
+        
+        //Not handle value
+        XCTAssertThrowsError(try Command(arguments: ["connectionupdate", "--handle",
+                                                                         "--intervalmin", "6",
+                                                                         "--intervalmax", "200",
+                                                                        "--latency", "200",
+                                                                        "--supervisiontimeout", "201",
+                                                                        "--lengthmin", "20",
+                                                                        "--lengthmax", "40"]))
+        
+        //Wrong handle format
+        XCTAssertThrowsError(try Command(arguments: ["connectionupdate", "--handle", "x01",
+                                                                         "--intervalmin", "6",
+                                                                         "--intervalmax", "200",
+                                                                        "--latency", "200",
+                                                                        "--supervisiontimeout", "201",
+                                                                        "--lengthmin", "20",
+                                                                        "--lengthmax", "40"]))
+        
+        //intervalmin is not in the range of 6 and 3200
+        XCTAssertThrowsError(try Command(arguments: ["connectionupdate", "--handle", "0x01",
+                                                     "--intervalmin", "5",
+                                                     "--intervalmax", "200",
+                                                     "--latency", "200",
+                                                     "--supervisiontimeout", "201",
+                                                     "--lengthmin", "20",
+                                                     "--lengthmax", "40"]))
+        
+        //intervalmax is not in the range of 6 and 3200
+        XCTAssertThrowsError(try Command(arguments: ["connectionupdate", "--handle", "0x01",
+                                                     "--intervalmin", "6",
+                                                     "--intervalmax", "3201",
+                                                     "--latency", "200",
+                                                     "--supervisiontimeout", "201",
+                                                     "--lengthmin", "20",
+                                                     "--lengthmax", "40"]))
+        
+        //latency is not in the range of 6 and 3200
+        XCTAssertThrowsError(try Command(arguments: ["connectionupdate", "--handle", "0x01",
+                                                     "--intervalmin", "6",
+                                                     "--intervalmax", "200",
+                                                     "--latency", "3201",
+                                                     "--supervisiontimeout", "201",
+                                                     "--lengthmin", "20",
+                                                     "--lengthmax", "40"]))
+        
+        //supervisiontimeout is not in the range of 10 and 3200
+        XCTAssertThrowsError(try Command(arguments: ["connectionupdate", "--handle", "0x01",
+                                                     "--intervalmin", "6",
+                                                     "--intervalmax", "200",
+                                                     "--latency", "200",
+                                                     "--supervisiontimeout", "3201",
+                                                     "--lengthmin", "20",
+                                                     "--lengthmax", "40"]))
+        
+        //lengthmin is not in the range of 0 and 65535
+        XCTAssertThrowsError(try Command(arguments: ["connectionupdate", "--handle", "0x01",
+                                                     "--intervalmin", "6",
+                                                     "--intervalmax", "200",
+                                                     "--latency", "200",
+                                                     "--supervisiontimeout", "3201",
+                                                     "--lengthmin", "-1",
+                                                     "--lengthmax", "40"]))
+        
+        //lengthmax is not in the range of 0 and 65535
+        XCTAssertThrowsError(try Command(arguments: ["connectionupdate", "--handle", "0x01",
+                                                     "--intervalmin", "6",
+                                                     "--intervalmax", "200",
+                                                     "--latency", "200",
+                                                     "--supervisiontimeout", "3201",
+                                                     "--lengthmin", "20",
+                                                     "--lengthmax", "65536"]))
+        
+        //TODO: test supervisiontimeout > intervalmax
+        /*supervisiontimeout > intervalmax
+        XCTAssertThrowsError(try Command(arguments: ["connectionupdate", "--handle", "0x01",
+                                                     "--intervalmin", "6",
+                                                     "--intervalmax", "100",
+                                                     "--latency", "200",
+                                                     "--supervisiontimeout", "1000",
+                                                     "--lengthmin", "20",
+                                                     "--lengthmax", "40"]))
+         */
+    }
     
     func testReadBufferSize(){
         do {

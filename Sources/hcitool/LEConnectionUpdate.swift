@@ -51,15 +51,15 @@ public struct LEConnectionUpdateCommand: ArgumentableCommand {
             else { throw CommandError.optionMissingValue(Option.intervalMax.rawValue) }
         
         guard let interval = LowEnergyConnectionIntervalRange(rawValue: intervalMin ... intervalMax)
-            else { throw CommandError.optionMissingValue(Option.intervalMin.rawValue) }
+            else { throw CommandError.optionMissingValue("LowEnergyConnectionIntervalRange") }
         
-        guard let latencyString = parameters.first(where: { $0.option == .latency })?.value.removeHexadecimalPrefix(),
-            let latencyUInt16 = UInt16(latencyString, radix: 16),
+        guard let latencyString = parameters.first(where: { $0.option == .latency })?.value,
+            let latencyUInt16 = UInt16(latencyString),
             let latency = LowEnergyConnectionLatency(rawValue: latencyUInt16)
             else { throw CommandError.optionMissingValue(Option.latency.rawValue) }
         
-        guard let supervisionTimeoutString = parameters.first(where: { $0.option == .supervisionTimeout })?.value.removeHexadecimalPrefix(),
-            let supervisionTimeoutUInt16 = UInt16(supervisionTimeoutString, radix: 16),
+        guard let supervisionTimeoutString = parameters.first(where: { $0.option == .supervisionTimeout })?.value,
+            let supervisionTimeoutUInt16 = UInt16(supervisionTimeoutString),
             let supervisionTimeout = LowEnergySupervisionTimeout(rawValue: supervisionTimeoutUInt16)
             else { throw CommandError.optionMissingValue(Option.supervisionTimeout.rawValue) }
         
@@ -95,12 +95,25 @@ public extension LEConnectionUpdateCommand {
     
     public enum Option: String, OptionProtocol {
         
+        // Hexadecimal
         case handle
+        
+        // Decimal: 6 ... 3200
         case intervalMin        = "intervalmin"
+        
+        // Decimal: 6 ... 3200
         case intervalMax        = "intervalmax"
+        
+        // Decimal: 6 ... 3200
         case latency
+        
+        // Decimal: 10 ... 3200
         case supervisionTimeout = "supervisiontimeout"
+        
+        // Decimal: 0 ... 65535
         case lengthMin          = "lengthmin"
+        
+        // Decimal: 0 ... 65535
         case lengthMax          = "lengthmax"
         
         public static let all: Set<Option> = [.handle, intervalMin, intervalMax, latency, supervisionTimeout, lengthMin, lengthMax]
