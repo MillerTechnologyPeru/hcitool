@@ -9,7 +9,7 @@
 import XCTest
 @testable import hcitool
 
-final class HCIToolTests: XCTestCase {
+final class ArgumentTests: XCTestCase {
     
     static var allTests = [
         ("testLEScan", testLEScan),
@@ -145,16 +145,14 @@ final class HCIToolTests: XCTestCase {
                                                      "--lengthmin", "20",
                                                      "--lengthmax", "65536"]))
         
-        //TODO: test supervisiontimeout > intervalmax
-        /*supervisiontimeout > intervalmax
-        XCTAssertThrowsError(try Command(arguments: ["connectionupdate", "--handle", "0x01",
+        //supervisiontimeout > intervalmax
+        XCTAssertNoThrow(try Command(arguments: ["connectionupdate", "--handle", "0x01",
                                                      "--intervalmin", "6",
                                                      "--intervalmax", "100",
                                                      "--latency", "200",
                                                      "--supervisiontimeout", "1000",
                                                      "--lengthmin", "20",
                                                      "--lengthmax", "40"]))
-         */
     }
     
     func testReadBufferSize(){
@@ -164,11 +162,11 @@ final class HCIToolTests: XCTestCase {
              Parameter Length: 0 (0x00)
              */
             
-            let arguments = [/* ".build/debug/hcitool", */ "setreadbuffersize"]
+            let arguments = [/* ".build/debug/hcitool", */ "readbuffersize"]
             
             let command = try Command(arguments: arguments)
             
-            guard case .lowEnergySetReadBufferSize = command
+            guard case .lowEnergyReadBufferSize = command
                 else { XCTFail("Invalid type"); return }
             
             /*

@@ -10,12 +10,12 @@ import BluetoothDarwin
 import IOBluetooth
 #endif
 
-func run(arguments: [String] = CommandLine.arguments) throws {
+func run <T: BluetoothHostControllerInterface> (arguments: [String] = CommandLine.arguments, controller: T?) throws {
     
     //  first argument is always the current directory
     let arguments = Array(arguments.dropFirst())
     
-    guard let controller = HostController.default
+    guard let controller = controller
         else { throw CommandError.bluetoothUnavailible }
     
     print("Bluetooth Controller: \(controller.address)")
@@ -25,7 +25,7 @@ func run(arguments: [String] = CommandLine.arguments) throws {
     try command.execute(controller: controller)
 }
 
-do { try run() }
+do { try run(controller: HostController.default) }
 
 catch {
     print("\(error)")

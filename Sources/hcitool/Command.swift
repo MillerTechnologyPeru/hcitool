@@ -39,7 +39,7 @@ public enum CommandType: String {
     case lowEnergySetEventMask = "seteventmask"
     
     // Reads the maximum size of the data portion of HCI LE ACL Data Packets sent from the Host to the Controller.
-    case lowEnergySetReadBufferSize = "setreadbuffersize"
+    case lowEnergyReadBufferSize = "readbuffersize"
     
     // Returns the current Channel_Map for the specified Connection_Handle.
     case lowEnergyReadChannelMap = "readchannelmap"
@@ -95,7 +95,7 @@ public enum Command {
     case lowEnergySetEventMask(LESetEventMaskCommand)
     
     // Reads the maximum size of the data portion of HCI LE ACL Data Packets sent from the Host to the Controller.
-    case lowEnergySetReadBufferSize
+    case lowEnergyReadBufferSize
     
     // Returns the current Channel_Map for the specified Connection_Handle.
     case lowEnergyReadChannelMap(LEReadChannelMapCommand)
@@ -136,7 +136,7 @@ public extension Command {
         case .lowEnergyCreateConnectionCancel: try LECreateConnectionCancelCommand().execute(controller: controller)
         case .lowEnergyReadLocalSupportedFeatures: try LEReadLocalSupportedFeaturesCommand().execute(controller: controller)
         case let .lowEnergySetEventMask(command): try command.execute(controller: controller)
-        case .lowEnergySetReadBufferSize: try LEReadBufferSizeCommand().execute(controller: controller)
+        case .lowEnergyReadBufferSize: try LEReadBufferSizeCommand().execute(controller: controller)
         case let .lowEnergyReadChannelMap(command): try command.execute(controller: controller)
         case let .lowEnergyAddDeviceToWhiteList(command): try command.execute(controller: controller)
         case let .lowEnergyRemoveDeviceFromWhiteList(command): try command.execute(controller: controller)
@@ -209,8 +209,8 @@ public extension Command {
         case .lowEnergySetEventMask:
             let command = try LESetEventMaskCommand(arguments: commandArguments)
             self = .lowEnergySetEventMask(command)
-        case .lowEnergySetReadBufferSize:
-            self = .lowEnergySetReadBufferSize
+        case .lowEnergyReadBufferSize:
+            self = .lowEnergyReadBufferSize
         case .lowEnergyReadChannelMap:
             let command = try LEReadChannelMapCommand(arguments: commandArguments)
             self = .lowEnergyReadChannelMap(command)

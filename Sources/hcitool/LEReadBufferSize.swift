@@ -13,7 +13,7 @@ public struct LEReadBufferSizeCommand: CommandProtocol {
     
     // MARK: - Properties
     
-    public static let commandType: CommandType = .lowEnergySetReadBufferSize
+    public static let commandType: CommandType = .lowEnergyReadBufferSize
     
     // MARK: - Initialization
     
