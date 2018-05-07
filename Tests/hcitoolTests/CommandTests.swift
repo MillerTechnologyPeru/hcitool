@@ -138,16 +138,22 @@ final class CommandTests: XCTestCase {
             .command(LowEnergyCommand.removeDeviceFromWhiteList.opcode, [0x12, 0x20, 0x07, 0x01, 0xf8, 0xd8, 0x47, 0xa3, 0x39, 0x54]),
             .event([0x0e, 0x04, 0x01, 0x12, 0x20, 0x00])
         ]
-         XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
+        
+        XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
     }
     
     func testUpdateConnection() {
-        /*let testController = TestHostController()
-         let arguments = [".build/debug/hcitool"]
+        let testController = TestHostController()
+        let arguments = [".build/debug/hcitool", "connectionupdate", "--handle", "01", "--intervalmin", "6", "--intervalmax", "200",
+                         "--latency", "200",  "--supervisiontimeout", "201", "--lengthmin", "20", "--lengthmax", "40"]
          
-         
-         
-         XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))*/
+        testController.queue = [
+            .command(LowEnergyCommand.connectionUpdate.opcode, [0x13, 0x20, 0x0e, 0x01, 0x00, 0x06, 0x00, 0xc8, 0x00, 0xc8, 0x00, 0xc9, 0x00, 0x14, 0x00, 0x28, 0x00]),
+            .event([0x0f, 0x04, 0x02, 0x01, 0x13, 0x20])
+        ]
+        
+        //HCI Event - Command Status - LE Connection Update - Unknown Connection Identifier (0x2)
+        XCTAssertThrowsError(try HCIToolTests.run(arguments: arguments, controller: testController))
     }
     
     func testLEScan() {

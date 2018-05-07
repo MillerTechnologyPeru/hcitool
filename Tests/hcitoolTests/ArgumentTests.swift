@@ -39,6 +39,12 @@ final class ArgumentTests: XCTestCase {
          Maximum CE Length:   0x0028
          */
         
+        /*
+         Parameter Length: 4 (0x04)
+         Status: 0x02 - Unknown Connection Identifier
+         Num HCI Command Packets: 0x01
+         Opcode: 0x2013 (OGF: 0x08    OCF: 0x13) - [Low Energy] LE Connection Update - 0f 04 02 01 13 20
+         */
         //Handle hexadecimal with prefix
         do {
             let arguments = [/* ".build/debug/hcitool", */ "connectionupdate", "--handle", "01",
