@@ -22,7 +22,7 @@ public enum LEWhiteListDevice {
     public typealias HCIValue = Bluetooth.LowEnergyWhiteListDevice
     
     case `public`(Address)
-    case random(Address)
+    case random(Address) 
     case anonymous
     
     public init?(addressType: LEWhiteListAddressType, address: Address? = nil) {

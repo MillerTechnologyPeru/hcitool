@@ -39,7 +39,7 @@ public enum CommandType: String {
     case lowEnergySetEventMask = "seteventmask"
     
     // Reads the maximum size of the data portion of HCI LE ACL Data Packets sent from the Host to the Controller.
-    case lowEnergySetReadBufferSize = "setreadbuffersize"
+    case lowEnergyReadBufferSize = "readbuffersize"
     
     // Returns the current Channel_Map for the specified Connection_Handle.
     case lowEnergyReadChannelMap = "readchannelmap"
@@ -61,6 +61,9 @@ public enum CommandType: String {
     
     // It's used by the Host to set the advertising parameters.
     case lowEnergySetAdvertisingParameters = "setadvertisingparameters"
+    
+    // It's used to change the Link Layer connection parameters of a connection.
+    case lowEnergyConnectionUpdate = "connectionupdate"
 }
 
 public enum Command {
@@ -92,7 +95,7 @@ public enum Command {
     case lowEnergySetEventMask(LESetEventMaskCommand)
     
     // Reads the maximum size of the data portion of HCI LE ACL Data Packets sent from the Host to the Controller.
-    case lowEnergySetReadBufferSize
+    case lowEnergyReadBufferSize
     
     // Returns the current Channel_Map for the specified Connection_Handle.
     case lowEnergyReadChannelMap(LEReadChannelMapCommand)
@@ -101,7 +104,7 @@ public enum Command {
     case lowEnergyAddDeviceToWhiteList(LEAddDeviceToWhiteListCommand)
     
     //  Removes a single device from the White List stored in the Controller.
-    case lowEnergyRemoveDeviceToWhiteList(LERemoveDeviceFromWhiteListCommand)
+    case lowEnergyRemoveDeviceFromWhiteList(LERemoveDeviceFromWhiteListCommand)
     
     // Reads the total number of White List entries that can be stored in the Controller.
     case lowEnergyReadWhiteListSize
@@ -114,6 +117,9 @@ public enum Command {
     
     // It's used by the Host to set the advertising parameters.
     case lowEnergySetAdvertisingParameters(LESetAdvertisingParametersCommand)
+    
+    // It's used to change the Link Layer connection parameters of a connection.
+    case lowEnergyConnectionUpdate(LEConnectionUpdateCommand)
 }
 
 public extension Command {
@@ -130,14 +136,15 @@ public extension Command {
         case .lowEnergyCreateConnectionCancel: try LECreateConnectionCancelCommand().execute(controller: controller)
         case .lowEnergyReadLocalSupportedFeatures: try LEReadLocalSupportedFeaturesCommand().execute(controller: controller)
         case let .lowEnergySetEventMask(command): try command.execute(controller: controller)
-        case .lowEnergySetReadBufferSize: try LEReadBufferSizeCommand().execute(controller: controller)
+        case .lowEnergyReadBufferSize: try LEReadBufferSizeCommand().execute(controller: controller)
         case let .lowEnergyReadChannelMap(command): try command.execute(controller: controller)
         case let .lowEnergyAddDeviceToWhiteList(command): try command.execute(controller: controller)
-        case let .lowEnergyRemoveDeviceToWhiteList(command): try command.execute(controller: controller)
+        case let .lowEnergyRemoveDeviceFromWhiteList(command): try command.execute(controller: controller)
         case .lowEnergyReadWhiteListSize: try LEReadWhiteListSizeCommand().execute(controller: controller)
         case .lowEnergyReadAdvertisingChannelTxPower: try LEReadAdvertisingChannelTxPowerCommand().execute(controller: controller)
         case .lowEnergyRand: try LERandCommand().execute(controller: controller)
         case let .lowEnergySetAdvertisingParameters(command): try command.execute(controller: controller)
+        case let .lowEnergyConnectionUpdate(command): try command.execute(controller: controller)
         }
     }
 }
@@ -202,8 +209,8 @@ public extension Command {
         case .lowEnergySetEventMask:
             let command = try LESetEventMaskCommand(arguments: commandArguments)
             self = .lowEnergySetEventMask(command)
-        case .lowEnergySetReadBufferSize:
-            self = .lowEnergySetReadBufferSize
+        case .lowEnergyReadBufferSize:
+            self = .lowEnergyReadBufferSize
         case .lowEnergyReadChannelMap:
             let command = try LEReadChannelMapCommand(arguments: commandArguments)
             self = .lowEnergyReadChannelMap(command)
@@ -212,7 +219,7 @@ public extension Command {
             self = .lowEnergyAddDeviceToWhiteList(command)
         case .lowEnergyRemoveDeviceFromWhiteList:
             let command = try LERemoveDeviceFromWhiteListCommand(arguments: commandArguments)
-            self = .lowEnergyRemoveDeviceToWhiteList(command)
+            self = .lowEnergyRemoveDeviceFromWhiteList(command)
         case .lowEnergyReadWhiteListSize:
             self = .lowEnergyReadWhiteListSize
         case .lowEnergyReadAdvertisingChannelTxPower:
@@ -222,6 +229,10 @@ public extension Command {
         case .lowEnergySetAdvertisingParameters:
             let command = try LESetAdvertisingParametersCommand(arguments: commandArguments)
             self = .lowEnergySetAdvertisingParameters(command)
+        case .lowEnergyConnectionUpdate:
+            let command = try LEConnectionUpdateCommand(arguments: commandArguments)
+            self = .lowEnergyConnectionUpdate(command)
+            
         }
     }
 }

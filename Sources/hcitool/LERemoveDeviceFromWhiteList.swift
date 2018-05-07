@@ -36,7 +36,7 @@ public struct LERemoveDeviceFromWhiteListCommand: ArgumentableCommand {
         
         if let addressString = parameters.first(where: { $0.option == .address })?.value {
             
-            guard let addressValue = Bluetooth.Address(rawValue: addressTypeString)
+            guard let addressValue = Bluetooth.Address(rawValue: addressString)
                 else { throw CommandError.invalidOptionValue(option: Option.address.rawValue, value: addressString) }
             
             address = addressValue
@@ -67,7 +67,7 @@ public extension LERemoveDeviceFromWhiteListCommand {
     
     public enum Option: String, OptionProtocol {
         
-        case addressType
+        case addressType    = "addresstype"
         case address
         
         public static let all: Set<Option> = [.addressType, .address]

@@ -19,6 +19,15 @@
 		5161200F20905CFB00CFB50B /* LESetEventMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5161200D20905CFB00CFB50B /* LESetEventMask.swift */; };
 		5161201120907A0600CFB50B /* LEReadBufferSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5161201020907A0600CFB50B /* LEReadBufferSize.swift */; };
 		5161201220907A0600CFB50B /* LEReadBufferSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5161201020907A0600CFB50B /* LEReadBufferSize.swift */; };
+		51725021209CDDB8000E6C9D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51725020209CDDB8000E6C9D /* String.swift */; };
+		51725022209CDDB8000E6C9D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51725020209CDDB8000E6C9D /* String.swift */; };
+		51725024209D21B8000E6C9D /* LEConnectionUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51725023209D21B8000E6C9D /* LEConnectionUpdate.swift */; };
+		51725025209D21B8000E6C9D /* LEConnectionUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51725023209D21B8000E6C9D /* LEConnectionUpdate.swift */; };
+		5172502A20A09C71000E6C9D /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5172502920A09C71000E6C9D /* Int.swift */; };
+		5172502E20A0A49A000E6C9D /* ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5172502C20A0A49A000E6C9D /* ExtensionTests.swift */; };
+		5172502F20A0A91B000E6C9D /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5172502920A09C71000E6C9D /* Int.swift */; };
+		5172503520A0C599000E6C9D /* TestHostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5172503320A0C599000E6C9D /* TestHostController.swift */; };
+		5172503820A0CDF3000E6C9D /* CommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5172503620A0CDF3000E6C9D /* CommandTests.swift */; };
 		51EFD8352094658E00867571 /* LEReadChannelMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFD8342094658E00867571 /* LEReadChannelMap.swift */; };
 		51EFD8362094658E00867571 /* LEReadChannelMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFD8342094658E00867571 /* LEReadChannelMap.swift */; };
 		51EFD83820946B2B00867571 /* LEAddDeviceToWhiteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFD83720946B2B00867571 /* LEAddDeviceToWhiteList.swift */; };
@@ -46,7 +55,7 @@
 		6E560BB8206ADE9200EAE3E7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB2206ADE9200EAE3E7 /* main.swift */; };
 		6E560BBA206AEBD400EAE3E7 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB9206AEBD400EAE3E7 /* Option.swift */; };
 		6E560BBE206AF31F00EAE3E7 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BBD206AF31F00EAE3E7 /* Error.swift */; };
-		6E560BF7206AFFE900EAE3E7 /* HCIToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BF6206AFFD900EAE3E7 /* HCIToolTests.swift */; };
+		6E560BF7206AFFE900EAE3E7 /* ArgumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BF6206AFFD900EAE3E7 /* ArgumentTests.swift */; };
 		6E560BFC206B00B600EAE3E7 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB0206ADE9200EAE3E7 /* Command.swift */; };
 		6E560BFD206B00B600EAE3E7 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BBD206AF31F00EAE3E7 /* Error.swift */; };
 		6E560BFE206B00B600EAE3E7 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB9206AEBD400EAE3E7 /* Option.swift */; };
@@ -106,6 +115,12 @@
 		5161200A20904D6B00CFB50B /* LEReadLocalSupportedFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEReadLocalSupportedFeatures.swift; sourceTree = "<group>"; };
 		5161200D20905CFB00CFB50B /* LESetEventMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LESetEventMask.swift; sourceTree = "<group>"; };
 		5161201020907A0600CFB50B /* LEReadBufferSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEReadBufferSize.swift; sourceTree = "<group>"; };
+		51725020209CDDB8000E6C9D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		51725023209D21B8000E6C9D /* LEConnectionUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEConnectionUpdate.swift; sourceTree = "<group>"; };
+		5172502920A09C71000E6C9D /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		5172502C20A0A49A000E6C9D /* ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExtensionTests.swift; path = ../hcitoolTests/ExtensionTests.swift; sourceTree = "<group>"; };
+		5172503320A0C599000E6C9D /* TestHostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHostController.swift; sourceTree = "<group>"; };
+		5172503620A0CDF3000E6C9D /* CommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandTests.swift; sourceTree = "<group>"; };
 		51EFD8342094658E00867571 /* LEReadChannelMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEReadChannelMap.swift; sourceTree = "<group>"; };
 		51EFD83720946B2B00867571 /* LEAddDeviceToWhiteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEAddDeviceToWhiteList.swift; sourceTree = "<group>"; };
 		51EFD83A20946B4400867571 /* LERemoveDeviceFromWhiteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LERemoveDeviceFromWhiteList.swift; sourceTree = "<group>"; };
@@ -130,7 +145,7 @@
 		6E560BEB206AFFC200EAE3E7 /* HCIToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HCIToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E560BEF206AFFC200EAE3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E560BF4206AFFD900EAE3E7 /* LinuxMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinuxMain.swift; sourceTree = "<group>"; };
-		6E560BF6206AFFD900EAE3E7 /* HCIToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCIToolTests.swift; sourceTree = "<group>"; };
+		6E560BF6206AFFD900EAE3E7 /* ArgumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgumentTests.swift; sourceTree = "<group>"; };
 		6E560C1D206B183000EAE3E7 /* iBeacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBeacon.swift; sourceTree = "<group>"; };
 		6EC07B872094E9DE0031A7C6 /* LEWhiteListDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEWhiteListDevice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,12 +175,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		51EFD849209B5D5B00867571 /* types */ = {
+		5172502620A09B8E000E6C9D /* Command */ = {
 			isa = PBXGroup;
 			children = (
-				51EFD84A209B5D7800867571 /* AddressType.swift */,
+				6E560C1D206B183000EAE3E7 /* iBeacon.swift */,
+				51F087D3206B014F00B7609C /* ReadLocalName.swift */,
+				51F087D5206B016000B7609C /* WriteLocalName.swift */,
+				5161200D20905CFB00CFB50B /* LESetEventMask.swift */,
+				5161201020907A0600CFB50B /* LEReadBufferSize.swift */,
+				5161200A20904D6B00CFB50B /* LEReadLocalSupportedFeatures.swift */,
+				51EFD846209B151E00867571 /* LESetAdvertisingParameters.swift */,
+				6E560BB1206ADE9200EAE3E7 /* LEScan.swift */,
+				512F4B53208F301200576F34 /* LESetRandomAddress.swift */,
+				51EFD8402095B9CD00867571 /* LEReadAdvertisingChannelTxPower.swift */,
+				512F4B59208F662B00576F34 /* LECreateConnectionCancel.swift */,
+				51EFD8342094658E00867571 /* LEReadChannelMap.swift */,
+				51EFD83D2095B7C900867571 /* LEReadWhiteListSize.swift */,
+				512F4B56208F40AE00576F34 /* LEClearWhiteList.swift */,
+				51EFD83720946B2B00867571 /* LEAddDeviceToWhiteList.swift */,
+				51EFD83A20946B4400867571 /* LERemoveDeviceFromWhiteList.swift */,
+				51725023209D21B8000E6C9D /* LEConnectionUpdate.swift */,
+				6EC07B872094E9DE0031A7C6 /* LEWhiteListDevice.swift */,
+				51EFD8432095BD5000867571 /* LERand.swift */,
 			);
-			path = types;
+			name = Command;
+			sourceTree = "<group>";
+		};
+		5172502720A09BB0000E6C9D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				51725020209CDDB8000E6C9D /* String.swift */,
+				5172502920A09C71000E6C9D /* Int.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		5172502820A09BF3000E6C9D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6E560BB0206ADE9200EAE3E7 /* Command.swift */,
+				6E560BB9206AEBD400EAE3E7 /* Option.swift */,
+				51EFD84A209B5D7800867571 /* AddressType.swift */,
+				6E188711206BDAAC00AAB994 /* Bool.swift */,
+				6E560BBD206AF31F00EAE3E7 /* Error.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		6E560B89206ADC1600EAE3E7 = {
@@ -211,30 +265,10 @@
 		6E560BAC206ADE9200EAE3E7 /* hcitool */ = {
 			isa = PBXGroup;
 			children = (
-				51EFD849209B5D5B00867571 /* types */,
 				6E560BB2206ADE9200EAE3E7 /* main.swift */,
-				6E560BB0206ADE9200EAE3E7 /* Command.swift */,
-				6E560BBD206AF31F00EAE3E7 /* Error.swift */,
-				6E560BB9206AEBD400EAE3E7 /* Option.swift */,
-				51F087D3206B014F00B7609C /* ReadLocalName.swift */,
-				51F087D5206B016000B7609C /* WriteLocalName.swift */,
-				5161200D20905CFB00CFB50B /* LESetEventMask.swift */,
-				5161201020907A0600CFB50B /* LEReadBufferSize.swift */,
-				5161200A20904D6B00CFB50B /* LEReadLocalSupportedFeatures.swift */,
-				51EFD846209B151E00867571 /* LESetAdvertisingParameters.swift */,
-				6E560BB1206ADE9200EAE3E7 /* LEScan.swift */,
-				512F4B53208F301200576F34 /* LESetRandomAddress.swift */,
-				51EFD8402095B9CD00867571 /* LEReadAdvertisingChannelTxPower.swift */,
-				512F4B59208F662B00576F34 /* LECreateConnectionCancel.swift */,
-				51EFD8342094658E00867571 /* LEReadChannelMap.swift */,
-				51EFD83D2095B7C900867571 /* LEReadWhiteListSize.swift */,
-				512F4B56208F40AE00576F34 /* LEClearWhiteList.swift */,
-				51EFD83720946B2B00867571 /* LEAddDeviceToWhiteList.swift */,
-				51EFD83A20946B4400867571 /* LERemoveDeviceFromWhiteList.swift */,
-				6EC07B872094E9DE0031A7C6 /* LEWhiteListDevice.swift */,
-				51EFD8432095BD5000867571 /* LERand.swift */,
-				6E560C1D206B183000EAE3E7 /* iBeacon.swift */,
-				6E188711206BDAAC00AAB994 /* Bool.swift */,
+				5172502820A09BF3000E6C9D /* Model */,
+				5172502720A09BB0000E6C9D /* Extensions */,
+				5172502620A09B8E000E6C9D /* Command */,
 			);
 			path = hcitool;
 			sourceTree = "<group>";
@@ -260,7 +294,10 @@
 		6E560BF5206AFFD900EAE3E7 /* HCIToolTests */ = {
 			isa = PBXGroup;
 			children = (
-				6E560BF6206AFFD900EAE3E7 /* HCIToolTests.swift */,
+				6E560BF6206AFFD900EAE3E7 /* ArgumentTests.swift */,
+				5172502C20A0A49A000E6C9D /* ExtensionTests.swift */,
+				5172503320A0C599000E6C9D /* TestHostController.swift */,
+				5172503620A0CDF3000E6C9D /* CommandTests.swift */,
 			);
 			path = HCIToolTests;
 			sourceTree = "<group>";
@@ -416,9 +453,11 @@
 				5161201120907A0600CFB50B /* LEReadBufferSize.swift in Sources */,
 				51EFD83820946B2B00867571 /* LEAddDeviceToWhiteList.swift in Sources */,
 				51EFD847209B151E00867571 /* LESetAdvertisingParameters.swift in Sources */,
+				5172502A20A09C71000E6C9D /* Int.swift in Sources */,
 				6E560C1E206B183000EAE3E7 /* iBeacon.swift in Sources */,
 				6E560BBA206AEBD400EAE3E7 /* Option.swift in Sources */,
 				51EFD83B20946B4400867571 /* LERemoveDeviceFromWhiteList.swift in Sources */,
+				51725024209D21B8000E6C9D /* LEConnectionUpdate.swift in Sources */,
 				51EFD8412095B9CD00867571 /* LEReadAdvertisingChannelTxPower.swift in Sources */,
 				51EFD8352094658E00867571 /* LEReadChannelMap.swift in Sources */,
 				5161200B20904D6B00CFB50B /* LEReadLocalSupportedFeatures.swift in Sources */,
@@ -427,6 +466,7 @@
 				6E188712206BDAAC00AAB994 /* Bool.swift in Sources */,
 				6E560BBE206AF31F00EAE3E7 /* Error.swift in Sources */,
 				512F4B57208F40AE00576F34 /* LEClearWhiteList.swift in Sources */,
+				51725021209CDDB8000E6C9D /* String.swift in Sources */,
 				51F087D6206B016000B7609C /* WriteLocalName.swift in Sources */,
 				5161200E20905CFB00CFB50B /* LESetEventMask.swift in Sources */,
 				512F4B54208F301200576F34 /* LESetRandomAddress.swift in Sources */,
@@ -450,18 +490,23 @@
 			files = (
 				5161201220907A0600CFB50B /* LEReadBufferSize.swift in Sources */,
 				6E560BFE206B00B600EAE3E7 /* Option.swift in Sources */,
-				6E560BF7206AFFE900EAE3E7 /* HCIToolTests.swift in Sources */,
+				6E560BF7206AFFE900EAE3E7 /* ArgumentTests.swift in Sources */,
+				5172502F20A0A91B000E6C9D /* Int.swift in Sources */,
 				512F4B55208F301F00576F34 /* LESetRandomAddress.swift in Sources */,
 				6E560C00206B00B600EAE3E7 /* main.swift in Sources */,
 				6ECBCF25206FD89400312117 /* Bool.swift in Sources */,
+				5172503520A0C599000E6C9D /* TestHostController.swift in Sources */,
 				51EFD83F2095B7C900867571 /* LEReadWhiteListSize.swift in Sources */,
+				5172503820A0CDF3000E6C9D /* CommandTests.swift in Sources */,
 				51F087D7206B09EB00B7609C /* WriteLocalName.swift in Sources */,
 				51EFD84C209B5D7800867571 /* AddressType.swift in Sources */,
+				5172502E20A0A49A000E6C9D /* ExtensionTests.swift in Sources */,
 				51EFD848209B151E00867571 /* LESetAdvertisingParameters.swift in Sources */,
 				5161200F20905CFB00CFB50B /* LESetEventMask.swift in Sources */,
 				6E560BFD206B00B600EAE3E7 /* Error.swift in Sources */,
 				51EFD83920946B2B00867571 /* LEAddDeviceToWhiteList.swift in Sources */,
 				6E560BFC206B00B600EAE3E7 /* Command.swift in Sources */,
+				51725022209CDDB8000E6C9D /* String.swift in Sources */,
 				5161200C20904D6B00CFB50B /* LEReadLocalSupportedFeatures.swift in Sources */,
 				6E560C1F206B21CF00EAE3E7 /* iBeacon.swift in Sources */,
 				512F4B5B208F662B00576F34 /* LECreateConnectionCancel.swift in Sources */,
@@ -473,6 +518,7 @@
 				51EFD8362094658E00867571 /* LEReadChannelMap.swift in Sources */,
 				512F4B58208F40AE00576F34 /* LEClearWhiteList.swift in Sources */,
 				51EFD8452095BD5000867571 /* LERand.swift in Sources */,
+				51725025209D21B8000E6C9D /* LEConnectionUpdate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
