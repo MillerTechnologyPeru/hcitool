@@ -39,15 +39,6 @@ final class CommandTests: XCTestCase {
         XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
     }
     
-    func testLEScan() {
-        /*let testController = TestHostController()
-         let arguments = [".build/debug/hcitool"]
-         
-         
-         
-         XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))*/
-    }
-    
     func testSetRandomAddress() {
         
         let testController = TestHostController()
@@ -96,7 +87,20 @@ final class CommandTests: XCTestCase {
             .event([0x0e, 0x0c, 0x01, 0x03, 0x20, 0x00, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00])
         ]
 
-         XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
+        XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
+    }
+    
+    func testReadChannelMap() {
+        let testController = TestHostController()
+         let arguments = [".build/debug/hcitool", "readchannelmap", "--handle", "0x01"]
+        
+        testController.queue = [
+            .command(LowEnergyCommand.readChannelMap.opcode, [0x15, 0x20, 0x02, 0x01, 0x00]),
+            .event([0x0e, 0x04, 0x01, 0x15, 0x20, 0x02])
+        ]
+        
+        //HCI Event - Command Complete [2015] - LE Read Channel Map - Unknown Connection Identifier (0x2)
+        XCTAssertThrowsError(try HCIToolTests.run(arguments: arguments, controller: testController))
     }
     
     func testSetAdvertiseEnableParameter() {
@@ -108,22 +112,16 @@ final class CommandTests: XCTestCase {
          XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))*/
     }
     
-    func testReadChannelMap() {
-        /*let testController = TestHostController()
-         let arguments = [".build/debug/hcitool"]
-         
-         
-         
-         XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))*/
-    }
-    
     func testAddDeviceToWhiteList() {
-        /*let testController = TestHostController()
-         let arguments = [".build/debug/hcitool"]
-         
-         
-         
-         XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))*/
+         let testController = TestHostController()
+         let arguments = [".build/debug/hcitool", "adddevicetowhitelist", "--addresstype", "random", "--address", "54:39:A3:47:D8:F8"]
+
+        testController.queue = [
+            .command(LowEnergyCommand.addDeviceToWhiteList.opcode, [0x11, 0x20, 0x07, 0x01, 0xf8, 0xd8, 0x47, 0xa3, 0x39, 0x54]),
+            .event([0x0e, 0x04, 0x01, 0x11, 0x20, 0x00])
+        ]
+        
+        XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
     }
     
     func testRemoveDeviceFromWhiteList() {
@@ -136,6 +134,15 @@ final class CommandTests: XCTestCase {
     }
     
     func testUpdateConnection() {
+        /*let testController = TestHostController()
+         let arguments = [".build/debug/hcitool"]
+         
+         
+         
+         XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))*/
+    }
+    
+    func testLEScan() {
         /*let testController = TestHostController()
          let arguments = [".build/debug/hcitool"]
          

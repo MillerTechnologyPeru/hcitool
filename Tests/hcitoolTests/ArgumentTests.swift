@@ -263,6 +263,12 @@ final class ArgumentTests: XCTestCase {
          Connection Handle: 0001
          */
         
+        /*
+         Parameter Length: 4 (0x04)
+         Status: 0x02 - Unknown Connection Identifier
+         Num HCI Command Packets: 0x01
+         Opcode: 0x2015 (OGF: 0x08    OCF: 0x15) - [Low Energy] LE Read Channel Map -  0e 04 01 15 20 02
+         */
         //Handle hexadecimal without prefix
         do {
             let arguments = [/* ".build/debug/hcitool", */ "readchannelmap", "--handle", "01"]
