@@ -75,12 +75,16 @@ final class CommandTests: XCTestCase {
     }
     
     func testCreateConnectionCancel() {
-        /*let testController = TestHostController()
-        let arguments = [".build/debug/hcitool"]
+        let testController = TestHostController()
+        let arguments = [".build/debug/hcitool", "createconnectioncancel"]
         
+        testController.queue = [
+            .command(LowEnergyCommand.createConnectionCancel.opcode, [0x0E, 0x20, 0x00]),
+            .event([0x0E, 0x04, 0x01, 0x0E, 0x20, 0x0C])
+        ]
         
-        
-        XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))*/
+        // Command Complete [200E] - LE Create Connection Cancel - Command Disallowed (0xC)
+        XCTAssertThrowsError(try HCIToolTests.run(arguments: arguments, controller: testController))
     }
     
     func testReadLocalSupportedFeatures() {

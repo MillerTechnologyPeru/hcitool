@@ -213,7 +213,7 @@ final class ArgumentTests: XCTestCase {
     func testCreateConnectionCancel() {
         do {
             /*
-             [200E] Opcode: 0x200E (OGF: 0x08    OCF: 0x0E)
+             [200E] Opcode: 0x200E (OGF: 0x08    OCF: 0x0E) - 0E 20 00
              Parameter Length: 0 (0x00)
              */
             let arguments = [/* ".build/debug/hcitool", */ "createconnectioncancel"]
@@ -223,6 +223,12 @@ final class ArgumentTests: XCTestCase {
             guard case .lowEnergyCreateConnectionCancel = command
                 else { XCTFail("Invalid type"); return }
             
+            /*
+             Parameter Length: 4 (0x04)
+             Status: 0x0C - Command Disallowed
+             Num HCI Command Packets: 0x01
+             Opcode: 0x200E (OGF: 0x08    OCF: 0x0E) - [Low Energy] LE Create Connection Cancel - 0E 04 01 0E 20 0C
+             */
         } catch { XCTFail("\(error)") }
     }
     
