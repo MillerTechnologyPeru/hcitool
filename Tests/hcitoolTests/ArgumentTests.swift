@@ -229,7 +229,7 @@ final class ArgumentTests: XCTestCase {
     func testClearWhiteList() {
         do {
             /*
-             [2010] Opcode: 0x2010 (OGF: 0x08    OCF: 0x10)
+             [2010] Opcode: 0x2010 (OGF: 0x08    OCF: 0x10) - 10 20 00
              Parameter Length: 0 (0x00)
              */
             let arguments = [/* ".build/debug/hcitool", */ "clearwhitelist"]
@@ -238,6 +238,13 @@ final class ArgumentTests: XCTestCase {
             
             guard case .lowEnergyClearWhiteList = command
                 else { XCTFail("Invalid type"); return }
+            
+            /*
+             Parameter Length: 4 (0x04)
+             Status: 0x00 - Success
+             Num HCI Command Packets: 0x01
+             Opcode: 0x2010 (OGF: 0x08    OCF: 0x10) - [Low Energy] LE Clear White List - 0E 04 01 10 20 00
+             */
             
         } catch { XCTFail("\(error)") }
     }
