@@ -157,12 +157,16 @@ final class CommandTests: XCTestCase {
     }
     
     func testLEScan() {
-        /*let testController = TestHostController()
-         let arguments = [".build/debug/hcitool"]
+         let testController = TestHostController()
+         let arguments = [".build/debug/hcitool", "lescan", "--duration", "1000"]
          
-         
-         
-         XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))*/
+        testController.queue = [
+            .command(LowEnergyCommand.setScanEnable.opcode, [0x0C, 0x20, 0x02, 0x00, 0x01]),
+            .event([0x0E, 0x04, 0x01, 0x0C, 0x20, 0x0C])
+        ]
+        
+        // HCI Event - Command Complete [200C] - LE Set Scan Enable - Command Disallowed (0xC)
+        XCTAssertThrowsError(try HCIToolTests.run(arguments: arguments, controller: testController))
     }
 }
 
