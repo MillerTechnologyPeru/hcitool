@@ -104,12 +104,18 @@ final class CommandTests: XCTestCase {
     }
     
     func testSetAdvertiseEnableParameter() {
-        /*let testController = TestHostController()
-         let arguments = [".build/debug/hcitool"]
-         
-         
-         
-         XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))*/
+        let testController = TestHostController()
+        let arguments = [".build/debug/hcitool", "setadvertisingparameters", "--intervalmin", "20", "--intervalmax", "30", "--type",
+                         "directed", "--ownaddresstype", "random", "--peeraddresstype", "public", "--peeraddress",
+                         "54:39:A3:47:D8:77", "--channelmap", "channel37", "--filterpolicy", "any"]
+        
+        testController.queue = [
+            .command(LowEnergyCommand.readChannelMap.opcode, [0x06, 0x20, 0x0f, 0x14, 0x00, 0x1e, 0x00, 0x01, 0x01, 0x00, 0x77, 0xd8, 0x47, 0xa3, 0x39, 0x54, 0x01, 0x00]),
+            .event([0x0e, 0x04, 0x01, 0x06, 0x20, 0x12])
+        ]
+        
+        //HCI Event - Command Complete [2006] - LE Set Advertising Parameters - Invalid HCI Command Parameters (0x12)
+        XCTAssertThrowsError(try HCIToolTests.run(arguments: arguments, controller: testController))
     }
     
     func testAddDeviceToWhiteList() {

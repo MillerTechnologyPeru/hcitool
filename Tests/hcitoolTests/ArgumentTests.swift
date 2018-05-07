@@ -18,7 +18,7 @@ final class ArgumentTests: XCTestCase {
         ("testCreateConnectionCancel", testCreateConnectionCancel),
         ("testReadLocalSupportedFeatures", testReadLocalSupportedFeatures),
         ("testReadBufferSize", testReadBufferSize),
-        ("testSetAdvertiseEnableParameter", testSetAdvertiseEnableParameter),
+        ("testSetAdvertiseParameter", testSetAdvertiseParameter),
         ("testReadChannelMap", testReadChannelMap),
         ("testAddDeviceToWhiteList", testAddDeviceToWhiteList),
         ("testRemoveDeviceFromWhiteList", testRemoveDeviceFromWhiteList),
@@ -375,7 +375,7 @@ final class ArgumentTests: XCTestCase {
         XCTAssertThrowsError(try Command(arguments: ["removedevicefromwhitelist", "--addresstype", "public", "--address"]))
     }
     
-    func testSetAdvertiseEnableParameter() {
+    func testSetAdvertiseParameter() {
         
         do {
             /*
