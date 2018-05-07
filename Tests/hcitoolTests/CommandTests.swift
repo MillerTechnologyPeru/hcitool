@@ -125,12 +125,14 @@ final class CommandTests: XCTestCase {
     }
     
     func testRemoveDeviceFromWhiteList() {
-        /*let testController = TestHostController()
-         let arguments = [".build/debug/hcitool"]
-         
-         
-         
-         XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))*/
+        let testController = TestHostController()
+         let arguments = [".build/debug/hcitool", "removedevicefromwhitelist", "--addresstype", "random", "--address", "54:39:A3:47:D8:F8"]
+
+        testController.queue = [
+            .command(LowEnergyCommand.removeDeviceFromWhiteList.opcode, [0x12, 0x20, 0x07, 0x01, 0xf8, 0xd8, 0x47, 0xa3, 0x39, 0x54]),
+            .event([0x0e, 0x04, 0x01, 0x12, 0x20, 0x00])
+        ]
+         XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
     }
     
     func testUpdateConnection() {
