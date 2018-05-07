@@ -183,7 +183,7 @@ final class ArgumentTests: XCTestCase {
     func testReadLocalSupportedFeatures(){
         do {
             /*
-             [2003] Opcode: 0x2003 (OGF: 0x08    OCF: 0x03)
+             [2003] Opcode: 0x2003 (OGF: 0x08    OCF: 0x03) - 03 20 00
              Parameter Length: 0 (0x00)
              */
             
@@ -194,7 +194,7 @@ final class ArgumentTests: XCTestCase {
             guard case .lowEnergyReadLocalSupportedFeatures = command
                 else { XCTFail("Invalid type"); return }
             
-            /* Command Complete [2003] - LE Read Local Supported Features
+            /* Command Complete [2003] - LE Read Local Supported Features - 0e 0c 01 03 20 00 3f 00 00 00 00 00 00 00
              Parameter Length: 12 (0x0C)
              Status: 0x00 - Success
              Num HCI Command Packets: 0x01

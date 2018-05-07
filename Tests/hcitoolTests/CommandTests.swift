@@ -88,12 +88,15 @@ final class CommandTests: XCTestCase {
     }
     
     func testReadLocalSupportedFeatures() {
-        /*let testController = TestHostController()
-         let arguments = [".build/debug/hcitool"]
+        let testController = TestHostController()
+         let arguments = [".build/debug/hcitool", "readlocalsupportedfeatures"]
          
-         
-         
-         XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))*/
+        testController.queue = [
+            .command(LowEnergyCommand.readLocalSupportedFeatures.opcode, [0x03, 0x20, 0x00]),
+            .event([0x0e, 0x0c, 0x01, 0x03, 0x20, 0x00, 0x3f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00])
+        ]
+
+         XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
     }
     
     func testSetAdvertiseEnableParameter() {
