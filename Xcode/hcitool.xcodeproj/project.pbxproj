@@ -295,9 +295,9 @@
 			isa = PBXGroup;
 			children = (
 				6E560BF6206AFFD900EAE3E7 /* ArgumentTests.swift */,
+				5172503620A0CDF3000E6C9D /* CommandTests.swift */,
 				5172502C20A0A49A000E6C9D /* ExtensionTests.swift */,
 				5172503320A0C599000E6C9D /* TestHostController.swift */,
-				5172503620A0CDF3000E6C9D /* CommandTests.swift */,
 			);
 			path = HCIToolTests;
 			sourceTree = "<group>";

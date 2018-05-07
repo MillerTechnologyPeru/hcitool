@@ -13,7 +13,17 @@ import XCTest
 final class CommandTests: XCTestCase {
     
     static var allTests = [
-        ("testReadbuffersize", testReadbuffersize)
+        ("testLEScan", testLEScan),
+        ("testSetRandomAddress", testSetRandomAddress),
+        ("testClearWhiteList", testClearWhiteList),
+        ("testCreateConnectionCancel", testCreateConnectionCancel),
+        ("testReadLocalSupportedFeatures", testReadLocalSupportedFeatures),
+        ("testReadbuffersize", testReadbuffersize),
+        ("testSetAdvertiseEnableParameter", testSetAdvertiseEnableParameter),
+        ("testReadChannelMap", testReadChannelMap),
+        ("testAddDeviceToWhiteList", testAddDeviceToWhiteList),
+        ("testRemoveDeviceFromWhiteList", testRemoveDeviceFromWhiteList),
+        ("testUpdateConnection", testUpdateConnection)
     ]
     
     func testReadbuffersize() {
@@ -27,6 +37,55 @@ final class CommandTests: XCTestCase {
         ]
         
         XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
+    }
+    
+    func testLEScan() {
+        
+    }
+    
+    func testSetRandomAddress() {
+        let testController = TestHostController()
+        let arguments = [".build/debug/hcitool", "setrandomaddress", "--address", "68:60:B2:29:26:8D"]
+        
+        testController.queue.append(
+            .command(LowEnergyCommand.setRandomAddress.opcode,
+                     [0x05, 0x20, 0x06, 0x8D, 0x26, 0x29, 0xB2, 0x60, 0x68])
+        )
+        
+        testController.queue.append(.event([0x0E, 0x04, 0x01, 0x05, 0x20, 0x00]))
+        
+        XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
+    }
+    
+    func testClearWhiteList() {
+        
+    }
+    
+    func testCreateConnectionCancel() {
+        
+    }
+    
+    func testReadLocalSupportedFeatures() {
+        
+    }
+    
+    func testSetAdvertiseEnableParameter() {
+        
+    }
+    
+    func testReadChannelMap() {
+        
+    }
+    
+    func testAddDeviceToWhiteList() {
+        
+    }
+    
+    func testRemoveDeviceFromWhiteList() {
+        
+    }
+    
+    func testUpdateConnection() {
         
     }
 }
