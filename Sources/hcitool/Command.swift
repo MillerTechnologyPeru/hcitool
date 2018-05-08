@@ -67,6 +67,9 @@ public enum CommandType: String {
     
     // It's used to request the Controller to start or stop advertising.
     case lowEnergySetAdvertisingEnable = "setadvertisingenable"
+    
+    //It's used to create a Link Layer connection to a connectable advertiser.
+    case lowEnergyCreateConnection = "createconnection"
 }
 
 public enum Command {
@@ -126,6 +129,9 @@ public enum Command {
     
     // It's used to request the Controller to start or stop advertising.
     case lowEnergySetAdvertisingEnable(LESetAdvertisingEnableCommand)
+    
+    //It's used to create a Link Layer connection to a connectable advertiser.
+    case lowEnergyCreateConnection(LECreateConnectionCommand)
 }
 
 public extension Command {
@@ -152,6 +158,7 @@ public extension Command {
         case let .lowEnergySetAdvertisingParameters(command): try command.execute(controller: controller)
         case let .lowEnergyConnectionUpdate(command): try command.execute(controller: controller)
         case let .lowEnergySetAdvertisingEnable(command): try command.execute(controller: controller)
+        case let .lowEnergyCreateConnection(command): try command.execute(controller: controller)
         }
     }
 }
@@ -242,6 +249,9 @@ public extension Command {
         case .lowEnergySetAdvertisingEnable:
             let command = try LESetAdvertisingEnableCommand(arguments: commandArguments)
             self = .lowEnergySetAdvertisingEnable(command)
+        case .lowEnergyCreateConnection:
+            let command = try LECreateConnectionCommand(arguments: commandArguments)
+            self = .lowEnergyCreateConnection(command)
         }
     }
 }
