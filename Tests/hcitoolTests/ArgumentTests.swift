@@ -22,8 +22,107 @@ final class ArgumentTests: XCTestCase {
         ("testReadChannelMap", testReadChannelMap),
         ("testAddDeviceToWhiteList", testAddDeviceToWhiteList),
         ("testRemoveDeviceFromWhiteList", testRemoveDeviceFromWhiteList),
-        ("testUpdateConnection", testUpdateConnection)
+        ("testUpdateConnection", testUpdateConnection),
+        ("testSetAdvertisingEnable", testSetAdvertisingEnable)
     ]
+    
+    func testSetAdvertisingEnable() {
+        
+        /*
+         [200A] Opcode: 0x200A (OGF: 0x08    OCF: 0x0A) - 0A 20 01 01
+         Parameter Length: 1 (0x01)
+         Advertising Enable: 01
+         */
+        
+        /*
+         Parameter Length: 4 (0x04)
+         Status: 0x00 - Success
+         Num HCI Command Packets: 0x01
+         Opcode: 0x200A (OGF: 0x08    OCF: 0x0A) - [Low Energy] LE Set Advertise Enable - 0E 04 01 0A 20 00
+         */
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "True"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergySetAdvertisingEnable = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "true"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergySetAdvertisingEnable = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "yes"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergySetAdvertisingEnable = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "1"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergySetAdvertisingEnable = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "False"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergySetAdvertisingEnable = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "false"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergySetAdvertisingEnable = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "no"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergySetAdvertisingEnable = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "0"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergySetAdvertisingEnable = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        XCTAssertThrowsError(try Command(arguments: ["setadvertisingenable", "--enable", "asas"]))
+    }
     
     func testUpdateConnection() {
         
