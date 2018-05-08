@@ -18,7 +18,7 @@ final class ArgumentTests: XCTestCase {
         ("testCreateConnectionCancel", testCreateConnectionCancel),
         ("testReadLocalSupportedFeatures", testReadLocalSupportedFeatures),
         ("testReadBufferSize", testReadBufferSize),
-        ("testSetAdvertiseEnableParameter", testSetAdvertiseEnableParameter),
+        ("testSetAdvertiseParameter", testSetAdvertiseParameter),
         ("testReadChannelMap", testReadChannelMap),
         ("testAddDeviceToWhiteList", testAddDeviceToWhiteList),
         ("testRemoveDeviceFromWhiteList", testRemoveDeviceFromWhiteList),
@@ -39,6 +39,12 @@ final class ArgumentTests: XCTestCase {
          Maximum CE Length:   0x0028
          */
         
+        /*
+         Parameter Length: 4 (0x04)
+         Status: 0x02 - Unknown Connection Identifier
+         Num HCI Command Packets: 0x01
+         Opcode: 0x2013 (OGF: 0x08    OCF: 0x13) - [Low Energy] LE Connection Update - 0f 04 02 01 13 20
+         */
         //Handle hexadecimal with prefix
         do {
             let arguments = [/* ".build/debug/hcitool", */ "connectionupdate", "--handle", "01",
@@ -183,7 +189,7 @@ final class ArgumentTests: XCTestCase {
     func testReadLocalSupportedFeatures(){
         do {
             /*
-             [2003] Opcode: 0x2003 (OGF: 0x08    OCF: 0x03)
+             [2003] Opcode: 0x2003 (OGF: 0x08    OCF: 0x03) - 03 20 00
              Parameter Length: 0 (0x00)
              */
             
@@ -194,7 +200,7 @@ final class ArgumentTests: XCTestCase {
             guard case .lowEnergyReadLocalSupportedFeatures = command
                 else { XCTFail("Invalid type"); return }
             
-            /* Command Complete [2003] - LE Read Local Supported Features
+            /* Command Complete [2003] - LE Read Local Supported Features - 0e 0c 01 03 20 00 3f 00 00 00 00 00 00 00
              Parameter Length: 12 (0x0C)
              Status: 0x00 - Success
              Num HCI Command Packets: 0x01
@@ -213,7 +219,7 @@ final class ArgumentTests: XCTestCase {
     func testCreateConnectionCancel() {
         do {
             /*
-             [200E] Opcode: 0x200E (OGF: 0x08    OCF: 0x0E)
+             [200E] Opcode: 0x200E (OGF: 0x08    OCF: 0x0E) - 0E 20 00
              Parameter Length: 0 (0x00)
              */
             let arguments = [/* ".build/debug/hcitool", */ "createconnectioncancel"]
@@ -223,13 +229,19 @@ final class ArgumentTests: XCTestCase {
             guard case .lowEnergyCreateConnectionCancel = command
                 else { XCTFail("Invalid type"); return }
             
+            /*
+             Parameter Length: 4 (0x04)
+             Status: 0x0C - Command Disallowed
+             Num HCI Command Packets: 0x01
+             Opcode: 0x200E (OGF: 0x08    OCF: 0x0E) - [Low Energy] LE Create Connection Cancel - 0E 04 01 0E 20 0C
+             */
         } catch { XCTFail("\(error)") }
     }
     
     func testClearWhiteList() {
         do {
             /*
-             [2010] Opcode: 0x2010 (OGF: 0x08    OCF: 0x10)
+             [2010] Opcode: 0x2010 (OGF: 0x08    OCF: 0x10) - 10 20 00
              Parameter Length: 0 (0x00)
              */
             let arguments = [/* ".build/debug/hcitool", */ "clearwhitelist"]
@@ -238,6 +250,13 @@ final class ArgumentTests: XCTestCase {
             
             guard case .lowEnergyClearWhiteList = command
                 else { XCTFail("Invalid type"); return }
+            
+            /*
+             Parameter Length: 4 (0x04)
+             Status: 0x00 - Success
+             Num HCI Command Packets: 0x01
+             Opcode: 0x2010 (OGF: 0x08    OCF: 0x10) - [Low Energy] LE Clear White List - 0E 04 01 10 20 00
+             */
             
         } catch { XCTFail("\(error)") }
     }
@@ -250,6 +269,12 @@ final class ArgumentTests: XCTestCase {
          Connection Handle: 0001
          */
         
+        /*
+         Parameter Length: 4 (0x04)
+         Status: 0x02 - Unknown Connection Identifier
+         Num HCI Command Packets: 0x01
+         Opcode: 0x2015 (OGF: 0x08    OCF: 0x15) - [Low Energy] LE Read Channel Map -  0e 04 01 15 20 02
+         */
         //Handle hexadecimal without prefix
         do {
             let arguments = [/* ".build/debug/hcitool", */ "readchannelmap", "--handle", "01"]
@@ -356,7 +381,7 @@ final class ArgumentTests: XCTestCase {
         XCTAssertThrowsError(try Command(arguments: ["removedevicefromwhitelist", "--addresstype", "public", "--address"]))
     }
     
-    func testSetAdvertiseEnableParameter() {
+    func testSetAdvertiseParameter() {
         
         do {
             /*
