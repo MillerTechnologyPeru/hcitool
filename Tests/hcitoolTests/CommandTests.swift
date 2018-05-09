@@ -24,8 +24,25 @@ final class CommandTests: XCTestCase {
         ("testAddDeviceToWhiteList", testAddDeviceToWhiteList),
         ("testRemoveDeviceFromWhiteList", testRemoveDeviceFromWhiteList),
         ("testUpdateConnection", testUpdateConnection),
-        ("testSetAdvertisingEnable", testSetAdvertisingEnable)
+        ("testSetAdvertisingEnable", testSetAdvertisingEnable),
+        ("testEncrypt", testEncrypt)
     ]
+    
+    func testEncrypt() {
+        
+        let testController = TestHostController()
+        let arguments = [".build/debug/hcitool", "encrypt", "--key", "aaaaaaaaaaaaaaaa", "--data", "bbbbbbbbbbbbbbbb"]
+        
+        testController.queue = [
+            .command(LowEnergyCommand.encrypt.opcode,[0x17, 0x20, 0x20, 0x61, 0x61, 0x61, 0x61, 0x61, 0x61, 0x61, 0x61, 0x61, 0x61, 0x61, 0x61, 0x61,
+                                                                 0x61, 0x61, 0x61, 0x62, 0x62, 0x62, 0x62, 0x62, 0x62, 0x62, 0x62, 0x62, 0x62, 0x62, 0x62, 0x62,
+                                                                 0x62, 0x62, 0x62]),
+            .event([0x0e, 0x14, 0x01, 0x17, 0x20, 0x00, 0x17, 0xe6, 0xa3, 0x95, 0x34, 0x84, 0x87, 0xd1, 0x37, 0x42,
+                    0x57, 0x70, 0xa4, 0xb5, 0x49, 0x19])
+        ]
+        
+        XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
+    }
     
     func testSetAdvertisingEnable() {
         
