@@ -29,4 +29,33 @@ final class ExtensionTests: XCTestCase {
         XCTAssertEqual(UInt8(commandLine: "0xAB"), 0xAB, "Must initialize from valid hexadecimal string")
         XCTAssertEqual(UInt16(commandLine: "0xABCD"), 0xABCD, "Must initialize from valid hexadecimal string")
     }
+    
+    func testConvertStringToBool() {
+        
+        guard let _ = Bool(enable: "True")
+            else { XCTFail("Wrong input string"); return }
+        
+        guard let _ = Bool(enable: "true")
+            else { XCTFail("Wrong input string"); return }
+        
+        guard let _ = Bool(enable: "yes")
+            else { XCTFail("Wrong input string"); return }
+        
+        guard let _ = Bool(enable: "1")
+            else { XCTFail("Wrong input string"); return }
+        
+        guard let _ = Bool(enable: "False")
+            else { XCTFail("Wrong input string"); return }
+        
+        guard let _ = Bool(enable: "false")
+            else { XCTFail("Wrong input string"); return }
+        
+        guard let _ = Bool(enable: "no")
+            else { XCTFail("Wrong input string"); return }
+        
+        guard let _ = Bool(enable: "1")
+            else { XCTFail("Wrong input string"); return }
+        
+        XCTAssertNil(Bool(enable: "ASAS"), "Wrong input string")
+    }
 }

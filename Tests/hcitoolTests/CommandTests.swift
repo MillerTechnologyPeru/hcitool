@@ -23,8 +23,22 @@ final class CommandTests: XCTestCase {
         ("testReadChannelMap", testReadChannelMap),
         ("testAddDeviceToWhiteList", testAddDeviceToWhiteList),
         ("testRemoveDeviceFromWhiteList", testRemoveDeviceFromWhiteList),
-        ("testUpdateConnection", testUpdateConnection)
+        ("testUpdateConnection", testUpdateConnection),
+        ("testSetAdvertisingEnable", testSetAdvertisingEnable)
     ]
+    
+    func testSetAdvertisingEnable() {
+        
+        let testController = TestHostController()
+        let arguments = [".build/debug/hcitool", "setadvertisingenable", "--enable", "true"]
+        
+        testController.queue = [
+            .command(LowEnergyCommand.setAdvertiseEnable.opcode,[0x0A, 0x20, 0x01, 0x01]),
+            .event([0x0E, 0x04, 0x01, 0x0A, 0x20, 0x00])
+        ]
+        
+        XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
+    }
     
     func testReadbuffersize() {
         

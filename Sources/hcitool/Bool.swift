@@ -1,40 +1,22 @@
 //
-//  Bool.swift
+//  Boolean.swift
 //  hcitool
 //
-//  Created by Alsey Coleman Miller on 3/28/18.
+//  Created by Marco Estrella on 5/8/18.
+//  Copyright © 2018 Pure Swift. All rights reserved.
 //
 
-/// Boolean for use with command line arguments.
-public enum CommandLineBool: String {
+extension Bool {
     
-    case `true` = "true"
-    case `false` = "false"
-}
-
-public extension CommandLineBool {
-    
-    public init(_ boolValue: Bool) {
+    init?(enable string: String) {
         
-        if boolValue {
-            self = .true
-        } else {
-            self = .false
+        switch string.lowercased() {
+        case "True", "true", "yes", "1":
+            self = true
+        case "False", "false", "no", "0":
+            self = false
+        default:
+            return nil
         }
-    }
-    
-    public var boolValue: Bool {
-        switch self {
-        case .true: return true
-        case .false: return false
-        }
-    }
-}
-
-extension CommandLineBool: ExpressibleByBooleanLiteral {
-    
-    public init(booleanLiteral boolValue: Bool) {
-        
-        self.init(boolValue)
     }
 }

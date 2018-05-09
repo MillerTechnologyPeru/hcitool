@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		512AAC9C20A2346700BCCEB2 /* LECreateConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512AAC9B20A2346700BCCEB2 /* LECreateConnection.swift */; };
+		512AAC9D20A2346700BCCEB2 /* LECreateConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512AAC9B20A2346700BCCEB2 /* LECreateConnection.swift */; };
 		512F4B54208F301200576F34 /* LESetRandomAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512F4B53208F301200576F34 /* LESetRandomAddress.swift */; };
 		512F4B55208F301F00576F34 /* LESetRandomAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512F4B53208F301200576F34 /* LESetRandomAddress.swift */; };
 		512F4B57208F40AE00576F34 /* LEClearWhiteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512F4B56208F40AE00576F34 /* LEClearWhiteList.swift */; };
@@ -28,6 +30,10 @@
 		5172502F20A0A91B000E6C9D /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5172502920A09C71000E6C9D /* Int.swift */; };
 		5172503520A0C599000E6C9D /* TestHostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5172503320A0C599000E6C9D /* TestHostController.swift */; };
 		5172503820A0CDF3000E6C9D /* CommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5172503620A0CDF3000E6C9D /* CommandTests.swift */; };
+		5172503A20A1F6CB000E6C9D /* LESetAdvertisingEnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5172503920A1F6CB000E6C9D /* LESetAdvertisingEnable.swift */; };
+		5172503B20A1F6CB000E6C9D /* LESetAdvertisingEnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5172503920A1F6CB000E6C9D /* LESetAdvertisingEnable.swift */; };
+		5172503D20A1FB4A000E6C9D /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5172503C20A1FB4A000E6C9D /* Bool.swift */; };
+		5172503E20A1FB4A000E6C9D /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5172503C20A1FB4A000E6C9D /* Bool.swift */; };
 		51EFD8352094658E00867571 /* LEReadChannelMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFD8342094658E00867571 /* LEReadChannelMap.swift */; };
 		51EFD8362094658E00867571 /* LEReadChannelMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFD8342094658E00867571 /* LEReadChannelMap.swift */; };
 		51EFD83820946B2B00867571 /* LEAddDeviceToWhiteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EFD83720946B2B00867571 /* LEAddDeviceToWhiteList.swift */; };
@@ -48,7 +54,7 @@
 		51F087D6206B016000B7609C /* WriteLocalName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F087D5206B016000B7609C /* WriteLocalName.swift */; };
 		51F087D7206B09EB00B7609C /* WriteLocalName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F087D5206B016000B7609C /* WriteLocalName.swift */; };
 		51F087D8206B09ED00B7609C /* ReadLocalName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F087D3206B014F00B7609C /* ReadLocalName.swift */; };
-		6E188712206BDAAC00AAB994 /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E188711206BDAAC00AAB994 /* Bool.swift */; };
+		6E188712206BDAAC00AAB994 /* CommandLineBool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E188711206BDAAC00AAB994 /* CommandLineBool.swift */; };
 		6E560BA7206ADD3300EAE3E7 /* hcitool in Copy Executable */ = {isa = PBXBuildFile; fileRef = 6E560B92206ADC1600EAE3E7 /* hcitool */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		6E560BB6206ADE9200EAE3E7 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB0206ADE9200EAE3E7 /* Command.swift */; };
 		6E560BB7206ADE9200EAE3E7 /* LEScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560BB1206ADE9200EAE3E7 /* LEScan.swift */; };
@@ -65,7 +71,7 @@
 		6E560C1F206B21CF00EAE3E7 /* iBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E560C1D206B183000EAE3E7 /* iBeacon.swift */; };
 		6EC07B882094E9DE0031A7C6 /* LEWhiteListDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC07B872094E9DE0031A7C6 /* LEWhiteListDevice.swift */; };
 		6EC07B892094EDEF0031A7C6 /* LEWhiteListDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC07B872094E9DE0031A7C6 /* LEWhiteListDevice.swift */; };
-		6ECBCF25206FD89400312117 /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E188711206BDAAC00AAB994 /* Bool.swift */; };
+		6ECBCF25206FD89400312117 /* CommandLineBool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E188711206BDAAC00AAB994 /* CommandLineBool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +115,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		512AAC9B20A2346700BCCEB2 /* LECreateConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LECreateConnection.swift; sourceTree = "<group>"; };
 		512F4B53208F301200576F34 /* LESetRandomAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LESetRandomAddress.swift; sourceTree = "<group>"; };
 		512F4B56208F40AE00576F34 /* LEClearWhiteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEClearWhiteList.swift; sourceTree = "<group>"; };
 		512F4B59208F662B00576F34 /* LECreateConnectionCancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LECreateConnectionCancel.swift; sourceTree = "<group>"; };
@@ -121,6 +128,8 @@
 		5172502C20A0A49A000E6C9D /* ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExtensionTests.swift; path = ../hcitoolTests/ExtensionTests.swift; sourceTree = "<group>"; };
 		5172503320A0C599000E6C9D /* TestHostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHostController.swift; sourceTree = "<group>"; };
 		5172503620A0CDF3000E6C9D /* CommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandTests.swift; sourceTree = "<group>"; };
+		5172503920A1F6CB000E6C9D /* LESetAdvertisingEnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LESetAdvertisingEnable.swift; sourceTree = "<group>"; };
+		5172503C20A1FB4A000E6C9D /* Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
 		51EFD8342094658E00867571 /* LEReadChannelMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEReadChannelMap.swift; sourceTree = "<group>"; };
 		51EFD83720946B2B00867571 /* LEAddDeviceToWhiteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEAddDeviceToWhiteList.swift; sourceTree = "<group>"; };
 		51EFD83A20946B4400867571 /* LERemoveDeviceFromWhiteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LERemoveDeviceFromWhiteList.swift; sourceTree = "<group>"; };
@@ -131,7 +140,7 @@
 		51EFD84A209B5D7800867571 /* AddressType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressType.swift; sourceTree = "<group>"; };
 		51F087D3206B014F00B7609C /* ReadLocalName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadLocalName.swift; sourceTree = "<group>"; };
 		51F087D5206B016000B7609C /* WriteLocalName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteLocalName.swift; sourceTree = "<group>"; };
-		6E188711206BDAAC00AAB994 /* Bool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
+		6E188711206BDAAC00AAB994 /* CommandLineBool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLineBool.swift; sourceTree = "<group>"; };
 		6E560B92206ADC1600EAE3E7 /* hcitool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hcitool; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E560BA0206ADCCC00EAE3E7 /* hcitool.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hcitool.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E560BA2206ADCCC00EAE3E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -186,8 +195,10 @@
 				5161200A20904D6B00CFB50B /* LEReadLocalSupportedFeatures.swift */,
 				51EFD846209B151E00867571 /* LESetAdvertisingParameters.swift */,
 				6E560BB1206ADE9200EAE3E7 /* LEScan.swift */,
+				5172503920A1F6CB000E6C9D /* LESetAdvertisingEnable.swift */,
 				512F4B53208F301200576F34 /* LESetRandomAddress.swift */,
 				51EFD8402095B9CD00867571 /* LEReadAdvertisingChannelTxPower.swift */,
+				512AAC9B20A2346700BCCEB2 /* LECreateConnection.swift */,
 				512F4B59208F662B00576F34 /* LECreateConnectionCancel.swift */,
 				51EFD8342094658E00867571 /* LEReadChannelMap.swift */,
 				51EFD83D2095B7C900867571 /* LEReadWhiteListSize.swift */,
@@ -206,6 +217,7 @@
 			children = (
 				51725020209CDDB8000E6C9D /* String.swift */,
 				5172502920A09C71000E6C9D /* Int.swift */,
+				5172503C20A1FB4A000E6C9D /* Bool.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -216,7 +228,7 @@
 				6E560BB0206ADE9200EAE3E7 /* Command.swift */,
 				6E560BB9206AEBD400EAE3E7 /* Option.swift */,
 				51EFD84A209B5D7800867571 /* AddressType.swift */,
-				6E188711206BDAAC00AAB994 /* Bool.swift */,
+				6E188711206BDAAC00AAB994 /* CommandLineBool.swift */,
 				6E560BBD206AF31F00EAE3E7 /* Error.swift */,
 			);
 			name = Model;
@@ -454,6 +466,7 @@
 				51EFD83820946B2B00867571 /* LEAddDeviceToWhiteList.swift in Sources */,
 				51EFD847209B151E00867571 /* LESetAdvertisingParameters.swift in Sources */,
 				5172502A20A09C71000E6C9D /* Int.swift in Sources */,
+				5172503A20A1F6CB000E6C9D /* LESetAdvertisingEnable.swift in Sources */,
 				6E560C1E206B183000EAE3E7 /* iBeacon.swift in Sources */,
 				6E560BBA206AEBD400EAE3E7 /* Option.swift in Sources */,
 				51EFD83B20946B4400867571 /* LERemoveDeviceFromWhiteList.swift in Sources */,
@@ -463,17 +476,19 @@
 				5161200B20904D6B00CFB50B /* LEReadLocalSupportedFeatures.swift in Sources */,
 				51F087D4206B014F00B7609C /* ReadLocalName.swift in Sources */,
 				6E560BB6206ADE9200EAE3E7 /* Command.swift in Sources */,
-				6E188712206BDAAC00AAB994 /* Bool.swift in Sources */,
+				6E188712206BDAAC00AAB994 /* CommandLineBool.swift in Sources */,
 				6E560BBE206AF31F00EAE3E7 /* Error.swift in Sources */,
 				512F4B57208F40AE00576F34 /* LEClearWhiteList.swift in Sources */,
 				51725021209CDDB8000E6C9D /* String.swift in Sources */,
 				51F087D6206B016000B7609C /* WriteLocalName.swift in Sources */,
+				512AAC9C20A2346700BCCEB2 /* LECreateConnection.swift in Sources */,
 				5161200E20905CFB00CFB50B /* LESetEventMask.swift in Sources */,
 				512F4B54208F301200576F34 /* LESetRandomAddress.swift in Sources */,
 				51EFD84B209B5D7800867571 /* AddressType.swift in Sources */,
 				51EFD8442095BD5000867571 /* LERand.swift in Sources */,
 				6EC07B882094E9DE0031A7C6 /* LEWhiteListDevice.swift in Sources */,
 				6E560BB7206ADE9200EAE3E7 /* LEScan.swift in Sources */,
+				5172503D20A1FB4A000E6C9D /* Bool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,15 +507,17 @@
 				6E560BFE206B00B600EAE3E7 /* Option.swift in Sources */,
 				6E560BF7206AFFE900EAE3E7 /* ArgumentTests.swift in Sources */,
 				5172502F20A0A91B000E6C9D /* Int.swift in Sources */,
+				5172503E20A1FB4A000E6C9D /* Bool.swift in Sources */,
 				512F4B55208F301F00576F34 /* LESetRandomAddress.swift in Sources */,
 				6E560C00206B00B600EAE3E7 /* main.swift in Sources */,
-				6ECBCF25206FD89400312117 /* Bool.swift in Sources */,
+				6ECBCF25206FD89400312117 /* CommandLineBool.swift in Sources */,
 				5172503520A0C599000E6C9D /* TestHostController.swift in Sources */,
 				51EFD83F2095B7C900867571 /* LEReadWhiteListSize.swift in Sources */,
 				5172503820A0CDF3000E6C9D /* CommandTests.swift in Sources */,
 				51F087D7206B09EB00B7609C /* WriteLocalName.swift in Sources */,
 				51EFD84C209B5D7800867571 /* AddressType.swift in Sources */,
 				5172502E20A0A49A000E6C9D /* ExtensionTests.swift in Sources */,
+				512AAC9D20A2346700BCCEB2 /* LECreateConnection.swift in Sources */,
 				51EFD848209B151E00867571 /* LESetAdvertisingParameters.swift in Sources */,
 				5161200F20905CFB00CFB50B /* LESetEventMask.swift in Sources */,
 				6E560BFD206B00B600EAE3E7 /* Error.swift in Sources */,
@@ -515,6 +532,7 @@
 				6EC07B892094EDEF0031A7C6 /* LEWhiteListDevice.swift in Sources */,
 				6E560BFF206B00B600EAE3E7 /* LEScan.swift in Sources */,
 				51EFD8422095B9CD00867571 /* LEReadAdvertisingChannelTxPower.swift in Sources */,
+				5172503B20A1F6CB000E6C9D /* LESetAdvertisingEnable.swift in Sources */,
 				51EFD8362094658E00867571 /* LEReadChannelMap.swift in Sources */,
 				512F4B58208F40AE00576F34 /* LEClearWhiteList.swift in Sources */,
 				51EFD8452095BD5000867571 /* LERand.swift in Sources */,
