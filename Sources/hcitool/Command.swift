@@ -73,6 +73,9 @@ public enum CommandType: String {
     
     // Requests the features used on the connection and the features supported by the remote device.
     case lowEnergyReadRemoteFeatures = "readremotefeatures"
+    
+    // Encrypts the Plaintext Data
+    case lowEnergyEncrypt   = "encrypt"
 }
 
 public enum Command {
@@ -138,6 +141,9 @@ public enum Command {
     
     // Requests the features used on the connection and the features supported by the remote device.
     case lowEnergyReadRemoteFeatures(LEReadRemoteFeaturesCommand)
+    
+    // Encrypts the Plaintext Data
+    case lowEnergyEncrypt(LEEncryptCommand)
 }
 
 public extension Command {
@@ -166,6 +172,7 @@ public extension Command {
         case let .lowEnergySetAdvertisingEnable(command): try command.execute(controller: controller)
         case let .lowEnergyCreateConnection(command): try command.execute(controller: controller)
         case let .lowEnergyReadRemoteFeatures(command): try command.execute(controller: controller)
+        case let .lowEnergyEncrypt(command): try command.execute(controller: controller)
         }
     }
 }
@@ -262,6 +269,9 @@ public extension Command {
         case .lowEnergyReadRemoteFeatures:
             let command = try LEReadRemoteFeaturesCommand(arguments: commandArguments)
             self = .lowEnergyReadRemoteFeatures(command)
+        case .lowEnergyEncrypt:
+            let command = try LEEncryptCommand(arguments: commandArguments)
+            self = .lowEnergyEncrypt(command)
         }
     }
 }

@@ -21,7 +21,7 @@ public struct LEReadRemoteFeaturesCommand: ArgumentableCommand {
     
     // MARK: - Properties
     
-    public static let commandType: CommandType = .lowEnergyAddDeviceToWhiteList
+    public static let commandType: CommandType = .lowEnergyReadRemoteFeatures
     
     public var handle: UInt16
     
