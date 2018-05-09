@@ -23,8 +23,44 @@ final class ArgumentTests: XCTestCase {
         ("testAddDeviceToWhiteList", testAddDeviceToWhiteList),
         ("testRemoveDeviceFromWhiteList", testRemoveDeviceFromWhiteList),
         ("testUpdateConnection", testUpdateConnection),
-        ("testSetAdvertisingEnable", testSetAdvertisingEnable)
+        ("testSetAdvertisingEnable", testSetAdvertisingEnable),
+        ("testEncrypt", testEncrypt)
     ]
+    
+    func testEncrypt() {
+        
+        /*
+         Bytes: 17 20 20 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 62 62 62 62 62 62 62 62 62 62 62 62 62 62 62 62
+         [2017] Opcode: 0x2017 (OGF: 0x08    OCF: 0x17)
+         Parameter Length: 32 (0x20)
+         Key: 61616161616161616161616161616161
+         Plaintext Data: 62626262626262626262626262626262
+         */
+        
+        /*
+         Parameter Length: 20 (0x14)
+         Status: 0x00 - Success
+         Num HCI Command Packets: 0x01
+         Opcode: 0x2017 (OGF: 0x08    OCF: 0x17) - [Low Energy] LE Encrypt
+         Encrypted Data: 17E6A395348487D137425770A4B54919
+         Bytes: 0e 14 01 17 20 00 17 e6 a3 95 34 84 87 d1 37 42 57 70 a4 b5 49 19
+         */
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "encrypt", "--key", "aaaaaaaaaaaaaaaa", "--data", "bbbbbbbbbbbbbbbb"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyEncrypt = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        XCTAssertThrowsError(try Command(arguments: ["encrypt", "--key"]))
+        XCTAssertThrowsError(try Command(arguments: ["encrypt", "--key", "aaaaaaaaaaaaaaaa", "--data"]))
+        XCTAssertThrowsError(try Command(arguments: ["encrypt", "--key", "aaaaaaaaaaa", "--data", "bbbbbbbbbbbbbbbb"]))
+        XCTAssertThrowsError(try Command(arguments: ["encrypt", "--key", "aaaaaaaaaaaaaaaa", "--data", "bbbbbbb"]))
+    }
     
     func testSetAdvertisingEnable() {
         
