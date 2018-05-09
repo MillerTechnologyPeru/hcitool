@@ -70,6 +70,9 @@ public enum CommandType: String {
     
     //It's used to create a Link Layer connection to a connectable advertiser.
     case lowEnergyCreateConnection = "createconnection"
+    
+    // Requests the features used on the connection and the features supported by the remote device.
+    case lowEnergyReadRemoteFeatures = "readremotefeatures"
 }
 
 public enum Command {
@@ -132,6 +135,9 @@ public enum Command {
     
     //It's used to create a Link Layer connection to a connectable advertiser.
     case lowEnergyCreateConnection(LECreateConnectionCommand)
+    
+    // Requests the features used on the connection and the features supported by the remote device.
+    case lowEnergyReadRemoteFeatures(LEReadRemoteFeaturesCommand)
 }
 
 public extension Command {
@@ -159,6 +165,7 @@ public extension Command {
         case let .lowEnergyConnectionUpdate(command): try command.execute(controller: controller)
         case let .lowEnergySetAdvertisingEnable(command): try command.execute(controller: controller)
         case let .lowEnergyCreateConnection(command): try command.execute(controller: controller)
+        case let .lowEnergyReadRemoteFeatures(command): try command.execute(controller: controller)
         }
     }
 }
@@ -252,6 +259,9 @@ public extension Command {
         case .lowEnergyCreateConnection:
             let command = try LECreateConnectionCommand(arguments: commandArguments)
             self = .lowEnergyCreateConnection(command)
+        case .lowEnergyReadRemoteFeatures:
+            let command = try LEReadRemoteFeaturesCommand(arguments: commandArguments)
+            self = .lowEnergyReadRemoteFeatures(command)
         }
     }
 }
