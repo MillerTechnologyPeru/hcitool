@@ -24,8 +24,41 @@ final class ArgumentTests: XCTestCase {
         ("testRemoveDeviceFromWhiteList", testRemoveDeviceFromWhiteList),
         ("testUpdateConnection", testUpdateConnection),
         ("testSetAdvertisingEnable", testSetAdvertisingEnable),
-        ("testEncrypt", testEncrypt)
+        ("testEncrypt", testEncrypt),
+        ("testLongTermKeyRequestNegativeReply", testLongTermKeyRequestNegativeReply)
     ]
+    
+    func testLongTermKeyRequestNegativeReply() {
+        
+        /*
+         Bytes: 1B 20 02 01 00
+         [201B] Opcode: 0x201B (OGF: 0x08    OCF: 0x1B)
+         Parameter Length: 2 (0x02)
+         Connection Handle: 0001
+         */
+        
+        /*
+         Bytes: 0E 04 01 1B 20 02
+         Parameter Length: 4 (0x04)
+         Status: 0x02 - Unknown Connection Identifier
+         Num HCI Command Packets: 0x01
+         Opcode: 0x201B (OGF: 0x08    OCF: 0x1B) - [Low Energy] LE Long Term Key Request Negative Reply
+         Connection Handle: 0x4000
+         */
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "longtermkeyrequestnegativereply", "--connectionhandle", "0x0001"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyLongTermKeyRequestNegativeReply = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        XCTAssertThrowsError(try Command(arguments: ["longtermkeyrequestnegativereply", "--connectionhandle", "x0001"]))
+        XCTAssertThrowsError(try Command(arguments: ["longtermkeyrequestnegativereply", "--connectionhandle"]))
+    }
     
     func testEncrypt() {
         
@@ -412,7 +445,7 @@ final class ArgumentTests: XCTestCase {
          */
         //Handle hexadecimal without prefix
         do {
-            let arguments = [/* ".build/debug/hcitool", */ "readchannelmap", "--handle", "01"]
+            let arguments = [/* ".build/debug/hcitool", */ "readchannelmap", "--handle", "0001"]
             
             let command = try Command(arguments: arguments)
             
@@ -422,7 +455,7 @@ final class ArgumentTests: XCTestCase {
         
         //Handle hexadecimal with prefix
         do {
-            let arguments = [/* ".build/debug/hcitool", */ "readchannelmap", "--handle", "0x01"]
+            let arguments = [/* ".build/debug/hcitool", */ "readchannelmap", "--handle", "0x0001"]
             
             let command = try Command(arguments: arguments)
             
@@ -432,7 +465,7 @@ final class ArgumentTests: XCTestCase {
         
         // invalid commands
         XCTAssertThrowsError(try Command(arguments: ["readchannelmap", "--handle"]))
-        XCTAssertThrowsError(try Command(arguments: ["readchannelmap", "--handle", "x01"]))
+        XCTAssertThrowsError(try Command(arguments: ["readchannelmap", "--handle", "x0001"]))
     }
     
     func testAddDeviceToWhiteList() {
