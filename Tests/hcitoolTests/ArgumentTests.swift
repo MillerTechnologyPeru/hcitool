@@ -50,7 +50,7 @@ final class ArgumentTests: XCTestCase {
         
         do {
             
-            let arguments = [/* ".build/debug/hcitool", */ "longtermkeyrequestreply", "--connectionhandle", "0x0001", "--longtermkey", "0x1122334455667788"]
+            let arguments = [/* ".build/debug/hcitool", */ "longtermkeyrequestreply", "--connectionhandle", "0x0001", "--longtermkey", "0x11223344556677881122334455667788"]
             
             let command = try Command(arguments: arguments)
             
@@ -99,11 +99,12 @@ final class ArgumentTests: XCTestCase {
     func testEncrypt() {
         
         /*
-         Bytes: 17 20 20 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 62 62 62 62 62 62 62 62 62 62 62 62 62 62 62 62
+         Bytes: 0x17, 0x20, 0x20, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11, 0x88, 0x77, 0x66, 0x55, 0x440x33, 0x22,
+         0x11, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11
          [2017] Opcode: 0x2017 (OGF: 0x08    OCF: 0x17)
          Parameter Length: 32 (0x20)
-         Key: 61616161616161616161616161616161
-         Plaintext Data: 62626262626262626262626262626262
+         Key: 11223344556677881122334455667788
+         Plaintext Data: 11223344556677881122334455667788
          */
         
         /*
@@ -111,8 +112,8 @@ final class ArgumentTests: XCTestCase {
          Status: 0x00 - Success
          Num HCI Command Packets: 0x01
          Opcode: 0x2017 (OGF: 0x08    OCF: 0x17) - [Low Energy] LE Encrypt
-         Encrypted Data: 17E6A395348487D137425770A4B54919
-         Bytes: 0e 14 01 17 20 00 17 e6 a3 95 34 84 87 d1 37 42 57 70 a4 b5 49 19
+         Encrypted Data: D12A1A7D050BD9EFD04F93635C9EF500
+         Bytes: 0x0e, 0x14, 0x01, 0x17, 0x20, 0x00, 0xd1, 0x2a, 0x1a, 0x7d, 0x05, 0x0b, 0xd9, 0xef, 0xd0, 0x4f, 0x93, 0x63, 0x5c, 0x9e, 0xf5, 0x00
          */
         
         do {
@@ -148,16 +149,6 @@ final class ArgumentTests: XCTestCase {
         
         do {
             
-            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "True"]
-            
-            let command = try Command(arguments: arguments)
-            
-            guard case .lowEnergySetAdvertisingEnable = command
-                else { XCTFail("Invalid type"); return }
-        } catch { XCTFail("\(error)") }
-        
-        do {
-            
             let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "true"]
             
             let command = try Command(arguments: arguments)
@@ -168,57 +159,7 @@ final class ArgumentTests: XCTestCase {
         
         do {
             
-            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "yes"]
-            
-            let command = try Command(arguments: arguments)
-            
-            guard case .lowEnergySetAdvertisingEnable = command
-                else { XCTFail("Invalid type"); return }
-        } catch { XCTFail("\(error)") }
-        
-        do {
-            
-            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "1"]
-            
-            let command = try Command(arguments: arguments)
-            
-            guard case .lowEnergySetAdvertisingEnable = command
-                else { XCTFail("Invalid type"); return }
-        } catch { XCTFail("\(error)") }
-        
-        do {
-            
-            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "False"]
-            
-            let command = try Command(arguments: arguments)
-            
-            guard case .lowEnergySetAdvertisingEnable = command
-                else { XCTFail("Invalid type"); return }
-        } catch { XCTFail("\(error)") }
-        
-        do {
-            
             let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "false"]
-            
-            let command = try Command(arguments: arguments)
-            
-            guard case .lowEnergySetAdvertisingEnable = command
-                else { XCTFail("Invalid type"); return }
-        } catch { XCTFail("\(error)") }
-        
-        do {
-            
-            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "no"]
-            
-            let command = try Command(arguments: arguments)
-            
-            guard case .lowEnergySetAdvertisingEnable = command
-                else { XCTFail("Invalid type"); return }
-        } catch { XCTFail("\(error)") }
-        
-        do {
-            
-            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "0"]
             
             let command = try Command(arguments: arguments)
             
