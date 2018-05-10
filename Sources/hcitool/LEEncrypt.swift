@@ -37,7 +37,6 @@ public struct LEEncryptCommand: ArgumentableCommand {
     
     public init(parameters: [Parameter<Option>]) throws {
         
-        //TODO: Fix
         guard let keyHexString = parameters.first(where: { $0.option == .key })?.value
             else {throw CommandError.optionMissingValue(Option.key.rawValue)}
         
