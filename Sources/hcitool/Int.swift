@@ -5,58 +5,92 @@
 //  Created by Marco Estrella on 5/7/18.
 //  Copyright © 2018 Pure Swift. All rights reserved.
 //
+
 import Bluetooth
 
-protocol CommandLineInteger {
+protocol CommandLineData {
     
-    //init?(_ string: String)
-    
-    //init?(_ string: String, radix: Int)
+    init?(commandLine string: String)
     
     init?(bigEndian: [UInt8])
+}
+
+protocol CommandLineInteger: CommandLineData {
+    
+    init?(_ string: String)
+}
+
+extension CommandLineData {
+    
+    init?(commandLine string: String) {
+        
+        if let value = Self.from(hexadecimal: string) {
+            
+            self = value
+            
+        } else {
+            
+            return nil
+        }
+    }
 }
 
 extension CommandLineInteger {
     
     init?(commandLine string: String) {
         
-        if string.hasPrefix("0x") {
+        if let value = Self.from(hexadecimal: string) {
             
-            let hexString = string.removeHexadecimalPrefix()
-            let characters = hexString.characters
+            self = value
             
-            let byteCount = characters.count / 2
-            var bytes = [UInt8]()
-            bytes.reserveCapacity(byteCount)
+        } else if let value = Self.init(string) {
             
-            var index = characters.startIndex
-            
-            while index < characters.endIndex {
-                
-                let nextLetterIndex = characters.index(index, offsetBy: 1)
-                
-                guard nextLetterIndex < characters.endIndex
-                    else { return nil }
-                
-                // 2 letter hex string
-                let substring = characters[index ... nextLetterIndex]
-                
-                guard let byte = UInt8(String(substring), radix: 16)
-                    else { return nil }
-                
-                bytes.append(byte)
-                
-                index = characters.index(index, offsetBy: 2)
-            }
-            
-            assert(bytes.count == byteCount)
-            
-            self.init(bigEndian: bytes)
+            self = value
             
         } else {
             
-            self.init(string)
+            return nil
         }
+    }
+}
+
+private extension CommandLineData {
+    
+    static func from(hexadecimal string: String) -> Self? {
+        
+        guard string.containsHexadecimalPrefix()
+            else { return nil }
+        
+        let hexString = string.removeHexadecimalPrefix()
+        let characters = hexString.characters
+        
+        let byteCount = characters.count / 2
+        var bytes = [UInt8]()
+        bytes.reserveCapacity(byteCount)
+        
+        var index = characters.startIndex
+        
+        while index < characters.endIndex {
+            
+            let nextLetterIndex = characters.index(index, offsetBy: 1)
+            
+            guard nextLetterIndex < characters.endIndex
+                else { return nil }
+            
+            // 2 letter hex string
+            let substring = String(characters[index ... nextLetterIndex])
+            
+            guard let byte = UInt8(substring, radix: 16)
+                else { return nil }
+            
+            bytes.append(byte)
+            
+            index = characters.index(index, offsetBy: 2)
+        }
+        
+        assert(bytes.count == byteCount)
+        
+        return Self.init(bigEndian: bytes)
     }
 }
 
@@ -107,15 +141,7 @@ extension UInt64: CommandLineInteger {
     }
 }
 
-extension UInt128: CommandLineInteger {
-    /*
-    init?(_ string: String){
-      string.data(using: .utf8)
-    }
-    
-    init?(_ string: String, radix: Int) {
-        
-    }*/
+extension UInt128: CommandLineData {
     
     init?(bigEndian bytes: [UInt8]) {
         
