@@ -76,6 +76,9 @@ public enum CommandType: String {
     
     // Encrypts the Plaintext Data
     case lowEnergyEncrypt   = "encrypt"
+    
+    // Replies to an LE Long Term Key Request event from the Controller if the Host cannot provide a Long Term Key for this Connection_Handle
+    case lowEnergyLongTermKeyRequestNegativeReply = "longtermkeyrequestnegativereply"
 }
 
 public enum Command {
@@ -144,6 +147,9 @@ public enum Command {
     
     // Encrypts the Plaintext Data
     case lowEnergyEncrypt(LEEncryptCommand)
+    
+    // Replies to an LE Long Term Key Request event from the Controller if the Host cannot provide a Long Term Key for this Connection_Handle
+    case lowEnergyLongTermKeyRequestNegativeReply(LELongTermKeyRequestNegativeReplyCommand)
 }
 
 public extension Command {
@@ -173,6 +179,7 @@ public extension Command {
         case let .lowEnergyCreateConnection(command): try command.execute(controller: controller)
         case let .lowEnergyReadRemoteFeatures(command): try command.execute(controller: controller)
         case let .lowEnergyEncrypt(command): try command.execute(controller: controller)
+        case let .lowEnergyLongTermKeyRequestNegativeReply(command): try command.execute(controller: controller)
         }
     }
 }
@@ -272,6 +279,9 @@ public extension Command {
         case .lowEnergyEncrypt:
             let command = try LEEncryptCommand(arguments: commandArguments)
             self = .lowEnergyEncrypt(command)
+        case .lowEnergyLongTermKeyRequestNegativeReply:
+            let command = try LELongTermKeyRequestNegativeReplyCommand(arguments: commandArguments)
+            self = .lowEnergyLongTermKeyRequestNegativeReply(command)
         }
     }
 }

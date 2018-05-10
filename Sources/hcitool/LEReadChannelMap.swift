@@ -26,7 +26,7 @@ public struct LEReadChannelMapCommand: ArgumentableCommand {
     
     public init(parameters: [Parameter<Option>]) throws {
         
-        guard let handleString = parameters.first(where: { $0.option == .handle })?.value.removeHexadecimalPrefix()
+        guard let handleString = parameters.first(where: { $0.option == .handle })?.value
             else { throw CommandError.optionMissingValue(Option.handle.rawValue) }
 
         guard let handle = UInt16(commandLine: handleString)

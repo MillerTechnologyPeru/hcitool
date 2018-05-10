@@ -37,12 +37,13 @@ public struct LEEncryptCommand: ArgumentableCommand {
     
     public init(parameters: [Parameter<Option>]) throws {
         
-        guard let keyString = parameters.first(where: { $0.option == .key })?.value
+        //TODO: Fix
+        guard let keyHexString = parameters.first(where: { $0.option == .key })?.value
             else {throw CommandError.optionMissingValue(Option.key.rawValue)}
         
-        guard let keyData = keyString.data(using: .utf8),
+        guard  let keyData = keyHexString.data(using: .utf8),
             let key = UInt128(data: keyData)
-            else { throw CommandError.invalidOptionValue(option: Option.key.rawValue, value: keyString) }
+            else { throw CommandError.invalidOptionValue(option: Option.key.rawValue, value: keyHexString) }
         
         guard let dataString = parameters.first(where: { $0.option == .data })?.value
             else {throw CommandError.optionMissingValue(Option.key.rawValue)}
