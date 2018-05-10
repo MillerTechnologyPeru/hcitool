@@ -60,9 +60,7 @@ public struct LEEncryptCommand: ArgumentableCommand {
         
         let encryptedData = try controller.lowEnergyEncrypt(key: key, data: data)
         
-        let encryptedDataHexString = encryptedData.data.map{ String(format:"%02x", $0) }.joined()
-        
-        print(encryptedDataHexString)
+        print(encryptedData.toHexadecimalString())
     }
 }
 
