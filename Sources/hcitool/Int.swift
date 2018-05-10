@@ -5,6 +5,7 @@
 //  Created by Marco Estrella on 5/7/18.
 //  Copyright © 2018 Pure Swift. All rights reserved.
 //
+import Bluetooth
 
 protocol CommandLineInteger {
     
@@ -102,6 +103,38 @@ extension UInt64: CommandLineInteger {
         guard bytes.count == 8
             else { return nil }
         
-        self.init(bigEndian: UInt64(bytes: (bytes[0], bytes[1], bytes[2], bytes[3], bytes[5], bytes[6], bytes[7], bytes[8])))
+        self.init(bigEndian: UInt64(bytes: (bytes[0], bytes[1], bytes[2], bytes[3], bytes[4], bytes[5], bytes[6], bytes[7])))
+    }
+}
+
+extension UInt128: CommandLineInteger {
+    
+    init?(_ string: String){
+        
+        let radix = UInt128._determineRadixFromString(string)
+        let inputString = radix == 10 ? string : String(string.dropFirst(2))
+    
+        self.init(inputString, radix: radix)
+    }
+    
+    init?(_ string: String, radix: Int){
+        
+    }
+    
+    internal static func _determineRadixFromString(_ string: String) -> Int {
+        switch string.prefix(2) {
+        case "0b": return 2
+        case "0o": return 8
+        case "0x": return 16
+        default: return 10
+        }
+    }
+    
+    init?(bigEndian bytes: [UInt8]) {
+        
+        guard bytes.count == 16
+            else { return nil }
+        
+        self.init(bigEndian: UInt128(bytes: (bytes[0], bytes[1], bytes[2], bytes[3], bytes[4], bytes[5], bytes[6], bytes[7], bytes[8], bytes[9], bytes[10], bytes[11], bytes[12], bytes[13], bytes[14], bytes[15])))
     }
 }

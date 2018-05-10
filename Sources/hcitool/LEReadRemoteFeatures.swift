@@ -43,10 +43,13 @@ public struct LEReadRemoteFeaturesCommand: ArgumentableCommand {
     
     // MARK: - Methods
     
+    /// Read remote low energy features.
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        let lowEnergyFeatureSet = try controller.lowEnergyReadRemoteUsedFeatures(connectionHandle: handle)
-        print("FeatureSet Count - \(lowEnergyFeatureSet.count)")
+        let features = try controller.lowEnergyReadRemoteUsedFeatures(connectionHandle: handle)
+        
+        print("LE Remote Features (\(features.count)):")
+        features.forEach { print($0.name) }
     }
 }
 
