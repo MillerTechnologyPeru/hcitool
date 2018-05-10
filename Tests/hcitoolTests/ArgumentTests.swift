@@ -117,7 +117,7 @@ final class ArgumentTests: XCTestCase {
         
         do {
             
-            let arguments = [/* ".build/debug/hcitool", */ "encrypt", "--key", "aaaaaaaaaaaaaaaa", "--data", "bbbbbbbbbbbbbbbb"]
+            let arguments = [/* ".build/debug/hcitool", */ "encrypt", "--key", "11223344556677881122334455667788", "--data", "11223344556677881122334455667788"]
             
             let command = try Command(arguments: arguments)
             
@@ -126,9 +126,9 @@ final class ArgumentTests: XCTestCase {
         } catch { XCTFail("\(error)") }
         
         XCTAssertThrowsError(try Command(arguments: ["encrypt", "--key"]))
-        XCTAssertThrowsError(try Command(arguments: ["encrypt", "--key", "aaaaaaaaaaaaaaaa", "--data"]))
-        XCTAssertThrowsError(try Command(arguments: ["encrypt", "--key", "aaaaaaaaaaa", "--data", "bbbbbbbbbbbbbbbb"]))
-        XCTAssertThrowsError(try Command(arguments: ["encrypt", "--key", "aaaaaaaaaaaaaaaa", "--data", "bbbbbbb"]))
+        XCTAssertThrowsError(try Command(arguments: ["encrypt", "--key", "11223344556677881122334455667788", "--data"]))
+        XCTAssertThrowsError(try Command(arguments: ["encrypt", "--key", "112233445566778811223344556", "--data", "11223344556677881122334455667788"]))
+        XCTAssertThrowsError(try Command(arguments: ["encrypt", "--key", "11223344556677881122334455667788", "--data", "11223344556"]))
     }
     
     func testSetAdvertisingEnable() {

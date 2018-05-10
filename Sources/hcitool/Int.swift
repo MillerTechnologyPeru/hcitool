@@ -9,9 +9,9 @@ import Bluetooth
 
 protocol CommandLineInteger {
     
-    init?(_ string: String)
+    //init?(_ string: String)
     
-    init?(_ string: String, radix: Int)
+    //init?(_ string: String, radix: Int)
     
     init?(bigEndian: [UInt8])
 }
@@ -108,27 +108,14 @@ extension UInt64: CommandLineInteger {
 }
 
 extension UInt128: CommandLineInteger {
-    
+    /*
     init?(_ string: String){
+      string.data(using: .utf8)
+    }
+    
+    init?(_ string: String, radix: Int) {
         
-        let radix = UInt128._determineRadixFromString(string)
-        let inputString = radix == 10 ? string : String(string.dropFirst(2))
-    
-        self.init(inputString, radix: radix)
-    }
-    
-    init?(_ string: String, radix: Int){
-        
-    }
-    
-    internal static func _determineRadixFromString(_ string: String) -> Int {
-        switch string.prefix(2) {
-        case "0b": return 2
-        case "0o": return 8
-        case "0x": return 16
-        default: return 10
-        }
-    }
+    }*/
     
     init?(bigEndian bytes: [UInt8]) {
         

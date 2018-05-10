@@ -27,10 +27,10 @@ public struct LESetAdvertisingEnableCommand: ArgumentableCommand {
     public init(parameters: [Parameter<Option>]) throws {
         
         guard let enableString = parameters.first(where: { $0.option == .enable })?.value,
-            let enable = Bool(enable: enableString)
+            let enable = CommandLineBool(rawValue: enableString)
             else { throw CommandError.optionMissingValue(Option.enable.rawValue) }
         
-        self.enable = enable
+        self.enable = enable.boolValue
     }
     
     // MARK: - Methods

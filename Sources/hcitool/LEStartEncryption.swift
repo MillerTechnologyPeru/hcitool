@@ -53,8 +53,7 @@ public struct LEStartEncryptionCommand: ArgumentableCommand {
         guard let longTermKeyString = parameters.first(where: { $0.option == .longTermKey })?.value.removeHexadecimalPrefix()
             else { throw CommandError.optionMissingValue(Option.longTermKey.rawValue) }
         
-        guard let longTermKeyData = longTermKeyString.data(using: .utf8),
-            let longTermKey = UInt128.init(data: longTermKeyData)
+        guard let longTermKey = UInt128(commandLine: longTermKeyString)
             else { throw CommandError.invalidOptionValue(option: Option.longTermKey.rawValue, value: longTermKeyString) }
         
         self.connectionHandle = handle
