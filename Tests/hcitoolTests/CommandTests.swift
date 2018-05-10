@@ -25,8 +25,22 @@ final class CommandTests: XCTestCase {
         ("testRemoveDeviceFromWhiteList", testRemoveDeviceFromWhiteList),
         ("testUpdateConnection", testUpdateConnection),
         ("testSetAdvertisingEnable", testSetAdvertisingEnable),
-        ("testEncrypt", testEncrypt)
+        ("testEncrypt", testEncrypt),
+        ("testLongTermKeyRequestNegativeReply", testLongTermKeyRequestNegativeReply)
     ]
+    
+    func testLongTermKeyRequestNegativeReply() {
+        
+        let testController = TestHostController()
+        let arguments = [".build/debug/hcitool", "longtermkeyrequestnegativereply", "--connectionhandle", "0x0001"]
+        
+        testController.queue = [
+            .command(LowEnergyCommand.longTermKeyNegativeReply.opcode,[0x1B, 0x20, 0x02, 0x01, 0x00]),
+            .event([0x0E, 0x04, 0x01, 0x1B, 0x20, 0x02])
+        ]
+        
+        XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
+    }
     
     func testEncrypt() {
         
