@@ -25,8 +25,44 @@ final class ArgumentTests: XCTestCase {
         ("testUpdateConnection", testUpdateConnection),
         ("testSetAdvertisingEnable", testSetAdvertisingEnable),
         ("testEncrypt", testEncrypt),
-        ("testLongTermKeyRequestNegativeReply", testLongTermKeyRequestNegativeReply)
+        ("testLongTermKeyRequestNegativeReply", testLongTermKeyRequestNegativeReply),
+        ("testLongTermKeyRequestReply", testLongTermKeyRequestReply)
     ]
+    
+    func testLongTermKeyRequestReply() {
+        
+        /*
+         Bytes: 1a 20 12 01 00 31 31 32 32 33 33 34 34 35 35 36 36 37 37 38 38
+         [201A] Opcode: 0x201A (OGF: 0x08    OCF: 0x1A)
+         Parameter Length: 18 (0x12)
+         Connection Handle: 0001
+         Long Term Key: 38383737363635353434333332323131
+         */
+        
+        /*
+         Bytes: 0e 04 01 1a 20 02
+         Parameter Length: 4 (0x04)
+         Status: 0x02 - Unknown Connection Identifier
+         Num HCI Command Packets: 0x01
+         Opcode: 0x201A (OGF: 0x08    OCF: 0x1A) - [Low Energy] LE Long Term Key Request Reply
+         Connection Handle: 0x2900
+         */
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "longtermkeyrequestreply", "--connectionhandle", "0x0001", "--longtermkey", "0x1122334455667788"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyLongTermKeyRequestReply = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        XCTAssertThrowsError(try Command(arguments: ["longtermkeyrequestreply", "--connectionhandle", "x0001"]))
+        XCTAssertThrowsError(try Command(arguments: ["longtermkeyrequestreply", "--connectionhandle"]))
+        XCTAssertThrowsError(try Command(arguments: ["longtermkeyrequestreply", "--connectionhandle", "0x0001", "--longtermkey"]))
+        XCTAssertThrowsError(try Command(arguments: ["longtermkeyrequestreply", "--connectionhandle", "0x0001", "--longtermkey", "0x11223344556677"]))
+    }
     
     func testLongTermKeyRequestNegativeReply() {
         
