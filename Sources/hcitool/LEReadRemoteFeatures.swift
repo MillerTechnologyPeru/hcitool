@@ -43,7 +43,6 @@ public struct LEReadRemoteFeaturesCommand: ArgumentableCommand {
     
     // MARK: - Methods
     
-    /// Tests adding a device to the LE white list.
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
         let lowEnergyFeatureSet = try controller.lowEnergyReadRemoteUsedFeatures(connectionHandle: handle)

@@ -54,7 +54,7 @@ public struct LERemoveDeviceFromWhiteListCommand: ArgumentableCommand {
     
     // MARK: - Methods
     
-    /// Tests adding a device to the LE white list.
+    /// Tests removing a device from the LE white list.
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
         let whiteListDevice = self.device.hciValue

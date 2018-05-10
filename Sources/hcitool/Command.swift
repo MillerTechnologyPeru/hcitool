@@ -82,6 +82,9 @@ public enum CommandType: String {
     
     // Replies to an LE Long Term Key Request event from the Controller, and specifies the Long_Term_Key parameter that shall be used for this Connection_Handle.
     case lowEnergyLongTermKeyRequestReply = "longtermkeyrequestreply"
+    
+    //  It's used to authenticate the given encryption key associated with the remote device specified by the Connection_Handle, and once authenticated will encrypt the connection.
+    case lowEnergyStartEncryption = "startEncryption"
 }
 
 public enum Command {
@@ -156,6 +159,9 @@ public enum Command {
     
     // Replies to an LE Long Term Key Request event from the Controller, and specifies the Long_Term_Key parameter that shall be used for this Connection_Handle.
     case lowEnergyLongTermKeyRequestReply(LELongTermKeyRequestReplyCommand)
+    
+    //  It's used to authenticate the given encryption key associated with the remote device specified by the Connection_Handle, and once authenticated will encrypt the connection.
+    case lowEnergyStartEncryption(LEStartEncryptionCommand)
 }
 
 public extension Command {
@@ -187,6 +193,7 @@ public extension Command {
         case let .lowEnergyEncrypt(command): try command.execute(controller: controller)
         case let .lowEnergyLongTermKeyRequestNegativeReply(command): try command.execute(controller: controller)
         case let .lowEnergyLongTermKeyRequestReply(command): try command.execute(controller: controller)
+        case let .lowEnergyStartEncryption(command): try command.execute(controller: controller)
         }
     }
 }
@@ -292,6 +299,9 @@ public extension Command {
         case .lowEnergyLongTermKeyRequestReply:
             let command = try LELongTermKeyRequestReplyCommand(arguments: commandArguments)
             self = .lowEnergyLongTermKeyRequestReply(command)
+        case .lowEnergyStartEncryption:
+            let command = try LEStartEncryptionCommand(arguments: commandArguments)
+            self = .lowEnergyStartEncryption(command)
         }
     }
 }

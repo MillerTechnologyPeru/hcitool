@@ -9,20 +9,24 @@
 import Bluetooth
 import Foundation
 
-public struct LELongTermKeyRequestReplyCommand: ArgumentableCommand {
+public struct LEStartEncryptionCommand: ArgumentableCommand {
     
     // MARK: - Properties
     
     public static let commandType: CommandType = .lowEnergyLongTermKeyRequestReply
     
     public var connectionHandle: UInt16
+    public let randomNumber: UInt64
+    public let encryptedDiversifier: UInt16
     public var longTermKey: UInt128
     
     // MARK: - Initialization
     
-    public init(connectionHandle: UInt16, longTermKey: UInt128) {
+    public init(connectionHandle: UInt16, randomNumber: UInt64, encryptedDiversifier: UInt16, longTermKey: UInt128) {
         
         self.connectionHandle = connectionHandle
+        self.randomNumber = randomNumber
+        self.encryptedDiversifier = encryptedDiversifier
         self.longTermKey = longTermKey
     }
     
@@ -34,6 +38,18 @@ public struct LELongTermKeyRequestReplyCommand: ArgumentableCommand {
         guard let handle = UInt16(commandLine: handleString)
             else { throw CommandError.invalidOptionValue(option: Option.connectionHandle.rawValue, value: handleString) }
         
+        guard let randomNumberString = parameters.first(where: { $0.option == .randomNumber })?.value
+            else { throw CommandError.optionMissingValue(Option.randomNumber.rawValue) }
+        
+        guard let randomNumber = UInt64(commandLine: randomNumberString)
+            else { throw CommandError.invalidOptionValue(option: Option.randomNumber.rawValue, value: randomNumberString) }
+        
+        guard let encryptedDiversifierString = parameters.first(where: { $0.option == .encryptedDiversifier })?.value
+            else { throw CommandError.optionMissingValue(Option.encryptedDiversifier.rawValue) }
+        
+        guard let encryptedDiversifier = UInt16(commandLine: encryptedDiversifierString)
+            else { throw CommandError.invalidOptionValue(option: Option.encryptedDiversifier.rawValue, value: encryptedDiversifierString) }
+        
         guard let longTermKeyString = parameters.first(where: { $0.option == .longTermKey })?.value.removeHexadecimalPrefix()
             else { throw CommandError.optionMissingValue(Option.longTermKey.rawValue) }
         
@@ -42,6 +58,8 @@ public struct LELongTermKeyRequestReplyCommand: ArgumentableCommand {
             else { throw CommandError.invalidOptionValue(option: Option.longTermKey.rawValue, value: longTermKeyString) }
         
         self.connectionHandle = handle
+        self.encryptedDiversifier = encryptedDiversifier
+        self.randomNumber = randomNumber
         self.longTermKey = longTermKey
     }
     
@@ -49,21 +67,23 @@ public struct LELongTermKeyRequestReplyCommand: ArgumentableCommand {
     
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        let handle = try controller.lowEnergyLongTermKeyRequestReply(handle: connectionHandle, longTermKey: longTermKey)
-        
-        print("Connection Handle: \(handle)")
+        try controller.lowEnergyStartEncryption(connectionHandle: connectionHandle, randomNumber: randomNumber,
+                                                             encryptedDiversifier: encryptedDiversifier, longTermKey: longTermKey)
     }
 }
 
-public extension LELongTermKeyRequestReplyCommand {
+public extension LEStartEncryptionCommand {
     
     public enum Option: String, OptionProtocol {
         
         case connectionHandle = "connectionhandle"
+        case randomNumber     = "randomnumber"
+        case encryptedDiversifier = "encrypteddiversifier"
         case longTermKey      = "longtermkey"
         
-        public static let all: Set<Option> = [.connectionHandle, .longTermKey]
+        public static let all: Set<Option> = [.connectionHandle, .randomNumber, .encryptedDiversifier, .longTermKey]
     }
 }
+
 
 

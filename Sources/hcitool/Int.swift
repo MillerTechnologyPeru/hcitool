@@ -83,3 +83,25 @@ extension UInt16: CommandLineInteger {
         self.init(bigEndian: UInt16(bytes: (bytes[0], bytes[1])))
     }
 }
+
+extension UInt32: CommandLineInteger {
+    
+    init?(bigEndian bytes: [UInt8]) {
+        
+        guard bytes.count == 4
+            else { return nil }
+        
+        self.init(bigEndian: UInt32(bytes: (bytes[0], bytes[1], bytes[2], bytes[3])))
+    }
+}
+
+extension UInt64: CommandLineInteger {
+    
+    init?(bigEndian bytes: [UInt8]) {
+        
+        guard bytes.count == 8
+            else { return nil }
+        
+        self.init(bigEndian: UInt64(bytes: (bytes[0], bytes[1], bytes[2], bytes[3], bytes[5], bytes[6], bytes[7], bytes[8])))
+    }
+}

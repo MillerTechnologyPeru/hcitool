@@ -37,7 +37,6 @@ public struct LELongTermKeyRequestNegativeReplyCommand: ArgumentableCommand {
     
     // MARK: - Methods
     
-    /// Tests the Setting of Random Address.
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
         let handle = try controller.lowEnergyLongTermKeyRequestNegativeReply(handle: connectionHandle)
