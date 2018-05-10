@@ -24,7 +24,7 @@ extension CommandLineData {
     
     init?(commandLine string: String) {
         
-        if let value = Self.from(hexadecimal: string) {
+        if let value = Self.from(hexadecimal: string, requiresPrefix: false) {
             
             self = value
             
@@ -39,7 +39,7 @@ extension CommandLineInteger {
     
     init?(commandLine string: String) {
         
-        if let value = Self.from(hexadecimal: string) {
+        if let value = Self.from(hexadecimal: string, requiresPrefix: false) {
             
             self = value
             
@@ -56,12 +56,22 @@ extension CommandLineInteger {
 
 private extension CommandLineData {
     
-    static func from(hexadecimal string: String) -> Self? {
+    static func from(hexadecimal string: String, requiresPrefix: Bool) -> Self? {
         
-        guard string.containsHexadecimalPrefix()
-            else { return nil }
+        let hexString: String
         
-        let hexString = string.removeHexadecimalPrefix()
+        if string.containsHexadecimalPrefix() {
+            
+            hexString = string.removeHexadecimalPrefix()
+            
+        } else {
+            
+            guard requiresPrefix == false
+                else { return nil }
+            
+            hexString = string
+        }
+        
         let characters = hexString.characters
         
         let byteCount = characters.count / 2
