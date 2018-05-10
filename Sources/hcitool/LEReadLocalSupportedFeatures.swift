@@ -21,17 +21,12 @@ public struct LEReadLocalSupportedFeaturesCommand: CommandProtocol {
     
     // MARK: - Methods
     
-    /// Tests the reading of local supported features
+    /// Reading the local supported features.
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        let lowEnergyFeatureSet = try controller.readLocalSupportedFeatures()
+        let features = try controller.readLocalSupportedFeatures()
         
-        print("Feature Set Count \(lowEnergyFeatureSet.count)")
-        
-        print("Items:")
-        for  feature in lowEnergyFeatureSet {
-            
-            print("\(feature.name)")
-        }
+        print("LE Local Features (\(features.count)):")
+        features.forEach { print($0.name) }
     }
 }
