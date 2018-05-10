@@ -26,8 +26,23 @@ final class CommandTests: XCTestCase {
         ("testUpdateConnection", testUpdateConnection),
         ("testSetAdvertisingEnable", testSetAdvertisingEnable),
         ("testEncrypt", testEncrypt),
+        ("testLongTermKeyRequestReply", testLongTermKeyRequestReply),
         ("testLongTermKeyRequestNegativeReply", testLongTermKeyRequestNegativeReply)
     ]
+    
+    func testLongTermKeyRequestReply() {
+        
+        let testController = TestHostController()
+        let arguments = [".build/debug/hcitool", "longtermkeyrequestreply", "--connectionhandle", "0x0001", "--longtermkey", "0x1122334455667788"]
+        
+        testController.queue = [
+            .command(LowEnergyCommand.longTermKeyReply.opcode,[0x1a, 0x20, 0x12, 0x01, 0x00, 0x31, 0x31, 0x32, 0x32, 0x33, 0x33, 0x34, 0x34, 0x35, 0x35, 0x36, 0x36, 0x37, 0x37, 0x38, 0x38]),
+            .event([0x0E, 0x04, 0x01, 0x1A, 0x20, 0x02])
+        ]
+        
+        //Command Complete [201A] - LE Long Term Key Request Reply - Unknown Connection Identifier (0x2)
+        XCTAssertThrowsError(try HCIToolTests.run(arguments: arguments, controller: testController))
+    }
     
     func testLongTermKeyRequestNegativeReply() {
         
@@ -39,7 +54,8 @@ final class CommandTests: XCTestCase {
             .event([0x0E, 0x04, 0x01, 0x1B, 0x20, 0x02])
         ]
         
-        XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
+        ///Command Complete [201B] - LE Long Term Key Request Reply - Unknown Connection Identifier (0x2)
+        XCTAssertThrowsError(try HCIToolTests.run(arguments: arguments, controller: testController))
     }
     
     func testEncrypt() {
