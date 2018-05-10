@@ -79,6 +79,9 @@ public enum CommandType: String {
     
     // Replies to an LE Long Term Key Request event from the Controller if the Host cannot provide a Long Term Key for this Connection_Handle
     case lowEnergyLongTermKeyRequestNegativeReply = "longtermkeyrequestnegativereply"
+    
+    // Replies to an LE Long Term Key Request event from the Controller, and specifies the Long_Term_Key parameter that shall be used for this Connection_Handle.
+    case lowEnergyLongTermKeyRequestReply = "longtermkeyrequestreply"
 }
 
 public enum Command {
@@ -150,6 +153,9 @@ public enum Command {
     
     // Replies to an LE Long Term Key Request event from the Controller if the Host cannot provide a Long Term Key for this Connection_Handle
     case lowEnergyLongTermKeyRequestNegativeReply(LELongTermKeyRequestNegativeReplyCommand)
+    
+    // Replies to an LE Long Term Key Request event from the Controller, and specifies the Long_Term_Key parameter that shall be used for this Connection_Handle.
+    case lowEnergyLongTermKeyRequestReply(LELongTermKeyRequestReplyCommand)
 }
 
 public extension Command {
@@ -180,6 +186,7 @@ public extension Command {
         case let .lowEnergyReadRemoteFeatures(command): try command.execute(controller: controller)
         case let .lowEnergyEncrypt(command): try command.execute(controller: controller)
         case let .lowEnergyLongTermKeyRequestNegativeReply(command): try command.execute(controller: controller)
+        case let .lowEnergyLongTermKeyRequestReply(command): try command.execute(controller: controller)
         }
     }
 }
@@ -282,6 +289,9 @@ public extension Command {
         case .lowEnergyLongTermKeyRequestNegativeReply:
             let command = try LELongTermKeyRequestNegativeReplyCommand(arguments: commandArguments)
             self = .lowEnergyLongTermKeyRequestNegativeReply(command)
+        case .lowEnergyLongTermKeyRequestReply:
+            let command = try LELongTermKeyRequestReplyCommand(arguments: commandArguments)
+            self = .lowEnergyLongTermKeyRequestReply(command)
         }
     }
 }
