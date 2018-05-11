@@ -30,8 +30,23 @@ final class CommandTests: XCTestCase {
         ("testLongTermKeyRequestNegativeReply", testLongTermKeyRequestNegativeReply),
         ("testLEReceiverTest", testLEReceiverTest),
         ("testTransmitterTest", testTransmitterTest),
-        ("testTestEnd", testTestEnd)
+        ("testTestEnd", testTestEnd),
+        ("testReadSupportedStates", testReadSupportedStates)
     ]
+    
+    func testReadSupportedStates() {
+    
+        let testController = TestHostController()
+        let arguments = [".build/debug/hcitool", "readsupportedstates"]
+        
+        testController.queue = [
+            .command(LowEnergyCommand.readSupportedStates.opcode,[0x1c, 0x20, 0x00]),
+            .event([0x0e, 0x0c, 0x01, 0x1c, 0x20, 0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0x03, 0x00, 0x00])
+        ]
+        
+        //garbageResponse(8 bytes)
+        XCTAssertThrowsError(try HCIToolTests.run(arguments: arguments, controller: testController))
+    }
     
     func testTestEnd() {
         let testController = TestHostController()

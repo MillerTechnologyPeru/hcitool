@@ -30,14 +30,40 @@ final class ArgumentTests: XCTestCase {
         ("testLEReceiverTest", testLEReceiverTest),
         ("testTransmitterTest", testTransmitterTest),
         ("testTransmitterTest", testTransmitterTest),
-        ("testTestEnd", testTestEnd)
+        ("testTestEnd", testTestEnd),
+        ("testReadSupportedStates", testReadSupportedStates)
     ]
+    
+    func testReadSupportedStates() {
+        
+        /* [201C] Opcode: 0x201C (OGF: 0x08    OCF: 0x1C)
+         Parameter Length: 0 (0x00)
+         Hexadecimals: 1c 20 00
+         */
+        
+        /* Parameter Length: 12 (0x0C)
+         Status: 0x00 - Success
+         Num HCI Command Packets: 0x01
+         Opcode: 0x201C (OGF: 0x08    OCF: 0x1C) - [Low Energy] LE Read Supported States
+         LE States: 0X000003FFFFFFFFFF
+         Hexadecimals:0e 0c 01 1c 20 00 ff ff ff ff ff 03 00 00
+         */
+        
+        do {
+            let arguments = [/* ".build/debug/hcitool", */ "readsupportedstates"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyReadSupportedStates = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+    }
     
     func testTestEnd() {
         
         /* [201F] Opcode: 0x201F (OGF: 0x08    OCF: 0x1F)
          Parameter Length: 0 (0x00)
-         Bytes: 1f 20 00
+         Hexadecimals: 1f 20 00
          */
         
         /* Parameter Length: 6 (0x06)
@@ -45,7 +71,7 @@ final class ArgumentTests: XCTestCase {
          Num HCI Command Packets: 0x01
          Opcode: 0x201F (OGF: 0x08    OCF: 0x1F) - [Low Energy] LE Test End
          Number Of Packets: 0
-         Bytes: 0e 06 01 1f 20 00 00 00
+         Hexadecimals: 0e 06 01 1f 20 00 00 00
          */
         
         do {
@@ -67,7 +93,7 @@ final class ArgumentTests: XCTestCase {
          TX Frequency: 01
          Length Of Test Data: 02
          Packet Payload: 00
-         Bytes: 1e 20 02 01 02
+         Hexadecimals: 1e 20 02 01 02
          */
         
         /*
@@ -75,7 +101,7 @@ final class ArgumentTests: XCTestCase {
          Status: 0x0C - Command Disallowed
          Num HCI Command Packets: 0x01
          Opcode: 0x201E (OGF: 0x08    OCF: 0x1E) - [Low Energy] LE Transmitter Test
-         Bytes: 0e 04 01 1e 20 0c
+         Hexadecimals: 0e 04 01 1e 20 0c
          */
         
         do {
@@ -97,14 +123,14 @@ final class ArgumentTests: XCTestCase {
     
     func testLEReceiverTest() {
         
-        /* Bytes: 1d 20 01 02
+        /* Hexadecimals: 1d 20 01 02
          [201D] Opcode: 0x201D (OGF: 0x08    OCF: 0x1D)
          Parameter Length: 1 (0x01)
          RX Frequency: 02
 
          */
         
-        /* Bytes: 0e 04 01 1d 20 0c
+        /* Hexadecimals: 0e 04 01 1d 20 0c
          Command Complete [201D] - LE Receiver Test - Command Disallowed (0xC)
          Parameter Length: 4 (0x04)
          Status: 0x0C - Command Disallowed
@@ -129,7 +155,7 @@ final class ArgumentTests: XCTestCase {
     func testLongTermKeyRequestReply() {
         
         /*
-         Bytes: 1a 20 12 01 00 31 31 32 32 33 33 34 34 35 35 36 36 37 37 38 38
+         Hexadecimals: 1a 20 12 01 00 31 31 32 32 33 33 34 34 35 35 36 36 37 37 38 38
          [201A] Opcode: 0x201A (OGF: 0x08    OCF: 0x1A)
          Parameter Length: 18 (0x12)
          Connection Handle: 0001
@@ -137,7 +163,7 @@ final class ArgumentTests: XCTestCase {
          */
         
         /*
-         Bytes: 0e 04 01 1a 20 02
+         Hexadecimals: 0e 04 01 1a 20 02
          Parameter Length: 4 (0x04)
          Status: 0x02 - Unknown Connection Identifier
          Num HCI Command Packets: 0x01
@@ -164,14 +190,14 @@ final class ArgumentTests: XCTestCase {
     func testLongTermKeyRequestNegativeReply() {
         
         /*
-         Bytes: 1B 20 02 01 00
+         Hexadecimals: 1B 20 02 01 00
          [201B] Opcode: 0x201B (OGF: 0x08    OCF: 0x1B)
          Parameter Length: 2 (0x02)
          Connection Handle: 0001
          */
         
         /*
-         Bytes: 0E 04 01 1B 20 02
+         Hexadecimals: 0E 04 01 1B 20 02
          Parameter Length: 4 (0x04)
          Status: 0x02 - Unknown Connection Identifier
          Num HCI Command Packets: 0x01
@@ -196,7 +222,7 @@ final class ArgumentTests: XCTestCase {
     func testEncrypt() {
         
         /*
-         Bytes: 0x17, 0x20, 0x20, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11, 0x88, 0x77, 0x66, 0x55, 0x440x33, 0x22,
+         Hexadecimals: 0x17, 0x20, 0x20, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11, 0x88, 0x77, 0x66, 0x55, 0x440x33, 0x22,
          0x11, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11
          [2017] Opcode: 0x2017 (OGF: 0x08    OCF: 0x17)
          Parameter Length: 32 (0x20)
@@ -210,7 +236,7 @@ final class ArgumentTests: XCTestCase {
          Num HCI Command Packets: 0x01
          Opcode: 0x2017 (OGF: 0x08    OCF: 0x17) - [Low Energy] LE Encrypt
          Encrypted Data: D12A1A7D050BD9EFD04F93635C9EF500
-         Bytes: 0x0e, 0x14, 0x01, 0x17, 0x20, 0x00, 0xd1, 0x2a, 0x1a, 0x7d, 0x05, 0x0b, 0xd9, 0xef, 0xd0, 0x4f, 0x93, 0x63, 0x5c, 0x9e, 0xf5, 0x00
+         Hexadecimals: 0x0e, 0x14, 0x01, 0x17, 0x20, 0x00, 0xd1, 0x2a, 0x1a, 0x7d, 0x05, 0x0b, 0xd9, 0xef, 0xd0, 0x4f, 0x93, 0x63, 0x5c, 0x9e, 0xf5, 0x00
          */
         
         do {
