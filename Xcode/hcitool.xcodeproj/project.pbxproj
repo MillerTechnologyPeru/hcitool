@@ -33,6 +33,8 @@
 		5156611D20A603B300C230A4 /* LETransmitterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5156611B20A603B300C230A4 /* LETransmitterTest.swift */; };
 		5156611F20A6353100C230A4 /* LETestEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5156611E20A6353100C230A4 /* LETestEnd.swift */; };
 		5156612020A6353100C230A4 /* LETestEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5156611E20A6353100C230A4 /* LETestEnd.swift */; };
+		5156612220A647CA00C230A4 /* LERemoteConnectionParameterRequestNegativeReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5156612120A647CA00C230A4 /* LERemoteConnectionParameterRequestNegativeReply.swift */; };
+		5156612320A647CA00C230A4 /* LERemoteConnectionParameterRequestNegativeReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5156612120A647CA00C230A4 /* LERemoteConnectionParameterRequestNegativeReply.swift */; };
 		5161200B20904D6B00CFB50B /* LEReadLocalSupportedFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5161200A20904D6B00CFB50B /* LEReadLocalSupportedFeatures.swift */; };
 		5161200C20904D6B00CFB50B /* LEReadLocalSupportedFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5161200A20904D6B00CFB50B /* LEReadLocalSupportedFeatures.swift */; };
 		5161200E20905CFB00CFB50B /* LESetEventMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5161200D20905CFB00CFB50B /* LESetEventMask.swift */; };
@@ -144,6 +146,7 @@
 		5156611820A5E2A300C230A4 /* LEReceiverTest .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LEReceiverTest .swift"; sourceTree = "<group>"; };
 		5156611B20A603B300C230A4 /* LETransmitterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LETransmitterTest.swift; sourceTree = "<group>"; };
 		5156611E20A6353100C230A4 /* LETestEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LETestEnd.swift; sourceTree = "<group>"; };
+		5156612120A647CA00C230A4 /* LERemoteConnectionParameterRequestNegativeReply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LERemoteConnectionParameterRequestNegativeReply.swift; sourceTree = "<group>"; };
 		5161200A20904D6B00CFB50B /* LEReadLocalSupportedFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEReadLocalSupportedFeatures.swift; sourceTree = "<group>"; };
 		5161200D20905CFB00CFB50B /* LESetEventMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LESetEventMask.swift; sourceTree = "<group>"; };
 		5161201020907A0600CFB50B /* LEReadBufferSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEReadBufferSize.swift; sourceTree = "<group>"; };
@@ -241,6 +244,7 @@
 				5156611820A5E2A300C230A4 /* LEReceiverTest .swift */,
 				5156611B20A603B300C230A4 /* LETransmitterTest.swift */,
 				5156611E20A6353100C230A4 /* LETestEnd.swift */,
+				5156612120A647CA00C230A4 /* LERemoteConnectionParameterRequestNegativeReply.swift */,
 			);
 			name = Command;
 			sourceTree = "<group>";
@@ -492,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				512AACA520A3A5EE00BCCEB2 /* LEEncrypt.swift in Sources */,
+				5156612220A647CA00C230A4 /* LERemoteConnectionParameterRequestNegativeReply.swift in Sources */,
 				6E560BB8206ADE9200EAE3E7 /* main.swift in Sources */,
 				51EFD83E2095B7C900867571 /* LEReadWhiteListSize.swift in Sources */,
 				512F4B5A208F662B00576F34 /* LECreateConnectionCancel.swift in Sources */,
@@ -546,6 +551,7 @@
 				5156612020A6353100C230A4 /* LETestEnd.swift in Sources */,
 				512AACAF20A4A86C00BCCEB2 /* LEStartEncryption.swift in Sources */,
 				5161201220907A0600CFB50B /* LEReadBufferSize.swift in Sources */,
+				5156612320A647CA00C230A4 /* LERemoteConnectionParameterRequestNegativeReply.swift in Sources */,
 				6E560BFE206B00B600EAE3E7 /* Option.swift in Sources */,
 				6E560BF7206AFFE900EAE3E7 /* ArgumentTests.swift in Sources */,
 				512AACB520A4F00900BCCEB2 /* LEReadSupportedStates.swift in Sources */,
