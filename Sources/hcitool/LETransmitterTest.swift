@@ -52,7 +52,7 @@ public struct LETransmitterTestCommand: ArgumentableCommand {
         
         guard let payloadUint8 = UInt8(commandLine: payloadString),
             let packetPayload = LowEnergyPacketPayload(rawValue: payloadUint8)
-            else { throw CommandError.invalidOptionValue(option: Option.payload.rawValue, value: txChannelString) }
+            else { throw CommandError.invalidOptionValue(option: Option.payload.rawValue, value: payloadString) }
         
         self.txChannel = txChannel
         self.lengthOfTestData = length

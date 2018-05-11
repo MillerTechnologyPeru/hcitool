@@ -27,8 +27,47 @@ final class ArgumentTests: XCTestCase {
         ("testEncrypt", testEncrypt),
         ("testLongTermKeyRequestNegativeReply", testLongTermKeyRequestNegativeReply),
         ("testLongTermKeyRequestReply", testLongTermKeyRequestReply),
-        ("testLEReceiverTest", testLEReceiverTest)
+        ("testLEReceiverTest", testLEReceiverTest),
+        ("testTransmitterTest", testTransmitterTest),
+        ("testTransmitterTest", testTransmitterTest)
     ]
+    
+    func testTransmitterTest() {
+        
+        /* [201E]
+         Opcode: 0x201E (OGF: 0x08    OCF: 0x1E)
+         [201E] Opcode: 0x201E (OGF: 0x08    OCF: 0x1E)
+         Parameter Length: 2 (0x02)
+         TX Frequency: 01
+         Length Of Test Data: 02
+         Packet Payload: 00
+         Bytes: 1e 20 02 01 02
+         */
+        
+        /*
+         Parameter Length: 4 (0x04)
+         Status: 0x0C - Command Disallowed
+         Num HCI Command Packets: 0x01
+         Opcode: 0x201E (OGF: 0x08    OCF: 0x1E) - [Low Energy] LE Transmitter Test
+         Bytes: 0e 04 01 1e 20 0c
+         */
+        
+        do {
+            let arguments = [/* ".build/debug/hcitool", */ "transmittertest", "--txchannel", "0x01", "--length", "0x02", "--payload", "0x02"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyTransmitterTest = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        XCTAssertThrowsError(try Command(arguments: ["transmittertest", "--txchannel"]))
+        XCTAssertThrowsError(try Command(arguments: ["transmittertest", "--txchannel", "x01"]))
+        XCTAssertThrowsError(try Command(arguments: ["transmittertest", "--txchannel", "0x01", "--length"]))
+        XCTAssertThrowsError(try Command(arguments: ["transmittertest", "--txchannel", "0x01", "--length", "x02"]))
+        XCTAssertThrowsError(try Command(arguments: ["transmittertest", "--txchannel", "0x01", "--length", "0x02", "--payload"]))
+        XCTAssertThrowsError(try Command(arguments: ["transmittertest", "--txchannel", "0x01", "--length", "0x02", "--payload", "x02"]))
+    }
     
     func testLEReceiverTest() {
         
