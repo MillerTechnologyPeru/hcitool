@@ -30,7 +30,7 @@ final class ExtensionTests: XCTestCase {
         XCTAssertNil(UInt64(commandLine: "0xAAAAAAAAAAAAAAAAAA"), "Cannot initialize from invalid string")
         
         XCTAssertEqual(UInt8(commandLine: "128"), 128, "Must initialize from valid decimal string")
-        XCTAssertEqual(UInt16(commandLine: "2000"), 2000, "Must initialize from valid decimal string")
+        XCTAssertEqual(UInt16(commandLine: "1000"), 1000, "Must initialize from valid decimal string")
         XCTAssertEqual(UInt32(commandLine: "2000100"), 2000100, "Must initialize from valid decimal string")
         XCTAssertEqual(UInt64(commandLine: "50005645"), 50005645, "Must initialize from valid decimal string")
         

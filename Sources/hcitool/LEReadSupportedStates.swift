@@ -21,7 +21,6 @@ public struct LEReadSupportedStatesCommand: CommandProtocol {
     
     // MARK: - Methods
     
-    /// Tests the request the Controller to generate 8 octets of random data to be sent to the Host.
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
         //TODO: invoke controller method
