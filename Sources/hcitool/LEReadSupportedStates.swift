@@ -25,6 +25,9 @@ public struct LEReadSupportedStatesCommand: CommandProtocol {
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
         //TODO: invoke controller method
-        //let randomNumber = try controller.rea
+        //let lowEnergyStateSet = try controller.readSupportedStates()
+        
+        //print("LE Supported States (\(lowEnergyStateSet.states.count)):")
+        //lowEnergyStateSet.states.forEach { print($0.name) }
     }
 }

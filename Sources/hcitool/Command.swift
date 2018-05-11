@@ -88,6 +88,9 @@ public enum CommandType: String {
     
     // Reads the states and state combinations that the link layer supports.
     case lowEnergyReadSupportedStates = "readsupportedstates"
+    
+    // Starts a test where the DUT receives test reference packets at a fixed interval.
+    case lowEnergyReceiverTest = "receivertest"
 }
 
 public enum Command {
@@ -168,6 +171,9 @@ public enum Command {
     
     // Reads the states and state combinations that the link layer supports.
     case lowEnergyReadSupportedStates
+    
+    // Starts a test where the DUT receives test reference packets at a fixed interval.
+    case lowEnergyReceiverTest(LEReceiverTestCommand)
 }
 
 public extension Command {
@@ -201,6 +207,7 @@ public extension Command {
         case let .lowEnergyLongTermKeyRequestReply(command): try command.execute(controller: controller)
         case let .lowEnergyStartEncryption(command): try command.execute(controller: controller)
         case .lowEnergyReadSupportedStates: try LEReadSupportedStatesCommand().execute(controller: controller)
+        case let .lowEnergyReceiverTest(command): try command.execute(controller: controller)
         }
     }
 }
@@ -311,6 +318,9 @@ public extension Command {
             self = .lowEnergyStartEncryption(command)
         case .lowEnergyReadSupportedStates:
             self = .lowEnergyReadSupportedStates
+        case .lowEnergyReceiverTest:
+            let command = try LEReceiverTestCommand(arguments: commandArguments)
+            self = .lowEnergyReceiverTest(command)
         }
     }
 }
