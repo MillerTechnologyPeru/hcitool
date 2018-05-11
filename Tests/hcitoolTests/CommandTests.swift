@@ -27,8 +27,23 @@ final class CommandTests: XCTestCase {
         ("testSetAdvertisingEnable", testSetAdvertisingEnable),
         ("testEncrypt", testEncrypt),
         ("testLongTermKeyRequestReply", testLongTermKeyRequestReply),
-        ("testLongTermKeyRequestNegativeReply", testLongTermKeyRequestNegativeReply)
+        ("testLongTermKeyRequestNegativeReply", testLongTermKeyRequestNegativeReply),
+        ("testLEReceiverTest", testLEReceiverTest)
     ]
+    
+    func testLEReceiverTest() {
+        
+        let testController = TestHostController()
+        let arguments = [".build/debug/hcitool", "receivertest", "--rxchannel", "0x01"]
+        
+        testController.queue = [
+            .command(LowEnergyCommand.receiverTest.opcode,[0x1d, 0x20, 0x01, 0x02]),
+            .event([0x0e, 0x04, 0x01, 0x1d, 0x20, 0x0c])
+        ]
+        
+        //Command Complete [201D] - LE Receiver Test - Command Disallowed (0xC)
+        XCTAssertThrowsError(try HCIToolTests.run(arguments: arguments, controller: testController))
+    }
     
     func testLongTermKeyRequestReply() {
         
