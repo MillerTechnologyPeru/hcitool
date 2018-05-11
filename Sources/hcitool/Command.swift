@@ -91,6 +91,9 @@ public enum CommandType: String {
     
     // Starts a test where the DUT receives test reference packets at a fixed interval.
     case lowEnergyReceiverTest = "receivertest"
+    
+    // Starts a test where the DUT generates test reference packets at a fixed interval.
+    case lowEnergyTransmitterTest = "transmittertest"
 }
 
 public enum Command {
@@ -174,6 +177,9 @@ public enum Command {
     
     // Starts a test where the DUT receives test reference packets at a fixed interval.
     case lowEnergyReceiverTest(LEReceiverTestCommand)
+    
+    // Starts a test where the DUT generates test reference packets at a fixed interval.
+    case lowEnergyTransmitterTest(LETransmitterTestCommand)
 }
 
 public extension Command {
@@ -208,6 +214,7 @@ public extension Command {
         case let .lowEnergyStartEncryption(command): try command.execute(controller: controller)
         case .lowEnergyReadSupportedStates: try LEReadSupportedStatesCommand().execute(controller: controller)
         case let .lowEnergyReceiverTest(command): try command.execute(controller: controller)
+        case let .lowEnergyTransmitterTest(command): try command.execute(controller: controller)
         }
     }
 }
@@ -321,6 +328,9 @@ public extension Command {
         case .lowEnergyReceiverTest:
             let command = try LEReceiverTestCommand(arguments: commandArguments)
             self = .lowEnergyReceiverTest(command)
+        case .lowEnergyTransmitterTest:
+            let command = try LETransmitterTestCommand(arguments: commandArguments)
+            self = .lowEnergyTransmitterTest(command)
         }
     }
 }
