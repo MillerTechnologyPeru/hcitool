@@ -32,6 +32,31 @@ final class ArgumentTests: XCTestCase {
         ("testTransmitterTest", testTransmitterTest)
     ]
     
+    func testTestEnd() {
+        
+        /* [201F] Opcode: 0x201F (OGF: 0x08    OCF: 0x1F)
+         Parameter Length: 0 (0x00)
+         Bytes: 1f 20 00
+         */
+        
+        /* Parameter Length: 6 (0x06)
+         Status: 0x00 - Success
+         Num HCI Command Packets: 0x01
+         Opcode: 0x201F (OGF: 0x08    OCF: 0x1F) - [Low Energy] LE Test End
+         Number Of Packets: 0
+         Bytes: 0e 06 01 1f 20 00 00 00
+         */
+        
+        do {
+            let arguments = [/* ".build/debug/hcitool", */ "testend"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyTestEnd = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+    }
+    
     func testTransmitterTest() {
         
         /* [201E]
