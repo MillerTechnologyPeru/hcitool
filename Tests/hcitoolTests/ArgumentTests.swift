@@ -26,8 +26,40 @@ final class ArgumentTests: XCTestCase {
         ("testSetAdvertisingEnable", testSetAdvertisingEnable),
         ("testEncrypt", testEncrypt),
         ("testLongTermKeyRequestNegativeReply", testLongTermKeyRequestNegativeReply),
-        ("testLongTermKeyRequestReply", testLongTermKeyRequestReply)
+        ("testLongTermKeyRequestReply", testLongTermKeyRequestReply),
+        ("testLEReceiverTest", testLEReceiverTest)
     ]
+    
+    func testLEReceiverTest() {
+        
+        /* Bytes: 1d 20 01 02
+         [201D] Opcode: 0x201D (OGF: 0x08    OCF: 0x1D)
+         Parameter Length: 1 (0x01)
+         RX Frequency: 02
+
+         */
+        
+        /* Bytes: 0e 04 01 1d 20 0c
+         Command Complete [201D] - LE Receiver Test - Command Disallowed (0xC)
+         Parameter Length: 4 (0x04)
+         Status: 0x0C - Command Disallowed
+         Num HCI Command Packets: 0x01
+         Opcode: 0x201D (OGF: 0x08    OCF: 0x1D) - [Low Energy] LE Receiver Test
+         */
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "receivertest", "--rxchannel", "0x01"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyReceiverTest = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        XCTAssertThrowsError(try Command(arguments: ["receivertest", "--rxchannel"]))
+        XCTAssertThrowsError(try Command(arguments: ["receivertest", "--rxchannel", "x01"]))
+    }
     
     func testLongTermKeyRequestReply() {
         
