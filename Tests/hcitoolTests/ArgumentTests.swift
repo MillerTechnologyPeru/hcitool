@@ -29,7 +29,8 @@ final class ArgumentTests: XCTestCase {
         ("testLongTermKeyRequestReply", testLongTermKeyRequestReply),
         ("testLEReceiverTest", testLEReceiverTest),
         ("testTransmitterTest", testTransmitterTest),
-        ("testTransmitterTest", testTransmitterTest)
+        ("testTransmitterTest", testTransmitterTest),
+        ("testTestEnd", testTestEnd)
     ]
     
     func testTestEnd() {
