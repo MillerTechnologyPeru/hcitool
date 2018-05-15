@@ -97,6 +97,9 @@ public enum CommandType: String {
     
     // Stops any test which is in progress.
     case lowEnergyTestEnd = "testend"
+    
+    // Adds one device to the list of address translations used to resolve Resolvable Private Addresses in the Controller.
+    case lowEnergyAddDeviceToResolvingList = "adddevicetoresolvinglist"
 }
 
 public enum Command {
@@ -186,6 +189,9 @@ public enum Command {
     
     // Stops any test which is in progress.
     case lowEnergyTestEnd
+    
+    // Adds one device to the list of address translations used to resolve Resolvable Private Addresses in the Controller.
+    case lowEnergyAddDeviceToResolvingList(LEAddDeviceToResolvingListCommand)
 }
 
 public extension Command {
@@ -222,6 +228,7 @@ public extension Command {
         case let .lowEnergyReceiverTest(command): try command.execute(controller: controller)
         case let .lowEnergyTransmitterTest(command): try command.execute(controller: controller)
         case .lowEnergyTestEnd:  try LETestEndCommand().execute(controller: controller)
+        case .lowEnergyAddDeviceToResolvingList:  try LETestEndCommand().execute(controller: controller)
         }
     }
 }
@@ -340,6 +347,9 @@ public extension Command {
             self = .lowEnergyTransmitterTest(command)
         case .lowEnergyTestEnd:
             self = .lowEnergyTestEnd
+        case .lowEnergyAddDeviceToResolvingList:
+            let command = try LEAddDeviceToResolvingListCommand(arguments: commandArguments)
+            self = .lowEnergyAddDeviceToResolvingList(command)
         }
     }
 }
