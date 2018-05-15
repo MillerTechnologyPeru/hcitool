@@ -31,8 +31,39 @@ final class ArgumentTests: XCTestCase {
         ("testTransmitterTest", testTransmitterTest),
         ("testTransmitterTest", testTransmitterTest),
         ("testTestEnd", testTestEnd),
-        ("testReadSupportedStates", testReadSupportedStates)
+        ("testReadSupportedStates", testReadSupportedStates),
+        ("testAddDeviceToResolvingList", testAddDeviceToResolvingList)
     ]
+    
+    func testAddDeviceToResolvingList() {
+        
+        /*
+         [2027] Opcode: 0x2027 (OGF: 0x08    OCF: 0x27)
+         Parameter Length: 41 (0x29)
+         Peer Identity Address Type: PublicPeer Identity Address: (null)Peer IRK: 0x33445566778811223344556677881122
+         Local IRK: 0x33445566778811223344556677881122
+         0x27 0x20 0x29 0x00 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11 0x88 0x77 0x66 0x55
+         0x44 0x33 0x22 0x11 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11 0x88 0x77 0x66 0x55
+         0x44 0x33 0x22 0x11 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11
+         */
+        
+        /*
+         Parameter Length: 4 (0x04)
+         Status: 0x0C - Command Disallowed
+         Num HCI Command Packets: 0x01
+         Opcode: 0x2027 (OGF: 0x08    OCF: 0x27) - [Low Energy] LE Add Device To Resolving List
+         0e 04 01 27 20 0c
+         */
+        
+        do {
+            let arguments = [/* ".build/debug/hcitool", */ "adddevicetoresolvinglist", "--peeridentifyaddresstype", "public", "--peeridentifyaddress", "0x1122334455667788", "--peerirk",           "0x11223344556677881122334455667788", "--localirk", "0x11223344556677881122334455667788"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyAddDeviceToResolvingList = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+    }
     
     func testReadSupportedStates() {
         

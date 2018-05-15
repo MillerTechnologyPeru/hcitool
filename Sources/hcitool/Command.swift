@@ -228,7 +228,7 @@ public extension Command {
         case let .lowEnergyReceiverTest(command): try command.execute(controller: controller)
         case let .lowEnergyTransmitterTest(command): try command.execute(controller: controller)
         case .lowEnergyTestEnd:  try LETestEndCommand().execute(controller: controller)
-        case .lowEnergyAddDeviceToResolvingList:  try LETestEndCommand().execute(controller: controller)
+        case let .lowEnergyAddDeviceToResolvingList(command): try command.execute(controller: controller)
         }
     }
 }

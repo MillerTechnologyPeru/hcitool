@@ -37,7 +37,7 @@ public struct LEAddDeviceToResolvingListCommand: ArgumentableCommand {
         guard let peerIdentifyAddressTypeString = parameters.first(where: { $0.option == .peerIdentifyAddressType })?.value
             else { throw CommandError.optionMissingValue(Option.peerIdentifyAddressType.rawValue) }
         
-        guard let peerIdentifyAddressType = LowEnergyPeerIdentifyAddressType(rawValue: peerIdentifyAddressTypeString)
+        guard let peerIdentifyAddressType = PeerIdentifyAddressType(rawValue: peerIdentifyAddressTypeString)
             else { throw CommandError.invalidOptionValue(option: Option.peerIdentifyAddressType.rawValue, value: peerIdentifyAddressTypeString) }
         
         guard let peerIdentifyAddressString = parameters.first(where:{ $0.option == .peerIdentifyAddress})?.value
@@ -58,7 +58,7 @@ public struct LEAddDeviceToResolvingListCommand: ArgumentableCommand {
         guard let localIrk = UInt128(commandLine: localIrkString)
             else { throw CommandError.invalidOptionValue(option: Option.localIrk.rawValue, value: localIrkString) }
         
-        self.peerIdentifyAddressType = peerIdentifyAddressType
+        self.peerIdentifyAddressType = peerIdentifyAddressType.hciValue
         self.peerIdentifyAddress = peerIdentifyAddress
         self.peerIrk = peerIrk
         self.localIrk = localIrk
@@ -68,13 +68,16 @@ public struct LEAddDeviceToResolvingListCommand: ArgumentableCommand {
     
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        //try controller.remot
+        try controller.lowEnergyAddDeviceToResolvingList(peerIdentifyAddressType: peerIdentifyAddressType,
+                                                         peerIdentifyAddress: peerIdentifyAddress,
+                                                         peerIrk: peerIrk,
+                                                         localIrk: localIrk)
     }
 }
 
 public extension LEAddDeviceToResolvingListCommand {
     
-    public enum LowEnergyPeerIdentifyAddressType: String {
+    public enum PeerIdentifyAddressType: String {
         
         public typealias HCIValue = LowEnergyPeerIdentifyAddressType
         
