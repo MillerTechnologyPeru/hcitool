@@ -31,8 +31,25 @@ final class CommandTests: XCTestCase {
         ("testLEReceiverTest", testLEReceiverTest),
         ("testTransmitterTest", testTransmitterTest),
         ("testTestEnd", testTestEnd),
-        ("testReadSupportedStates", testReadSupportedStates)
+        ("testReadSupportedStates", testReadSupportedStates),
+        ("testAddDeviceToResolvingList", testAddDeviceToResolvingList)
     ]
+    
+    func testAddDeviceToResolvingList() {
+        
+        let testController = TestHostController()
+        let arguments = [".build/debug/hcitool", "readsupportedstates"]
+        
+        testController.queue = [
+            .command(LowEnergyCommand.addDeviceToResolvedList.opcode,[0x27, 0x20, 0x29, 0x00, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11,
+                                                                      0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11, 0x88, 0x77, 0x66, 0x55,
+                                                                      0x44, 0x33, 0x22, 0x11, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11,
+                                                                      0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11]),
+            .event([0x0e, 0x04, 0x01, 0x27, 0x20, 0x0c])
+        ]
+        
+        XCTAssertThrowsError(try HCIToolTests.run(arguments: arguments, controller: testController))
+    }
     
     func testReadSupportedStates() {
     
