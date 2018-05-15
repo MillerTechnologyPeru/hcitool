@@ -32,8 +32,40 @@ final class ArgumentTests: XCTestCase {
         ("testTransmitterTest", testTransmitterTest),
         ("testTestEnd", testTestEnd),
         ("testReadSupportedStates", testReadSupportedStates),
-        ("testAddDeviceToResolvingList", testAddDeviceToResolvingList)
+        ("testAddDeviceToResolvingList", testAddDeviceToResolvingList),
+        ("testRemoveDeviceFromResolvingList", testRemoveDeviceFromResolvingList)
     ]
+    
+    func testRemoveDeviceFromResolvingList() {
+        
+        /*
+         [2028] Opcode: 0x2028 (OGF: 0x08    OCF: 0x28)
+         Parameter Length: 9 (0x09)
+         Peer Identity Address Type: Random (static)Peer Identity Address: (null)
+         28 20 09 01 88 77 66 55 44 33 22 11
+         */
+        
+        /*
+         Parameter Length: 4 (0x04)
+         Status: 0x0C - Command Disallowed
+         Num HCI Command Packets: 0x01
+         Opcode: 0x2028 (OGF: 0x08    OCF: 0x28) - [Low Energy] LE Remove From Resolving List
+         0e04 0128 200c
+         */
+        
+        do {
+            let arguments = [/* ".build/debug/hcitool", */ "removedevicefromresolvinglist", "--peeridentifyaddresstype", "public", "--peeridentifyaddress", "0x1122334455667788"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyRemoveDeviceFromResolvingList = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        XCTAssertThrowsError(try Command(arguments: ["removedevicefromresolvinglist", "--peeridentifyaddresstype", "public"]))
+        XCTAssertThrowsError(try Command(arguments: ["removedevicefromresolvinglist", "--peeridentifyaddresstype", "public", "--peeridentifyaddress"]))
+        XCTAssertThrowsError(try Command(arguments: ["removedevicefromresolvinglist", "--peeridentifyaddresstype", "public", "--peeridentifyaddress", "0x112233445566"]))
+    }
     
     func testAddDeviceToResolvingList() {
         

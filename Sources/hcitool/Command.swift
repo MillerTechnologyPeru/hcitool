@@ -100,6 +100,9 @@ public enum CommandType: String {
     
     // Adds one device to the list of address translations used to resolve Resolvable Private Addresses in the Controller.
     case lowEnergyAddDeviceToResolvingList = "adddevicetoresolvinglist"
+    
+    // Removes one device from the list of address translations used to resolve Resolvable Private Addresses in the Controller.
+    case lowEnergyRemoveDeviceFromResolvingList = "removedevicefromresolvinglist"
 }
 
 public enum Command {
@@ -192,6 +195,9 @@ public enum Command {
     
     // Adds one device to the list of address translations used to resolve Resolvable Private Addresses in the Controller.
     case lowEnergyAddDeviceToResolvingList(LEAddDeviceToResolvingListCommand)
+    
+    // Removes one device from the list of address translations used to resolve Resolvable Private Addresses in the Controller.
+    case lowEnergyRemoveDeviceFromResolvingList(LERemoveDeviceFromResolvingListCommand)
 }
 
 public extension Command {
@@ -229,6 +235,7 @@ public extension Command {
         case let .lowEnergyTransmitterTest(command): try command.execute(controller: controller)
         case .lowEnergyTestEnd:  try LETestEndCommand().execute(controller: controller)
         case let .lowEnergyAddDeviceToResolvingList(command): try command.execute(controller: controller)
+        case let .lowEnergyRemoveDeviceFromResolvingList(command): try command.execute(controller: controller)
         }
     }
 }
@@ -350,6 +357,9 @@ public extension Command {
         case .lowEnergyAddDeviceToResolvingList:
             let command = try LEAddDeviceToResolvingListCommand(arguments: commandArguments)
             self = .lowEnergyAddDeviceToResolvingList(command)
+        case .lowEnergyRemoveDeviceFromResolvingList:
+            let command = try LERemoveDeviceFromResolvingListCommand(arguments: commandArguments)
+            self = .lowEnergyRemoveDeviceFromResolvingList(command)
         }
     }
 }

@@ -12,7 +12,7 @@ public struct LERemoveDeviceFromResolvingListCommand: ArgumentableCommand {
     
     // MARK: - Properties
     
-    public static let commandType: CommandType = .lowEnergyAddDeviceToResolvingList
+    public static let commandType: CommandType = .lowEnergyRemoveDeviceFromResolvingList
     
     public let peerIdentifyAddressType: LowEnergyPeerIdentifyAddressType
     
