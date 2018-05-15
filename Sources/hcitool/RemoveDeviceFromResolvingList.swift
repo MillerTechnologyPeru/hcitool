@@ -1,5 +1,5 @@
 //
-//  AddDeviceToResolvingList.swift
+//  RemoveDeviceFromResolvingList
 //  hcitool
 //
 //  Created by Marco Estrella on 5/15/18.
@@ -8,7 +8,7 @@
 import Bluetooth
 import Foundation
 
-public struct LEAddDeviceToResolvingListCommand: ArgumentableCommand {
+public struct LERemoveDeviceFromResolvingListCommand: ArgumentableCommand {
     
     // MARK: - Properties
     
@@ -18,18 +18,12 @@ public struct LEAddDeviceToResolvingListCommand: ArgumentableCommand {
     
     public let peerIdentifyAddress: UInt64
     
-    public let peerIrk: UInt128
-    
-    public let localIrk: UInt128
-    
     // MARK: - Initialization
     
-    public init(peerIdentifyAddressType: LowEnergyPeerIdentifyAddressType, peerIdentifyAddress: UInt64, peerIrk: UInt128, localIrk: UInt128) {
+    public init(peerIdentifyAddressType: LowEnergyPeerIdentifyAddressType, peerIdentifyAddress: UInt64) {
         
         self.peerIdentifyAddressType = peerIdentifyAddressType
         self.peerIdentifyAddress = peerIdentifyAddress
-        self.peerIrk = peerIrk
-        self.localIrk = localIrk
     }
     
     public init(parameters: [Parameter<Option>]) throws {
@@ -45,37 +39,21 @@ public struct LEAddDeviceToResolvingListCommand: ArgumentableCommand {
         
         guard let peerIdentifyAddress = UInt64(commandLine: peerIdentifyAddressString)
             else { throw CommandError.invalidOptionValue(option: Option.peerIdentifyAddress.rawValue, value: peerIdentifyAddressString) }
-        
-        guard let peerIrkString = parameters.first(where:{ $0.option == .peerIrk})?.value
-            else { throw CommandError.optionMissingValue(Option.peerIrk.rawValue) }
-        
-        guard let peerIrk = UInt128(commandLine: peerIrkString)
-            else { throw CommandError.invalidOptionValue(option: Option.peerIrk.rawValue, value: peerIrkString) }
-        
-        guard let localIrkString = parameters.first(where:{ $0.option == .localIrk})?.value
-            else { throw CommandError.optionMissingValue(Option.localIrk.rawValue) }
-        
-        guard let localIrk = UInt128(commandLine: localIrkString)
-            else { throw CommandError.invalidOptionValue(option: Option.localIrk.rawValue, value: localIrkString) }
-        
+
         self.peerIdentifyAddressType = peerIdentifyAddressType.hciValue
         self.peerIdentifyAddress = peerIdentifyAddress
-        self.peerIrk = peerIrk
-        self.localIrk = localIrk
     }
     
     // MARK: - Methods
     
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        try controller.lowEnergyAddDeviceToResolvingList(peerIdentifyAddressType: peerIdentifyAddressType,
-                                                         peerIdentifyAddress: peerIdentifyAddress,
-                                                         peerIrk: peerIrk,
-                                                         localIrk: localIrk)
+        try controller.lowEnergyRemoveDeviceFromResolvingList(peerIdentifyAddressType: peerIdentifyAddressType,
+                                                              peerIdentifyAddress: peerIdentifyAddress)
     }
 }
 
-public extension LEAddDeviceToResolvingListCommand {
+public extension LERemoveDeviceFromResolvingListCommand {
     
     public enum Option: String, OptionProtocol {
         
@@ -87,6 +65,7 @@ public extension LEAddDeviceToResolvingListCommand {
         public static let all: Set<Option> = [.peerIdentifyAddressType, .peerIdentifyAddress, .peerIrk, .localIrk]
     }
 }
+
 
 
 
