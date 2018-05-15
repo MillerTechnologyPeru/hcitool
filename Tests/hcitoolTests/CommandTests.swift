@@ -35,10 +35,24 @@ final class CommandTests: XCTestCase {
         ("testAddDeviceToResolvingList", testAddDeviceToResolvingList)
     ]
     
+    func testRemoveDeviceFromResolvingList() {
+        
+        let testController = TestHostController()
+        let arguments = [".build/debug/hcitool",  "removedevicefromresolvinglist", "--peeridentifyaddresstype", "public", "--peeridentifyaddress", "0x1122334455667788"]
+        
+        testController.queue = [
+            .command(LowEnergyCommand.addDeviceToResolvedList.opcode,[0x28, 0x20, 0x09, 0x01, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11]),
+            .event([0x0e, 0x04, 0x01, 0x28, 0x20, 0x0c])
+        ]
+        
+        // Command Complete [2028] - LE Remove From Resolving List - Command Disallowed (0xC)
+        XCTAssertThrowsError(try HCIToolTests.run(arguments: arguments, controller: testController))
+    }
+    
     func testAddDeviceToResolvingList() {
         
         let testController = TestHostController()
-        let arguments = [".build/debug/hcitool", "readsupportedstates"]
+        let arguments = [".build/debug/hcitool", "adddevicetoresolvinglist", "--peeridentifyaddresstype", "public", "--peeridentifyaddress", "0x1122334455667788", "--peerirk",           "0x11223344556677881122334455667788", "--localirk", "0x11223344556677881122334455667788"]
         
         testController.queue = [
             .command(LowEnergyCommand.addDeviceToResolvedList.opcode,[0x27, 0x20, 0x29, 0x00, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11,

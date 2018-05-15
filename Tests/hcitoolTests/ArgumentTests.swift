@@ -50,7 +50,7 @@ final class ArgumentTests: XCTestCase {
          Status: 0x0C - Command Disallowed
          Num HCI Command Packets: 0x01
          Opcode: 0x2028 (OGF: 0x08    OCF: 0x28) - [Low Energy] LE Remove From Resolving List
-         0e04 0128 200c
+         0e 04 01 28 20 0c
          */
         
         do {
