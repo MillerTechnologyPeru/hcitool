@@ -13,24 +13,31 @@ public struct LESetAdvertisingEnableCommand: ArgumentableCommand {
     
     // MARK: - Properties
     
-    public static let commandType: CommandType = .lowEnergySetEventMask
+    public static let commandType: CommandType = .lowEnergySetAdvertisingEnable
     
     public var enable: Bool
     
     // MARK: - Initialization
     
-    public init(enable: Bool) {
+    public init(enable: Bool = true) {
         
         self.enable = enable
     }
     
     public init(parameters: [Parameter<Option>]) throws {
         
-        guard let enableString = parameters.first(where: { $0.option == .enable })?.value,
-            let enable = CommandLineBool(rawValue: enableString)
-            else { throw CommandError.optionMissingValue(Option.enable.rawValue) }
-        
-        self.enable = enable.boolValue
+        if let enableString = parameters.first(where: { $0.option == .enable })?.value {
+            
+            guard let enable = CommandLineBool(rawValue: enableString)
+                else { throw CommandError.invalidOptionValue(option: Option.enable.rawValue, value: enableString) }
+            
+            self.enable = enable.boolValue
+            
+        } else {
+            
+            // default value
+            self.enable = true
+        }
     }
     
     // MARK: - Methods
@@ -39,6 +46,8 @@ public struct LESetAdvertisingEnableCommand: ArgumentableCommand {
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
 
         try controller.enableLowEnergyAdvertising(enable)
+        
+        print("\(enable ? "Enabled" : "Disabled") LE Advertising")
     }
 }
 
