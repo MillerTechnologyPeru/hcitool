@@ -162,6 +162,6 @@ public extension iBeaconCommand {
         case interval
         case duration
         
-        public static let all: Set<Option> = [.duration]
+        public static let all: Set<Option> = [.uuid, .major, .minor, .rssi, .interval, .duration]
     }
 }
