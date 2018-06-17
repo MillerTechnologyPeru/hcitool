@@ -11,15 +11,15 @@ import Foundation
 
 public struct LESetAdvertisingParametersCommand: ArgumentableCommand {
     
-    public typealias LEAdvertisingType = LowEnergyCommand.SetAdvertisingParametersParameter.AdvertisingType
-    public typealias LEChannelMap = LowEnergyCommand.SetAdvertisingParametersParameter.ChannelMap
-    public typealias LEFilterPolicy = LowEnergyCommand.SetAdvertisingParametersParameter.FilterPolicy
+    public typealias LEAdvertisingType = HCILESetAdvertisingParameters.AdvertisingType
+    public typealias LEChannelMap = HCILESetAdvertisingParameters.ChannelMap
+    public typealias LEFilterPolicy = HCILESetAdvertisingParameters.FilterPolicy
     
     // MARK: - Properties
     
     public static let commandType: CommandType = .lowEnergySetAdvertisingParameters
     
-    public var advertisingInterval: (minimum: UInt16, maximum: UInt16)
+    public var advertisingInterval: (min: AdvertisingInterval, max: AdvertisingInterval)
     public var advertisingType: LEAdvertisingType
     public var addressType: (own: LowEnergyAddressType, direct: LowEnergyAddressType)
     public var peerAddress: Address
@@ -28,11 +28,11 @@ public struct LESetAdvertisingParametersCommand: ArgumentableCommand {
     
     // MARK: - Initialization
     
-    public init(interval: (minimum: UInt16, maximum: UInt16) = (0x0800, 0x0800),
+    public init(interval: (min: AdvertisingInterval, max: AdvertisingInterval) = (.default, .default),
                 advertisingType: LEAdvertisingType = LEAdvertisingType(),
                 addressType: (own: LowEnergyAddressType, direct: LowEnergyAddressType) = (.public, .public),
                 peerAddress: Address = .zero,
-                channelMap: LEChannelMap = LEChannelMap(),
+                channelMap: LEChannelMap = .channel37,
                 filterPolicy: LEFilterPolicy = LEFilterPolicy()) {
         
         self.advertisingInterval = interval
@@ -46,11 +46,13 @@ public struct LESetAdvertisingParametersCommand: ArgumentableCommand {
     public init(parameters: [Parameter<Option>]) throws {
         
         guard let intervalMinString = parameters.first(where: { $0.option == .advertisingIntervalMin })?.value,
-            let advertisingIntervalMin = UInt16(intervalMinString)
+            let advertisingIntervalMinRawValue = UInt16(commandLine: intervalMinString),
+            let advertisingIntervalMin = AdvertisingInterval(rawValue: advertisingIntervalMinRawValue)
             else { throw CommandError.optionMissingValue(Option.advertisingIntervalMin.rawValue) }
         
         guard let intervalMaxString = parameters.first(where: { $0.option == .advertisingIntervalMax })?.value,
-            let advertisingIntervalMax = UInt16(intervalMaxString)
+            let advertisingIntervalMaxRawValue = UInt16(commandLine: intervalMaxString),
+            let advertisingIntervalMax = AdvertisingInterval(rawValue: advertisingIntervalMaxRawValue)
             else { throw CommandError.optionMissingValue(Option.advertisingIntervalMax.rawValue) }
         
         guard let advertisingTypeString = parameters.first(where: { $0.option == .advertisingType })?.value
@@ -99,9 +101,8 @@ public struct LESetAdvertisingParametersCommand: ArgumentableCommand {
     
     /// Tests Setting of Event Mask.
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
-        typealias SetAdvertisingParametersParameter = LowEnergyCommand.SetAdvertisingParametersParameter
         
-        let setAdvertisingParametersParameter = SetAdvertisingParametersParameter(interval: advertisingInterval, advertisingType: advertisingType, addressType: addressType, directAddress: peerAddress, channelMap: channelMap, filterPolicy: filterPolicy)
+        let setAdvertisingParametersParameter = HCILESetAdvertisingParameters(interval: advertisingInterval, advertisingType: advertisingType, ownAddressType: addressType.own, directAddress: peerAddress, channelMap: [channelMap], filterPolicy: filterPolicy)
         
         try controller.setLowEnergyAdvertisingParameters(setAdvertisingParametersParameter)
     }
@@ -131,7 +132,7 @@ public extension LESetAdvertisingParametersCommand {
     
     public enum AdvertisingType: String {
         
-        public typealias HCIValue = LowEnergyCommand.SetAdvertisingParametersParameter.AdvertisingType
+        public typealias HCIValue = HCILESetAdvertisingParameters.AdvertisingType
         
         case undirected
         
@@ -154,9 +155,8 @@ public extension LESetAdvertisingParametersCommand {
     
     public enum ChannelMap: String {
         
-        public typealias HCIValue = LowEnergyCommand.SetAdvertisingParametersParameter.ChannelMap
+        public typealias HCIValue = HCILESetAdvertisingParameters.ChannelMap
         
-        case all
         case channel37
         case channel38
         case channel39
@@ -164,7 +164,6 @@ public extension LESetAdvertisingParametersCommand {
         public var hciValue: HCIValue {
             
             switch self {
-            case .all: return .all
             case .channel37: return .channel37
             case .channel38: return .channel38
             case .channel39: return .channel39
@@ -174,7 +173,7 @@ public extension LESetAdvertisingParametersCommand {
     
     public enum FilterPolicy: String {
         
-        public typealias HCIValue = LowEnergyCommand.SetAdvertisingParametersParameter.FilterPolicy
+        public typealias HCIValue = HCILESetAdvertisingParameters.FilterPolicy
         
         case any
         case whiteListScan          = "whitelistscan"

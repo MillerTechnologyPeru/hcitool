@@ -8,9 +8,6 @@ let package = Package(
         Target(
             name: "hcitool",
             dependencies: [])
-    ],
-    dependencies: [
-        .Package(url: "https://github.com/MillerTechnologyPeru/Rainbow.git", majorVersion: 3)
     ]
 )
 

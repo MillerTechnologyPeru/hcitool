@@ -155,7 +155,7 @@ public struct LEScanCommand: ArgumentableCommand {
         let startDate = Date()
         let endDate = startDate + duration
         
-        typealias SetScanParameters = LowEnergyCommand.SetScanParametersParameter
+        typealias SetScanParameters = HCILESetScanParameters
         
         let parameters = SetScanParameters(type: scanType.hciValue,
                                           interval: interval,
@@ -195,7 +195,7 @@ public extension LEScanCommand {
     
     public enum ScanType: String {
         
-        public typealias HCIValue = LowEnergyCommand.SetScanParametersParameter.ScanType
+        public typealias HCIValue = HCILESetScanParameters.ScanType
         
         case passive
         case active
@@ -247,7 +247,7 @@ public extension LEScanCommand {
     
     public enum FilterPolicy: String {
         
-        public typealias HCIValue = LowEnergyCommand.SetScanParametersParameter.FilterPolicy
+        public typealias HCIValue = HCILESetScanParameters.FilterPolicy
         
         /// Accept all advertisement packets (default).
         ///

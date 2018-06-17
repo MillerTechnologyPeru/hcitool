@@ -6,6 +6,8 @@
 //  Copyright © 2018 Pure Swift. All rights reserved.
 //
 
+import Bluetooth
+
 extension String {
     
     static var hexadecimalPrefix: String { return "0x" }
@@ -22,6 +24,6 @@ extension String {
         
         let suffixIndex = self.index(self.startIndex, offsetBy: 2)
         
-        return String(self[suffixIndex...])
+        return String(substring(from: suffixIndex))
     }
 }

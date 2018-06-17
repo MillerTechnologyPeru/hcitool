@@ -1,5 +1,13 @@
 //
-//  LEReadChannelMap.swift
+//  LEReadRemoteFeatures .swift
+//  hcitool
+//
+//  Created by Marco Estrella on 5/9/18.
+//  Copyright © 2018 Pure Swift. All rights reserved.
+//
+
+//
+//  LEAddDeviceToWhiteList.swift
 //  hcitool
 //
 //  Created by Marco Estrella on 4/28/18.
@@ -9,11 +17,11 @@
 import Bluetooth
 import Foundation
 
-public struct LEReadChannelMapCommand: ArgumentableCommand {
+public struct LEReadRemoteFeaturesCommand: ArgumentableCommand {
     
     // MARK: - Properties
     
-    public static let commandType: CommandType = .lowEnergyReadChannelMap
+    public static let commandType: CommandType = .lowEnergyReadRemoteFeatures
     
     public var handle: UInt16
     
@@ -26,27 +34,26 @@ public struct LEReadChannelMapCommand: ArgumentableCommand {
     
     public init(parameters: [Parameter<Option>]) throws {
         
-        guard let handleString = parameters.first(where: { $0.option == .handle })?.value
+        guard let handleString = parameters.first(where: { $0.option == .handle })?.value,
+            let handle = UInt16.init(commandLine: handleString)
             else { throw CommandError.optionMissingValue(Option.handle.rawValue) }
-
-        guard let handle = UInt16(commandLine: handleString)
-            else { throw CommandError.invalidOptionValue(option: Option.handle.rawValue, value: handleString) }
         
         self.handle = handle
     }
     
     // MARK: - Methods
     
-    /// Tests the Setting of Random Address.
+    /// Read remote low energy features.
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        let returnValues = try controller.lowEnergyReadChannelMap(handle: handle)
+        let features = try controller.lowEnergyReadRemoteUsedFeatures(connectionHandle: handle)
         
-        print("Set LE ChannelMap: \(returnValues)")
+        print("LE Remote Features (\(features.count)):")
+        features.forEach { print($0.name) }
     }
 }
 
-public extension LEReadChannelMapCommand {
+public extension LEReadRemoteFeaturesCommand {
     
     public enum Option: String, OptionProtocol {
         
@@ -55,3 +62,4 @@ public extension LEReadChannelMapCommand {
         public static let all: Set<Option> = [.handle]
     }
 }
+

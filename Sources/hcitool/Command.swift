@@ -70,6 +70,39 @@ public enum CommandType: String {
     
     //It's used to create a Link Layer connection to a connectable advertiser.
     case lowEnergyCreateConnection = "createconnection"
+    
+    // Requests the features used on the connection and the features supported by the remote device.
+    case lowEnergyReadRemoteFeatures = "readremotefeatures"
+    
+    // Encrypts the Plaintext Data
+    case lowEnergyEncrypt   = "encrypt"
+    
+    // Replies to an LE Long Term Key Request event from the Controller if the Host cannot provide a Long Term Key for this Connection_Handle
+    case lowEnergyLongTermKeyRequestNegativeReply = "longtermkeyrequestnegativereply"
+    
+    // Replies to an LE Long Term Key Request event from the Controller, and specifies the Long_Term_Key parameter that shall be used for this Connection_Handle.
+    case lowEnergyLongTermKeyRequestReply = "longtermkeyrequestreply"
+    
+    // It's used to authenticate the given encryption key associated with the remote device specified by the Connection_Handle, and once authenticated will encrypt the connection.
+    case lowEnergyStartEncryption = "startencryption"
+    
+    // Reads the states and state combinations that the link layer supports.
+    case lowEnergyReadSupportedStates = "readsupportedstates"
+    
+    // Starts a test where the DUT receives test reference packets at a fixed interval.
+    case lowEnergyReceiverTest = "receivertest"
+    
+    // Starts a test where the DUT generates test reference packets at a fixed interval.
+    case lowEnergyTransmitterTest = "transmittertest"
+    
+    // Stops any test which is in progress.
+    case lowEnergyTestEnd = "testend"
+    
+    // Adds one device to the list of address translations used to resolve Resolvable Private Addresses in the Controller.
+    case lowEnergyAddDeviceToResolvingList = "adddevicetoresolvinglist"
+    
+    // Removes one device from the list of address translations used to resolve Resolvable Private Addresses in the Controller.
+    case lowEnergyRemoveDeviceFromResolvingList = "removedevicefromresolvinglist"
 }
 
 public enum Command {
@@ -132,6 +165,39 @@ public enum Command {
     
     //It's used to create a Link Layer connection to a connectable advertiser.
     case lowEnergyCreateConnection(LECreateConnectionCommand)
+    
+    // Requests the features used on the connection and the features supported by the remote device.
+    case lowEnergyReadRemoteFeatures(LEReadRemoteFeaturesCommand)
+    
+    // Encrypts the Plaintext Data
+    case lowEnergyEncrypt(LEEncryptCommand)
+    
+    // Replies to an LE Long Term Key Request event from the Controller if the Host cannot provide a Long Term Key for this Connection_Handle
+    case lowEnergyLongTermKeyRequestNegativeReply(LELongTermKeyRequestNegativeReplyCommand)
+    
+    // Replies to an LE Long Term Key Request event from the Controller, and specifies the Long_Term_Key parameter that shall be used for this Connection_Handle.
+    case lowEnergyLongTermKeyRequestReply(LELongTermKeyRequestReplyCommand)
+    
+    //  It's used to authenticate the given encryption key associated with the remote device specified by the Connection_Handle, and once authenticated will encrypt the connection.
+    case lowEnergyStartEncryption(LEStartEncryptionCommand)
+    
+    // Reads the states and state combinations that the link layer supports.
+    case lowEnergyReadSupportedStates
+    
+    // Starts a test where the DUT receives test reference packets at a fixed interval.
+    case lowEnergyReceiverTest(LEReceiverTestCommand)
+    
+    // Starts a test where the DUT generates test reference packets at a fixed interval.
+    case lowEnergyTransmitterTest(LETransmitterTestCommand)
+    
+    // Stops any test which is in progress.
+    case lowEnergyTestEnd
+    
+    // Adds one device to the list of address translations used to resolve Resolvable Private Addresses in the Controller.
+    case lowEnergyAddDeviceToResolvingList(LEAddDeviceToResolvingListCommand)
+    
+    // Removes one device from the list of address translations used to resolve Resolvable Private Addresses in the Controller.
+    case lowEnergyRemoveDeviceFromResolvingList(LERemoveDeviceFromResolvingListCommand)
 }
 
 public extension Command {
@@ -159,6 +225,17 @@ public extension Command {
         case let .lowEnergyConnectionUpdate(command): try command.execute(controller: controller)
         case let .lowEnergySetAdvertisingEnable(command): try command.execute(controller: controller)
         case let .lowEnergyCreateConnection(command): try command.execute(controller: controller)
+        case let .lowEnergyReadRemoteFeatures(command): try command.execute(controller: controller)
+        case let .lowEnergyEncrypt(command): try command.execute(controller: controller)
+        case let .lowEnergyLongTermKeyRequestNegativeReply(command): try command.execute(controller: controller)
+        case let .lowEnergyLongTermKeyRequestReply(command): try command.execute(controller: controller)
+        case let .lowEnergyStartEncryption(command): try command.execute(controller: controller)
+        case .lowEnergyReadSupportedStates: try LEReadSupportedStatesCommand().execute(controller: controller)
+        case let .lowEnergyReceiverTest(command): try command.execute(controller: controller)
+        case let .lowEnergyTransmitterTest(command): try command.execute(controller: controller)
+        case .lowEnergyTestEnd:  try LETestEndCommand().execute(controller: controller)
+        case let .lowEnergyAddDeviceToResolvingList(command): try command.execute(controller: controller)
+        case let .lowEnergyRemoveDeviceFromResolvingList(command): try command.execute(controller: controller)
         }
     }
 }
@@ -252,6 +329,37 @@ public extension Command {
         case .lowEnergyCreateConnection:
             let command = try LECreateConnectionCommand(arguments: commandArguments)
             self = .lowEnergyCreateConnection(command)
+        case .lowEnergyReadRemoteFeatures:
+            let command = try LEReadRemoteFeaturesCommand(arguments: commandArguments)
+            self = .lowEnergyReadRemoteFeatures(command)
+        case .lowEnergyEncrypt:
+            let command = try LEEncryptCommand(arguments: commandArguments)
+            self = .lowEnergyEncrypt(command)
+        case .lowEnergyLongTermKeyRequestNegativeReply:
+            let command = try LELongTermKeyRequestNegativeReplyCommand(arguments: commandArguments)
+            self = .lowEnergyLongTermKeyRequestNegativeReply(command)
+        case .lowEnergyLongTermKeyRequestReply:
+            let command = try LELongTermKeyRequestReplyCommand(arguments: commandArguments)
+            self = .lowEnergyLongTermKeyRequestReply(command)
+        case .lowEnergyStartEncryption:
+            let command = try LEStartEncryptionCommand(arguments: commandArguments)
+            self = .lowEnergyStartEncryption(command)
+        case .lowEnergyReadSupportedStates:
+            self = .lowEnergyReadSupportedStates
+        case .lowEnergyReceiverTest:
+            let command = try LEReceiverTestCommand(arguments: commandArguments)
+            self = .lowEnergyReceiverTest(command)
+        case .lowEnergyTransmitterTest:
+            let command = try LETransmitterTestCommand(arguments: commandArguments)
+            self = .lowEnergyTransmitterTest(command)
+        case .lowEnergyTestEnd:
+            self = .lowEnergyTestEnd
+        case .lowEnergyAddDeviceToResolvingList:
+            let command = try LEAddDeviceToResolvingListCommand(arguments: commandArguments)
+            self = .lowEnergyAddDeviceToResolvingList(command)
+        case .lowEnergyRemoveDeviceFromResolvingList:
+            let command = try LERemoveDeviceFromResolvingListCommand(arguments: commandArguments)
+            self = .lowEnergyRemoveDeviceFromResolvingList(command)
         }
     }
 }

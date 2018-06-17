@@ -25,18 +25,3 @@ public enum CommandError: Error {
     
     case invalidOptionValue(option: String, value: String)
 }
-
-/*
-extension CommandError: CustomStringConvertible {
-    
-    public var description: String {
-        
-        switch self {
-        case <#pattern#>:
-            <#code#>
-        default:
-            <#code#>
-        }
-    }
-}
-*/

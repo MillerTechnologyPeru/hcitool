@@ -1,6 +1,5 @@
 
 import Foundation
-import Rainbow
 import Bluetooth
 
 #if os(Linux)

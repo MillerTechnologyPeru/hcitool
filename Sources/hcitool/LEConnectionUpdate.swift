@@ -80,7 +80,6 @@ public struct LEConnectionUpdateCommand: ArgumentableCommand {
     
     // MARK: - Methods
     
-    /// Tests the Setting of Random Address.
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
         try controller.updateLowEnergyConnection(handle: handle,

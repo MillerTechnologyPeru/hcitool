@@ -23,8 +23,300 @@ final class ArgumentTests: XCTestCase {
         ("testAddDeviceToWhiteList", testAddDeviceToWhiteList),
         ("testRemoveDeviceFromWhiteList", testRemoveDeviceFromWhiteList),
         ("testUpdateConnection", testUpdateConnection),
-        ("testSetAdvertisingEnable", testSetAdvertisingEnable)
+        ("testSetAdvertisingEnable", testSetAdvertisingEnable),
+        ("testEncrypt", testEncrypt),
+        ("testLongTermKeyRequestNegativeReply", testLongTermKeyRequestNegativeReply),
+        ("testLongTermKeyRequestReply", testLongTermKeyRequestReply),
+        ("testLEReceiverTest", testLEReceiverTest),
+        ("testTransmitterTest", testTransmitterTest),
+        ("testTransmitterTest", testTransmitterTest),
+        ("testTestEnd", testTestEnd),
+        ("testReadSupportedStates", testReadSupportedStates),
+        ("testAddDeviceToResolvingList", testAddDeviceToResolvingList),
+        ("testRemoveDeviceFromResolvingList", testRemoveDeviceFromResolvingList)
     ]
+    
+    func testRemoveDeviceFromResolvingList() {
+        
+        /*
+         [2028] Opcode: 0x2028 (OGF: 0x08    OCF: 0x28)
+         Parameter Length: 9 (0x09)
+         Peer Identity Address Type: Random (static)Peer Identity Address: (null)
+         28 20 09 01 88 77 66 55 44 33 22 11
+         */
+        
+        /*
+         Parameter Length: 4 (0x04)
+         Status: 0x0C - Command Disallowed
+         Num HCI Command Packets: 0x01
+         Opcode: 0x2028 (OGF: 0x08    OCF: 0x28) - [Low Energy] LE Remove From Resolving List
+         0e 04 01 28 20 0c
+         */
+        
+        do {
+            let arguments = [/* ".build/debug/hcitool", */ "removedevicefromresolvinglist", "--peeridentifyaddresstype", "public", "--peeridentifyaddress", "0x1122334455667788"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyRemoveDeviceFromResolvingList = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        XCTAssertThrowsError(try Command(arguments: ["removedevicefromresolvinglist", "--peeridentifyaddresstype", "public"]))
+        XCTAssertThrowsError(try Command(arguments: ["removedevicefromresolvinglist", "--peeridentifyaddresstype", "public", "--peeridentifyaddress"]))
+        XCTAssertThrowsError(try Command(arguments: ["removedevicefromresolvinglist", "--peeridentifyaddresstype", "public", "--peeridentifyaddress", "0x112233445566"]))
+    }
+    
+    func testAddDeviceToResolvingList() {
+        
+        /*
+         [2027] Opcode: 0x2027 (OGF: 0x08    OCF: 0x27)
+         Parameter Length: 41 (0x29)
+         Peer Identity Address Type: PublicPeer Identity Address: (null)Peer IRK: 0x33445566778811223344556677881122
+         Local IRK: 0x33445566778811223344556677881122
+         0x27 0x20 0x29 0x00 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11 0x88 0x77 0x66 0x55
+         0x44 0x33 0x22 0x11 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11 0x88 0x77 0x66 0x55
+         0x44 0x33 0x22 0x11 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11
+         */
+        
+        /*
+         Parameter Length: 4 (0x04)
+         Status: 0x0C - Command Disallowed
+         Num HCI Command Packets: 0x01
+         Opcode: 0x2027 (OGF: 0x08    OCF: 0x27) - [Low Energy] LE Add Device To Resolving List
+         0e 04 01 27 20 0c
+         */
+        
+        do {
+            let arguments = [/* ".build/debug/hcitool", */ "adddevicetoresolvinglist", "--peeridentifyaddresstype", "public", "--peeridentifyaddress", "0x1122334455667788", "--peerirk",           "0x11223344556677881122334455667788", "--localirk", "0x11223344556677881122334455667788"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyAddDeviceToResolvingList = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+    }
+    
+    func testReadSupportedStates() {
+        
+        /* [201C] Opcode: 0x201C (OGF: 0x08    OCF: 0x1C)
+         Parameter Length: 0 (0x00)
+         Hexadecimals: 1c 20 00
+         */
+        
+        /* Parameter Length: 12 (0x0C)
+         Status: 0x00 - Success
+         Num HCI Command Packets: 0x01
+         Opcode: 0x201C (OGF: 0x08    OCF: 0x1C) - [Low Energy] LE Read Supported States
+         LE States: 0X000003FFFFFFFFFF
+         Hexadecimals:0e 0c 01 1c 20 00 ff ff ff ff ff 03 00 00
+         */
+        
+        do {
+            let arguments = [/* ".build/debug/hcitool", */ "readsupportedstates"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyReadSupportedStates = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+    }
+    
+    func testTestEnd() {
+        
+        /* [201F] Opcode: 0x201F (OGF: 0x08    OCF: 0x1F)
+         Parameter Length: 0 (0x00)
+         Hexadecimals: 1f 20 00
+         */
+        
+        /* Parameter Length: 6 (0x06)
+         Status: 0x00 - Success
+         Num HCI Command Packets: 0x01
+         Opcode: 0x201F (OGF: 0x08    OCF: 0x1F) - [Low Energy] LE Test End
+         Number Of Packets: 0
+         Hexadecimals: 0e 06 01 1f 20 00 00 00
+         */
+        
+        do {
+            let arguments = [/* ".build/debug/hcitool", */ "testend"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyTestEnd = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+    }
+    
+    func testTransmitterTest() {
+        
+        /* [201E]
+         Opcode: 0x201E (OGF: 0x08    OCF: 0x1E)
+         [201E] Opcode: 0x201E (OGF: 0x08    OCF: 0x1E)
+         Parameter Length: 2 (0x02)
+         TX Frequency: 01
+         Length Of Test Data: 02
+         Packet Payload: 00
+         Hexadecimals: 1e 20 02 01 02
+         */
+        
+        /*
+         Parameter Length: 4 (0x04)
+         Status: 0x0C - Command Disallowed
+         Num HCI Command Packets: 0x01
+         Opcode: 0x201E (OGF: 0x08    OCF: 0x1E) - [Low Energy] LE Transmitter Test
+         Hexadecimals: 0e 04 01 1e 20 0c
+         */
+        
+        do {
+            let arguments = [/* ".build/debug/hcitool", */ "transmittertest", "--txchannel", "0x01", "--length", "0x02", "--payload", "0x02"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyTransmitterTest = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        XCTAssertThrowsError(try Command(arguments: ["transmittertest", "--txchannel"]))
+        XCTAssertThrowsError(try Command(arguments: ["transmittertest", "--txchannel", "x01"]))
+        XCTAssertThrowsError(try Command(arguments: ["transmittertest", "--txchannel", "0x01", "--length"]))
+        XCTAssertThrowsError(try Command(arguments: ["transmittertest", "--txchannel", "0x01", "--length", "x02"]))
+        XCTAssertThrowsError(try Command(arguments: ["transmittertest", "--txchannel", "0x01", "--length", "0x02", "--payload"]))
+        XCTAssertThrowsError(try Command(arguments: ["transmittertest", "--txchannel", "0x01", "--length", "0x02", "--payload", "x02"]))
+    }
+    
+    func testLEReceiverTest() {
+        
+        /* Hexadecimals: 1d 20 01 02
+         [201D] Opcode: 0x201D (OGF: 0x08    OCF: 0x1D)
+         Parameter Length: 1 (0x01)
+         RX Frequency: 02
+
+         */
+        
+        /* Hexadecimals: 0e 04 01 1d 20 0c
+         Command Complete [201D] - LE Receiver Test - Command Disallowed (0xC)
+         Parameter Length: 4 (0x04)
+         Status: 0x0C - Command Disallowed
+         Num HCI Command Packets: 0x01
+         Opcode: 0x201D (OGF: 0x08    OCF: 0x1D) - [Low Energy] LE Receiver Test
+         */
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "receivertest", "--rxchannel", "0x01"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyReceiverTest = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        XCTAssertThrowsError(try Command(arguments: ["receivertest", "--rxchannel"]))
+        XCTAssertThrowsError(try Command(arguments: ["receivertest", "--rxchannel", "x01"]))
+    }
+    
+    func testLongTermKeyRequestReply() {
+        
+        /*
+         Hexadecimals: 1a 20 12 01 00 31 31 32 32 33 33 34 34 35 35 36 36 37 37 38 38
+         [201A] Opcode: 0x201A (OGF: 0x08    OCF: 0x1A)
+         Parameter Length: 18 (0x12)
+         Connection Handle: 0001
+         Long Term Key: 38383737363635353434333332323131
+         */
+        
+        /*
+         Hexadecimals: 0e 04 01 1a 20 02
+         Parameter Length: 4 (0x04)
+         Status: 0x02 - Unknown Connection Identifier
+         Num HCI Command Packets: 0x01
+         Opcode: 0x201A (OGF: 0x08    OCF: 0x1A) - [Low Energy] LE Long Term Key Request Reply
+         Connection Handle: 0x2900
+         */
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "longtermkeyrequestreply", "--connectionhandle", "0x0001", "--longtermkey", "0x11223344556677881122334455667788"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyLongTermKeyRequestReply = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        XCTAssertThrowsError(try Command(arguments: ["longtermkeyrequestreply", "--connectionhandle", "x0001"]))
+        XCTAssertThrowsError(try Command(arguments: ["longtermkeyrequestreply", "--connectionhandle"]))
+        XCTAssertThrowsError(try Command(arguments: ["longtermkeyrequestreply", "--connectionhandle", "0x0001", "--longtermkey"]))
+        XCTAssertThrowsError(try Command(arguments: ["longtermkeyrequestreply", "--connectionhandle", "0x0001", "--longtermkey", "0x11223344556677"]))
+    }
+    
+    func testLongTermKeyRequestNegativeReply() {
+        
+        /*
+         Hexadecimals: 1B 20 02 01 00
+         [201B] Opcode: 0x201B (OGF: 0x08    OCF: 0x1B)
+         Parameter Length: 2 (0x02)
+         Connection Handle: 0001
+         */
+        
+        /*
+         Hexadecimals: 0E 04 01 1B 20 02
+         Parameter Length: 4 (0x04)
+         Status: 0x02 - Unknown Connection Identifier
+         Num HCI Command Packets: 0x01
+         Opcode: 0x201B (OGF: 0x08    OCF: 0x1B) - [Low Energy] LE Long Term Key Request Negative Reply
+         Connection Handle: 0x4000
+         */
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "longtermkeyrequestnegativereply", "--connectionhandle", "0x0001"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyLongTermKeyRequestNegativeReply = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        XCTAssertThrowsError(try Command(arguments: ["longtermkeyrequestnegativereply", "--connectionhandle", "x0001"]))
+        XCTAssertThrowsError(try Command(arguments: ["longtermkeyrequestnegativereply", "--connectionhandle"]))
+    }
+    
+    func testEncrypt() {
+        
+        /*
+         Hexadecimals: 0x17, 0x20, 0x20, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11, 0x88, 0x77, 0x66, 0x55, 0x440x33, 0x22,
+         0x11, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11
+         [2017] Opcode: 0x2017 (OGF: 0x08    OCF: 0x17)
+         Parameter Length: 32 (0x20)
+         Key: 11223344556677881122334455667788
+         Plaintext Data: 11223344556677881122334455667788
+         */
+        
+        /*
+         Parameter Length: 20 (0x14)
+         Status: 0x00 - Success
+         Num HCI Command Packets: 0x01
+         Opcode: 0x2017 (OGF: 0x08    OCF: 0x17) - [Low Energy] LE Encrypt
+         Encrypted Data: D12A1A7D050BD9EFD04F93635C9EF500
+         Hexadecimals: 0x0e, 0x14, 0x01, 0x17, 0x20, 0x00, 0xd1, 0x2a, 0x1a, 0x7d, 0x05, 0x0b, 0xd9, 0xef, 0xd0, 0x4f, 0x93, 0x63, 0x5c, 0x9e, 0xf5, 0x00
+         */
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "encrypt", "--key", "11223344556677881122334455667788", "--data", "11223344556677881122334455667788"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .lowEnergyEncrypt = command
+                else { XCTFail("Invalid type"); return }
+        } catch { XCTFail("\(error)") }
+        
+        XCTAssertThrowsError(try Command(arguments: ["encrypt", "--key"]))
+        XCTAssertThrowsError(try Command(arguments: ["encrypt", "--key", "11223344556677881122334455667788", "--data"]))
+        XCTAssertThrowsError(try Command(arguments: ["encrypt", "--key", "112233445566778811223344556", "--data", "11223344556677881122334455667788"]))
+        XCTAssertThrowsError(try Command(arguments: ["encrypt", "--key", "11223344556677881122334455667788", "--data", "11223344556"]))
+    }
     
     func testSetAdvertisingEnable() {
         
@@ -43,16 +335,6 @@ final class ArgumentTests: XCTestCase {
         
         do {
             
-            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "True"]
-            
-            let command = try Command(arguments: arguments)
-            
-            guard case .lowEnergySetAdvertisingEnable = command
-                else { XCTFail("Invalid type"); return }
-        } catch { XCTFail("\(error)") }
-        
-        do {
-            
             let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "true"]
             
             let command = try Command(arguments: arguments)
@@ -63,57 +345,7 @@ final class ArgumentTests: XCTestCase {
         
         do {
             
-            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "yes"]
-            
-            let command = try Command(arguments: arguments)
-            
-            guard case .lowEnergySetAdvertisingEnable = command
-                else { XCTFail("Invalid type"); return }
-        } catch { XCTFail("\(error)") }
-        
-        do {
-            
-            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "1"]
-            
-            let command = try Command(arguments: arguments)
-            
-            guard case .lowEnergySetAdvertisingEnable = command
-                else { XCTFail("Invalid type"); return }
-        } catch { XCTFail("\(error)") }
-        
-        do {
-            
-            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "False"]
-            
-            let command = try Command(arguments: arguments)
-            
-            guard case .lowEnergySetAdvertisingEnable = command
-                else { XCTFail("Invalid type"); return }
-        } catch { XCTFail("\(error)") }
-        
-        do {
-            
             let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "false"]
-            
-            let command = try Command(arguments: arguments)
-            
-            guard case .lowEnergySetAdvertisingEnable = command
-                else { XCTFail("Invalid type"); return }
-        } catch { XCTFail("\(error)") }
-        
-        do {
-            
-            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "no"]
-            
-            let command = try Command(arguments: arguments)
-            
-            guard case .lowEnergySetAdvertisingEnable = command
-                else { XCTFail("Invalid type"); return }
-        } catch { XCTFail("\(error)") }
-        
-        do {
-            
-            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingenable", "--enable", "0"]
             
             let command = try Command(arguments: arguments)
             
@@ -376,7 +608,7 @@ final class ArgumentTests: XCTestCase {
          */
         //Handle hexadecimal without prefix
         do {
-            let arguments = [/* ".build/debug/hcitool", */ "readchannelmap", "--handle", "01"]
+            let arguments = [/* ".build/debug/hcitool", */ "readchannelmap", "--handle", "0001"]
             
             let command = try Command(arguments: arguments)
             
@@ -386,7 +618,7 @@ final class ArgumentTests: XCTestCase {
         
         //Handle hexadecimal with prefix
         do {
-            let arguments = [/* ".build/debug/hcitool", */ "readchannelmap", "--handle", "0x01"]
+            let arguments = [/* ".build/debug/hcitool", */ "readchannelmap", "--handle", "0x0001"]
             
             let command = try Command(arguments: arguments)
             
@@ -396,7 +628,7 @@ final class ArgumentTests: XCTestCase {
         
         // invalid commands
         XCTAssertThrowsError(try Command(arguments: ["readchannelmap", "--handle"]))
-        XCTAssertThrowsError(try Command(arguments: ["readchannelmap", "--handle", "x01"]))
+        XCTAssertThrowsError(try Command(arguments: ["readchannelmap", "--handle", "x0001"]))
     }
     
     func testAddDeviceToWhiteList() {
@@ -495,9 +727,15 @@ final class ArgumentTests: XCTestCase {
              Advertising Channel Map: 0x01
              Advertising Filter Policy: 0x00 - Allow Scan Request from Any, Allow Connect Request from Any
              */
-            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingparameters", "--intervalmin", "20", "--intervalmax", "30", "--type",
-                                                           "directed", "--ownaddresstype", "random", "--peeraddresstype", "public", "--peeraddress",
-                                                           "54:39:A3:47:D8:77", "--channelmap", "channel37", "--filterpolicy", "any"]
+            let arguments = ["setadvertisingparameters",
+                             "--intervalmin", "0x0800",
+                             "--intervalmax", "0x0800",
+                             "--type", "directed",
+                             "--ownaddresstype", "random",
+                             "--peeraddresstype", "public",
+                             "--peeraddress", "54:39:A3:47:D8:77",
+                             "--channelmap", "channel37",
+                             "--filterpolicy", "any"]
             
             let command = try Command(arguments: arguments)
             
