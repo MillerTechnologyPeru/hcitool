@@ -53,22 +53,22 @@ public enum CommandType: String {
     // Reads the total number of White List entries that can be stored in the Controller.
     case lowEnergyReadWhiteListSize = "readwhitelistsize"
     
-    //  Used by the Host to read the transmit power level used for LE advertising channel packets.
+    // Used by the Host to read the transmit power level used for LE advertising channel packets.
     case lowEnergyReadAdvertisingChannelTxPower = "readadvertisingchanneltxpower"
     
     // Requests the Controller to generate 8 octets of random data to be sent to the Host.
     case lowEnergyRand = "rand"
     
-    // It's used by the Host to set the advertising parameters.
+    // Used by the Host to set the advertising parameters.
     case lowEnergySetAdvertisingParameters = "setadvertisingparameters"
     
-    // It's used to change the Link Layer connection parameters of a connection.
+    // Used to change the Link Layer connection parameters of a connection.
     case lowEnergyConnectionUpdate = "connectionupdate"
     
-    // It's used to request the Controller to start or stop advertising.
+    // Used to request the Controller to start or stop advertising.
     case lowEnergySetAdvertisingEnable = "setadvertisingenable"
     
-    //It's used to create a Link Layer connection to a connectable advertiser.
+    // Used to create a Link Layer connection to a connectable advertiser.
     case lowEnergyCreateConnection = "createconnection"
     
     // Requests the features used on the connection and the features supported by the remote device.
@@ -83,7 +83,7 @@ public enum CommandType: String {
     // Replies to an LE Long Term Key Request event from the Controller, and specifies the Long_Term_Key parameter that shall be used for this Connection_Handle.
     case lowEnergyLongTermKeyRequestReply = "longtermkeyrequestreply"
     
-    // It's used to authenticate the given encryption key associated with the remote device specified by the Connection_Handle, and once authenticated will encrypt the connection.
+    // Used to authenticate the given encryption key associated with the remote device specified by the Connection_Handle, and once authenticated will encrypt the connection.
     case lowEnergyStartEncryption = "startencryption"
     
     // Reads the states and state combinations that the link layer supports.
@@ -154,16 +154,16 @@ public enum Command {
     // Requests the Controller to generate 8 octets of random data to be sent to the Host.
     case lowEnergyRand
     
-    // It's used by the Host to set the advertising parameters.
+    // Used by the Host to set the advertising parameters.
     case lowEnergySetAdvertisingParameters(LESetAdvertisingParametersCommand)
     
-    // It's used to change the Link Layer connection parameters of a connection.
+    // Used to change the Link Layer connection parameters of a connection.
     case lowEnergyConnectionUpdate(LEConnectionUpdateCommand)
     
-    // It's used to request the Controller to start or stop advertising.
+    // Used to request the Controller to start or stop advertising.
     case lowEnergySetAdvertisingEnable(LESetAdvertisingEnableCommand)
     
-    //It's used to create a Link Layer connection to a connectable advertiser.
+    //Used to create a Link Layer connection to a connectable advertiser.
     case lowEnergyCreateConnection(LECreateConnectionCommand)
     
     // Requests the features used on the connection and the features supported by the remote device.
@@ -178,7 +178,7 @@ public enum Command {
     // Replies to an LE Long Term Key Request event from the Controller, and specifies the Long_Term_Key parameter that shall be used for this Connection_Handle.
     case lowEnergyLongTermKeyRequestReply(LELongTermKeyRequestReplyCommand)
     
-    //  It's used to authenticate the given encryption key associated with the remote device specified by the Connection_Handle, and once authenticated will encrypt the connection.
+    //  Used to authenticate the given encryption key associated with the remote device specified by the Connection_Handle, and once authenticated will encrypt the connection.
     case lowEnergyStartEncryption(LEStartEncryptionCommand)
     
     // Reads the states and state combinations that the link layer supports.
