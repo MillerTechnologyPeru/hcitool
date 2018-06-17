@@ -17,7 +17,7 @@ protocol CommandLineData {
 
 protocol CommandLineInteger: CommandLineData {
     
-    init?(_ string: String)
+    init?(_ text: String, radix: Int)
 }
 
 extension CommandLineData {
@@ -43,7 +43,7 @@ extension CommandLineInteger {
             
             self = value
             
-        } else if let value = Self.init(string) {
+        } else if let value = Self.init(string, radix: 10) {
             
             self = value
             

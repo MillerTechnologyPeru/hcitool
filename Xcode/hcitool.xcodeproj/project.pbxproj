@@ -491,7 +491,6 @@
 			inputPaths = (
 				"$(SRCROOT)/../Carthage/Build/Mac/Bluetooth.framework",
 				"$(SRCROOT)/../Carthage/Build/Mac/BluetoothDarwin.framework",
-				"$(SRCROOT)/../Carthage/Build/Mac/Rainbow.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -678,7 +677,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode -Xcc -fmodule-map-file=$(SRCROOT)/../Carthage/Checkouts/BluetoothDarwin/Sources/CBluetoothDarwin/include/module.modulemap";
@@ -733,7 +732,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode -Xcc -fmodule-map-file=$(SRCROOT)/../Carthage/Checkouts/BluetoothDarwin/Sources/CBluetoothDarwin/include/module.modulemap";
 				SDKROOT = macosx;
@@ -806,7 +805,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $FRAMEWORK_SEARCH_PATHS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pureswift.HCIToolTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -820,7 +818,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $FRAMEWORK_SEARCH_PATHS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pureswift.HCIToolTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

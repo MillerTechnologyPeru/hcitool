@@ -13,14 +13,14 @@ public enum PeerIdentifyAddressType: String {
     
     public typealias HCIValue = LowEnergyPeerIdentifyAddressType
     
-    case publicIdentifyAddress = "public"
-    case randomIdentifyAddress = "random"
+    case `public` = "public"
+    case random
     
     public var hciValue: HCIValue {
         switch self {
             
-        case .publicIdentifyAddress: return .publicIdentifyAddress
-        case .randomIdentifyAddress: return .randomIdentifyAddress
+        case .public: return .public
+        case .random: return .random
         }
     }
 }

@@ -727,9 +727,15 @@ final class ArgumentTests: XCTestCase {
              Advertising Channel Map: 0x01
              Advertising Filter Policy: 0x00 - Allow Scan Request from Any, Allow Connect Request from Any
              */
-            let arguments = [/* ".build/debug/hcitool", */ "setadvertisingparameters", "--intervalmin", "20", "--intervalmax", "30", "--type",
-                                                           "directed", "--ownaddresstype", "random", "--peeraddresstype", "public", "--peeraddress",
-                                                           "54:39:A3:47:D8:77", "--channelmap", "channel37", "--filterpolicy", "any"]
+            let arguments = ["setadvertisingparameters",
+                             "--intervalmin", "0x0800",
+                             "--intervalmax", "0x0800",
+                             "--type", "directed",
+                             "--ownaddresstype", "random",
+                             "--peeraddresstype", "public",
+                             "--peeraddress", "54:39:A3:47:D8:77",
+                             "--channelmap", "channel37",
+                             "--filterpolicy", "any"]
             
             let command = try Command(arguments: arguments)
             

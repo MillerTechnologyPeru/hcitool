@@ -17,7 +17,7 @@ public struct LECreateConnectionCommand: ArgumentableCommand {
     
     public let scanInterval: LowEnergyScanTimeInterval
     public let scanWindow: LowEnergyScanTimeInterval
-    public let initiatorFilterPolicy: LowEnergyCommand.CreateConnectionParameter.InitiatorFilterPolicy
+    public let initiatorFilterPolicy: HCILECreateConnection.InitiatorFilterPolicy
     public let peerAddressType: LowEnergyAddressType
     public let peerAddress: Address
     public let ownAddressType: LowEnergyAddressType
@@ -30,7 +30,7 @@ public struct LECreateConnectionCommand: ArgumentableCommand {
     
     public init(scanInterval: LowEnergyScanTimeInterval,
                 scanWindow: LowEnergyScanTimeInterval,
-                initiatorFilterPolicy: LowEnergyCommand.CreateConnectionParameter.InitiatorFilterPolicy = .peerAddress,
+                initiatorFilterPolicy: HCILECreateConnection.InitiatorFilterPolicy = .peerAddress,
                 peerAddressType: LowEnergyAddressType = .public,
                 peerAddress: Address,
                 ownAddressType: LowEnergyAddressType = .public,
@@ -125,7 +125,7 @@ public struct LECreateConnectionCommand: ArgumentableCommand {
     /// Tests the Setting of Random Address.
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        let parameters = LowEnergyCommand.CreateConnectionParameter(scanInterval: scanInterval, scanWindow: scanWindow, initiatorFilterPolicy: initiatorFilterPolicy, peerAddressType: peerAddressType, peerAddress: peerAddress, ownAddressType: ownAddressType, connectionInterval: interval, connectionLatency: latency, supervisionTimeout: supervisionTimeout, connectionLength: connectionLength)
+        let parameters = HCILECreateConnection(scanInterval: scanInterval, scanWindow: scanWindow, initiatorFilterPolicy: initiatorFilterPolicy, peerAddressType: peerAddressType, peerAddress: peerAddress, ownAddressType: ownAddressType, connectionInterval: interval, connectionLatency: latency, supervisionTimeout: supervisionTimeout, connectionLength: connectionLength)
         
         let connectionComplete = try controller.lowEnergyCreateConnection(parameters: parameters)
         
@@ -141,7 +141,7 @@ public extension LECreateConnectionCommand {
     
     public enum InitiatorFilterPolicy: String {
         
-        public typealias HCIValue = LowEnergyCommand.CreateConnectionParameter.InitiatorFilterPolicy
+        public typealias HCIValue = HCILECreateConnection.InitiatorFilterPolicy
         
         case peerAddress    = "peeraddress"
         

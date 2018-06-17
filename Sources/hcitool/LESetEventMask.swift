@@ -51,7 +51,7 @@ public struct LESetEventMaskCommand: ArgumentableCommand {
     /// Tests Setting of Event Mask.
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        typealias EventMask = LowEnergyCommand.SetEventMaskParameter.EventMask
+        typealias EventMask = HCILESetEventMask.EventMask
         let events = self.events.map { $0.hciValue }
         let eventMask = EventMask(events)
         
@@ -75,7 +75,7 @@ public extension LESetEventMaskCommand {
     
     public enum Event: String {
         
-        public typealias HCIValue = LowEnergyCommand.SetEventMaskParameter.Event
+        public typealias HCIValue = HCILESetEventMask.Event
         
         case connectionComplete = "connectioncomplete"
         case advertisingReport = "advertisingreport"
