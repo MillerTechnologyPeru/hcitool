@@ -27,7 +27,7 @@ public struct iBeaconCommand: ArgumentableCommand {
     
     public var rssi: Int8
     
-    public var interval: UInt16
+    public var interval: AdvertisingInterval
     
     public var duration: TimeInterval
     
@@ -35,7 +35,7 @@ public struct iBeaconCommand: ArgumentableCommand {
                                                  major: 1,
                                                  minor: 1,
                                                  rssi: -29,
-                                                 interval: 100,
+                                                 interval: .default,
                                                  duration: 30)
     
     // MARK: - Initialization
@@ -44,7 +44,7 @@ public struct iBeaconCommand: ArgumentableCommand {
                 major: UInt16,
                 minor: UInt16,
                 rssi: Int8,
-                interval: UInt16,
+                interval: AdvertisingInterval,
                 duration: TimeInterval) {
         
         self.uuid = uuid
@@ -107,7 +107,8 @@ public struct iBeaconCommand: ArgumentableCommand {
         
         if let stringValue = parameters.first(where: { $0.option == .interval })?.value {
             
-            guard let value =  UInt16(stringValue)
+            guard let rawValue =  UInt16(stringValue),
+                let value = AdvertisingInterval(rawValue: rawValue)
                 else { throw CommandError.invalidOptionValue(option: Option.interval.rawValue, value: stringValue) }
             
             self.interval = value
@@ -137,12 +138,11 @@ public struct iBeaconCommand: ArgumentableCommand {
         
         print("Enabling iBeacon \(uuid) for \(duration) seconds")
         
-        ///let beacon = iBeacon(uuid: uuid, major: major, minor: minor, rssi: rssi, interval: interval)
+        let beacon = AppleBeacon(uuid: uuid, major: major, minor: minor, rssi: rssi)
         
-        do { try controller.enableLowEnergyAdvertising(false) }
-        catch HCIError.commandDisallowed { }
+        let flags = GAPFlags(flags: [.lowEnergyGeneralDiscoverableMode])
         
-        ///try controller.iBeacon(beacon)
+        try controller.iBeacon(beacon, flags: flags, interval: interval)
         
         // sleep
         sleep(UInt32(duration))
