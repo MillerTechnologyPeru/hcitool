@@ -103,6 +103,9 @@ public enum CommandType: String {
     
     // Removes one device from the list of address translations used to resolve Resolvable Private Addresses in the Controller.
     case lowEnergyRemoveDeviceFromResolvingList = "removedevicefromresolvinglist"
+    
+    // Allows the Host to suggest maximum transmission packet size and maximum packet transmission time
+    case lowEnergySetDataLength = "setdatalength"
 }
 
 public enum Command {
@@ -198,6 +201,9 @@ public enum Command {
     
     // Removes one device from the list of address translations used to resolve Resolvable Private Addresses in the Controller.
     case lowEnergyRemoveDeviceFromResolvingList(LERemoveDeviceFromResolvingListCommand)
+    
+    // Allows the Host to suggest maximum transmission packet size and maximum packet transmission time
+    case lowEnergySetDataLength(LESetDataLengthCommand)
 }
 
 public extension Command {
@@ -236,6 +242,7 @@ public extension Command {
         case .lowEnergyTestEnd:  try LETestEndCommand().execute(controller: controller)
         case let .lowEnergyAddDeviceToResolvingList(command): try command.execute(controller: controller)
         case let .lowEnergyRemoveDeviceFromResolvingList(command): try command.execute(controller: controller)
+        case let .lowEnergySetDataLength(command): try command.execute(controller: controller)
         }
     }
 }
@@ -360,6 +367,9 @@ public extension Command {
         case .lowEnergyRemoveDeviceFromResolvingList:
             let command = try LERemoveDeviceFromResolvingListCommand(arguments: commandArguments)
             self = .lowEnergyRemoveDeviceFromResolvingList(command)
+        case .lowEnergySetDataLength:
+            let command = try LESetDataLengthCommand(arguments: commandArguments)
+            self = .lowEnergySetDataLength(command)
         }
     }
 }
