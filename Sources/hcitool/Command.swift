@@ -103,6 +103,27 @@ public enum CommandType: String {
     
     // Removes one device from the list of address translations used to resolve Resolvable Private Addresses in the Controller.
     case lowEnergyRemoveDeviceFromResolvingList = "removedevicefromresolvinglist"
+    
+    // Allows the Host to suggest maximum transmission packet size and maximum packet transmission time
+    case lowEnergySetDataLength = "setdatalength"
+    
+    // Allows the Host to read the Host's suggested values (SuggestedMaxTxOctets and SuggestedMaxTxTime) for the Controller's maximum transmitted number of payload octets and maximum packet transmission time to be used for new connections
+    case lowEnergyReadSuggestedDefaultDataLength = "readsuggesteddefaultdatalength"
+    
+    // Allows the Host to specify its suggested values for the Controller's maximum transmission number of payload octets and maximum packet transmission time to be used for new connections.
+    case lowEnergyWriteSuggestedDefaultDataLength = "writesuggesteddefaultdatalength"
+    
+    // Used to return the local P-256 public key from the Controller
+    case lowEnergyReadLocalP256PublicKey = "readlocalp256publickey"
+    
+    // Used to remove all devices from the list of address translations used to resolve Resolvable Private Addresses in the Controller.
+    case lowEnergyClearResolvingList = "clearresolvinglist"
+    
+    // Used to read the total number of address translation entries in the resolving list that can be stored in the Controller
+    case lowEnergyReadResolvingListSize = "readresolvinglistsize"
+    
+    // Used to get the current peer Resolvable Private Address being used for the corresponding peer Public and Random (static) Identity Address
+    case lowEnergyReadPeerResolvableAddress = "readpeerresolvableaddress"
 }
 
 public enum Command {
@@ -198,6 +219,27 @@ public enum Command {
     
     // Removes one device from the list of address translations used to resolve Resolvable Private Addresses in the Controller.
     case lowEnergyRemoveDeviceFromResolvingList(LERemoveDeviceFromResolvingListCommand)
+    
+    // Allows the Host to suggest maximum transmission packet size and maximum packet transmission time
+    case lowEnergySetDataLength(LESetDataLengthCommand)
+    
+    // Allows the Host to read the Host's suggested values (SuggestedMaxTxOctets and SuggestedMaxTxTime) for the Controller's maximum transmitted number of payload octets and maximum packet transmission time to be used for new connections
+    case lowEnergyReadSuggestedDataLength
+    
+    // Allows the Host to specify its suggested values for the Controller's maximum transmission number of payload octets and maximum packet transmission time to be used for new connections.
+    case lowEnergyWriteSuggestedDataLength(LEWriteSuggestedDefaultDataLengthCommand)
+    
+    // Used to return the local P-256 public key from the Controller
+    case lowEnergyReadLocalP256PublicKey(LEReadLocalP256PublicKeyCommand)
+    
+    // Used to remove all devices from the list of address translations used to resolve Resolvable Private Addresses in the Controller.
+    case lowEnergyClearResolvingList
+    
+    // Used to read the total number of address translation entries in the resolving list that can be stored in the Controller
+    case lowEnergyReadResolvingListSize
+    
+    // Used to get the current peer Resolvable Private Address being used for the corresponding peer Public and Random (static) Identity Address
+    case lowEnergyReadPeerResolvableAddress(LEReadPeerResolvableAddressCommand)
 }
 
 public extension Command {
@@ -236,6 +278,13 @@ public extension Command {
         case .lowEnergyTestEnd:  try LETestEndCommand().execute(controller: controller)
         case let .lowEnergyAddDeviceToResolvingList(command): try command.execute(controller: controller)
         case let .lowEnergyRemoveDeviceFromResolvingList(command): try command.execute(controller: controller)
+        case let .lowEnergySetDataLength(command): try command.execute(controller: controller)
+        case .lowEnergyReadSuggestedDataLength: try LEReadSuggestedDefaultDataLengthCommand().execute(controller: controller)
+        case let .lowEnergyWriteSuggestedDataLength(command): try command.execute(controller: controller)
+        case let .lowEnergyReadLocalP256PublicKey(command): try command.execute(controller: controller)
+        case .lowEnergyClearResolvingList: try LEClearResolvingListCommand().execute(controller: controller)
+        case .lowEnergyReadResolvingListSize: try LEReadResolvingListSizeCommand().execute(controller: controller)
+        case let .lowEnergyReadPeerResolvableAddress(command): try command.execute(controller: controller)
         }
     }
 }
@@ -250,7 +299,7 @@ public protocol CommandProtocol {
 public protocol ArgumentableCommand: CommandProtocol {
     
     associatedtype Option: OptionProtocol
-
+    
     init(parameters: [Parameter<Option>]) throws
 }
 
@@ -280,86 +329,141 @@ public extension Command {
         case .lowEnergyScan:
             let command = try LEScanCommand(arguments: commandArguments)
             self = .lowEnergyScan(command)
+            
         case .readLocalName:
             self = .readLocalName
+            
         case .writeLocalName:
             let command = try WriteLocalNameCommand(arguments: commandArguments)
             self = .writeLocalName(command)
+            
         case .iBeacon:
             let command = try iBeaconCommand(arguments: commandArguments)
             self = .iBeacon(command)
+            
         case .lowEnergySetRandomAddress:
             let command = try LESetRandomAddressCommand(arguments: commandArguments)
             self = .lowEnergySetRandomAddress(command)
+            
         case .lowEnergyClearWhiteList:
             self = .lowEnergyClearWhiteList
+            
         case .lowEnergyCreateConnectionCancel:
             self = .lowEnergyCreateConnectionCancel
+            
         case .lowEnergyReadLocalSupportedFeatures:
             self = .lowEnergyReadLocalSupportedFeatures
+            
         case .lowEnergySetEventMask:
             let command = try LESetEventMaskCommand(arguments: commandArguments)
             self = .lowEnergySetEventMask(command)
+            
         case .lowEnergyReadBufferSize:
             self = .lowEnergyReadBufferSize
+            
         case .lowEnergyReadChannelMap:
             let command = try LEReadChannelMapCommand(arguments: commandArguments)
             self = .lowEnergyReadChannelMap(command)
+            
         case .lowEnergyAddDeviceToWhiteList:
             let command = try LEAddDeviceToWhiteListCommand(arguments: commandArguments)
             self = .lowEnergyAddDeviceToWhiteList(command)
+            
         case .lowEnergyRemoveDeviceFromWhiteList:
             let command = try LERemoveDeviceFromWhiteListCommand(arguments: commandArguments)
             self = .lowEnergyRemoveDeviceFromWhiteList(command)
+            
         case .lowEnergyReadWhiteListSize:
             self = .lowEnergyReadWhiteListSize
+            
         case .lowEnergyReadAdvertisingChannelTxPower:
             self = .lowEnergyReadAdvertisingChannelTxPower
+            
         case .lowEnergyRand:
             self = .lowEnergyRand
+            
         case .lowEnergySetAdvertisingParameters:
             let command = try LESetAdvertisingParametersCommand(arguments: commandArguments)
             self = .lowEnergySetAdvertisingParameters(command)
+            
         case .lowEnergyConnectionUpdate:
             let command = try LEConnectionUpdateCommand(arguments: commandArguments)
             self = .lowEnergyConnectionUpdate(command)
+            
         case .lowEnergySetAdvertisingEnable:
             let command = try LESetAdvertisingEnableCommand(arguments: commandArguments)
             self = .lowEnergySetAdvertisingEnable(command)
+            
         case .lowEnergyCreateConnection:
             let command = try LECreateConnectionCommand(arguments: commandArguments)
             self = .lowEnergyCreateConnection(command)
+            
         case .lowEnergyReadRemoteFeatures:
             let command = try LEReadRemoteFeaturesCommand(arguments: commandArguments)
             self = .lowEnergyReadRemoteFeatures(command)
+            
         case .lowEnergyEncrypt:
             let command = try LEEncryptCommand(arguments: commandArguments)
             self = .lowEnergyEncrypt(command)
+            
         case .lowEnergyLongTermKeyRequestNegativeReply:
             let command = try LELongTermKeyRequestNegativeReplyCommand(arguments: commandArguments)
             self = .lowEnergyLongTermKeyRequestNegativeReply(command)
+            
         case .lowEnergyLongTermKeyRequestReply:
             let command = try LELongTermKeyRequestReplyCommand(arguments: commandArguments)
             self = .lowEnergyLongTermKeyRequestReply(command)
+            
         case .lowEnergyStartEncryption:
             let command = try LEStartEncryptionCommand(arguments: commandArguments)
             self = .lowEnergyStartEncryption(command)
+            
         case .lowEnergyReadSupportedStates:
             self = .lowEnergyReadSupportedStates
+            
         case .lowEnergyReceiverTest:
             let command = try LEReceiverTestCommand(arguments: commandArguments)
             self = .lowEnergyReceiverTest(command)
+            
         case .lowEnergyTransmitterTest:
             let command = try LETransmitterTestCommand(arguments: commandArguments)
             self = .lowEnergyTransmitterTest(command)
+            
         case .lowEnergyTestEnd:
             self = .lowEnergyTestEnd
+            
         case .lowEnergyAddDeviceToResolvingList:
             let command = try LEAddDeviceToResolvingListCommand(arguments: commandArguments)
             self = .lowEnergyAddDeviceToResolvingList(command)
+            
         case .lowEnergyRemoveDeviceFromResolvingList:
             let command = try LERemoveDeviceFromResolvingListCommand(arguments: commandArguments)
             self = .lowEnergyRemoveDeviceFromResolvingList(command)
+            
+        case .lowEnergySetDataLength:
+            let command = try LESetDataLengthCommand(arguments: commandArguments)
+            self = .lowEnergySetDataLength(command)
+            
+        case .lowEnergyReadSuggestedDefaultDataLength:
+            self = .lowEnergyReadSuggestedDataLength
+            
+        case .lowEnergyWriteSuggestedDefaultDataLength:
+            let command = try LEWriteSuggestedDefaultDataLengthCommand(arguments: commandArguments)
+            self = .lowEnergyWriteSuggestedDataLength(command)
+            
+        case .lowEnergyReadLocalP256PublicKey:
+            let command = try LEReadLocalP256PublicKeyCommand(arguments: commandArguments)
+            self = .lowEnergyReadLocalP256PublicKey(command)
+            
+        case .lowEnergyClearResolvingList:
+            self = .lowEnergyClearResolvingList
+            
+        case .lowEnergyReadResolvingListSize:
+            self = .lowEnergyReadResolvingListSize
+            
+        case .lowEnergyReadPeerResolvableAddress:
+            let command = try LEReadPeerResolvableAddressCommand(arguments: commandArguments)
+            self = .lowEnergyReadPeerResolvableAddress(command)
         }
     }
 }
