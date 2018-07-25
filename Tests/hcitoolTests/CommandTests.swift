@@ -33,7 +33,8 @@ final class CommandTests: XCTestCase {
         ("testTestEnd", testTestEnd),
         ("testReadSupportedStates", testReadSupportedStates),
         ("testAddDeviceToResolvingList", testAddDeviceToResolvingList),
-        ("testInquiry", testInquiry)
+        ("testInquiry", testInquiry),
+        ("testInquiryCancel", testInquiryCancel)
     ]
     
     func testRemoveDeviceFromResolvingList() {
@@ -328,8 +329,19 @@ final class CommandTests: XCTestCase {
             .event([0x0f, 0x04, 0x00, 0x01, 0x01, 0x04])
         ]
         
-        //HCI Event - Command Status - LE Connection Update - Unknown Connection Identifier (0x2)
         XCTAssertThrowsError(try HCIToolTests.run(arguments: arguments, controller: testController))
+    }
+    
+    func testInquiryCancel() {
+        let testController = TestHostController()
+        let arguments = [".build/debug/hcitool", "inquirycancel"]
+        
+        testController.queue = [
+            .command(LinkControlCommand.inquiryCancel.opcode, [0x02, 0x04, 0x00]),
+            .event([0x0e, 0x04, 0x01, 0x02, 0x04, 0x00])
+        ]
+        
+        XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
     }
 }
 

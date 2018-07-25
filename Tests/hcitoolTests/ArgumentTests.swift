@@ -34,7 +34,8 @@ final class ArgumentTests: XCTestCase {
         ("testReadSupportedStates", testReadSupportedStates),
         ("testAddDeviceToResolvingList", testAddDeviceToResolvingList),
         ("testRemoveDeviceFromResolvingList", testRemoveDeviceFromResolvingList),
-        ("testInquiry", testInquiry)
+        ("testInquiry", testInquiry),
+        ("testInquiryCancel", testInquiryCancel)
     ]
     
     func testRemoveDeviceFromResolvingList() {
@@ -840,5 +841,12 @@ final class ArgumentTests: XCTestCase {
                 else { XCTFail("Invalid type"); return }
             
         } catch { XCTFail("\(error)") }
+    }
+    
+    func testInquiryCancel() {
+        
+        do {
+            
+        }
     }
 }

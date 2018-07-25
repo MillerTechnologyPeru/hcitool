@@ -298,6 +298,7 @@ public extension Command {
         case .lowEnergyReadResolvingListSize: try LEReadResolvingListSizeCommand().execute(controller: controller)
         case let .lowEnergyReadPeerResolvableAddress(command): try command.execute(controller: controller)
         case let .inquiry(command): try command.execute(controller: controller)
+        case .inquiryCancel: try InquiryCancelCommand().execute(controller: controller)
         }
     }
 }
@@ -481,6 +482,9 @@ public extension Command {
         case .inquiry:
             let command = try InquiryCommand(arguments: commandArguments)
             self = .inquiry(command)
+            
+        case .inquiryCancel:
+            self = .inquiryCancel
         }
     }
 }

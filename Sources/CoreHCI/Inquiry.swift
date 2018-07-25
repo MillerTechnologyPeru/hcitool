@@ -13,6 +13,7 @@ public struct InquiryCommand: ArgumentableCommand {
     
     public typealias LAP = HCIInquiry.LAP
     public typealias Length = HCIInquiry.Length
+    public typealias Responses = HCIInquiry.Responses
     
     // MARK: - Properties
     
@@ -22,11 +23,11 @@ public struct InquiryCommand: ArgumentableCommand {
     
     public let length: Length
     
-    public let responses: UInt8
+    public let responses: Responses
     
     // MARK: - Initialization
     
-    public init(lap: LAP, length: Length, responses: UInt8) {
+    public init(lap: LAP, length: Length, responses: Responses) {
         
         self.lap = lap
         self.length = length
@@ -52,7 +53,7 @@ public struct InquiryCommand: ArgumentableCommand {
         guard let responsesString = parameters.first(where: { $0.option == .responses })?.value
             else { throw CommandError.optionMissingValue(Option.responses.rawValue) }
         
-        guard let responses = UInt8(commandLine: responsesString)
+        guard let responsesValue = UInt8(commandLine: responsesString), let responses = Responses(rawValue: responsesValue)
             else { throw CommandError.invalidOptionValue(option: Option.responses.rawValue, value: lengthString) }
         
         self.length = length

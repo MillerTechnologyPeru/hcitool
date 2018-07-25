@@ -19,13 +19,9 @@ public struct InquiryCancelCommand: CommandProtocol {
     
     public init() { }
     
-    // MARK: - Methods
-    
     /// Tests the request the Controller to generate 8 octets of random data to be sent to the Host.
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        let randomNumber = try controller.lowEnergyRandom()
-        
-        print("Random Number = \(randomNumber)")
+        try controller.inquiryCancel()
     }
 }
