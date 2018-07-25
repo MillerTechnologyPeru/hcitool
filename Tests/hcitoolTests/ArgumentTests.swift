@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import hcitool
+@testable import CoreHCI
 
 final class ArgumentTests: XCTestCase {
     

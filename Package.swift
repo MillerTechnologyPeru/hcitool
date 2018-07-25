@@ -7,7 +7,11 @@ let package = Package(
     targets: [
         Target(
             name: "hcitool",
-            dependencies: [])
+            dependencies: ["CoreHCI"]
+        ),
+        Target(
+            name: "CoreHCI"
+        )
     ]
 )
 

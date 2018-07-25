@@ -8,7 +8,7 @@
 
 import Foundation
 import Bluetooth
-import hcitool
+@testable import CoreHCI
 
 struct HCIToolTests {
     
