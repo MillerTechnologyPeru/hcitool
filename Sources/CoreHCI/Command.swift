@@ -26,6 +26,9 @@ public enum CommandType: String {
     // Inquiry Mode is used to discover other nearby BR/EDR Controllers.
     case inquiry = "inquiry"
     
+    // Make the BR/EDR Controller to stop the current Inquiry if the BR/EDR Controller is in Inquiry Mode.
+    case inquiryCancel = "inquirycancel"
+    
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress = "setrandomaddress"
     
@@ -141,6 +144,9 @@ public enum Command {
     
     // Inquiry Mode is used to discover other nearby BR/EDR Controllers.
     case inquiry(InquiryCommand)
+    
+    // Make the BR/EDR Controller to stop the current Inquiry if the BR/EDR Controller is in Inquiry Mode.
+    case inquiryCancel
     
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress(LESetRandomAddressCommand)
