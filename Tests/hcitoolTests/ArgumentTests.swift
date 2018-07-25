@@ -33,7 +33,8 @@ final class ArgumentTests: XCTestCase {
         ("testTestEnd", testTestEnd),
         ("testReadSupportedStates", testReadSupportedStates),
         ("testAddDeviceToResolvingList", testAddDeviceToResolvingList),
-        ("testRemoveDeviceFromResolvingList", testRemoveDeviceFromResolvingList)
+        ("testRemoveDeviceFromResolvingList", testRemoveDeviceFromResolvingList),
+        ("testInquiry", testInquiry)
     ]
     
     func testRemoveDeviceFromResolvingList() {
@@ -815,6 +816,28 @@ final class ArgumentTests: XCTestCase {
                 else { XCTFail("Invalid type"); return }
             
             XCTAssert(commandValue.events == [.connectionComplete, .advertisingReport])
+            
+        } catch { XCTFail("\(error)") }
+    }
+    
+    func testInquiry() {
+        
+        do {
+            
+            /**
+             [0401] Opcode: 0x0401 (OGF: 0x01    OCF: 0x01)
+             Parameter Length: 5 (0x05)
+             LAP: 0x9E8B00
+             Inquiry Length: 0x05
+             6.400000 seconds
+             Number of Responses: 0x20
+             */
+            let arguments = [/* ".build/debug/hcitool", */ "inquiry", "--lap", "009E8B00", "--length", "05", "responses", "20"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .inquiry = command
+                else { XCTFail("Invalid type"); return }
             
         } catch { XCTFail("\(error)") }
     }

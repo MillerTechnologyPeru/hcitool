@@ -33,7 +33,7 @@ final class CommandTests: XCTestCase {
         ("testTestEnd", testTestEnd),
         ("testReadSupportedStates", testReadSupportedStates),
         ("testAddDeviceToResolvingList", testAddDeviceToResolvingList),
-        ("testSetDataLength", testSetDataLength)
+        ("testInquiry", testInquiry)
     ]
     
     func testRemoveDeviceFromResolvingList() {
@@ -319,39 +319,13 @@ final class CommandTests: XCTestCase {
         XCTAssertThrowsError(try HCIToolTests.run(arguments: arguments, controller: testController))
     }
     
-    func testSetDataLength() {
+    func testInquiry() {
         let testController = TestHostController()
-        let arguments = [".build/debug/hcitool", "setdatalength", "--connectionhandle", "0022", "--txoctet", "001B", "--txtime", "0148"]
+        let arguments = [".build/debug/hcitool", "inquiry", "--lap", "009E8B00", "--length", "05", "--responses", "20"]
         
         testController.queue = [
-            .command(HCILowEnergyCommand.setDataLengthCommand.opcode, []),
-            .event([0x0f, 0x04, 0x02, 0x01, 0x13, 0x20])
-        ]
-        
-        //HCI Event - Command Status - LE Connection Update - Unknown Connection Identifier (0x2)
-        XCTAssertThrowsError(try HCIToolTests.run(arguments: arguments, controller: testController))
-    }
-    
-    func testLEReadSuggestedDefaultDataLength() {
-        let testController = TestHostController()
-        let arguments = [".build/debug/hcitool", "readsuggesteddefaultdatalength"]
-        
-        testController.queue = [
-            .command(HCILowEnergyCommand.readSuggestedDefaultDataLengthCommand.opcode, []),
-            .event([0x0f, 0x04, 0x02, 0x01, 0x13, 0x20])
-        ]
-        
-        //HCI Event - Command Status - LE Connection Update - Unknown Connection Identifier (0x2)
-        XCTAssertThrowsError(try HCIToolTests.run(arguments: arguments, controller: testController))
-    }
-    
-    func testLEWriteSuggestedDefaultDataLength() {
-        let testController = TestHostController()
-        let arguments = [".build/debug/hcitool", "writesuggesteddefaultdatalength", "--suggestedmaxtxoctets", "001B", "--suggestedmaxtxtime", "0148"]
-        
-        testController.queue = [
-            .command(HCILowEnergyCommand.writeSuggestedDefaultDataLengthCommand.opcode, []),
-            .event([0x0f, 0x04, 0x02, 0x01, 0x13, 0x20])
+            .command(LinkControlCommand.inquiry.opcode, [0x01, 0x04, 0x05, 0x00, 0x8b, 0x9e, 0x05, 0x20]),
+            .event([0x0f, 0x04, 0x00, 0x01, 0x01, 0x04])
         ]
         
         //HCI Event - Command Status - LE Connection Update - Unknown Connection Identifier (0x2)

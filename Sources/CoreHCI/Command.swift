@@ -23,6 +23,9 @@ public enum CommandType: String {
     // Write the Bluetooth controller's local name.
     case writeLocalName = "writename"
     
+    // Inquiry Mode is used to discover other nearby BR/EDR Controllers.
+    case inquiry = "inquiry"
+    
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress = "setrandomaddress"
     
@@ -135,6 +138,9 @@ public enum Command {
     
     // Write the Bluetooth controller's local name.
     case writeLocalName(WriteLocalNameCommand)
+    
+    // Inquiry Mode is used to discover other nearby BR/EDR Controllers.
+    case inquiry(InquiryCommand)
     
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress(LESetRandomAddressCommand)
@@ -285,6 +291,7 @@ public extension Command {
         case .lowEnergyClearResolvingList: try LEClearResolvingListCommand().execute(controller: controller)
         case .lowEnergyReadResolvingListSize: try LEReadResolvingListSizeCommand().execute(controller: controller)
         case let .lowEnergyReadPeerResolvableAddress(command): try command.execute(controller: controller)
+        case let .inquiry(command): try command.execute(controller: controller)
         }
     }
 }
@@ -464,6 +471,10 @@ public extension Command {
         case .lowEnergyReadPeerResolvableAddress:
             let command = try LEReadPeerResolvableAddressCommand(arguments: commandArguments)
             self = .lowEnergyReadPeerResolvableAddress(command)
+            
+        case .inquiry:
+            let command = try InquiryCommand(arguments: commandArguments)
+            self = .inquiry(command)
         }
     }
 }
