@@ -65,7 +65,7 @@ public struct InquiryCommand: ArgumentableCommand {
     
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        try controller.inquiry(lap: lap, length: length, responses: responses, timeout: 999)
+        try controller.inquiry(lap: lap, length: length, responses: responses, timeout: 99999)
     }
 }
 
