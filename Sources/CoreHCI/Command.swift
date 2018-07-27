@@ -32,6 +32,9 @@ public enum CommandType: String {
     // Used to configure the BR/EDR Con- troller to enter the Periodic Inquiry Mode that performs an automatic Inquiry.
     case periodicInquiryMode = "periodicinquirymode"
     
+    // Used to end the Periodic Inquiry mode when the local device is in Periodic Inquiry Mode
+    case exitPeriodicInquiryMode = "exitperiodicinquirymode"
+    
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress = "setrandomaddress"
     
@@ -147,6 +150,9 @@ public enum Command {
     
     // Inquiry Mode is used to discover other nearby BR/EDR Controllers.
     case inquiry(InquiryCommand)
+    
+    // Used to end the Periodic Inquiry mode when the local device is in Periodic Inquiry Mode
+    case exitPeriodicInquiryMode
     
     // Make the BR/EDR Controller to stop the current Inquiry if the BR/EDR Controller is in Inquiry Mode.
     case inquiryCancel
@@ -306,6 +312,7 @@ public extension Command {
         case let .inquiry(command): try command.execute(controller: controller)
         case .inquiryCancel: try InquiryCancelCommand().execute(controller: controller)
         case let .periodicInquiryMode(command): try command.execute(controller: controller)
+        case .exitPeriodicInquiryMode: try ExitPeriodicInquiryCommand().execute(controller: controller)
         }
     }
 }
@@ -496,6 +503,9 @@ public extension Command {
         case .periodicInquiryMode:
             let command = try PeriodicInquiryModeCommand(arguments: commandArguments)
             self = .periodicInquiryMode(command)
+            
+        case .exitPeriodicInquiryMode:
+            self = .exitPeriodicInquiryMode
         }
     }
 }
