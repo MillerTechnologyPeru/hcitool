@@ -35,6 +35,12 @@ public enum CommandType: String {
     // Used to end the Periodic Inquiry mode when the local device is in Periodic Inquiry Mode
     case exitPeriodicInquiryMode = "exitperiodicinquirymode"
     
+    // Causes the Link Manager to create a connection to the remote device with the BD_ADDR specified by the command parameters
+    case createConnection = "classiccreateconnection"
+    
+    // Used to terminate an existing connection. The Connection_Handle command parameter indicates which connection is to be disconnected.
+    case disconnect = "disconnect"
+    
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress = "setrandomaddress"
     
@@ -159,6 +165,12 @@ public enum Command {
     
     // Used to configure the BR/EDR Con- troller to enter the Periodic Inquiry Mode that performs an automatic Inquiry.
     case periodicInquiryMode(PeriodicInquiryModeCommand)
+    
+    // Causes the Link Manager to create a connection to the remote device with the BD_ADDR specified by the command parameters
+    case createConnection(CreateConnectionCommand)
+    
+    // Used to terminate an existing connection. The Connection_Handle command parameter indicates which connection is to be disconnected.
+    case disconnect(DisconnectCommand)
     
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress(LESetRandomAddressCommand)
@@ -313,6 +325,8 @@ public extension Command {
         case .inquiryCancel: try InquiryCancelCommand().execute(controller: controller)
         case let .periodicInquiryMode(command): try command.execute(controller: controller)
         case .exitPeriodicInquiryMode: try ExitPeriodicInquiryCommand().execute(controller: controller)
+        case let .createConnection(command): try command.execute(controller: controller)
+        case let .disconnect(command): try command.execute(controller: controller)
         }
     }
 }
@@ -506,6 +520,14 @@ public extension Command {
             
         case .exitPeriodicInquiryMode:
             self = .exitPeriodicInquiryMode
+            
+        case .createConnection:
+            let command = try CreateConnectionCommand(arguments: commandArguments)
+            self = .createConnection(command)
+            
+        case .disconnect:
+            let command = try DisconnectCommand(arguments: commandArguments)
+            self = .disconnect(command)
         }
     }
 }

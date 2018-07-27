@@ -35,7 +35,11 @@ final class ArgumentTests: XCTestCase {
         ("testAddDeviceToResolvingList", testAddDeviceToResolvingList),
         ("testRemoveDeviceFromResolvingList", testRemoveDeviceFromResolvingList),
         ("testInquiry", testInquiry),
-        ("testInquiryCancel", testInquiryCancel)
+        ("testInquiryCancel", testInquiryCancel),
+        ("testPeriodicInquiryMode", testPeriodicInquiryMode),
+        ("testExitPeriodicInquiryMode", testExitPeriodicInquiryMode),
+        ("testCreateConnection", testCreateConnection),
+        ("testDisconnect", testDisconnect)
     ]
     
     func testRemoveDeviceFromResolvingList() {
@@ -847,6 +851,69 @@ final class ArgumentTests: XCTestCase {
         
         do {
             
-        }
+            let arguments = [/* ".build/debug/hcitool", */ "inquirycancel"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .inquiryCancel = command
+                else { XCTFail("Invalid type"); return }
+            
+        } catch { XCTFail("\(error)") }
+    }
+    
+    func testPeriodicInquiryMode() {
+        
+        do {
+            
+            let arguments = [/*".build/debug/hcitool", */ "periodicinquirymode", "--maxperiodlength", "0009", "--minperiodlength", "0005", "--lap", "009E8B00", "--length", "03", "--responses", "20"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .periodicInquiryMode = command
+                else { XCTFail("Invalid type"); return }
+            
+        } catch { XCTFail("\(error)") }
+    }
+    
+    func testExitPeriodicInquiryMode() {
+        
+        do {
+            
+            let arguments = [/*".build/debug/hcitool", */ "exitperiodicinquirymode"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .exitPeriodicInquiryMode = command
+                else { XCTFail("Invalid type"); return }
+            
+        } catch { XCTFail("\(error)") }
+    }
+    
+    func testCreateConnection() {
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "classiccreateconnection", "--address", "B0:70:2D:06:D2:AF", "--packettype", "0xcc18", "--pagescanrepetitionmode", "0x01", "--clockoffset", "0000", "--allowroleswitch", "0x00"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .createConnection = command
+                else { XCTFail("Invalid type"); return }
+            
+        } catch { XCTFail("\(error)") }
+    }
+    
+    func testDisconnect() {
+        
+        do {
+            
+            let arguments = [/* ".build/debug/hcitool", */ "disconnect", "--connectionHandle", "0x003d", "--reason", "0x13"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case let .disconnect(commandValue) = command
+                else { XCTFail("Invalid type"); return }
+            
+        } catch { XCTFail("\(error)") }
     }
 }

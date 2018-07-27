@@ -80,4 +80,3 @@ public extension InquiryCommand {
         public static let all: Set<Option> = [.lap, .length, .responses]
     }
 }
-
