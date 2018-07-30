@@ -70,12 +70,16 @@ public struct InquiryCommand: ArgumentableCommand {
         let startDate = Date()
         let endDate = startDate + length.seconds
         
-        try controller.inquiry(lap: lap,
-                               length: length,
-                               responses: responses,
-                               timeout: 99999,
-                               shouldContinue: { Date() < endDate },
-                               foundDevice: { print($0.address) })
+        let inquiryResult = try controller.inquiry(lap: lap,
+                                                   length: length,
+                                                   responses: responses,
+                                                   timeout: 15000,
+                                                   shouldContinue: { Date() < endDate },
+                                                   foundDevice: { print($0.address) })
+        
+        inquiryResult.reports.forEach { report in
+            print("Device: " + report.address.rawValue)
+        }
     }
 }
 
