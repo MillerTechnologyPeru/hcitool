@@ -65,7 +65,17 @@ public struct InquiryCommand: ArgumentableCommand {
     
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        try controller.inquiry(lap: lap, length: length, responses: responses, timeout: 99999)
+        print("Scanning for \(length.seconds) seconds...")
+        
+        let startDate = Date()
+        let endDate = startDate + length.seconds
+        
+        try controller.inquiry(lap: lap,
+                               length: length,
+                               responses: responses,
+                               timeout: 99999,
+                               shouldContinue: { Date() < endDate },
+                               foundDevice: { print($0.address) })
     }
 }
 
