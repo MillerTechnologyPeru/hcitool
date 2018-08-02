@@ -22,11 +22,11 @@ public struct DisconnectCommand: ArgumentableCommand {
     
     public let connectionHandle: UInt16
     
-    public let reason: Reason
+    public let reason: HCIError
     
     // MARK: - Initialization
     
-    public init(connectionHandle: UInt16, reason: Reason) {
+    public init(connectionHandle: UInt16, reason: HCIError) {
         
         self.connectionHandle = connectionHandle
         self.reason = reason
@@ -45,7 +45,7 @@ public struct DisconnectCommand: ArgumentableCommand {
         guard let reasonString = parameters.first(where: { $0.option == .reason })?.value
             else { throw CommandError.optionMissingValue(Option.reason.rawValue) }
         
-        guard let reasonValue = UInt8(commandLine: reasonString), let reason = Reason(rawValue: reasonValue)
+        guard let reasonValue = UInt8(commandLine: reasonString), let reason = HCIError(rawValue: reasonValue)
             else { throw CommandError.invalidOptionValue(option: Option.reason.rawValue, value: reasonString) }
         
         self.reason = reason
@@ -55,7 +55,7 @@ public struct DisconnectCommand: ArgumentableCommand {
     
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        try controller.disconnect(connectionHandle: connectionHandle, reason: reason, timeout: 5000)
+        try controller.disconnect(connectionHandle: connectionHandle, error: reason, timeout: 5000)
     }
 }
 

@@ -12,7 +12,7 @@ import Foundation
 public struct InquiryCommand: ArgumentableCommand {
     
     public typealias LAP = HCIInquiry.LAP
-    public typealias Length = HCIInquiry.Length
+    public typealias Duration = HCIInquiry.Duration
     public typealias Responses = HCIInquiry.Responses
     
     // MARK: - Properties
@@ -21,16 +21,16 @@ public struct InquiryCommand: ArgumentableCommand {
     
     public let lap: LAP
     
-    public let length: Length
+    public let duration: Duration
     
     public let responses: Responses
     
     // MARK: - Initialization
     
-    public init(lap: LAP, length: Length, responses: Responses) {
+    public init(lap: LAP, duration: Duration, responses: Responses) {
         
         self.lap = lap
-        self.length = length
+        self.duration = duration
         self.responses = responses
     }
     
@@ -44,19 +44,21 @@ public struct InquiryCommand: ArgumentableCommand {
         
         self.lap = lap
         
-        guard let lengthString = parameters.first(where: { $0.option == .length })?.value
-            else { throw CommandError.optionMissingValue(Option.length.rawValue) }
+        guard let durationString = parameters.first(where: { $0.option == .duration })?.value
+            else { throw CommandError.optionMissingValue(Option.duration.rawValue) }
         
-        guard let lengthValue = UInt8(commandLine: lengthString), let length = Length(rawValue: lengthValue)
-            else { throw CommandError.invalidOptionValue(option: Option.length.rawValue, value: lengthString) }
+        guard let durationValue = UInt8(commandLine: durationString), let duration = Duration(rawValue: durationValue)
+            else { throw CommandError.invalidOptionValue(option: Option.duration.rawValue, value: durationString) }
+        
+        self.duration = duration
         
         guard let responsesString = parameters.first(where: { $0.option == .responses })?.value
             else { throw CommandError.optionMissingValue(Option.responses.rawValue) }
         
-        guard let responsesValue = UInt8(commandLine: responsesString), let responses = Responses(rawValue: responsesValue)
-            else { throw CommandError.invalidOptionValue(option: Option.responses.rawValue, value: lengthString) }
+        guard let responsesValue = UInt8(commandLine: responsesString)
+            else { throw CommandError.invalidOptionValue(option: Option.responses.rawValue, value: responsesString) }
         
-        self.length = length
+        let responses = Responses(rawValue: responsesValue)
         
         self.responses = responses
     }
@@ -65,21 +67,13 @@ public struct InquiryCommand: ArgumentableCommand {
     
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        print("Scanning for \(length.seconds) seconds...")
+        print("Scanning for \(duration.seconds) seconds...")
         
-        let startDate = Date()
-        let endDate = startDate + length.seconds
-        
-        let inquiryResult = try controller.inquiry(lap: lap,
-                                                   length: length,
-                                                   responses: responses,
-                                                   timeout: 15000,
-                                                   shouldContinue: { Date() < endDate },
-                                                   foundDevice: { print($0.address) })
-        
-        inquiryResult.reports.forEach { report in
-            print("Device: " + report.address.rawValue)
-        }
+        try controller.inquiry(lap: lap,
+                               duration: duration,
+                               responses: responses,
+                               timeout: 15000,
+                               foundDevice: { print($0.address) })
     }
 }
 
@@ -88,9 +82,9 @@ public extension InquiryCommand {
     public enum Option: String, OptionProtocol {
         
         case lap = "lap"
-        case length = "length"
+        case duration = "duration"
         case responses = "responses"
         
-        public static let all: Set<Option> = [.lap, .length, .responses]
+        public static let all: Set<Option> = [.lap, .duration, .responses]
     }
 }

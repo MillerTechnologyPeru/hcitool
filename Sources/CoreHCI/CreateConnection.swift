@@ -12,7 +12,6 @@ import Foundation
 public struct CreateConnectionCommand: ArgumentableCommand {
     
     public typealias PacketType = HCICreateConnection.PacketType
-    public typealias PageScanRepetitionMode = HCICreateConnection.PageScanRepetitionMode
     public typealias ClockOffset = HCICreateConnection.ClockOffset
     public typealias AllowRoleSwitch = HCICreateConnection.AllowRoleSwitch
     
@@ -59,10 +58,6 @@ public struct CreateConnectionCommand: ArgumentableCommand {
         
         guard let packetTypeString = parameters.first(where: { $0.option == .packetType })?.value
             else { throw CommandError.optionMissingValue(Option.packetType.rawValue) }
-        
-        print("packetTypeString", packetTypeString)
-        
-//        print(UInt16(commandLine: packetTypeString))
         
         guard let packetTypeValue = UInt16(commandLine: packetTypeString)
             else { throw CommandError.invalidOptionValue(option: Option.packetType.rawValue, value: packetTypeString) }
