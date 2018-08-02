@@ -46,8 +46,6 @@ public struct CreateConnectionCommand: ArgumentableCommand {
     
     public init(parameters: [Parameter<Option>]) throws {
         
-        print("1")
-        
         guard let addressString = parameters.first(where: { $0.option == .address })?.value
             else { throw CommandError.optionMissingValue(Option.address.rawValue) }
         
@@ -76,8 +74,6 @@ public struct CreateConnectionCommand: ArgumentableCommand {
         guard let clockOffsetString = parameters.first(where: { $0.option == .clockOffset })?.value
             else { throw CommandError.optionMissingValue(Option.clockOffset.rawValue) }
         
-//        print("clockOffsetString", UInt16(commandLine: clockOffsetString))
-        
         guard let clockOffsetValue = UInt16(commandLine: clockOffsetString)
             else { throw CommandError.invalidOptionValue(option: Option.clockOffset.rawValue, value: clockOffsetString) }
         
@@ -85,8 +81,6 @@ public struct CreateConnectionCommand: ArgumentableCommand {
         
         guard let allowRoleSwitchString = parameters.first(where: { $0.option == .allowRoleSwitch })?.value
             else { throw CommandError.optionMissingValue(Option.allowRoleSwitch.rawValue) }
-        
-        print("allowRoleSwitchString")
         
         guard let allowRoleSwitchValue = UInt8(commandLine: allowRoleSwitchString),
             let allowRoleSwitch = AllowRoleSwitch(rawValue: allowRoleSwitchValue)
