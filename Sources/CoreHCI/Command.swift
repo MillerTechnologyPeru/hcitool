@@ -38,6 +38,9 @@ public enum CommandType: String {
     // Causes the Link Manager to create a connection to the remote device with the BD_ADDR specified by the command parameters
     case createConnection = "classiccreateconnection"
     
+    // Used to request cancellation of the ongoing connection creation process
+    case createConnectionCancel = "cancelconnection"
+    
     // Used to terminate an existing connection. The Connection_Handle command parameter indicates which connection is to be disconnected.
     case disconnect = "disconnect"
     
@@ -168,6 +171,9 @@ public enum Command {
     
     // Causes the Link Manager to create a connection to the remote device with the BD_ADDR specified by the command parameters
     case createConnection(CreateConnectionCommand)
+    
+    // Used to request cancellation of the ongoing connection creation process
+    case createConnectionCancel(CreateConnectionCancelCommand)
     
     // Used to terminate an existing connection. The Connection_Handle command parameter indicates which connection is to be disconnected.
     case disconnect(DisconnectCommand)
@@ -327,6 +333,7 @@ public extension Command {
         case .exitPeriodicInquiryMode: try ExitPeriodicInquiryCommand().execute(controller: controller)
         case let .createConnection(command): try command.execute(controller: controller)
         case let .disconnect(command): try command.execute(controller: controller)
+        case let .createConnectionCancel(command): try command.execute(controller: controller)
         }
     }
 }
@@ -528,6 +535,10 @@ public extension Command {
         case .disconnect:
             let command = try DisconnectCommand(arguments: commandArguments)
             self = .disconnect(command)
+            
+        case .createConnectionCancel:
+            let command = try CreateConnectionCancelCommand(arguments: commandArguments)
+            self = .createConnectionCancel(command)
         }
     }
 }

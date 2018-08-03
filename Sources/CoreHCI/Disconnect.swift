@@ -55,7 +55,13 @@ public struct DisconnectCommand: ArgumentableCommand {
     
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        try controller.disconnect(connectionHandle: connectionHandle, error: reason, timeout: 5000)
+        let disconnectionComplete = try controller.disconnect(connectionHandle: connectionHandle,
+                                                              error: reason,
+                                                              timeout: 5000)
+        
+        print("handle =", disconnectionComplete.handle)
+        print("status =", disconnectionComplete.status.description)
+        print("reason =", disconnectionComplete.error.rawValue)
     }
 }
 

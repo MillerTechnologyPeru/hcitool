@@ -348,7 +348,7 @@ final class CommandTests: XCTestCase {
     func testPeriodicInquiryModeAndCancel() {
         do {
             let testController = TestHostController()
-            let arguments = [".build/debug/hcitool", "periodicinquirymode", "--maxperiodlength", "0009", "--minperiodlength", "0005", "--lap", "009E8B00", "--length", "03", "--responses", "20"]
+            let arguments = [".build/debug/hcitool", "periodicinquirymode", "--maxperiodduration", "0009", "--minperiodduration", "0005", "--lap", "009E8B00", "--duration", "03", "--responses", "20"]
             
             
             testController.queue = [

@@ -15,7 +15,7 @@ final class ArgumentTests: XCTestCase {
         ("testLEScan", testLEScan),
         ("testSetRandomAddress", testSetRandomAddress),
         ("testClearWhiteList", testClearWhiteList),
-        ("testCreateConnectionCancel", testCreateConnectionCancel),
+        ("testLECreateConnectionCancel", testLECreateConnectionCancel),
         ("testReadLocalSupportedFeatures", testReadLocalSupportedFeatures),
         ("testReadBufferSize", testReadBufferSize),
         ("testSetAdvertiseParameter", testSetAdvertiseParameter),
@@ -39,6 +39,7 @@ final class ArgumentTests: XCTestCase {
         ("testPeriodicInquiryMode", testPeriodicInquiryMode),
         ("testExitPeriodicInquiryMode", testExitPeriodicInquiryMode),
         ("testCreateConnection", testCreateConnection),
+        ("testCreateConnectionCancel", testCreateConnectionCancel),
         ("testDisconnect", testDisconnect)
     ]
     
@@ -553,7 +554,7 @@ final class ArgumentTests: XCTestCase {
        } catch { XCTFail("\(error)") }
     }
     
-    func testCreateConnectionCancel() {
+    func testLECreateConnectionCancel() {
         do {
             /*
              [200E] Opcode: 0x200E (OGF: 0x08    OCF: 0x0E) - 0E 20 00
@@ -837,7 +838,7 @@ final class ArgumentTests: XCTestCase {
              6.400000 seconds
              Number of Responses: 0x20
              */
-            let arguments = [/* ".build/debug/hcitool", */ "inquiry", "--lap", "009E8B00", "--length", "05", "responses", "20"]
+            let arguments = [/* ".build/debug/hcitool", */ "inquiry", "--lap", "009E8B00", "--duration", "05", "responses", "20"]
             
             let command = try Command(arguments: arguments)
             
@@ -865,7 +866,7 @@ final class ArgumentTests: XCTestCase {
         
         do {
             
-            let arguments = [/*".build/debug/hcitool", */ "periodicinquirymode", "--maxperiodlength", "0009", "--minperiodlength", "0005", "--lap", "009E8B00", "--length", "03", "--responses", "20"]
+            let arguments = [/*".build/debug/hcitool", */ "periodicinquirymode", "--maxperiodduration", "0009", "--minperiodduration", "0005", "--lap", "009E8B00", "--duration", "03", "--responses", "20"]
             
             let command = try Command(arguments: arguments)
             
@@ -912,6 +913,19 @@ final class ArgumentTests: XCTestCase {
             let command = try Command(arguments: arguments)
             
             guard case let .disconnect(commandValue) = command
+                else { XCTFail("Invalid type"); return }
+            
+        } catch { XCTFail("\(error)") }
+    }
+    
+    func testCreateConnectionCancel() {
+        
+        do {
+            let arguments = [/* ".build/debug/hcitool", */ "cancelconnection", "--address", "B0:70:2D:06:D2:AF"]
+            
+            let command = try Command(arguments: arguments)
+            
+            guard case .createConnectionCancel = command
                 else { XCTFail("Invalid type"); return }
             
         } catch { XCTFail("\(error)") }
