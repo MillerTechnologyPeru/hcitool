@@ -65,11 +65,10 @@ public struct CreateConnectionCommand: ArgumentableCommand {
         guard let pageScanRepetitionModeString = parameters.first(where: { $0.option == .pageScanRepetitionMode })?.value
             else { throw CommandError.optionMissingValue(Option.pageScanRepetitionMode.rawValue) }
         
-        guard let pageScanRepetitionModeValue = UInt8(commandLine: pageScanRepetitionModeString),
-            let pageScanRepetitionMode = PageScanRepetitionMode(rawValue: pageScanRepetitionModeValue)
+        guard let pageScanRepetitionModeValue = UInt8(commandLine: pageScanRepetitionModeString)
             else { throw CommandError.invalidOptionValue(option: Option.pageScanRepetitionMode.rawValue, value: pageScanRepetitionModeString) }
         
-        self.pageScanRepetitionMode = pageScanRepetitionMode
+        self.pageScanRepetitionMode = PageScanRepetitionMode(rawValue: pageScanRepetitionModeValue)
         
         guard let clockOffsetString = parameters.first(where: { $0.option == .clockOffset })?.value
             else { throw CommandError.optionMissingValue(Option.clockOffset.rawValue) }

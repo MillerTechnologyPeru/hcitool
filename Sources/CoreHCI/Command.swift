@@ -44,6 +44,9 @@ public enum CommandType: String {
     // Used to terminate an existing connection. The Connection_Handle command parameter indicates which connection is to be disconnected.
     case disconnect = "disconnect"
     
+    // Used to obtain the user-friendly name of another BR/EDR Controller
+    case remoteNameRequest = "remotenamerequest"
+    
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress = "setrandomaddress"
     
@@ -177,6 +180,9 @@ public enum Command {
     
     // Used to terminate an existing connection. The Connection_Handle command parameter indicates which connection is to be disconnected.
     case disconnect(DisconnectCommand)
+    
+    // Used to obtain the user-friendly name of another BR/EDR Controller
+    case remoteNameRequest(RequestRemoteNameCommand)
     
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress(LESetRandomAddressCommand)
@@ -334,6 +340,7 @@ public extension Command {
         case let .createConnection(command): try command.execute(controller: controller)
         case let .disconnect(command): try command.execute(controller: controller)
         case let .createConnectionCancel(command): try command.execute(controller: controller)
+        case let .remoteNameRequest(command): try command.execute(controller: controller)
         }
     }
 }
@@ -539,6 +546,10 @@ public extension Command {
         case .createConnectionCancel:
             let command = try CreateConnectionCancelCommand(arguments: commandArguments)
             self = .createConnectionCancel(command)
+            
+        case .remoteNameRequest:
+            let command = try RequestRemoteNameCommand(arguments: commandArguments)
+            self = .remoteNameRequest(command)
         }
     }
 }

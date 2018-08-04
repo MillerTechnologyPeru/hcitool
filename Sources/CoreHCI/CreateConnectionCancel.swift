@@ -37,7 +37,6 @@ public struct CreateConnectionCancelCommand: ArgumentableCommand {
     
     // MARK: - Methods
     
-    /// Tests the creation of connection cancel
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
         try controller.cancelConnection(address: address)
