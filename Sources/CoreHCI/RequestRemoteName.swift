@@ -63,10 +63,11 @@ public struct RequestRemoteNameCommand: ArgumentableCommand {
     
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        try controller.remoteNameRequest(address: address,
+        let remoteNameComplete = try controller.remoteNameRequest(address: address,
                                         pscanRepMode: pageScanRepetitionMode,
-                                        clockOffset: clockOffset,
-                                        foundDevice: { print($0) })
+                                        clockOffset: clockOffset)
+        
+        print("remoteNameComplete =", remoteNameComplete.name)
     }
 }
 
