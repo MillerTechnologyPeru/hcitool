@@ -47,6 +47,9 @@ public enum CommandType: String {
     // Used to obtain the user-friendly name of another BR/EDR Controller
     case remoteNameRequest = "remotenamerequest"
     
+    // Used to read values regarding the maximum permitted data transfers over the Controller and the data buffering available in the Controller.
+    case readDataBlockSize = "readdatablocksize"
+    
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress = "setrandomaddress"
     
@@ -183,6 +186,9 @@ public enum Command {
     
     // Used to obtain the user-friendly name of another BR/EDR Controller
     case remoteNameRequest(RequestRemoteNameCommand)
+    
+    // Used to read values regarding the maximum permitted data transfers over the Controller and the data buffering available in the Controller.
+    case readDataBlockSize
     
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress(LESetRandomAddressCommand)
@@ -341,6 +347,7 @@ public extension Command {
         case let .disconnect(command): try command.execute(controller: controller)
         case let .createConnectionCancel(command): try command.execute(controller: controller)
         case let .remoteNameRequest(command): try command.execute(controller: controller)
+        case .readDataBlockSize: try ReadDataBlockSizeCommand().execute(controller: controller)
         }
     }
 }
@@ -550,6 +557,9 @@ public extension Command {
         case .remoteNameRequest:
             let command = try RequestRemoteNameCommand(arguments: commandArguments)
             self = .remoteNameRequest(command)
+            
+        case .readDataBlockSize:
+            self = .readDataBlockSize
         }
     }
 }
