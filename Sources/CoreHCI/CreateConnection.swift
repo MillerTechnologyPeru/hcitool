@@ -98,7 +98,8 @@ public struct CreateConnectionCommand: ArgumentableCommand {
                                                                  clockOffset: clockOffset,
                                                                  allowRoleSwitch: allowRoleSwitch,
                                                                  timeout: 5000)
-        print("handle = ", connectionComplete.handle)
+        
+        print("connection handle = ", connectionComplete.handle.toHexadecimal())
     }
 }
 
