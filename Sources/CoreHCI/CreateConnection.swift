@@ -92,12 +92,13 @@ public struct CreateConnectionCommand: ArgumentableCommand {
     
     public func execute <Controller: BluetoothHostControllerInterface> (controller: Controller) throws {
         
-        try controller.createConnection(address: address,
-                                        packetType: packetType,
-                                        pageScanRepetitionMode: pageScanRepetitionMode,
-                                        clockOffset: clockOffset,
-                                        allowRoleSwitch: allowRoleSwitch,
-                                        timeout: 99999)
+        let connectionComplete = try controller.createConnection(address: address,
+                                                                 packetType: packetType,
+                                                                 pageScanRepetitionMode: pageScanRepetitionMode,
+                                                                 clockOffset: clockOffset,
+                                                                 allowRoleSwitch: allowRoleSwitch,
+                                                                 timeout: 5000)
+        print("handle = ", connectionComplete.handle)
     }
 }
 
