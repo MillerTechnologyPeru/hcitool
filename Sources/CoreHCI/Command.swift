@@ -53,6 +53,9 @@ public enum CommandType: String {
     // Used to enable and disable the link level encryption.
     case setConnectionEncryption = "setconnectionencryption"
     
+    // Used to indicate the completion of the process of the Link Manager
+    case readRemoteSupportedFeatures = "readremotesupportedfeatures"
+    
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress = "setrandomaddress"
     
@@ -195,6 +198,9 @@ public enum Command {
     
     // Used to enable and disable the link level encryption.
     case setConnectionEncryption(SetConnectionEncryptionCommand)
+    
+    // Used to indicate the completion of the process of the Link Manager
+    case readRemoteSupportedFeatures(ReadRemoteSupportedFeaturesCommand)
     
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress(LESetRandomAddressCommand)
@@ -355,6 +361,7 @@ public extension Command {
         case let .remoteNameRequest(command): try command.execute(controller: controller)
         case .readDataBlockSize: try ReadDataBlockSizeCommand().execute(controller: controller)
         case let .setConnectionEncryption(command): try command.execute(controller: controller)
+        case let .readRemoteSupportedFeatures(command): try command.execute(controller: controller)
         }
     }
 }
@@ -571,6 +578,10 @@ public extension Command {
         case .setConnectionEncryption:
             let command = try SetConnectionEncryptionCommand(arguments: commandArguments)
             self = .setConnectionEncryption(command)
+            
+        case .readRemoteSupportedFeatures:
+            let command = try ReadRemoteSupportedFeaturesCommand(arguments: commandArguments)
+            self = .readRemoteSupportedFeatures(command)
         }
     }
 }
