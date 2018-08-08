@@ -112,7 +112,6 @@ public struct ReadRemoteSupportedFeaturesCommand: ArgumentableCommand {
         case .error(let error):
             print("Connection Error:", error.name)
         }
-        
     }
 }
 
