@@ -99,7 +99,15 @@ public struct CreateConnectionCommand: ArgumentableCommand {
                                                                  allowRoleSwitch: allowRoleSwitch,
                                                                  timeout: 5000)
         
-        print("connection handle = ", connectionComplete.handle.toHexadecimal())
+        print("Connection handle =", connectionComplete.handle.toHexadecimal())
+        
+        switch connectionComplete.status {
+        case .success:
+            print("Success")
+            
+        case .error(let error):
+            print("Error:", error.name)
+        }
     }
 }
 
@@ -113,6 +121,10 @@ public extension CreateConnectionCommand {
         case clockOffset = "clockoffset"
         case allowRoleSwitch = "allowroleswitch"
         
-        public static let all: Set<Option> = [.address, .packetType, .pageScanRepetitionMode, .clockOffset, .allowRoleSwitch]
+        public static let all: Set<Option> = [.address,
+                                              .packetType,
+                                              .pageScanRepetitionMode,
+                                              .clockOffset,
+                                              .allowRoleSwitch]
     }
 }

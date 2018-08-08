@@ -56,6 +56,9 @@ public enum CommandType: String {
     // Used to indicate the completion of the process of the Link Manager
     case readRemoteSupportedFeatures = "readremotesupportedfeatures"
     
+    // Returns the requested page of the extended LMP features for the remote device identified by the specified Connection_Handle
+    case readRemoteExtendedFeatures = "readremoteextendedfeatures"
+    
     // This command will obtain the values for the version information for the remote device identified by the Connection_Handle parameter
     case readRemoteVersionInformation = "readremoteversioninformation"
     
@@ -204,6 +207,9 @@ public enum Command {
     
     // Used to indicate the completion of the process of the Link Manager
     case readRemoteSupportedFeatures(ReadRemoteSupportedFeaturesCommand)
+    
+    // Returns the requested page of the extended LMP features for the remote device identified by the specified Connection_Handle
+    case readRemoteExtendedFeatures(ReadRemoteExtendedFeaturesCommand)
     
     // This command will obtain the values for the version information for the remote device identified by the Connection_Handle parameter
     case readRemoteVersionInformation(ReadRemoteVersionInformationCommand)
@@ -368,6 +374,7 @@ public extension Command {
         case .readDataBlockSize: try ReadDataBlockSizeCommand().execute(controller: controller)
         case let .setConnectionEncryption(command): try command.execute(controller: controller)
         case let .readRemoteSupportedFeatures(command): try command.execute(controller: controller)
+        case let .readRemoteExtendedFeatures(command): try command.execute(controller: controller)
         case let .readRemoteVersionInformation(command): try command.execute(controller: controller)
         }
     }
@@ -589,6 +596,10 @@ public extension Command {
         case .readRemoteSupportedFeatures:
             let command = try ReadRemoteSupportedFeaturesCommand(arguments: commandArguments)
             self = .readRemoteSupportedFeatures(command)
+
+        case .readRemoteExtendedFeatures:
+            let command = try ReadRemoteExtendedFeaturesCommand(arguments: commandArguments)
+            self = .readRemoteExtendedFeatures(command)
             
         case .readRemoteVersionInformation:
             let command = try ReadRemoteVersionInformationCommand(arguments: commandArguments)
