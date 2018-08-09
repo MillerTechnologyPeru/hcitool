@@ -59,14 +59,17 @@ public enum CommandType: String {
     // Returns the requested page of the extended LMP features for the remote device identified by the specified Connection_Handle
     case readRemoteExtendedFeatures = "readremoteextendedfeatures"
     
+    // This command will obtain the values for the version information for the remote device identified by the Connection_Handle parameter
+    case readRemoteVersionInformation = "readremoteversioninformation"
+    
     // Allows the Host to read clock offset to remote devices.
     case readClockOffset = "readclockoffset"
     
     // Reads the current LMP Handle associated with the Connection_Handle.
     case readLMPHandle = "readlmphandle"
     
-    // This command will obtain the values for the version information for the remote device identified by the Connection_Handle parameter
-    case readRemoteVersionInformation = "readremoteversioninformation"
+    // Used to try to authenticate the remote device associated with the specified Connection_Handle
+    case authenticationRequested = "authenticationrequested"
     
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress = "setrandomaddress"
@@ -225,6 +228,9 @@ public enum Command {
     
     // Reads the current LMP Handle associated with the Connection_Handle.
     case readLMPHandle(ReadLMPHandleCommand)
+    
+    // Used to try to authenticate the remote device associated with the specified Connection_Handle
+    case authenticationRequested(AuthenticationRequestedCommand)
     
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress(LESetRandomAddressCommand)
@@ -390,6 +396,7 @@ public extension Command {
         case let .readRemoteVersionInformation(command): try command.execute(controller: controller)
         case let .readClockOffset(command): try command.execute(controller: controller)
         case let .readLMPHandle(command): try command.execute(controller: controller)
+        case let .authenticationRequested(command): try command.execute(controller: controller)
         }
     }
 }
@@ -626,6 +633,10 @@ public extension Command {
         case .readLMPHandle:
             let command = try ReadLMPHandleCommand(arguments: commandArguments)
             self = .readLMPHandle(command)
+            
+        case .authenticationRequested:
+            let command = try AuthenticationRequestedCommand(arguments: commandArguments)
+            self = .authenticationRequested(command)
         }
     }
 }

@@ -17,7 +17,7 @@
 import Bluetooth
 import Foundation
 
-public struct ReadAuthenticationRequestedCommand: ArgumentableCommand {
+public struct AuthenticationRequestedCommand: ArgumentableCommand {
     
     public typealias PacketType = HCICreateConnection.PacketType
     public typealias ClockOffset = HCICreateConnection.ClockOffset
@@ -25,7 +25,7 @@ public struct ReadAuthenticationRequestedCommand: ArgumentableCommand {
     
     // MARK: - Properties
     
-    public static let commandType: CommandType = .readLMPHandle
+    public static let commandType: CommandType = .authenticationRequested
     
     public let address: Address
     
@@ -119,7 +119,7 @@ public struct ReadAuthenticationRequestedCommand: ArgumentableCommand {
     }
 }
 
-public extension ReadAuthenticationRequestedCommand {
+public extension AuthenticationRequestedCommand {
     
     public enum Option: String, OptionProtocol {
         
