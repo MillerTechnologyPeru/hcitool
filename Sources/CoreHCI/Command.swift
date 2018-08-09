@@ -62,6 +62,9 @@ public enum CommandType: String {
     // Allows the Host to read clock offset to remote devices.
     case readClockOffset = "readclockoffset"
     
+    // Reads the current LMP Handle associated with the Connection_Handle.
+    case readLMPHandle = "readlmphandle"
+    
     // This command will obtain the values for the version information for the remote device identified by the Connection_Handle parameter
     case readRemoteVersionInformation = "readremoteversioninformation"
     
@@ -219,6 +222,9 @@ public enum Command {
     
     // Allows the Host to read clock offset to remote devices.
     case readClockOffset(ReadClockOffsetCommand)
+    
+    // Reads the current LMP Handle associated with the Connection_Handle.
+    case readLMPHandle(ReadLMPHandleCommand)
     
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress(LESetRandomAddressCommand)
@@ -383,6 +389,7 @@ public extension Command {
         case let .readRemoteExtendedFeatures(command): try command.execute(controller: controller)
         case let .readRemoteVersionInformation(command): try command.execute(controller: controller)
         case let .readClockOffset(command): try command.execute(controller: controller)
+        case let .readLMPHandle(command): try command.execute(controller: controller)
         }
     }
 }
@@ -615,6 +622,10 @@ public extension Command {
         case .readClockOffset:
             let command = try ReadClockOffsetCommand(arguments: commandArguments)
             self = .readClockOffset(command)
+
+        case .readLMPHandle:
+            let command = try ReadLMPHandleCommand(arguments: commandArguments)
+            self = .readLMPHandle(command)
         }
     }
 }
