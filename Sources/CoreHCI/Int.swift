@@ -165,5 +165,66 @@ extension UInt128: CommandLineData {
         return self.data.map{ String(format:"%02x", $0) }.joined()
     }
     
+}
+
+extension UInt512: CommandLineData {
     
+    init?(bigEndian bytes: [UInt8]) {
+        
+        guard bytes.count == 64
+            else { return nil }
+        
+        self.init(bigEndian: UInt512(bytes: (bytes[0], bytes[1], bytes[2], bytes[3], bytes[4], bytes[5], bytes[6], bytes[7], bytes[8], bytes[9], bytes[10], bytes[11], bytes[12], bytes[13], bytes[14], bytes[15], bytes[16], bytes[17], bytes[18], bytes[19], bytes[20], bytes[21], bytes[22], bytes[23], bytes[24], bytes[25], bytes[26], bytes[27], bytes[28], bytes[29], bytes[30], bytes[31], bytes[32], bytes[33], bytes[34], bytes[35], bytes[36], bytes[37], bytes[38], bytes[39], bytes[40], bytes[41], bytes[42], bytes[43], bytes[44], bytes[45], bytes[46], bytes[47], bytes[48], bytes[49], bytes[50], bytes[51], bytes[52], bytes[53], bytes[54], bytes[55], bytes[56], bytes[57], bytes[58], bytes[59], bytes[60], bytes[61], bytes[62], bytes[63])))
+    }
+    
+    func toHexadecimalString() -> String {
+        return self.data.map{ String(format:"%02x", $0) }.joined()
+    }
+    
+}
+
+
+internal extension UInt16 {
+    
+    /// Initializes value from two bytes.
+    init(bytes: (UInt8, UInt8)) {
+        
+        self = unsafeBitCast(bytes, to: UInt16.self)
+    }
+    
+    /// Converts to two bytes.
+    var bytes: (UInt8, UInt8) {
+        
+        return unsafeBitCast(self, to: (UInt8, UInt8).self)
+    }
+}
+
+internal extension UInt32 {
+    
+    /// Initializes value from four bytes.
+    init(bytes: (UInt8, UInt8, UInt8, UInt8)) {
+        
+        self = unsafeBitCast(bytes, to: UInt32.self)
+    }
+    
+    /// Converts to four bytes.
+    var bytes: (UInt8, UInt8, UInt8, UInt8) {
+        
+        return unsafeBitCast(self, to: (UInt8, UInt8, UInt8, UInt8).self)
+    }
+}
+
+internal extension UInt64 {
+    
+    /// Initializes value from four bytes.
+    init(bytes: (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8)) {
+        
+        self = unsafeBitCast(bytes, to: UInt64.self)
+    }
+    
+    /// Converts to eight bytes.
+    var bytes: (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8) {
+        
+        return unsafeBitCast(self, to: (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8).self)
+    }
 }

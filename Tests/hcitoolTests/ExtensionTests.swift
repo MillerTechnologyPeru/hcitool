@@ -8,6 +8,7 @@
 
 import Bluetooth
 import XCTest
+@testable import CoreHCI
 
 final class ExtensionTests: XCTestCase {
     

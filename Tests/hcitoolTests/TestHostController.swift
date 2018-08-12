@@ -8,6 +8,25 @@
 
 import Foundation
 import Bluetooth
+@testable import CoreHCI
+
+struct HCIToolTests {
+    
+    static func run <T: BluetoothHostControllerInterface> (arguments: [String], controller: T?) throws {
+        
+        //  first argument is always the current directory
+        let arguments = Array(arguments.dropFirst())
+        
+        guard let controller = controller
+            else { throw CommandError.bluetoothUnavailible }
+        
+        print("Bluetooth Controller: \(controller.address)")
+        
+        let command = try Command(arguments: arguments)
+        
+        try command.execute(controller: controller)
+    }
+}
 
 /// Test Bluetooth Host Controller
 internal final class TestHostController: BluetoothHostControllerInterface {

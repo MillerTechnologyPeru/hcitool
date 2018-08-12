@@ -8,7 +8,7 @@
 
 import Bluetooth
 import XCTest
-@testable import hcitool
+@testable import CoreHCI
 
 final class CommandTests: XCTestCase {
     
@@ -32,7 +32,10 @@ final class CommandTests: XCTestCase {
         ("testTransmitterTest", testTransmitterTest),
         ("testTestEnd", testTestEnd),
         ("testReadSupportedStates", testReadSupportedStates),
-        ("testAddDeviceToResolvingList", testAddDeviceToResolvingList)
+        ("testAddDeviceToResolvingList", testAddDeviceToResolvingList),
+        ("testInquiry", testInquiry),
+        ("testInquiryCancel", testInquiryCancel),
+        ("testPeriodicInquiryModeAndCancel", testPeriodicInquiryModeAndCancel)
     ]
     
     func testRemoveDeviceFromResolvingList() {
@@ -281,7 +284,7 @@ final class CommandTests: XCTestCase {
     
     func testRemoveDeviceFromWhiteList() {
         let testController = TestHostController()
-         let arguments = [".build/debug/hcitool", "removedevicefromwhitelist", "--addresstype", "random", "--address", "54:39:A3:47:D8:F8"]
+        let arguments = [".build/debug/hcitool", "removedevicefromwhitelist", "--addresstype", "random", "--address", "54:39:A3:47:D8:F8"]
 
         testController.queue = [
             .command(HCILowEnergyCommand.removeDeviceFromWhiteList.opcode, [0x12, 0x20, 0x07, 0x01, 0xf8, 0xd8, 0x47, 0xa3, 0x39, 0x54]),
@@ -317,5 +320,57 @@ final class CommandTests: XCTestCase {
         // HCI Event - Command Complete [200C] - LE Set Scan Enable - Command Disallowed (0xC)
         XCTAssertThrowsError(try HCIToolTests.run(arguments: arguments, controller: testController))
     }
+    
+    func testInquiry() {
+        let testController = TestHostController()
+        let arguments = [".build/debug/hcitool", "inquiry", "--lap", "009E8B00", "--length", "05", "--responses", "20"]
+        
+        testController.queue = [
+            .command(LinkControlCommand.inquiry.opcode, [0x01, 0x04, 0x05, 0x00, 0x8b, 0x9e, 0x05, 0x20]),
+            .event([0x0f, 0x04, 0x00, 0x01, 0x01, 0x04])
+        ]
+        
+        XCTAssertThrowsError(try HCIToolTests.run(arguments: arguments, controller: testController))
+    }
+    
+    func testInquiryCancel() {
+        let testController = TestHostController()
+        let arguments = [".build/debug/hcitool", "inquirycancel"]
+        
+        testController.queue = [
+            .command(LinkControlCommand.inquiryCancel.opcode, [0x02, 0x04, 0x00]),
+            .event([0x0e, 0x04, 0x01, 0x02, 0x04, 0x00])
+        ]
+        
+        XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
+    }
+    
+    func testPeriodicInquiryModeAndCancel() {
+        do {
+            let testController = TestHostController()
+            let arguments = [".build/debug/hcitool", "periodicinquirymode", "--maxperiodduration", "0009", "--minperiodduration", "0005", "--lap", "009E8B00", "--duration", "03", "--responses", "20"]
+            
+            
+            testController.queue = [
+                .command(LinkControlCommand.periodicInquiry.opcode, [0x03, 0x04, 0x09, 0x09, 0x00, 0x05, 0x00, 0x00, 0x8b, 0x9e, 0x03, 0x20]),
+                .event([0x0e, 0x04, 0x01, 0x03, 0x04, 0x00])
+            ]
+            
+            XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
+        }
+        
+        do {
+            let testController = TestHostController()
+            let arguments = [".build/debug/hcitool", "exitperiodicinquirymode"]
+            
+            testController.queue = [
+                .command(LinkControlCommand.exitPeriodicInquiry.opcode, [0x04, 0x04, 0x00]),
+                .event([0x0e, 0x04, 0x01, 0x04, 0x04, 0x00])
+            ]
+            
+            XCTAssertNoThrow(try HCIToolTests.run(arguments: arguments, controller: testController))
+        }
+    }
+    
 }
 

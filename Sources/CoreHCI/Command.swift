@@ -23,6 +23,54 @@ public enum CommandType: String {
     // Write the Bluetooth controller's local name.
     case writeLocalName = "writename"
     
+    // Inquiry Mode is used to discover other nearby BR/EDR Controllers.
+    case inquiry = "inquiry"
+    
+    // Make the BR/EDR Controller to stop the current Inquiry if the BR/EDR Controller is in Inquiry Mode.
+    case inquiryCancel = "inquirycancel"
+    
+    // Used to configure the BR/EDR Con- troller to enter the Periodic Inquiry Mode that performs an automatic Inquiry.
+    case periodicInquiryMode = "periodicinquirymode"
+    
+    // Used to end the Periodic Inquiry mode when the local device is in Periodic Inquiry Mode
+    case exitPeriodicInquiryMode = "exitperiodicinquirymode"
+    
+    // Causes the Link Manager to create a connection to the remote device with the BD_ADDR specified by the command parameters
+    case createConnection = "classiccreateconnection"
+    
+    // Used to request cancellation of the ongoing connection creation process
+    case createConnectionCancel = "cancelconnection"
+    
+    // Used to terminate an existing connection. The Connection_Handle command parameter indicates which connection is to be disconnected.
+    case disconnect = "disconnect"
+    
+    // Used to obtain the user-friendly name of another BR/EDR Controller
+    case remoteNameRequest = "remotenamerequest"
+    
+    // Used to read values regarding the maximum permitted data transfers over the Controller and the data buffering available in the Controller.
+    case readDataBlockSize = "readdatablocksize"
+    
+    // Used to enable and disable the link level encryption.
+    case setConnectionEncryption = "setconnectionencryption"
+    
+    // Used to indicate the completion of the process of the Link Manager
+    case readRemoteSupportedFeatures = "readremotesupportedfeatures"
+    
+    // Returns the requested page of the extended LMP features for the remote device identified by the specified Connection_Handle
+    case readRemoteExtendedFeatures = "readremoteextendedfeatures"
+    
+    // This command will obtain the values for the version information for the remote device identified by the Connection_Handle parameter
+    case readRemoteVersionInformation = "readremoteversioninformation"
+    
+    // Allows the Host to read clock offset to remote devices.
+    case readClockOffset = "readclockoffset"
+    
+    // Reads the current LMP Handle associated with the Connection_Handle.
+    case readLMPHandle = "readlmphandle"
+    
+    // Used to try to authenticate the remote device associated with the specified Connection_Handle
+    case authenticationRequested = "authenticationrequested"
+    
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress = "setrandomaddress"
     
@@ -103,6 +151,27 @@ public enum CommandType: String {
     
     // Removes one device from the list of address translations used to resolve Resolvable Private Addresses in the Controller.
     case lowEnergyRemoveDeviceFromResolvingList = "removedevicefromresolvinglist"
+    
+    // Allows the Host to suggest maximum transmission packet size and maximum packet transmission time
+    case lowEnergySetDataLength = "setdatalength"
+    
+    // Allows the Host to read the Host's suggested values (SuggestedMaxTxOctets and SuggestedMaxTxTime) for the Controller's maximum transmitted number of payload octets and maximum packet transmission time to be used for new connections
+    case lowEnergyReadSuggestedDefaultDataLength = "readsuggesteddefaultdatalength"
+    
+    // Allows the Host to specify its suggested values for the Controller's maximum transmission number of payload octets and maximum packet transmission time to be used for new connections.
+    case lowEnergyWriteSuggestedDefaultDataLength = "writesuggesteddefaultdatalength"
+    
+    // Used to return the local P-256 public key from the Controller
+    case lowEnergyReadLocalP256PublicKey = "readlocalp256publickey"
+    
+    // Used to remove all devices from the list of address translations used to resolve Resolvable Private Addresses in the Controller.
+    case lowEnergyClearResolvingList = "clearresolvinglist"
+    
+    // Used to read the total number of address translation entries in the resolving list that can be stored in the Controller
+    case lowEnergyReadResolvingListSize = "readresolvinglistsize"
+    
+    // Used to get the current peer Resolvable Private Address being used for the corresponding peer Public and Random (static) Identity Address
+    case lowEnergyReadPeerResolvableAddress = "readpeerresolvableaddress"
 }
 
 public enum Command {
@@ -114,6 +183,54 @@ public enum Command {
     
     // Write the Bluetooth controller's local name.
     case writeLocalName(WriteLocalNameCommand)
+    
+    // Inquiry Mode is used to discover other nearby BR/EDR Controllers.
+    case inquiry(InquiryCommand)
+    
+    // Used to end the Periodic Inquiry mode when the local device is in Periodic Inquiry Mode
+    case exitPeriodicInquiryMode
+    
+    // Make the BR/EDR Controller to stop the current Inquiry if the BR/EDR Controller is in Inquiry Mode.
+    case inquiryCancel
+    
+    // Used to configure the BR/EDR Con- troller to enter the Periodic Inquiry Mode that performs an automatic Inquiry.
+    case periodicInquiryMode(PeriodicInquiryModeCommand)
+    
+    // Causes the Link Manager to create a connection to the remote device with the BD_ADDR specified by the command parameters
+    case createConnection(CreateConnectionCommand)
+    
+    // Used to request cancellation of the ongoing connection creation process
+    case createConnectionCancel(CreateConnectionCancelCommand)
+    
+    // Used to terminate an existing connection. The Connection_Handle command parameter indicates which connection is to be disconnected.
+    case disconnect(DisconnectCommand)
+    
+    // Used to obtain the user-friendly name of another BR/EDR Controller
+    case remoteNameRequest(RequestRemoteNameCommand)
+    
+    // Used to read values regarding the maximum permitted data transfers over the Controller and the data buffering available in the Controller.
+    case readDataBlockSize
+    
+    // Used to enable and disable the link level encryption.
+    case setConnectionEncryption(SetConnectionEncryptionCommand)
+    
+    // Used to indicate the completion of the process of the Link Manager
+    case readRemoteSupportedFeatures(ReadRemoteSupportedFeaturesCommand)
+    
+    // Returns the requested page of the extended LMP features for the remote device identified by the specified Connection_Handle
+    case readRemoteExtendedFeatures(ReadRemoteExtendedFeaturesCommand)
+    
+    // This command will obtain the values for the version information for the remote device identified by the Connection_Handle parameter
+    case readRemoteVersionInformation(ReadRemoteVersionInformationCommand)
+    
+    // Allows the Host to read clock offset to remote devices.
+    case readClockOffset(ReadClockOffsetCommand)
+    
+    // Reads the current LMP Handle associated with the Connection_Handle.
+    case readLMPHandle(ReadLMPHandleCommand)
+    
+    // Used to try to authenticate the remote device associated with the specified Connection_Handle
+    case authenticationRequested(AuthenticationRequestedCommand)
     
     // Set the Bluetooth controller's random address
     case lowEnergySetRandomAddress(LESetRandomAddressCommand)
@@ -198,6 +315,27 @@ public enum Command {
     
     // Removes one device from the list of address translations used to resolve Resolvable Private Addresses in the Controller.
     case lowEnergyRemoveDeviceFromResolvingList(LERemoveDeviceFromResolvingListCommand)
+    
+    // Allows the Host to suggest maximum transmission packet size and maximum packet transmission time
+    case lowEnergySetDataLength(LESetDataLengthCommand)
+    
+    // Allows the Host to read the Host's suggested values (SuggestedMaxTxOctets and SuggestedMaxTxTime) for the Controller's maximum transmitted number of payload octets and maximum packet transmission time to be used for new connections
+    case lowEnergyReadSuggestedDataLength
+    
+    // Allows the Host to specify its suggested values for the Controller's maximum transmission number of payload octets and maximum packet transmission time to be used for new connections.
+    case lowEnergyWriteSuggestedDataLength(LEWriteSuggestedDefaultDataLengthCommand)
+    
+    // Used to return the local P-256 public key from the Controller
+    case lowEnergyReadLocalP256PublicKey(LEReadLocalP256PublicKeyCommand)
+    
+    // Used to remove all devices from the list of address translations used to resolve Resolvable Private Addresses in the Controller.
+    case lowEnergyClearResolvingList
+    
+    // Used to read the total number of address translation entries in the resolving list that can be stored in the Controller
+    case lowEnergyReadResolvingListSize
+    
+    // Used to get the current peer Resolvable Private Address being used for the corresponding peer Public and Random (static) Identity Address
+    case lowEnergyReadPeerResolvableAddress(LEReadPeerResolvableAddressCommand)
 }
 
 public extension Command {
@@ -236,6 +374,29 @@ public extension Command {
         case .lowEnergyTestEnd:  try LETestEndCommand().execute(controller: controller)
         case let .lowEnergyAddDeviceToResolvingList(command): try command.execute(controller: controller)
         case let .lowEnergyRemoveDeviceFromResolvingList(command): try command.execute(controller: controller)
+        case let .lowEnergySetDataLength(command): try command.execute(controller: controller)
+        case .lowEnergyReadSuggestedDataLength: try LEReadSuggestedDefaultDataLengthCommand().execute(controller: controller)
+        case let .lowEnergyWriteSuggestedDataLength(command): try command.execute(controller: controller)
+        case let .lowEnergyReadLocalP256PublicKey(command): try command.execute(controller: controller)
+        case .lowEnergyClearResolvingList: try LEClearResolvingListCommand().execute(controller: controller)
+        case .lowEnergyReadResolvingListSize: try LEReadResolvingListSizeCommand().execute(controller: controller)
+        case let .lowEnergyReadPeerResolvableAddress(command): try command.execute(controller: controller)
+        case let .inquiry(command): try command.execute(controller: controller)
+        case .inquiryCancel: try InquiryCancelCommand().execute(controller: controller)
+        case let .periodicInquiryMode(command): try command.execute(controller: controller)
+        case .exitPeriodicInquiryMode: try ExitPeriodicInquiryCommand().execute(controller: controller)
+        case let .createConnection(command): try command.execute(controller: controller)
+        case let .disconnect(command): try command.execute(controller: controller)
+        case let .createConnectionCancel(command): try command.execute(controller: controller)
+        case let .remoteNameRequest(command): try command.execute(controller: controller)
+        case .readDataBlockSize: try ReadDataBlockSizeCommand().execute(controller: controller)
+        case let .setConnectionEncryption(command): try command.execute(controller: controller)
+        case let .readRemoteSupportedFeatures(command): try command.execute(controller: controller)
+        case let .readRemoteExtendedFeatures(command): try command.execute(controller: controller)
+        case let .readRemoteVersionInformation(command): try command.execute(controller: controller)
+        case let .readClockOffset(command): try command.execute(controller: controller)
+        case let .readLMPHandle(command): try command.execute(controller: controller)
+        case let .authenticationRequested(command): try command.execute(controller: controller)
         }
     }
 }
@@ -250,7 +411,7 @@ public protocol CommandProtocol {
 public protocol ArgumentableCommand: CommandProtocol {
     
     associatedtype Option: OptionProtocol
-
+    
     init(parameters: [Parameter<Option>]) throws
 }
 
@@ -280,86 +441,202 @@ public extension Command {
         case .lowEnergyScan:
             let command = try LEScanCommand(arguments: commandArguments)
             self = .lowEnergyScan(command)
+            
         case .readLocalName:
             self = .readLocalName
+            
         case .writeLocalName:
             let command = try WriteLocalNameCommand(arguments: commandArguments)
             self = .writeLocalName(command)
+            
         case .iBeacon:
             let command = try iBeaconCommand(arguments: commandArguments)
             self = .iBeacon(command)
+            
         case .lowEnergySetRandomAddress:
             let command = try LESetRandomAddressCommand(arguments: commandArguments)
             self = .lowEnergySetRandomAddress(command)
+            
         case .lowEnergyClearWhiteList:
             self = .lowEnergyClearWhiteList
+            
         case .lowEnergyCreateConnectionCancel:
             self = .lowEnergyCreateConnectionCancel
+            
         case .lowEnergyReadLocalSupportedFeatures:
             self = .lowEnergyReadLocalSupportedFeatures
+            
         case .lowEnergySetEventMask:
             let command = try LESetEventMaskCommand(arguments: commandArguments)
             self = .lowEnergySetEventMask(command)
+            
         case .lowEnergyReadBufferSize:
             self = .lowEnergyReadBufferSize
+            
         case .lowEnergyReadChannelMap:
             let command = try LEReadChannelMapCommand(arguments: commandArguments)
             self = .lowEnergyReadChannelMap(command)
+            
         case .lowEnergyAddDeviceToWhiteList:
             let command = try LEAddDeviceToWhiteListCommand(arguments: commandArguments)
             self = .lowEnergyAddDeviceToWhiteList(command)
+            
         case .lowEnergyRemoveDeviceFromWhiteList:
             let command = try LERemoveDeviceFromWhiteListCommand(arguments: commandArguments)
             self = .lowEnergyRemoveDeviceFromWhiteList(command)
+            
         case .lowEnergyReadWhiteListSize:
             self = .lowEnergyReadWhiteListSize
+            
         case .lowEnergyReadAdvertisingChannelTxPower:
             self = .lowEnergyReadAdvertisingChannelTxPower
+            
         case .lowEnergyRand:
             self = .lowEnergyRand
+            
         case .lowEnergySetAdvertisingParameters:
             let command = try LESetAdvertisingParametersCommand(arguments: commandArguments)
             self = .lowEnergySetAdvertisingParameters(command)
+            
         case .lowEnergyConnectionUpdate:
             let command = try LEConnectionUpdateCommand(arguments: commandArguments)
             self = .lowEnergyConnectionUpdate(command)
+            
         case .lowEnergySetAdvertisingEnable:
             let command = try LESetAdvertisingEnableCommand(arguments: commandArguments)
             self = .lowEnergySetAdvertisingEnable(command)
+            
         case .lowEnergyCreateConnection:
             let command = try LECreateConnectionCommand(arguments: commandArguments)
             self = .lowEnergyCreateConnection(command)
+            
         case .lowEnergyReadRemoteFeatures:
             let command = try LEReadRemoteFeaturesCommand(arguments: commandArguments)
             self = .lowEnergyReadRemoteFeatures(command)
+            
         case .lowEnergyEncrypt:
             let command = try LEEncryptCommand(arguments: commandArguments)
             self = .lowEnergyEncrypt(command)
+            
         case .lowEnergyLongTermKeyRequestNegativeReply:
             let command = try LELongTermKeyRequestNegativeReplyCommand(arguments: commandArguments)
             self = .lowEnergyLongTermKeyRequestNegativeReply(command)
+            
         case .lowEnergyLongTermKeyRequestReply:
             let command = try LELongTermKeyRequestReplyCommand(arguments: commandArguments)
             self = .lowEnergyLongTermKeyRequestReply(command)
+            
         case .lowEnergyStartEncryption:
             let command = try LEStartEncryptionCommand(arguments: commandArguments)
             self = .lowEnergyStartEncryption(command)
+            
         case .lowEnergyReadSupportedStates:
             self = .lowEnergyReadSupportedStates
+            
         case .lowEnergyReceiverTest:
             let command = try LEReceiverTestCommand(arguments: commandArguments)
             self = .lowEnergyReceiverTest(command)
+            
         case .lowEnergyTransmitterTest:
             let command = try LETransmitterTestCommand(arguments: commandArguments)
             self = .lowEnergyTransmitterTest(command)
+            
         case .lowEnergyTestEnd:
             self = .lowEnergyTestEnd
+            
         case .lowEnergyAddDeviceToResolvingList:
             let command = try LEAddDeviceToResolvingListCommand(arguments: commandArguments)
             self = .lowEnergyAddDeviceToResolvingList(command)
+            
         case .lowEnergyRemoveDeviceFromResolvingList:
             let command = try LERemoveDeviceFromResolvingListCommand(arguments: commandArguments)
             self = .lowEnergyRemoveDeviceFromResolvingList(command)
+            
+        case .lowEnergySetDataLength:
+            let command = try LESetDataLengthCommand(arguments: commandArguments)
+            self = .lowEnergySetDataLength(command)
+            
+        case .lowEnergyReadSuggestedDefaultDataLength:
+            self = .lowEnergyReadSuggestedDataLength
+            
+        case .lowEnergyWriteSuggestedDefaultDataLength:
+            let command = try LEWriteSuggestedDefaultDataLengthCommand(arguments: commandArguments)
+            self = .lowEnergyWriteSuggestedDataLength(command)
+            
+        case .lowEnergyReadLocalP256PublicKey:
+            let command = try LEReadLocalP256PublicKeyCommand(arguments: commandArguments)
+            self = .lowEnergyReadLocalP256PublicKey(command)
+            
+        case .lowEnergyClearResolvingList:
+            self = .lowEnergyClearResolvingList
+            
+        case .lowEnergyReadResolvingListSize:
+            self = .lowEnergyReadResolvingListSize
+            
+        case .lowEnergyReadPeerResolvableAddress:
+            let command = try LEReadPeerResolvableAddressCommand(arguments: commandArguments)
+            self = .lowEnergyReadPeerResolvableAddress(command)
+            
+        case .inquiry:
+            let command = try InquiryCommand(arguments: commandArguments)
+            self = .inquiry(command)
+            
+        case .inquiryCancel:
+            self = .inquiryCancel
+            
+        case .periodicInquiryMode:
+            let command = try PeriodicInquiryModeCommand(arguments: commandArguments)
+            self = .periodicInquiryMode(command)
+            
+        case .exitPeriodicInquiryMode:
+            self = .exitPeriodicInquiryMode
+            
+        case .createConnection:
+            let command = try CreateConnectionCommand(arguments: commandArguments)
+            self = .createConnection(command)
+            
+        case .disconnect:
+            let command = try DisconnectCommand(arguments: commandArguments)
+            self = .disconnect(command)
+            
+        case .createConnectionCancel:
+            let command = try CreateConnectionCancelCommand(arguments: commandArguments)
+            self = .createConnectionCancel(command)
+            
+        case .remoteNameRequest:
+            let command = try RequestRemoteNameCommand(arguments: commandArguments)
+            self = .remoteNameRequest(command)
+            
+        case .readDataBlockSize:
+            self = .readDataBlockSize
+            
+        case .setConnectionEncryption:
+            let command = try SetConnectionEncryptionCommand(arguments: commandArguments)
+            self = .setConnectionEncryption(command)
+            
+        case .readRemoteSupportedFeatures:
+            let command = try ReadRemoteSupportedFeaturesCommand(arguments: commandArguments)
+            self = .readRemoteSupportedFeatures(command)
+
+        case .readRemoteExtendedFeatures:
+            let command = try ReadRemoteExtendedFeaturesCommand(arguments: commandArguments)
+            self = .readRemoteExtendedFeatures(command)
+            
+        case .readRemoteVersionInformation:
+            let command = try ReadRemoteVersionInformationCommand(arguments: commandArguments)
+            self = .readRemoteVersionInformation(command)
+            
+        case .readClockOffset:
+            let command = try ReadClockOffsetCommand(arguments: commandArguments)
+            self = .readClockOffset(command)
+
+        case .readLMPHandle:
+            let command = try ReadLMPHandleCommand(arguments: commandArguments)
+            self = .readLMPHandle(command)
+            
+        case .authenticationRequested:
+            let command = try AuthenticationRequestedCommand(arguments: commandArguments)
+            self = .authenticationRequested(command)
         }
     }
 }

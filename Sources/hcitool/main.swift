@@ -1,6 +1,7 @@
 
 import Foundation
 import Bluetooth
+import CoreHCI
 
 #if os(Linux)
 import BluetoothLinux
