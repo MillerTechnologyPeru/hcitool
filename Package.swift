@@ -1,20 +1,40 @@
-// swift-tools-version:3.0
-
+// swift-tools-version:4.1
 import PackageDescription
 
+#if os(macOS)
 let package = Package(
     name: "hcitool",
+    products: [
+        .executable(name: "hcitool", targets: ["hcitool"])
+    ],
+    dependencies: [
+        .package(url: "https://github.com/PureSwift/BluetoothDarwin.git", .branch("master"))
+    ],
     targets: [
-        Target(
+        .target(
             name: "hcitool",
-            dependencies: [])
+            dependencies: [
+                "BluetoothDarwin"
+            ]
+        )
     ]
 )
-
-#if os(macOS)
-let dependency: Package.Dependency = .Package(url: "https://github.com/PureSwift/BluetoothDarwin.git", majorVersion: 1)
-package.dependencies.append(dependency)
 #elseif os(Linux)
-let dependency: Package.Dependency = .Package(url: "https://github.com/PureSwift/BluetoothLinux.git", majorVersion: 3)
-package.dependencies.append(dependency)
+let package = Package(
+    name: "hcitool",
+    products: [
+        .executable(name: "hcitool", targets: ["hcitool"])
+    ],
+    dependencies: [
+        .package(url: "https://github.com/PureSwift/BluetoothLinux.git", .branch("master"))
+    ],
+    targets: [
+        .target(
+            name: "hcitool",
+            dependencies: [
+                "BluetoothLinux"
+            ]
+        )
+    ]
+)
 #endif

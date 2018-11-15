@@ -6,26 +6,17 @@
         "repositoryURL": "https://github.com/PureSwift/Bluetooth.git",
         "state": {
           "branch": null,
-          "revision": "80a6601819d8eeddc625b512c69cb1bf395b5451",
-          "version": "1.8.3"
+          "revision": "8dc48df9cafe80cd97aadc5fd5dca0b18571d0f2",
+          "version": "2.5.2"
         }
       },
       {
         "package": "BluetoothDarwin",
         "repositoryURL": "https://github.com/PureSwift/BluetoothDarwin.git",
         "state": {
-          "branch": null,
-          "revision": "362cbd8cecf80fe217d6ec5fd06d37711378a328",
-          "version": "1.0.1"
-        }
-      },
-      {
-        "package": "Rainbow",
-        "repositoryURL": "https://github.com/MillerTechnologyPeru/Rainbow.git",
-        "state": {
-          "branch": null,
-          "revision": "73d4ee05e013089cad7f21892c456df52329fc02",
-          "version": "3.2.0"
+          "branch": "master",
+          "revision": "6c9d7885dbc9ffbc67f48b197ea05444425e3eda",
+          "version": null
         }
       }
     ]
