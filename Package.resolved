@@ -5,9 +5,9 @@
         "package": "Bluetooth",
         "repositoryURL": "https://github.com/PureSwift/Bluetooth.git",
         "state": {
-          "branch": null,
-          "revision": "8dc48df9cafe80cd97aadc5fd5dca0b18571d0f2",
-          "version": "2.5.2"
+          "branch": "master",
+          "revision": "f4595e78bb5116f7f760049f19439e505c568532",
+          "version": null
         }
       },
       {
@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/PureSwift/BluetoothDarwin.git",
         "state": {
           "branch": "master",
-          "revision": "6c9d7885dbc9ffbc67f48b197ea05444425e3eda",
+          "revision": "f3c65ee227244134f4df9665a6764e73adebd102",
           "version": null
         }
       }

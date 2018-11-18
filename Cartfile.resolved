@@ -1,3 +1,2 @@
-github "MillerTechnologyPeru/Rainbow" "73d4ee05e013089cad7f21892c456df52329fc02"
-github "PureSwift/Bluetooth" "f4afec53b71694109ecea7569c0c932f5519bd6c"
-github "PureSwift/BluetoothDarwin" "858a824a1424e27a354f74bfed8da531591ae5f5"
+github "PureSwift/Bluetooth" "f4595e78bb5116f7f760049f19439e505c568532"
+github "PureSwift/BluetoothDarwin" "f3c65ee227244134f4df9665a6764e73adebd102"
