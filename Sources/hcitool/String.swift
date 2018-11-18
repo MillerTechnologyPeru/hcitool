@@ -24,6 +24,6 @@ extension String {
         
         let suffixIndex = self.index(self.startIndex, offsetBy: 2)
         
-        return String(substring(from: suffixIndex))
+        return String(suffix(from: suffixIndex))
     }
 }
