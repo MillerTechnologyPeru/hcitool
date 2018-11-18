@@ -21,11 +21,11 @@ public enum LEWhiteListDevice {
     
     public typealias HCIValue = Bluetooth.LowEnergyWhiteListDevice
     
-    case `public`(Address)
-    case random(Address) 
+    case `public`(BluetoothAddress)
+    case random(BluetoothAddress) 
     case anonymous
     
-    public init?(addressType: LEWhiteListAddressType, address: Address? = nil) {
+    public init?(addressType: LEWhiteListAddressType, address: BluetoothAddress? = nil) {
         
         switch addressType {
             

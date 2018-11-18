@@ -19,7 +19,7 @@ public struct LECreateConnectionCommand: ArgumentableCommand {
     public let scanWindow: LowEnergyScanTimeInterval
     public let initiatorFilterPolicy: HCILECreateConnection.InitiatorFilterPolicy
     public let peerAddressType: LowEnergyAddressType
-    public let peerAddress: Address
+    public let peerAddress: BluetoothAddress
     public let ownAddressType: LowEnergyAddressType
     public var interval: LowEnergyConnectionIntervalRange
     public var latency: LowEnergyConnectionLatency
@@ -32,7 +32,7 @@ public struct LECreateConnectionCommand: ArgumentableCommand {
                 scanWindow: LowEnergyScanTimeInterval,
                 initiatorFilterPolicy: HCILECreateConnection.InitiatorFilterPolicy = .peerAddress,
                 peerAddressType: LowEnergyAddressType = .public,
-                peerAddress: Address,
+                peerAddress: BluetoothAddress,
                 ownAddressType: LowEnergyAddressType = .public,
                 connectionInterval: LowEnergyConnectionIntervalRange = .full,
                 connectionLatency: LowEnergyConnectionLatency = .zero,
@@ -72,7 +72,7 @@ public struct LECreateConnectionCommand: ArgumentableCommand {
             else { throw CommandError.invalidOption(Option.peerAddressType.rawValue) }
         
         guard let peerAddressString = parameters.first(where: { $0.option == .peerAddress })?.value,
-            let peerAddress = Address(rawValue: peerAddressString)
+            let peerAddress = BluetoothAddress(rawValue: peerAddressString)
             else { throw CommandError.optionMissingValue(Option.peerAddress.rawValue) }
 
         guard let ownAddressTypeString = parameters.first(where: { $0.option == .ownAddressType })?.value,

@@ -32,11 +32,11 @@ public struct LERemoveDeviceFromWhiteListCommand: ArgumentableCommand {
         guard let addressType = LEWhiteListAddressType(rawValue: addressTypeString)
             else { throw CommandError.invalidOptionValue(option: Option.addressType.rawValue, value: addressTypeString) }
         
-        let address: Bluetooth.Address?
+        let address: BluetoothAddress?
         
         if let addressString = parameters.first(where: { $0.option == .address })?.value {
             
-            guard let addressValue = Bluetooth.Address(rawValue: addressString)
+            guard let addressValue = Bluetooth.BluetoothAddress(rawValue: addressString)
                 else { throw CommandError.invalidOptionValue(option: Option.address.rawValue, value: addressString) }
             
             address = addressValue

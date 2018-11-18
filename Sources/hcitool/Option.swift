@@ -42,9 +42,9 @@ public extension Parameter {
             
             index += 1
             
-            let optionRawValue = String(optionString.characters.drop(while: { $0 == "-" }))
+            let optionRawValue = String(optionString.drop(while: { $0 == "-" }))
             
-            guard let option = Option.init(rawValue: optionRawValue)
+            guard let option = Option(rawValue: optionRawValue)
                 else { throw CommandError.invalidOption(optionRawValue) }
             
             guard index < arguments.count

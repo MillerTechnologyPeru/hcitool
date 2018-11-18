@@ -15,11 +15,11 @@ public struct LESetRandomAddressCommand: ArgumentableCommand {
     
     public static let commandType: CommandType = .lowEnergySetRandomAddress
     
-    public var address: Address
+    public var address: BluetoothAddress
     
     // MARK: - Initialization
     
-    public init(address: Address) {
+    public init(address: BluetoothAddress) {
         
         self.address = address
     }
@@ -29,7 +29,7 @@ public struct LESetRandomAddressCommand: ArgumentableCommand {
         guard let addressString = parameters.first(where: { $0.option == .address })?.value
             else { throw CommandError.optionMissingValue(Option.address.rawValue) }
         
-        guard let address = Address(rawValue: addressString)
+        guard let address = BluetoothAddress(rawValue: addressString)
             else { throw CommandError.invalidOptionValue(option: Option.address.rawValue, value: addressString) }
         
         self.address = address

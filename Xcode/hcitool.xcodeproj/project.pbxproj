@@ -684,7 +684,7 @@
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -737,7 +737,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode -Xcc -fmodule-map-file=$(SRCROOT)/../Carthage/Checkouts/BluetoothDarwin/Sources/CBluetoothDarwin/include/module.modulemap";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

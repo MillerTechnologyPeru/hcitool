@@ -22,7 +22,7 @@ public struct LESetAdvertisingParametersCommand: ArgumentableCommand {
     public var advertisingInterval: (min: AdvertisingInterval, max: AdvertisingInterval)
     public var advertisingType: LEAdvertisingType
     public var addressType: (own: LowEnergyAddressType, direct: LowEnergyAddressType)
-    public var peerAddress: Address
+    public var peerAddress: BluetoothAddress
     public var channelMap: LEChannelMap
     public var filterPolicy: LEFilterPolicy
     
@@ -31,7 +31,7 @@ public struct LESetAdvertisingParametersCommand: ArgumentableCommand {
     public init(interval: (min: AdvertisingInterval, max: AdvertisingInterval) = (.default, .default),
                 advertisingType: LEAdvertisingType = LEAdvertisingType(),
                 addressType: (own: LowEnergyAddressType, direct: LowEnergyAddressType) = (.public, .public),
-                peerAddress: Address = .zero,
+                peerAddress: BluetoothAddress = .zero,
                 channelMap: LEChannelMap = .channel37,
                 filterPolicy: LEFilterPolicy = LEFilterPolicy()) {
         
@@ -74,7 +74,7 @@ public struct LESetAdvertisingParametersCommand: ArgumentableCommand {
             else { throw CommandError.invalidOptionValue(option: Option.peerAddressType.rawValue, value: peerAddressTypeString) }
         
         guard let peerAddressString = parameters.first(where: { $0.option == .peerAddress })?.value,
-            let peerAddress = Address(rawValue: peerAddressString)
+            let peerAddress = BluetoothAddress(rawValue: peerAddressString)
             else { throw CommandError.optionMissingValue(Option.peerAddress.rawValue) }
         
         guard let channelMapString = parameters.first(where: { $0.option == .advertisingChannelMap })?.value
