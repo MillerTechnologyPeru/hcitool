@@ -152,20 +152,26 @@ public struct LEScanCommand: ArgumentableCommand {
         
         print("Scanning for \(duration) seconds...")
         
-        let startDate = Date()
-        let endDate = startDate + duration
+        let endDate = Date() + duration
         
-        typealias SetScanParameters = HCILESetScanParameters
+        let parameters = HCILESetScanParameters(type: scanType.hciValue,
+                                                interval: interval,
+                                                window: window,
+                                                addressType: addressType.hciValue,
+                                                filterPolicy: filterPolicy.hciValue)
         
-        let parameters = SetScanParameters(type: scanType.hciValue,
-                                          interval: interval,
-                                          window: window,
-                                          addressType: addressType.hciValue,
-                                          filterPolicy: filterPolicy.hciValue)
+        var decoder = GAPDataDecoder()
+        decoder.ignoreUnknownType = true
         
-        try controller.lowEnergyScan(parameters: parameters,
-                                     shouldContinue: { Date() < endDate },
-                                     foundDevice: { print($0.address) })
+        try controller.lowEnergyScan(parameters: parameters, shouldContinue: { Date() < endDate }) {
+            print("Address:", $0.address, "(\($0.addressType))")
+            print("RSSI:", $0.rssi)
+            print("Event:", $0.event)
+            print("Data:", $0.responseData)
+            (try? decoder.decode($0.responseData))?.forEach {
+                print(type(of: $0).dataType.name ?? type(of: $0).dataType.description, $0)
+            }
+        }
     }
 }
 
