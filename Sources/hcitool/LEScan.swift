@@ -41,7 +41,7 @@ public struct LEScanCommand: ArgumentableCommand {
     
     public init(duration: TimeInterval = 10.0,
                 filterDuplicates: Bool = true,
-                scanType: ScanType = .passive,
+                scanType: ScanType = .active,
                 interval: LowEnergyScanTimeInterval = LowEnergyScanTimeInterval(rawValue: 0x01E0)!,
                 window: LowEnergyScanTimeInterval = LowEnergyScanTimeInterval(rawValue: 0x0030)!,
                 addressType: AddressType = .public,
