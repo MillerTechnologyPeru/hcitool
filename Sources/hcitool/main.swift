@@ -31,7 +31,7 @@ catch CommandError.noCommand {
     print("Error: Specify a command")
     #if swift(>=4.2)
     for command in CommandType.allCases {
-        print("\(command.rawValue)")
+        print(command.rawValue, "(\(command.name))")
     }
     #endif
     exit(1)

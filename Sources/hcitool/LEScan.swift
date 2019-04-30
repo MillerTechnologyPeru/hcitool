@@ -177,7 +177,7 @@ public struct LEScanCommand: ArgumentableCommand {
 
 public extension LEScanCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case duration
         case filterDuplicates = "filterduplicates"
