@@ -26,7 +26,18 @@ func run <T: BluetoothHostControllerInterface> (arguments: [String] = CommandLin
 
 do { try run(controller: HostController.default) }
 
+catch CommandError.noCommand {
+    
+    print("Error: Specify a command")
+    #if swift(>=4.2)
+    for command in CommandType.allCases {
+        print("\(command.rawValue)")
+    }
+    #endif
+    exit(1)
+}
+    
 catch {
-    print("\(error)")
+    print("Error: \(error)")
     exit(1)
 }

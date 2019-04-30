@@ -105,6 +105,10 @@ public enum CommandType: String {
     case lowEnergyRemoveDeviceFromResolvingList = "removedevicefromresolvinglist"
 }
 
+#if swift(>=4.2)
+extension CommandType: CaseIterable { }
+#endif
+
 public enum Command {
     
     case iBeacon(iBeaconCommand)
