@@ -65,7 +65,7 @@ public struct LERemoveDeviceFromWhiteListCommand: ArgumentableCommand {
 
 public extension LERemoveDeviceFromWhiteListCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case addressType    = "addresstype"
         case address

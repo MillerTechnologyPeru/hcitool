@@ -53,7 +53,7 @@ public struct LESetAdvertisingEnableCommand: ArgumentableCommand {
 
 public extension LESetAdvertisingEnableCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case enable
         

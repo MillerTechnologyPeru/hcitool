@@ -56,7 +56,7 @@ public struct LELongTermKeyRequestReplyCommand: ArgumentableCommand {
 
 public extension LELongTermKeyRequestReplyCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case connectionHandle = "connectionhandle"
         case longTermKey      = "longtermkey"

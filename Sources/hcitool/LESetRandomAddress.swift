@@ -48,7 +48,7 @@ public struct LESetRandomAddressCommand: ArgumentableCommand {
 
 public extension LESetRandomAddressCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case address
         

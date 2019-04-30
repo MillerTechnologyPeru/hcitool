@@ -139,7 +139,7 @@ public struct LECreateConnectionCommand: ArgumentableCommand {
 
 public extension LECreateConnectionCommand {
     
-    public enum InitiatorFilterPolicy: String {
+    enum InitiatorFilterPolicy: String {
         
         public typealias HCIValue = HCILECreateConnection.InitiatorFilterPolicy
         
@@ -160,7 +160,7 @@ public extension LECreateConnectionCommand {
 
 public extension LECreateConnectionCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case scanInterval       = "scaninterval"
         
@@ -186,8 +186,18 @@ public extension LECreateConnectionCommand {
         
         case lengthMax          = "lengthmax"
         
-        public static let all: Set<Option> = [scanInterval, scanWindow, initiatorFilterPolicy, peerAddressType, peerAddress, ownAddressType,
-                                              intervalMin, intervalMax, latency, supervisionTimeout, lengthMin, lengthMax]
+        public static let all: Set<Option> = [scanInterval,
+                                              scanWindow,
+                                              initiatorFilterPolicy,
+                                              peerAddressType,
+                                              peerAddress,
+                                              ownAddressType,
+                                              intervalMin,
+                                              intervalMax,
+                                              latency,
+                                              supervisionTimeout,
+                                              lengthMin,
+                                              lengthMax]
     }
 }
 

@@ -110,7 +110,7 @@ public struct LESetAdvertisingParametersCommand: ArgumentableCommand {
 
 public extension LESetAdvertisingParametersCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case advertisingIntervalMin     = "intervalmin"
         case advertisingIntervalMax     = "intervalmax"
@@ -130,7 +130,7 @@ public extension LESetAdvertisingParametersCommand {
 
 public extension LESetAdvertisingParametersCommand {
     
-    public enum AdvertisingType: String {
+    enum AdvertisingType: String {
         
         public typealias HCIValue = HCILESetAdvertisingParameters.AdvertisingType
         
@@ -140,7 +140,7 @@ public extension LESetAdvertisingParametersCommand {
         
         case scannable
         
-        case nonConnectable     =    "nonconnectable"
+        case nonConnectable = "nonconnectable"
         
         public var hciValue: HCIValue {
             
@@ -153,7 +153,7 @@ public extension LESetAdvertisingParametersCommand {
         }
     }
     
-    public enum ChannelMap: String {
+    enum ChannelMap: String {
         
         public typealias HCIValue = HCILESetAdvertisingParameters.ChannelMap
         
@@ -171,7 +171,7 @@ public extension LESetAdvertisingParametersCommand {
         }
     }
     
-    public enum FilterPolicy: String {
+    enum FilterPolicy: String {
         
         public typealias HCIValue = HCILESetAdvertisingParameters.FilterPolicy
         

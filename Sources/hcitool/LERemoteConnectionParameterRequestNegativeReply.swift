@@ -55,7 +55,7 @@ public struct LERemoteConnectionParameterRequestNegativeReplyCommand: Argumentab
 
 public extension LERemoteConnectionParameterRequestNegativeReplyCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case connectionHandle = "connectiohandle"
         case reason

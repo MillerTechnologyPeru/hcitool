@@ -77,7 +77,7 @@ public struct LEAddDeviceToResolvingListCommand: ArgumentableCommand {
 
 public extension LEAddDeviceToResolvingListCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case peerIdentifyAddressType    = "peeridentifyaddresstype"
         case peerIdentifyAddress        = "peeridentifyaddress"

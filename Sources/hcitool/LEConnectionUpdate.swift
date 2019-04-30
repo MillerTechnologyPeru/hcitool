@@ -92,7 +92,7 @@ public struct LEConnectionUpdateCommand: ArgumentableCommand {
 
 public extension LEConnectionUpdateCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         // Hexadecimal
         case handle

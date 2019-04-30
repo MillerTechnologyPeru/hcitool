@@ -44,7 +44,7 @@ public struct WriteLocalNameCommand: ArgumentableCommand {
 
 public extension WriteLocalNameCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
 
         case name
         

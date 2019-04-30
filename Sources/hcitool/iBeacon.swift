@@ -153,7 +153,7 @@ public struct iBeaconCommand: ArgumentableCommand {
 
 public extension iBeaconCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case uuid
         case major

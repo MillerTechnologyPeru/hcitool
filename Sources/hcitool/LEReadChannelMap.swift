@@ -48,7 +48,7 @@ public struct LEReadChannelMapCommand: ArgumentableCommand {
 
 public extension LEReadChannelMapCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case handle
         

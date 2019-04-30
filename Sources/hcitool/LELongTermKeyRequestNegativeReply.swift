@@ -47,7 +47,7 @@ public struct LELongTermKeyRequestNegativeReplyCommand: ArgumentableCommand {
 
 public extension LELongTermKeyRequestNegativeReplyCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case connectionHandle = "connectionhandle"
         

@@ -14,7 +14,7 @@ public enum CommandLineBool: String {
 
 public extension CommandLineBool {
     
-    public init(_ boolValue: Bool) {
+    init(_ boolValue: Bool) {
         
         if boolValue {
             self = .true
@@ -23,7 +23,7 @@ public extension CommandLineBool {
         }
     }
     
-    public var boolValue: Bool {
+    var boolValue: Bool {
         switch self {
         case .true: return true
         case .false: return false

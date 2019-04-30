@@ -55,7 +55,7 @@ public struct LERemoveDeviceFromResolvingListCommand: ArgumentableCommand {
 
 public extension LERemoveDeviceFromResolvingListCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case peerIdentifyAddressType    = "peeridentifyaddresstype"
         case peerIdentifyAddress        = "peeridentifyaddress"

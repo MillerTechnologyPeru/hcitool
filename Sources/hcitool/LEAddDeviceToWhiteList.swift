@@ -65,7 +65,7 @@ public struct LEAddDeviceToWhiteListCommand: ArgumentableCommand {
 
 public extension LEAddDeviceToWhiteListCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case addressType    = "addresstype"
         case address

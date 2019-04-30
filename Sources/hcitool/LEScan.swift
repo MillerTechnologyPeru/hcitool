@@ -199,7 +199,7 @@ public extension LEScanCommand {
 
 public extension LEScanCommand {
     
-    public enum ScanType: String {
+    enum ScanType: String {
         
         public typealias HCIValue = HCILESetScanParameters.ScanType
         
@@ -214,7 +214,7 @@ public extension LEScanCommand {
         }
     }
     
-    public enum AddressType: String {
+    enum AddressType: String {
         
         public typealias HCIValue = LowEnergyAddressType
         
@@ -251,7 +251,7 @@ public extension LEScanCommand {
         }
     }
     
-    public enum FilterPolicy: String {
+    enum FilterPolicy: String {
         
         public typealias HCIValue = HCILESetScanParameters.FilterPolicy
         

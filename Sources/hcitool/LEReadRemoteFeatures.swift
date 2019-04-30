@@ -55,7 +55,7 @@ public struct LEReadRemoteFeaturesCommand: ArgumentableCommand {
 
 public extension LEReadRemoteFeaturesCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case handle
         

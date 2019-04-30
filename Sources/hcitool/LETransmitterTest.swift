@@ -69,7 +69,7 @@ public struct LETransmitterTestCommand: ArgumentableCommand {
 
 public extension LETransmitterTestCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case txChannel = "txchannel"
         case length
@@ -78,6 +78,3 @@ public extension LETransmitterTestCommand {
         public static let all: Set<Option> = [.txChannel, .length, .payload]
     }
 }
-
-
-

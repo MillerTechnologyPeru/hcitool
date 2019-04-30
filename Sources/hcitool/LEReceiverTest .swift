@@ -46,7 +46,7 @@ public struct LEReceiverTestCommand: ArgumentableCommand {
 
 public extension LEReceiverTestCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case rxChannel = "rxchannel"
         

@@ -65,7 +65,7 @@ public struct LEEncryptCommand: ArgumentableCommand {
 
 public extension LEEncryptCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case key
         case data

@@ -73,7 +73,7 @@ public struct LEStartEncryptionCommand: ArgumentableCommand {
 
 public extension LEStartEncryptionCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case connectionHandle = "connectionhandle"
         case randomNumber     = "randomnumber"

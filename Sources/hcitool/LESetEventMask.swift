@@ -63,7 +63,7 @@ public struct LESetEventMaskCommand: ArgumentableCommand {
 
 public extension LESetEventMaskCommand {
     
-    public enum Option: String, OptionProtocol {
+    enum Option: String, OptionProtocol {
         
         case event
         
@@ -73,7 +73,7 @@ public extension LESetEventMaskCommand {
 
 public extension LESetEventMaskCommand {
     
-    public enum Event: String {
+    enum Event: String {
         
         public typealias HCIValue = HCILESetEventMask.Event
         
