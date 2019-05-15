@@ -9,22 +9,35 @@ import BluetoothDarwin
 import IOBluetooth
 #endif
 
-func run <T: BluetoothHostControllerInterface> (arguments: [String] = CommandLine.arguments, controller: T?) throws {
+func run(arguments: [String] = CommandLine.arguments) throws {
+    
+    guard let controller = HostController.default
+        else { throw CommandError.bluetoothUnavailible }
+    
+    #if os(macOS)
+    if controller.powerState != .on, controller.isPowerChangeSupported {
+        do { try HostController.default?.setPowerState(false) }
+        catch { print("Unable to set power state: \(error)") }
+    }
+    #elseif os(Linux)
+    if try controller.deviceInformation().flags.contains(.up) == false {
+        try controller.enable()
+    }
+    #endif
     
     //  first argument is always the current directory
     let arguments = Array(arguments.dropFirst())
     
-    guard let controller = controller
-        else { throw CommandError.bluetoothUnavailible }
+    let address = try controller.readDeviceAddress()
     
-    print("Bluetooth Controller: \(controller.address)")
+    print("Bluetooth Controller: \(address)")
     
     let command = try Command(arguments: arguments)
     
     try command.execute(controller: controller)
 }
 
-do { try run(controller: HostController.default) }
+do { try run() }
 
 catch CommandError.noCommand {
     
