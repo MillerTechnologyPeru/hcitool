@@ -15,7 +15,7 @@ func run(arguments: [String] = CommandLine.arguments) throws {
         else { throw CommandError.bluetoothUnavailible }
     
     #if os(macOS)
-    if controller.powerState != .on, controller.isPowerChangeSupported {
+    if controller.powerState != .on {
         do { try HostController.default?.setPowerState(false) }
         catch { print("Unable to set power state: \(error)") }
     }
