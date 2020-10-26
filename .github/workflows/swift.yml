@@ -1,0 +1,51 @@
+name: Swift
+
+on: [push]
+
+jobs:
+
+    linux-swift-51:
+        name: Linux x86_64 (Swift 5.1)
+        runs-on: ubuntu-18.04
+        container: swift:5.1
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v1
+        - name: Swift Version
+          run: swift --version
+        - name: Build (Debug)
+          run: swift build -c debug
+        - name: Build (Release)
+          run: swift build -c release
+
+    linux-swift-53:
+        name: Linux x86_64 (Swift 5.3)
+        runs-on: ubuntu-20.04
+        container: swift:5.3-focal
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v1
+        - name: Swift Version
+          run: swift --version
+        - name: Build (Debug)
+          run: swift build -c debug
+        - name: Build (Release)
+          run: swift build -c release
+
+    macOS-swift-53:
+        name: macOS (Swift 5.3)
+        runs-on: macOS-latest
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v1
+        - name: Xcode Version
+          run: |
+            sudo xcode-select -s /Applications/Xcode_12.app
+            xcodebuild -version
+            swift --version
+        - name: Swift Version
+          run: swift --version
+        - name: Build (Debug)
+          run: swift build -c debug
+        - name: Build (Release)
+          run: swift build -c release
