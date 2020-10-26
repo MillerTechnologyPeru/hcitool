@@ -8,6 +8,7 @@
 
 import Foundation
 import Bluetooth
+@_exported import BluetoothHCI
 
 public enum CommandType: String {
     

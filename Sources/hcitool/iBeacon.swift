@@ -6,11 +6,13 @@
 //  Copyright © 2018 Pure Swift. All rights reserved.
 //
 
-import Bluetooth
 import Foundation
+import Bluetooth
+import BluetoothGAP
+import BluetoothHCI
 
 /// Well known iBeacon UUID
-private let iBeaconUUID = Foundation.UUID(rawValue: "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0")!
+private let iBeaconUUID = Foundation.UUID(uuidString: "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0")!
 
 /// Tests iBeacon advertising
 public struct iBeaconCommand: ArgumentableCommand {

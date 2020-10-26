@@ -66,5 +66,5 @@ fastlane/test_output
 
 # SPM Generated
 hcitool.xcodeproj/*
-
 Package.resolved
+.swiftpm

@@ -19,7 +19,7 @@ public enum LEWhiteListAddressType: String {
 /// LE White List Device Entry
 public enum LEWhiteListDevice {
     
-    public typealias HCIValue = Bluetooth.LowEnergyWhiteListDevice
+    public typealias HCIValue = BluetoothHCI.LowEnergyWhiteListDevice
     
     case `public`(BluetoothAddress)
     case random(BluetoothAddress) 

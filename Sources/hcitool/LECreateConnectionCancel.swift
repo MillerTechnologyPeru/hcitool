@@ -6,8 +6,9 @@
 //  Copyright © 2018 Pure Swift. All rights reserved.
 //
 
-import Bluetooth
 import Foundation
+import Bluetooth
+import BluetoothHCI
 
 public struct LECreateConnectionCancelCommand: CommandProtocol {
     

@@ -12,8 +12,9 @@ import BluetoothDarwin
 import IOBluetooth
 #endif
 
-import Bluetooth
 import Foundation
+import Bluetooth
+import BluetoothGAP
 
 public struct LEScanCommand: ArgumentableCommand {
     
