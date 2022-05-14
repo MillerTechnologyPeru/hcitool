@@ -20,15 +20,12 @@ struct ListDevices: AsyncParsableCommand {
         )
     }
     
-    @Option(help: "HCI device")
-    var device: String
-    
     func run() async throws {
         let controllers = await Self.devices
         print("Devices:")
         for (name, controller) in controllers {
             let address = try await controller.readDeviceAddress()
-            print("     " + name + " " + address.rawValue)
+            print("       " + name + "    " + address.rawValue)
         }
     }
 }

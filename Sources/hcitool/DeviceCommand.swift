@@ -13,7 +13,7 @@ import BluetoothLinux
 
 protocol DeviceCommand: AsyncParsableCommand {
     
-    var device: String { get }
+    var device: String? { get }
     
     func run(_ hostController: HostController) async throws
 }
@@ -37,7 +37,7 @@ extension AsyncParsableCommand {
 extension DeviceCommand {
     
     func run() async throws {
-        let key = self.device
+        let key = self.device ?? "hci0"
         guard let controller = await Self.devices[key] else {
             throw CommandError.invalidDevice(key)
         }

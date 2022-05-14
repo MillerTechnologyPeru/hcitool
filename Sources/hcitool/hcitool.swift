@@ -17,7 +17,8 @@ struct HCITool: AsyncParsableCommand {
         abstract: "",
         version: "1.0.0",
         subcommands: [
-            ListDevices.self
+            ListDevices.self,
+            LEScan.self,
         ]
     )
 }
