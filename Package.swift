@@ -1,40 +1,37 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.6
 import PackageDescription
 
-#if os(macOS)
 let package = Package(
     name: "hcitool",
+    platforms: [
+        .macOS(.v10_15)
+    ],
     products: [
-        .executable(name: "hcitool", targets: ["hcitool"])
+        .executable(
+            name: "hcitool",
+            targets: ["hcitool"]
+        )
     ],
     dependencies: [
-        .package(url: "https://github.com/PureSwift/BluetoothDarwin.git", .branch("master"))
+        .package(
+            url: "https://github.com/PureSwift/BluetoothLinux.git",
+            branch: "master"
+        ),
+        .package(
+            url: "https://github.com/apple/swift-argument-parser",
+            .upToNextMinor(from: "1.1.0")
+        ),
     ],
     targets: [
-        .target(
+        .executableTarget(
             name: "hcitool",
             dependencies: [
-                "BluetoothDarwin"
+                "BluetoothLinux",
+                .product(
+                    name: "ArgumentParser",
+                    package: "swift-argument-parser"
+                )
             ]
         )
     ]
 )
-#elseif os(Linux)
-let package = Package(
-    name: "hcitool",
-    products: [
-        .executable(name: "hcitool", targets: ["hcitool"])
-    ],
-    dependencies: [
-        .package(url: "https://github.com/PureSwift/BluetoothLinux.git", .branch("master"))
-    ],
-    targets: [
-        .target(
-            name: "hcitool",
-            dependencies: [
-                "BluetoothLinux"
-            ]
-        )
-    ]
-)
-#endif

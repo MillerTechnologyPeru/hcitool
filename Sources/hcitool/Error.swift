@@ -6,22 +6,10 @@
 //  Copyright © 2018 Pure Swift. All rights reserved.
 //
 
+import BluetoothLinux
+
 public enum CommandError: Error {
     
     /// Bluetooth controllers not availible.
-    case bluetoothUnavailible
-    
-    /// No command specified.
-    case noCommand
-    
-    /// Invalid command.
-    case invalidCommandType(String)
-    
-    case invalidOption(String)
-    
-    case missingOption(String)
-    
-    case optionMissingValue(String)
-    
-    case invalidOptionValue(option: String, value: String)
+    case invalidDevice(String)
 }
