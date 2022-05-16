@@ -20,12 +20,13 @@ struct ListDevices: AsyncParsableCommand {
         )
     }
     
-    func run() async throws {
-        let controllers = await Self.devices
-        print("Devices:")
-        for (name, controller) in controllers {
-            let address = try await controller.readDeviceAddress()
-            print("       " + name + "    " + address.rawValue)
+    func run() throws {
+        let list = try HostController.deviceList()
+        for device in list {
+            let info = try HostController.deviceInformation(for: device.id)
+            print(info.id)
+            print(info.name)
+            print(info.address)
         }
     }
 }
