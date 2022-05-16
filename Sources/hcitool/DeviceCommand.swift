@@ -18,29 +18,19 @@ protocol DeviceCommand: AsyncParsableCommand {
     func run(_ hostController: HostController) async throws
 }
 
-extension AsyncParsableCommand {
-    
-    static var devices: [String: HostController] {
-        get async {
-            let controllers = await HostController.controllers
-            var devices = [String: HostController]()
-            devices.reserveCapacity(controllers.count)
-            for controller in controllers {
-                let key = "hci" + controller.id.rawValue.description
-                devices[key] = controller
-            }
-            return devices
-        }
-    }
-}
-
 extension DeviceCommand {
     
     func run() async throws {
-        let key = self.device ?? "hci0"
-        guard let controller = await Self.devices[key] else {
-            throw CommandError.invalidDevice(key)
+        if let name = self.device {
+            guard let controller = await HostController.controllers.first(where: { $0.name == name }) else {
+                throw CommandError.invalidDevice(name)
+            }
+            try await run(controller)
+        } else {
+            guard let controller = await HostController.default else {
+                throw CommandError.invalidDevice("hci0")
+            }
+            try await run(controller)
         }
-        try await run(controller)
     }
 }
