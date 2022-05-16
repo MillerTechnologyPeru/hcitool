@@ -25,7 +25,7 @@ struct ListDevices: AsyncParsableCommand {
         for device in list {
             let info = try HostController.deviceInformation(for: device.id)
             print("\(info.name):" + "   " + "Type: \(info.type)" + "  " + "Bus: \(info.busType)")
-            print("      " + "Address: \(info.address)")
+            print("        " + "Address: \(info.address)")
             var flags = [String]()
             if info.flags.contains(.up) == false {
                 flags.append("DOWN")
@@ -36,7 +36,7 @@ struct ListDevices: AsyncParsableCommand {
                 }
                 flags.append("\(flag) ".uppercased())
             }
-            print("      " + flags.reduce("", { $0 + $1 }))
+            print("        " + flags.reduce("", { $0 + $1 }))
         }
     }
 }
