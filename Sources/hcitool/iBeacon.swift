@@ -26,19 +26,19 @@ struct Beacon: DeviceCommand {
     @Option(name: .customShort("i"), help: "HCI device")
     var device: String?
     
-    @Option(help: "Beacon UUID")
+    @Option(help: "The iBeacon UUID to advertise.")
     var uuid: UUID
-
-    @Option(help: "Major")
+    
+    @Option(help: "The value identifying a group of beacons.")
     var major: UInt16
 
-    @Option(help: "Minor")
+    @Option(help: "The value identifying a specific beacon within a group.")
     var minor: UInt16
 
-    @Option(help: "RSSI")
+    @Option(help: "The received signal strength indicator (RSSI) value (measured in decibels) for the device.")
     var rssi: Int8
-
-    @Option(help: "Advertising Interval")
+    
+    @Option(help: "The time between the start of two consecutive advertising events.")
     var interval: AdvertisingInterval = .default
     
     func run(_ hostController: HostController) async throws {
@@ -49,6 +49,6 @@ struct Beacon: DeviceCommand {
             minor: minor, 
             rssi: rssi
         )
-        try await hostController.iBeacon(beacon: beacon, interval: interval)
+        try await hostController.iBeacon(beacon, interval: interval)
     }
 }
