@@ -68,3 +68,6 @@ fastlane/test_output
 hcitool.xcodeproj/*
 Package.resolved
 .swiftpm
+
+# VS Code
+.vscode
