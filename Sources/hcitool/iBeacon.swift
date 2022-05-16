@@ -30,10 +30,10 @@ struct Beacon: DeviceCommand {
     var uuid: UUID
     
     @Option(help: "The value identifying a group of beacons.")
-    var major: UInt16
+    var major: UInt16 = 0
 
     @Option(help: "The value identifying a specific beacon within a group.")
-    var minor: UInt16
+    var minor: UInt16 = 0
 
     @Option(help: "The received signal strength indicator (RSSI) value (measured in decibels) for the device.")
     var rssi: Int8
