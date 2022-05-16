@@ -24,9 +24,9 @@ struct ListDevices: AsyncParsableCommand {
         let list = try HostController.deviceList()
         for device in list {
             let info = try HostController.deviceInformation(for: device.id)
-            print(info.id)
-            print(info.name)
-            print(info.address)
+            print("\(info.name):")
+            print("     " + "Type: \(info.type)" + "  " + "Bus: \(info.busType)")
+            print("     " + "Address: \(info.address)")
         }
     }
 }
