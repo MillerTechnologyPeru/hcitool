@@ -19,6 +19,7 @@ struct HCITool: AsyncParsableCommand {
         subcommands: [
             ListDevices.self,
             LEScan.self,
+            Beacon.self,
         ]
     )
 }
