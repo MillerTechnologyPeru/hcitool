@@ -7,6 +7,7 @@
 
 import Foundation
 import ArgumentParser
+import SystemPackage
 import Bluetooth
 import BluetoothHCI
 import BluetoothLinux
@@ -23,12 +24,12 @@ extension DeviceCommand {
     func run() async throws {
         if let name = self.device {
             guard let controller = await HostController.controllers.first(where: { $0.name == name }) else {
-                throw CommandError.invalidDevice(name)
+                throw Errno.noSuchAddressOrDevice
             }
             try await run(controller)
         } else {
             guard let controller = await HostController.default else {
-                throw CommandError.invalidDevice("hci0")
+                throw Errno.noSuchAddressOrDevice
             }
             try await run(controller)
         }
