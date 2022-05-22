@@ -32,6 +32,12 @@ let package = Package(
                     package: "swift-argument-parser"
                 )
             ]
+        ),
+        .testTarget(
+            name: "HCIToolTests",
+            dependencies: [
+                "hcitool"
+            ]
         )
     ]
 )
