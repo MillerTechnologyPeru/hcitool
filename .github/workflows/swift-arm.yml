@@ -4,22 +4,6 @@ on: [push]
 
 jobs:
 
-    linux-swift-arm64-debian-build:
-        name: Debian ARM64 (Build)
-        runs-on: [self-hosted, linux, ARM64, swift, debian11]
-        steps:
-        - name: Checkout
-          uses: actions/checkout@v2
-        - name: Swift Version
-          run: swift --version
-        - name: Build (Debug)
-          run: swift build -c debug -j 1
-        - name: Archive Build artifacts
-          uses: actions/upload-artifact@v3
-          with:
-            name: swiftpm-build-debian-arm64
-            path: .build/*
-
     linux-swift-armv7-debian-build:
         name: Debian Armv7 (Build)
         runs-on: ubuntu-20.04
