@@ -5,7 +5,7 @@ on: [push]
 jobs:
 
     linux-swift:
-        name: Linux
+        name: Linux (Swift 5.6.1)
         runs-on: ubuntu-20.04
         container: swift:5.6.1-focal
         steps:
@@ -17,3 +17,8 @@ jobs:
           run: swift build -c debug
         - name: Build (Release)
           run: swift build -c release
+        - name: Archive Build artifacts
+          uses: actions/upload-artifact@v3
+          with:
+            name: swiftpm-build
+            path: .build/*/hcitool

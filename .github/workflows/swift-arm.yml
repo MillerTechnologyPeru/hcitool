@@ -3,11 +3,11 @@ name: Swift ARM
 on: [push]
 
 jobs:
-
-    linux-swift-armv7-debian-build:
-        name: Debian Armv7 (Build)
+    
+    linux-swift-5_6-armv7-debian-build:
+        name: Build Debian Armv7 (Swift 5.6.1)
         runs-on: ubuntu-20.04
-        container: colemancda/swift-armv7:amd64-prebuilt
+        container: colemancda/swift-armv7:5.6.1-prebuilt
         steps:
         - name: Checkout
           uses: actions/checkout@v3
@@ -25,5 +25,5 @@ jobs:
         - name: Archive Build artifacts
           uses: actions/upload-artifact@v3
           with:
-            name: swiftpm-build-debian-armv7
-            path: .build/*
+            name: swiftpm-5_6-build-debian-armv7
+            path: .build/armv7-unknown-linux-gnueabihf/release/hcitool
